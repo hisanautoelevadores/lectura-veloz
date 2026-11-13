@@ -12,7 +12,10 @@
   /* ---------- Perfiles ---------- */
   function el(tag, texto, clase) { const e = document.createElement(tag); e.textContent = texto; if (clase) e.className = clase; return e; }
 
-  function abrirPicker(cb) {
+  function abrirPicker(cb, opts) {
+    opts = opts || {};
+    const conBanda = opts.banda !== false;
+    const etiqueta = p => (p.apodo || 'Sin apodo') + (conBanda ? ' · ' + BANDAS[p.banda] : '');
     const ov = document.createElement('div'); ov.className = 'pf-ov';
     const box = document.createElement('div'); box.className = 'pf-box';
     ov.appendChild(box); document.body.appendChild(ov);
@@ -22,7 +25,7 @@
       box.textContent = '';
       box.appendChild(el('h2', '¿Quién practica hoy?'));
       Perfil.lista().forEach(p => {
-        const b = el('button', (p.apodo || 'Sin apodo') + ' · ' + BANDAS[p.banda], 'pf-btn');
+        const b = el('button', etiqueta(p), 'pf-btn');
         b.onclick = () => { actual = { id: p.id, apodo: p.apodo || '', banda: p.banda }; cerrar(); cb(); };
         box.appendChild(b);
       });
@@ -40,12 +43,13 @@
       inp.className = 'pf-in'; inp.placeholder = 'Ej.: Pepito (opcional)'; inp.maxLength = 20;
       const sel = document.createElement('select'); sel.className = 'pf-in';
       Object.entries(BANDAS).forEach(([k, v]) => sel.add(new Option(v, k)));
+      if (!conBanda) sel.hidden = true;
       const hint = el('p', 'El apodo es opcional. Usá uno corto, no el nombre completo.', 'pf-hint');
       const ok = el('button', 'Continuar sin apodo', 'pf-btn pf-main');
       inp.oninput = () => { ok.textContent = inp.value.trim() ? 'Guardar y seguir' : 'Continuar sin apodo'; };
       ok.onclick = () => {
         const apodo = inp.value.trim();
-        const p = { id: Date.now().toString(36), apodo, banda: +sel.value };
+        const p = { id: Date.now().toString(36), apodo, banda: conBanda ? +sel.value : 1 };
         LS.set('lv2-perfiles', [...Perfil.lista(), p]);
         actual = { id: p.id, apodo, banda: p.banda };
         cerrar(); cb();
@@ -63,7 +67,7 @@
     BANDAS,
     actual() { return { ...actual }; },
     lista() { return LS.get('lv2-perfiles', []); },
-    elegir(cb) { abrirPicker(cb); },
+    elegir(cb, opts) { abrirPicker(cb, opts); },
     store: {
       get(k, d) { return LS.get('lv2p-' + (actual.id || 'anon') + '-' + k, d); },
       set(k, v) { LS.set('lv2p-' + (actual.id || 'anon') + '-' + k, v); }

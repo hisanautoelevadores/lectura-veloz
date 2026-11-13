@@ -228,7 +228,7 @@ function iniciarPractica(area) {
     if (!todas.length) { go('practica'); return; }
     S.area = area; S.lista = shuffle(todas); S.idx = 0; S.resp = {}; S.ok = 0;
     go('preguntas');
-  });
+  }, { banda: false });
 }
 const NUM = ['1', '2', '3', '4', '5', '6'];
 function vistaPreguntas() {
@@ -306,6 +306,8 @@ function vistaResumen() {
   const total = S.lista.length, hechas = Object.keys(S.resp).length;
   const wrap = h('div', { class: 'wrap' });
   wrap.append(h('div', { class: 'title' }, h('h1', { text: '¡Terminaste!' })));
+  const quien = Perfil.actual().apodo;
+  wrap.append(h('p', { class: 'muted', text: quien ? 'Resultado de ' + quien : 'Resultado de este perfil' }));
   wrap.append(h('div', { class: 'sheet' }, h('div', { class: 'score' },
     h('div', { class: 'sc' }, h('b', { text: S.ok + '/' + hechas }), h('span', { text: 'correctas' })),
     h('div', { class: 'sc' }, h('b', { text: pct(S.ok, hechas) + '%' }), h('span', { text: 'de acierto' })),
