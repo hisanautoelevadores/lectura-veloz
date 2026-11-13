@@ -20,7 +20,7 @@ h1{font-size:1.2rem;margin:0}
 .barra{position:absolute;left:-14px;right:-14px;top:60px;height:10px;background:linear-gradient(180deg,#EDE3CC,#B9AA86);box-shadow:0 3px 5px rgba(0,0,0,.35);z-index:2}
 .punto{position:absolute;left:12.5%;top:62px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#FFF7E0;box-shadow:0 0 0 1px #5A3A1A,0 1px 2px rgba(0,0,0,.6);z-index:3}
 .varilla{position:absolute;top:10px;bottom:10px;width:4px;margin-left:-2px;background:#E9DCC2;opacity:.9;border-radius:2px;z-index:1}
-.cu{position:absolute;width:40px;height:26px;margin-left:-20px;z-index:3;cursor:pointer;transition:top .25s ease;-webkit-tap-highlight-color:transparent}
+.cu{position:absolute;width:40px;height:26px;margin-left:-20px;z-index:3;cursor:pointer;transition:top .25s ease;-webkit-tap-highlight-color:transparent;touch-action:none}
 .cu svg{display:block;width:40px;height:26px;pointer-events:none}
 .cu:focus-visible{outline:3px solid #F2B300;outline-offset:2px;border-radius:6px}
 .numero{display:flex;justify-content:center;gap:12px;font-weight:700;font-size:2rem;color:#B5501F;font-variant-numeric:tabular-nums;min-height:2.4rem}
@@ -53,7 +53,7 @@ h1{font-size:1.2rem;margin:0}
   <div class="acciones">
     <button class="btn" id="limpiar" type="button">Poner en cero</button>
   </div>
-  <p class="nota">Tocá una ficha para moverla. Las fichas de la barra (arriba) valen 5; las de abajo valen 1.</p>
+  <p class="nota">Tocá una ficha, o arrastrala hacia la barra para subirla y hacia afuera para bajarla. Las fichas de la barra (arriba) valen 5; las de abajo valen 1.</p>
 </div>
 
 <script>
@@ -107,7 +107,36 @@ h1{font-size:1.2rem;margin:0}
     el.tabIndex = 0;
     el.setAttribute('role', 'button');
     el.innerHTML = svgCuenta();
-    el.addEventListener('click', () => tocar(col, tipo, idx));
+    // arrastre táctil y con mouse: subir o bajar la ficha; un toque sin arrastre la mueve igual
+    let inicioY = null, arrastrado = false;
+    el.addEventListener('pointerdown', (e) => { inicioY = e.clientY; arrastrado = false; el.setPointerCapture(e.pointerId); el.style.transition = 'none'; });
+    el.addEventListener('pointermove', (e) => {
+      if (inicioY === null) return;
+      const dy = e.clientY - inicioY;
+      if (Math.abs(dy) > 6) arrastrado = true;
+      const lim = 40;
+      el.style.transform = 'translate(-50%,' + Math.max(-lim, Math.min(lim, dy)) + 'px)';
+    });
+    const soltar = (e) => {
+      if (inicioY === null) return;
+      const dy = e.clientY - inicioY;
+      inicioY = null;
+      el.style.transform = '';
+      el.style.transition = '';
+      if (!arrastrado) { tocar(col, tipo, idx); return; }
+      if (tipo === 'cielo') {
+        if (dy > 12 && !est[col].cielo) tocar(col, tipo, idx);
+        else if (dy < -12 && est[col].cielo) tocar(col, tipo, idx);
+      } else {
+        const activa = idx < est[col].tierra;
+        if (dy < -12 && !activa) tocar(col, tipo, idx);
+        else if (dy > 12 && activa) tocar(col, tipo, idx);
+        else render();
+      }
+    };
+    el.addEventListener('pointerup', soltar);
+    el.addEventListener('pointercancel', soltar);
+
     el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tocar(col, tipo, idx); } });
     tab.appendChild(el);
     cuentas.push({ col, tipo, idx, el });
