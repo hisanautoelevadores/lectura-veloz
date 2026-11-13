@@ -28,6 +28,16 @@ a.card:hover{border-color:var(--accent)}
 .card.pronto .tag{color:var(--muted)}
 .nota{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5}
 .crisalida{position:fixed;right:max(6px,env(safe-area-inset-right,0px));bottom:max(6px,env(safe-area-inset-bottom,0px));width:120px;height:auto;pointer-events:none;user-select:none;z-index:1}
+.grupo{margin:8px 0 0;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.separador{border:0;border-top:1px solid var(--line);margin:14px 0}
+.examen-bloque{display:flex;flex-direction:column;gap:12px;border:1px solid var(--accent);border-radius:16px;padding:16px;background:#14130d}
+.examen-bloque .encab{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.distintivo{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:44px;padding:0 12px;border-radius:10px;background:var(--accent);color:#1a1400;font-weight:700;letter-spacing:.08em}
+.examen-bloque h2{margin:0;font-size:1.15rem}
+.examen-bloque .nota-ex{margin:0;color:var(--muted);font-size:.85rem;line-height:1.4}
+.examen-bloque .niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.examen-bloque .niveles .card{min-height:0;padding:14px}
+.card.pronto{opacity:.5}
 </style>
 </head>
 <body>
@@ -37,6 +47,7 @@ a.card:hover{border-color:var(--accent)}
     <p class="intro">Elegí una materia para empezar. Cada una guarda su propio avance en este celular o computadora.</p>
   </header>
 
+  <h2 class="grupo">Aprender japonés y matemáticas</h2>
   <nav class="materias" aria-label="Materias">
     <a class="card" href="lectura.html">
       <h2>Lectura veloz</h2>
@@ -59,6 +70,28 @@ a.card:hover{border-color:var(--accent)}
       <span class="tag">Disponible</span>
     </a>
   </nav>
+
+  <hr class="separador">
+
+  <section class="examen-bloque" aria-labelledby="ex-titulo">
+    <div class="encab">
+      <span class="distintivo" aria-hidden="true">JLPT</span>
+      <div>
+        <h2 id="ex-titulo">Preparación de exámenes (Nōryoku Shiken)</h2>
+        <p class="nota-ex">Práctica no oficial, basada en el formato del examen de japonés. No tiene relación con sus organizadores.</p>
+      </div>
+    </div>
+    <div class="niveles">
+      <a class="card" href="examen.html">
+        <h2>N5</h2>
+        <p>Práctica por áreas y simulación con tiempo.</p>
+        <span class="tag">Disponible</span>
+      </a>
+      <div class="card pronto" aria-disabled="true"><h2>N4</h2><p>Próximamente.</p><span class="tag">Próximamente</span></div>
+      <div class="card pronto" aria-disabled="true"><h2>N3</h2><p>Próximamente.</p><span class="tag">Próximamente</span></div>
+      <div class="card pronto" aria-disabled="true"><h2>N2</h2><p>Próximamente.</p><span class="tag">Próximamente</span></div>
+    </div>
+  </section>
 
   <p class="nota">Todo el avance se guarda solo en este dispositivo. Nada se envía a ningún servidor.</p>
 <img class="crisalida" src="img/crisalida.webp" alt="" aria-hidden="true" width="120" height="120">
