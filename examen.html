@@ -124,12 +124,13 @@ const $app = document.getElementById('app');
 const EXAM = { nivel: 'N5', fecha: new Date(2026, 11, 6) };
 const AREAS = [
   { id: 'escucha', jp: '聴解', es: 'Comprensión auditiva', desc: 'Diálogos grabados. Se elige la respuesta y se ve el texto después.', listo: true },
-  { id: 'vocab', jp: '語彙', es: 'Vocabulario', desc: 'Lectura de palabras y de kanji. En preparación.', listo: false },
-  { id: 'gram', jp: '文法', es: 'Gramática', desc: 'Partículas, formas verbales y orden de la oración. En preparación.', listo: false },
+  { id: 'vocab', jp: '語彙', es: 'Vocabulario', desc: 'Lectura de kanji, significado y uso de palabras.', listo: true },
+  { id: 'gram', jp: '文法', es: 'Gramática', desc: 'Partículas, formas verbales y uso de la oración.', listo: true },
   { id: 'lect', jp: '読解', es: 'Lectura', desc: 'Textos breves y avisos con datos. En preparación.', listo: false }
 ];
 
 let ejercicios = [];
+let banco = [];
 let S = { pantalla: 'inicio', area: null, lista: [], idx: 0, resp: {}, ok: 0 };
 const LS = {
   get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
@@ -224,16 +225,25 @@ function vistaPractica() {
 /* ---------- Práctica: preguntas ---------- */
 function iniciarPractica(area) {
   Perfil.elegir(() => {
-    const todas = ejercicios.filter(e => (e.tipo || '').length && area === 'escucha' && e.audio);
+    const todas = area === 'escucha' ? ejercicios : banco.filter(e => e.area === area);
     if (!todas.length) { go('practica'); return; }
     S.area = area; S.lista = shuffle(todas); S.idx = 0; S.resp = {}; S.ok = 0;
     go('preguntas');
   }, { banda: false });
 }
+function rich(str) {
+  const frag = document.createDocumentFragment();
+  const s = String(str == null ? '' : str);
+  const re = /\[\[(.+?)\]\]/g; let last = 0, m;
+  while ((m = re.exec(s))) { if (m.index > last) frag.append(s.slice(last, m.index)); frag.append(h('u', null, m[1])); last = re.lastIndex; }
+  if (last < s.length) frag.append(s.slice(last));
+  return frag;
+}
 const NUM = ['1', '2', '3', '4', '5', '6'];
 function vistaPreguntas() {
   const wrap = h('div', { class: 'wrap' });
   const ej = S.lista[S.idx];
+  const esAudio = !!ej.audio;
   const area = AREAS.find(a => a.id === S.area);
   wrap.append(h('div', { class: 'topbar' },
     h('button', { class: 'btn ghost', type: 'button', onclick: () => go('practica') }, '← Áreas'),
@@ -245,14 +255,16 @@ function vistaPreguntas() {
   wrap.append(nav);
 
   const card = h('div', { class: 'qcard' });
-  card.append(h('p', { class: 'small muted', text: 'Escuchá el audio y elegí la respuesta.' }));
-  const listen = h('div', { class: 'listen' });
-  const audio = new Audio(ej.audio);
-  const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
-  const lento = h('button', { class: 'btn', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 0.75; audio.play().catch(() => {}); } }, 'Más lento');
-  const estado = h('span', { class: 'small muted', text: '' });
-  listen.append(h('div', { class: 'row', style: 'display:flex;gap:10px;flex-wrap:wrap' }, play, lento), estado);
-  card.append(listen);
+  if (esAudio) {
+    card.append(h('p', { class: 'small muted', text: 'Escuchá el audio y elegí la respuesta.' }));
+    const audio = new Audio(ej.audio);
+    const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
+    const lento = h('button', { class: 'btn', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 0.75; audio.play().catch(() => {}); } }, 'Más lento');
+    card.append(h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap' }, play, lento));
+  } else {
+    card.append(h('p', { class: 'small muted', text: 'Elegí la respuesta correcta.' }));
+    card.append(h('div', { class: 'qtext', lang: 'ja', style: 'font:500 1.3rem/1.9 var(--font-jp);overflow-wrap:anywhere' }, rich(ej.q)));
+  }
 
   const sel = S.resp[S.idx];
   const contestada = sel != null;
@@ -272,14 +284,19 @@ function vistaPreguntas() {
     const ok = sel === ej.respuesta;
     const fb = h('div', { class: 'fb ' + (ok ? 'okbox' : 'badbox') });
     fb.append(h('p', { class: 'verdict', text: ok ? '¡Muy bien!' : 'Esta vez no era esa.' }));
-    fb.append(h('p', null, 'Tema: ', h('b', { text: ej.tema || ej.titulo || '' })));
-    fb.append(h('p', null, 'La respuesta es la ', h('b', { text: NUM[ej.respuesta] }), ': ', h('span', { lang: 'ja', text: ej.opciones[ej.respuesta] })));
-    if (!ok && ej.explicacion) fb.append(h('p', { text: ej.explicacion }));
-    if (!ok) {
-      const guion = h('div', { class: 'transcript', lang: 'ja', hidden: true });
-      ej.guion.forEach(([who, say]) => guion.append(h('p', null, h('span', { class: 'who', text: who }), say)));
-      const btn = h('button', { class: 'btn', type: 'button', onclick: () => { guion.hidden = !guion.hidden; btn.textContent = guion.hidden ? 'Ver el texto del audio' : 'Ocultar el texto'; } }, 'Ver el texto del audio');
-      fb.append(btn, guion);
+    if (esAudio) {
+      fb.append(h('p', null, 'Tema: ', h('b', { text: ej.tema || ej.titulo || '' })));
+      fb.append(h('p', null, 'La respuesta es la ', h('b', { text: NUM[ej.respuesta] }), ': ', h('span', { lang: 'ja', text: ej.opciones[ej.respuesta] })));
+      if (!ok && ej.explicacion) fb.append(h('p', { text: ej.explicacion }));
+      if (!ok) {
+        const guion = h('div', { class: 'transcript', lang: 'ja', hidden: true });
+        ej.guion.forEach(([who, say]) => guion.append(h('p', null, h('span', { class: 'who', text: who }), say)));
+        const btn = h('button', { class: 'btn', type: 'button', onclick: () => { guion.hidden = !guion.hidden; btn.textContent = guion.hidden ? 'Ver el texto del audio' : 'Ocultar el texto'; } }, 'Ver el texto del audio');
+        fb.append(btn, guion);
+      }
+    } else {
+      fb.append(h('p', null, 'La respuesta es la ', h('b', { text: NUM[ej.respuesta] }), ': ', h('span', { lang: 'ja', text: ej.opciones[ej.respuesta] })));
+      fb.append(h('p', { text: ej.explicacion || '' }));
     }
     wrap.append(fb);
   }
@@ -333,11 +350,14 @@ function render() {
 }
 
 /* ---------- Carga y arranque ---------- */
-fetch('audio/chokai/ejercicios.json', { cache: 'no-cache' })
-  .then(r => r.json())
-  .then(j => { ejercicios = (j.ejercicios || []).map(e => ({ ...e, tipo: e.tipo || '' })); })
-  .catch(() => { ejercicios = []; })
-  .finally(render);
+Promise.all([
+  fetch('audio/chokai/ejercicios.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ ejercicios: [] })),
+  fetch('data/jlpt-n5/vocab.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] })),
+  fetch('data/jlpt-n5/gram.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] }))
+]).then(([a, v, g]) => {
+  ejercicios = (a.ejercicios || []).map(e => ({ ...e, area: 'escucha' }));
+  banco = [...(v.items || []), ...(g.items || [])];
+}).finally(render);
 })();
 </script>
 </body>
