@@ -32,7 +32,7 @@ a.card:hover{border-color:var(--accent)}
 .separador{border:0;border-top:1px solid var(--line);margin:14px 0}
 .examen-bloque{display:flex;flex-direction:column;gap:12px;border:1px solid var(--accent);border-radius:16px;padding:16px;background:#14130d}
 .examen-bloque .encab{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.distintivo{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:44px;padding:0 12px;border-radius:10px;background:var(--accent);color:#1a1400;font-weight:700;letter-spacing:.08em}
+.distintivo{flex:none;display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:44px;padding:0 12px;border-radius:10px;background:#FFFFFF;color:#1a1400;font-weight:700;letter-spacing:.08em;border:1px solid var(--line)}
 .examen-bloque h2{margin:0;font-size:1.15rem}
 .examen-bloque .nota-ex{margin:0;color:var(--muted);font-size:.85rem;line-height:1.4}
 .examen-bloque .niveles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
@@ -75,7 +75,7 @@ a.card:hover{border-color:var(--accent)}
 
   <section class="examen-bloque" aria-labelledby="ex-titulo">
     <div class="encab">
-      <span class="distintivo" aria-hidden="true">JLPT</span>
+      <span class="distintivo" aria-hidden="true"><svg width="30" height="20" viewBox="0 0 30 20" style="flex:none;border-radius:2px;margin-right:8px"><rect width="30" height="20" fill="#FFFFFF"/><circle cx="15" cy="10" r="6" fill="#BC002D"/></svg>JLPT</span>
       <div>
         <h2 id="ex-titulo">Preparación de exámenes (Nōryoku Shiken)</h2>
         <p class="nota-ex">Práctica no oficial, basada en el formato del examen de japonés. No tiene relación con sus organizadores.</p>
