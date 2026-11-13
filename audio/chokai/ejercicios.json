@@ -135,6 +135,289 @@
         "はちじ はん"
       ],
       "respuesta": 1
+    },
+    {
+      "id": "E04",
+      "tipo": "ポイント理解",
+      "titulo": "Hora de la reunión",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。かいぎは なんじに はじまりますか。"
+        ],
+        [
+          "Hombre",
+          "かいぎは なんじからですか。"
+        ],
+        [
+          "Mujer",
+          "じゅうじからです。"
+        ],
+        [
+          "Hombre",
+          "わかりました。ありがとう ございます。"
+        ],
+        [
+          "Narrador",
+          "かいぎは なんじに はじまりますか。"
+        ]
+      ],
+      "audio": "audio/chokai/E04.mp3",
+      "opciones": [
+        "くじ",
+        "じゅうじ",
+        "じゅうじはん",
+        "じゅういちじ"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": "E05",
+      "tipo": "課題理解",
+      "titulo": "Qué comprar",
+      "guion": [
+        [
+          "Narrador",
+          "おんなの ひとが はなして います。おんなの ひとは なにを かいに いきますか。"
+        ],
+        [
+          "Hombre",
+          "あした あさごはんは なにを たべますか。"
+        ],
+        [
+          "Mujer",
+          "パンは きのう かいました。きょうは ぎゅうにゅうが ありません。"
+        ],
+        [
+          "Hombre",
+          "じゃあ、ぎゅうにゅうを かって ください。"
+        ],
+        [
+          "Narrador",
+          "おんなの ひとは なにを かいに いきますか。"
+        ]
+      ],
+      "audio": "audio/chokai/E05.mp3",
+      "opciones": [
+        "パン",
+        "ぎゅうにゅう",
+        "たまご",
+        "りんご"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": "E06",
+      "tipo": "即時応答",
+      "titulo": "Pregunta de pertenencia",
+      "guion": [
+        [
+          "Hombre",
+          "これは だれの ほんですか。"
+        ]
+      ],
+      "audio": "audio/chokai/E06.mp3",
+      "opciones": [
+        "わたしの ほんです。",
+        "はい、ありがとう ございます。",
+        "きのう かいました。"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": "E07",
+      "tipo": "ポイント理解",
+      "titulo": "Dónde está la librería",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。ほんやは どこに ありますか。"
+        ],
+        [
+          "Mujer",
+          "ほんやは どこですか。"
+        ],
+        [
+          "Hombre",
+          "えきの まえに あります。ぎんこうの となりでは ありません。"
+        ],
+        [
+          "Narrador",
+          "ほんやは どこに ありますか。"
+        ]
+      ],
+      "audio": "audio/chokai/E07.mp3",
+      "opciones": [
+        "えきの まえ",
+        "ぎんこうの となり",
+        "えきの なか",
+        "びょういんの まえ"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": "E08",
+      "tipo": "課題理解",
+      "titulo": "Plan del sábado",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。このひとは どようびに なにを しますか。"
+        ],
+        [
+          "Hombre",
+          "どようびは うみに いきます。"
+        ],
+        [
+          "Mujer",
+          "いいですね。わたしも いきたいです。"
+        ],
+        [
+          "Narrador",
+          "このひとは どようびに なにを しますか。"
+        ]
+      ],
+      "audio": "audio/chokai/E08.mp3",
+      "opciones": [
+        "うみに いく",
+        "やまに いく",
+        "としょかんに いく",
+        "うちで ねる"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": "E09",
+      "tipo": "ポイント理解",
+      "titulo": "Cuántas manzanas quedan",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。りんごは いま なんこ ありますか。"
+        ],
+        [
+          "Mujer",
+          "りんごは なんこ ありますか。"
+        ],
+        [
+          "Hombre",
+          "ごこ ありました。さんこ たべました。"
+        ],
+        [
+          "Narrador",
+          "りんごは いま なんこ ありますか。"
+        ]
+      ],
+      "audio": "audio/chokai/E09.mp3",
+      "opciones": [
+        "さんこ",
+        "ごこ",
+        "にこ",
+        "はっこ"
+      ],
+      "respuesta": 2
+    },
+    {
+      "id": "E10",
+      "tipo": "即時応答",
+      "titulo": "Respuesta de buenas noches",
+      "guion": [
+        [
+          "Hombre",
+          "おやすみなさい。"
+        ]
+      ],
+      "audio": "audio/chokai/E10.mp3",
+      "opciones": [
+        "おはよう ございます。",
+        "おやすみなさい。",
+        "いってきます。"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": "E11",
+      "tipo": "ポイント理解",
+      "titulo": "Dónde está la persona",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。このひとは いま どこに いますか。"
+        ],
+        [
+          "Mujer",
+          "いま どこに いますか。"
+        ],
+        [
+          "Hombre",
+          "いま としょかんに います。"
+        ],
+        [
+          "Narrador",
+          "このひとは いま どこに いますか。"
+        ]
+      ],
+      "audio": "audio/chokai/E11.mp3",
+      "opciones": [
+        "ぎんこう",
+        "としょかん",
+        "いえ",
+        "がっこう"
+      ],
+      "respuesta": 1
+    },
+    {
+      "id": "E12",
+      "tipo": "即時応答",
+      "titulo": "Pedir el baño",
+      "guion": [
+        [
+          "Hombre",
+          "すみません。トイレは どこですか。"
+        ]
+      ],
+      "audio": "audio/chokai/E12.mp3",
+      "opciones": [
+        "あそこです。",
+        "はい、そうです。",
+        "きのう いきました。"
+      ],
+      "respuesta": 0
+    },
+    {
+      "id": "E13",
+      "tipo": "課題理解",
+      "titulo": "Qué hace primero",
+      "guion": [
+        [
+          "Narrador",
+          "おとこの ひとが はなして います。おとこの ひとは まず なにを しますか。"
+        ],
+        [
+          "Hombre",
+          "おなかが すきました。"
+        ],
+        [
+          "Mujer",
+          "じゃあ、ごはんを たべましょう。"
+        ],
+        [
+          "Hombre",
+          "その まえに てを あらいます。"
+        ],
+        [
+          "Narrador",
+          "おとこの ひとは まず なにを しますか。"
+        ]
+      ],
+      "audio": "audio/chokai/E13.mp3",
+      "opciones": [
+        "てを あらう",
+        "ごはんを たべる",
+        "ねる",
+        "そとに でる"
+      ],
+      "respuesta": 0
     }
   ]
 }
