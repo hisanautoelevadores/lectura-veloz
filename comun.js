@@ -130,7 +130,7 @@
   .pf-in{min-height:48px;border-radius:10px;border:1px solid #2c2c31;background:#101013;color:#f4f2ec;font:inherit;padding:10px}
   .pf-hint{margin:0;color:#9d9a92;font-size:.9rem;line-height:1.4}
   .pf-voz{position:fixed;top:max(6px,env(safe-area-inset-top,0px));right:max(6px,env(safe-area-inset-right,0px));z-index:90;background:#222227;border:1px solid #2c2c31;border-radius:10px;min-width:40px;min-height:40px;font-size:1.1rem;cursor:pointer;opacity:.85}
-    .pf-info{top:calc(max(6px,env(safe-area-inset-top,0px)) + 48px);font-family:Georgia,serif;font-style:italic;font-weight:700;font-size:1.2rem}
+    .pf-cri{position:fixed;right:max(8px,env(safe-area-inset-right,0px));bottom:max(8px,env(safe-area-inset-bottom,0px));z-index:85;width:64px;height:64px;padding:0;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}\n  .pf-cri img{width:64px;height:64px;display:block;pointer-events:none}\n  .pf-burb{position:fixed;right:max(10px,env(safe-area-inset-right,0px));bottom:84px;z-index:86;width:min(300px,88vw);background:#17171a;color:#f4f2ec;border:1px solid #2c2c31;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 28px rgba(0,0,0,.5);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}\n  .pf-burb p{margin:0;line-height:1.45}\n  .pf-burb::after{content:'';position:absolute;right:26px;bottom:-8px;width:14px;height:14px;background:#17171a;border-right:1px solid #2c2c31;border-bottom:1px solid #2c2c31;transform:rotate(45deg)}
   .pf-cred p{margin:0;line-height:1.5}
   .pf-cred .pf-cred-firma{color:#ffcc33;font-weight:700}
   #elogio{position:fixed;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:80;background:#ffcc33;color:#1a1400;font-weight:700;font-family:system-ui,sans-serif;padding:12px 18px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.4);opacity:0;transition:opacity .25s;max-width:92vw;text-align:center;pointer-events:none}`;
@@ -150,24 +150,24 @@
   });
 
   document.addEventListener('DOMContentLoaded', () => {
-    const i = document.createElement('button');
-    i.className = 'pf-voz pf-info'; i.type = 'button';
-    i.setAttribute('aria-label', 'Información de la app');
-    i.textContent = 'i';
-    i.onclick = () => {
-      const ov = document.createElement('div'); ov.className = 'pf-ov';
-      const box = document.createElement('div'); box.className = 'pf-box pf-cred';
-      const h = document.createElement('h2'); h.textContent = 'Acerca de';
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'pf-cri';
+    btn.setAttribute('aria-label', 'Información de la app');
+    btn.innerHTML = '<img src="img/crisalida.webp" alt="" width="64" height="64">';
+    let burbuja = null;
+    const cerrarBurbuja = () => { if (burbuja) { burbuja.remove(); burbuja = null; } };
+    btn.onclick = () => {
+      if (burbuja) { cerrarBurbuja(); return; }
+      burbuja = document.createElement('div'); burbuja.className = 'pf-burb'; burbuja.setAttribute('role', 'dialog');
       const p1 = document.createElement('p'); p1.className = 'pf-cred-firma'; p1.textContent = 'Idea y creación: Roberto D. SANTIAGO HIGA';
       const p2 = document.createElement('p'); p2.textContent = 'Noviembre 2026';
       const p3 = document.createElement('p'); p3.textContent = 'Dedicado a mis hijos, para despertar en ellos el interés por el conocimiento.';
       const cerrar = document.createElement('button'); cerrar.className = 'pf-btn pf-main'; cerrar.type = 'button'; cerrar.textContent = 'Cerrar';
-      cerrar.onclick = () => ov.remove();
-      ov.onclick = e => { if (e.target === ov) ov.remove(); };
-      box.append(h, p1, p2, p3, cerrar);
-      ov.appendChild(box); document.body.appendChild(ov);
+      cerrar.onclick = cerrarBurbuja;
+      burbuja.append(p1, p2, p3, cerrar);
+      document.body.appendChild(burbuja);
     };
-    document.body.appendChild(i);
+    document.body.appendChild(btn);
   });
 
   window.Perfil = Perfil;
