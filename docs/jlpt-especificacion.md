@@ -49,3 +49,19 @@ Estado: pendiente. Se construye más adelante. Por ahora solo nivel N5.
 2. Confirmar la lista de kanji de N5.
 3. Escribir y revisar el banco de preguntas por área.
 4. Armar la página de exámenes con el diseño del artifact.
+
+## Principio: dos modalidades distintas
+
+Las dos partes del proyecto no se mezclan.
+
+**Aprender japonés (pedagógica).**
+- Enseñanza como en el colegio, a criterio nuestro.
+- Pasos graduales, felicitaciones y explicaciones amables.
+- Bandas de edad (3 a 5, 6 a 7, 8 a 10) donde tienen sentido, por ejemplo hiragana, katakana y después kanji.
+- Ejemplo: Reconocer las letras, Leer y elegir el dibujo, Leer en movimiento.
+
+**Preparación para exámenes (JLPT).**
+- Estructura y dificultad según el sistema oficial de los organizadores del examen.
+- Sin bandas de edad: el mismo banco para todos, con dificultad graduada dentro de N5.
+- Feedback neutral: correcto o incorrecto, respuesta y explicación, sin felicitaciones excesivas.
+- Simulación con tiempo, como en el examen real.
