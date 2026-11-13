@@ -1,0 +1,11 @@
+{
+  "idioma": "ja-JP",
+  "proveedor": "HeyGen Voice (instant, public)",
+  "voces": {
+    "Narrador": { "voice_id": "9ffa67f077174a1d9fa51c6f41ed85af", "nombre": "Tomoko - Clear & Professional", "genero": "female" },
+    "Hombre":   { "voice_id": "9440ca74611345cc9e7268d97ecd391a", "nombre": "Daiki - Bright & Articulate", "genero": "male" },
+    "Mujer":    { "voice_id": "527ac72040f14312a5401f6289a0fa0c", "nombre": "Honoka - Vibrant & Catchy", "genero": "female" }
+  },
+  "alternativa_no_usada": { "voice_id": "020bc85d51364adf8267140bb80521b2", "nombre": "Kenichi - Deep & Reflective", "genero": "male" },
+  "nota": "Estas voces son las del piloto P01-P03. Para mantener la coherencia, usar siempre las mismas para cada rol."
+}
