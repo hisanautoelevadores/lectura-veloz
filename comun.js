@@ -126,6 +126,9 @@
   .pf-in{min-height:48px;border-radius:10px;border:1px solid #2c2c31;background:#101013;color:#f4f2ec;font:inherit;padding:10px}
   .pf-hint{margin:0;color:#9d9a92;font-size:.9rem;line-height:1.4}
   .pf-voz{position:fixed;top:max(6px,env(safe-area-inset-top,0px));right:max(6px,env(safe-area-inset-right,0px));z-index:90;background:#222227;border:1px solid #2c2c31;border-radius:10px;min-width:40px;min-height:40px;font-size:1.1rem;cursor:pointer;opacity:.85}
+    .pf-info{top:calc(max(6px,env(safe-area-inset-top,0px)) + 48px);font-family:Georgia,serif;font-style:italic;font-weight:700;font-size:1.2rem}
+  .pf-cred p{margin:0;line-height:1.5}
+  .pf-cred .pf-cred-firma{color:#ffcc33;font-weight:700}
   #elogio{position:fixed;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:80;background:#ffcc33;color:#1a1400;font-weight:700;font-family:system-ui,sans-serif;padding:12px 18px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.4);opacity:0;transition:opacity .25s;max-width:92vw;text-align:center;pointer-events:none}`;
   const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
@@ -140,6 +143,27 @@
       if (!voz && 'speechSynthesis' in window) speechSynthesis.cancel();
     };
     document.body.appendChild(b);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const i = document.createElement('button');
+    i.className = 'pf-voz pf-info'; i.type = 'button';
+    i.setAttribute('aria-label', 'Información de la app');
+    i.textContent = 'i';
+    i.onclick = () => {
+      const ov = document.createElement('div'); ov.className = 'pf-ov';
+      const box = document.createElement('div'); box.className = 'pf-box pf-cred';
+      const h = document.createElement('h2'); h.textContent = 'Acerca de';
+      const p1 = document.createElement('p'); p1.className = 'pf-cred-firma'; p1.textContent = 'Idea y creación: Roberto D. SANTIAGO HIGA';
+      const p2 = document.createElement('p'); p2.textContent = 'Noviembre 2026';
+      const p3 = document.createElement('p'); p3.textContent = 'Dedicado a mis hijos, para despertar en ellos el interés por el conocimiento.';
+      const cerrar = document.createElement('button'); cerrar.className = 'pf-btn pf-main'; cerrar.type = 'button'; cerrar.textContent = 'Cerrar';
+      cerrar.onclick = () => ov.remove();
+      ov.onclick = e => { if (e.target === ov) ov.remove(); };
+      box.append(h, p1, p2, p3, cerrar);
+      ov.appendChild(box); document.body.appendChild(ov);
+    };
+    document.body.appendChild(i);
   });
 
   window.Perfil = Perfil;
