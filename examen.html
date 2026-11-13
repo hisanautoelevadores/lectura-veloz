@@ -304,8 +304,8 @@ function vistaPreguntas() {
   wrap.append(h('div', { class: 'pager' },
     h('button', { class: 'btn', type: 'button', disabled: S.idx === 0 ? true : null, onclick: () => { S.idx--; render(); } }, '← Anterior'),
     S.idx + 1 < S.lista.length
-      ? h('button', { class: 'btn primary', type: 'button', onclick: () => { S.idx++; render(); } }, 'Siguiente →')
-      : h('button', { class: 'btn primary', type: 'button', onclick: () => go('resumen') }, 'Ver resultado')));
+      ? h('button', { class: 'btn primary', type: 'button', disabled: contestada ? null : true, onclick: () => { S.idx++; render(); } }, 'Siguiente →')
+      : h('button', { class: 'btn primary', type: 'button', disabled: contestada ? null : true, onclick: () => go('resumen') }, 'Ver resultado')));
   return wrap;
 }
 function responder(i) {
