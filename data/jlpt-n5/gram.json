@@ -1,0 +1,396 @@
+{
+  "area": "gram",
+  "nivel": "N5",
+  "items": [
+    {
+      "id": "G001",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "わたしは がくせい（　　）。",
+      "opciones": [
+        "です",
+        "を",
+        "に",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "です se usa para decir «soy estudiante»."
+    },
+    {
+      "id": "G002",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "パン（　　）たべます。",
+      "opciones": [
+        "を",
+        "に",
+        "で",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "La partícula を marca el objeto directo: «como pan»."
+    },
+    {
+      "id": "G003",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "7じ（　　）おきます。",
+      "opciones": [
+        "に",
+        "を",
+        "で",
+        "は"
+      ],
+      "respuesta": 0,
+      "explicacion": "La partícula に marca la hora: «me levanto a las 7»."
+    },
+    {
+      "id": "G004",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "としょかん（　　）べんきょうします。",
+      "opciones": [
+        "で",
+        "に",
+        "を",
+        "へ"
+      ],
+      "respuesta": 0,
+      "explicacion": "で marca el lugar donde se realiza la acción: «estudio en la biblioteca»."
+    },
+    {
+      "id": "G005",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "わたしは りんご（　　）すきです。",
+      "opciones": [
+        "が",
+        "を",
+        "に",
+        "は"
+      ],
+      "respuesta": 0,
+      "explicacion": "Con すき (gustar) se usa が: «me gusta la manzana»."
+    },
+    {
+      "id": "G006",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "ともだち（　　）えいがを みます。",
+      "opciones": [
+        "と",
+        "や",
+        "の",
+        "か"
+      ],
+      "respuesta": 0,
+      "explicacion": "と significa «con»: «veo una película con amigos»."
+    },
+    {
+      "id": "G007",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "これは わたし（　　）ほんです。",
+      "opciones": [
+        "の",
+        "は",
+        "を",
+        "か"
+      ],
+      "respuesta": 0,
+      "explicacion": "の une dos sustantivos: «es el libro de mí» → «mi libro»."
+    },
+    {
+      "id": "G008",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "はし（　　）ごはんを たべます。",
+      "opciones": [
+        "で",
+        "に",
+        "を",
+        "と"
+      ],
+      "respuesta": 0,
+      "explicacion": "で indica el medio o instrumento: «como con palillos»."
+    },
+    {
+      "id": "G009",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "これは なんです（　　）。",
+      "opciones": [
+        "か",
+        "ね",
+        "よ",
+        "の"
+      ],
+      "respuesta": 0,
+      "explicacion": "か al final convierte la oración en pregunta."
+    },
+    {
+      "id": "G010",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "おなかが すいたので、ごはんが たべ（　　）です。",
+      "opciones": [
+        "たい",
+        "ます",
+        "ない",
+        "て"
+      ],
+      "respuesta": 0,
+      "explicacion": "～たい expresa deseo: «quiero comer»."
+    },
+    {
+      "id": "G011",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "ここに なまえを かいて（　　）。",
+      "opciones": [
+        "ください",
+        "ます",
+        "ました",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "～てください pide algo de forma cortés: «escriba, por favor»."
+    },
+    {
+      "id": "G012",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いっしょに かえり（　　）。",
+      "opciones": [
+        "ましょう",
+        "ます",
+        "ません",
+        "ました"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ましょう propone hacer algo juntos: «volvamos juntos»."
+    },
+    {
+      "id": "G013",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いっしょに えいがを み（　　）か。",
+      "opciones": [
+        "ませんか",
+        "ましょう",
+        "ました",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ませんか invita: «¿no vemos una película?»."
+    },
+    {
+      "id": "G014",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "きのう えいがを み（　　）。",
+      "opciones": [
+        "ました",
+        "ます",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ました indica el pasado: «ayer vi una película»."
+    },
+    {
+      "id": "G015",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いま ほんを よんで（　　）。",
+      "opciones": [
+        "います",
+        "ます",
+        "ました",
+        "ください"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ています indica una acción en curso: «ahora estoy leyendo un libro»."
+    },
+    {
+      "id": "G016",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "わたしは まいにち がっこうに（　　）。",
+      "opciones": [
+        "いきます",
+        "いきました",
+        "いく",
+        "いった"
+      ],
+      "respuesta": 0,
+      "explicacion": "La forma ～ます describe una acción habitual: «voy todos los días»."
+    },
+    {
+      "id": "G017",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "いぬが に（　　）います。",
+      "opciones": [
+        "ひき",
+        "まい",
+        "にん",
+        "かい"
+      ],
+      "respuesta": 0,
+      "explicacion": "Los animales pequeños y medianos se cuentan con ひき."
+    },
+    {
+      "id": "G018",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "かみが にまい（　　）あります。",
+      "opciones": [
+        "まい",
+        "ひき",
+        "にん",
+        "かい"
+      ],
+      "respuesta": 0,
+      "explicacion": "Las hojas de papel se cuentan con まい."
+    },
+    {
+      "id": "G019",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "ありがとう（　　）。",
+      "opciones": [
+        "ございます",
+        "です",
+        "でした",
+        "ます"
+      ],
+      "respuesta": 0,
+      "explicacion": "ありがとうございます es la forma cortés de «muchas gracias»."
+    },
+    {
+      "id": "G020",
+      "area": "gram",
+      "tipo": "Adjetivos",
+      "tema": "Adjetivos",
+      "q": "きょうは あつい（　　）。",
+      "opciones": [
+        "です",
+        "ます",
+        "でした",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "Los adjetivos い en forma presente se usan con です: «hoy hace calor»."
+    },
+    {
+      "id": "G021",
+      "area": "gram",
+      "tipo": "Orden de la oración",
+      "tema": "Orden de la oración",
+      "q": "（　　）、ともだちに あいました。",
+      "opciones": [
+        "きのう",
+        "あした",
+        "まいにち",
+        "ずっと"
+      ],
+      "respuesta": 0,
+      "explicacion": "きのう (ayer) indica pasado, y la oración termina en ました."
+    },
+    {
+      "id": "G022",
+      "area": "gram",
+      "tipo": "Negación",
+      "tema": "Negación",
+      "q": "きょうは がっこうに（　　）。",
+      "opciones": [
+        "いきません",
+        "いきます",
+        "いきました",
+        "いこう"
+      ],
+      "respuesta": 0,
+      "explicacion": "La forma ～ません es la negación en presente: «hoy no voy a la escuela»."
+    },
+    {
+      "id": "G023",
+      "area": "gram",
+      "tipo": "Preguntas",
+      "tema": "Preguntas",
+      "q": "あなたの なまえは（　　）。",
+      "opciones": [
+        "なんですか",
+        "なんです",
+        "なにを",
+        "だれ"
+      ],
+      "respuesta": 0,
+      "explicacion": "なんですか es la forma cortés de «¿cuál es tu nombre?»."
+    },
+    {
+      "id": "G024",
+      "area": "gram",
+      "tipo": "Lugar de existencia",
+      "tema": "Lugar de existencia",
+      "q": "えきの まえに ほんやが（　　）。",
+      "opciones": [
+        "あります",
+        "います",
+        "です",
+        "ます"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para cosas e inmuebles se usa あります."
+    },
+    {
+      "id": "G025",
+      "area": "gram",
+      "tipo": "Lugar de existencia",
+      "tema": "Lugar de existencia",
+      "q": "がっこうに ともだちが（　　）。",
+      "opciones": [
+        "います",
+        "あります",
+        "です",
+        "ます"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para personas y animales se usa います."
+    },
+    {
+      "id": "G026",
+      "area": "gram",
+      "tipo": "Forma ～ませんか",
+      "tema": "Forma ～ませんか",
+      "q": "いっしょに ごはんを たべ（　　）。",
+      "opciones": [
+        "ませんか",
+        "ましょう",
+        "ました",
+        "たい"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ませんか invita a hacer algo: «¿no comemos juntos?»."
+    }
+  ]
+}

@@ -1,0 +1,606 @@
+{
+  "area": "vocab",
+  "nivel": "N5",
+  "items": [
+    {
+      "id": "V001",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[山]]に のぼりました。",
+      "opciones": [
+        "やま",
+        "かわ",
+        "うみ",
+        "もり"
+      ],
+      "respuesta": 0,
+      "explicacion": "山 se lee やま. «Subí a la montaña»."
+    },
+    {
+      "id": "V002",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[日]]曜日に ともだちと あいます。",
+      "opciones": [
+        "にち",
+        "ひ",
+        "じつ",
+        "か"
+      ],
+      "respuesta": 0,
+      "explicacion": "日 se lee にち en 日曜日 (domingo)."
+    },
+    {
+      "id": "V003",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[学校]]へ いきます。",
+      "opciones": [
+        "がっこう",
+        "がくこう",
+        "がっこ",
+        "がくごう"
+      ],
+      "respuesta": 0,
+      "explicacion": "学校 se lee がっこう (escuela)."
+    },
+    {
+      "id": "V004",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[先生]]は やさしいです。",
+      "opciones": [
+        "せんせい",
+        "さきせい",
+        "せんしょう",
+        "さんせい"
+      ],
+      "respuesta": 0,
+      "explicacion": "先生 se lee せんせい (maestro/a, profesor/a)."
+    },
+    {
+      "id": "V005",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "その いぬは とても [[大きい]]です。",
+      "opciones": [
+        "おおきい",
+        "たいきい",
+        "おおい",
+        "ながい"
+      ],
+      "respuesta": 0,
+      "explicacion": "大きい se lee おおきい (grande)."
+    },
+    {
+      "id": "V006",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "ねこは [[小さい]]です。",
+      "opciones": [
+        "ちいさい",
+        "しょうさい",
+        "こさい",
+        "ちさい"
+      ],
+      "respuesta": 0,
+      "explicacion": "小さい se lee ちいさい (pequeño)."
+    },
+    {
+      "id": "V007",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "この ビルは [[高い]]です。",
+      "opciones": [
+        "たかい",
+        "こうい",
+        "ひくい",
+        "たかしい"
+      ],
+      "respuesta": 0,
+      "explicacion": "高い se lee たかい (alto, caro según el contexto)."
+    },
+    {
+      "id": "V008",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[新しい]]くるまが ほしいです。",
+      "opciones": [
+        "あたらしい",
+        "しんしい",
+        "あらたしい",
+        "にいしい"
+      ],
+      "respuesta": 0,
+      "explicacion": "新しい se lee あたらしい (nuevo)."
+    },
+    {
+      "id": "V009",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[白い]]ねこが います。",
+      "opciones": [
+        "しろい",
+        "はくい",
+        "しらい",
+        "しるい"
+      ],
+      "respuesta": 0,
+      "explicacion": "白い se lee しろい (blanco)."
+    },
+    {
+      "id": "V010",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "あさごはんを [[食]]べます。",
+      "opciones": [
+        "た",
+        "しょく",
+        "くい",
+        "じき"
+      ],
+      "respuesta": 0,
+      "explicacion": "食べる se lee たべる (comer). El kanji 食 se lee た en este verbo."
+    },
+    {
+      "id": "V011",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "おちゃを [[飲]]みます。",
+      "opciones": [
+        "の",
+        "いん",
+        "のん",
+        "すい"
+      ],
+      "respuesta": 0,
+      "explicacion": "飲む se lee のむ (tomar, beber)."
+    },
+    {
+      "id": "V012",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "えいがを [[見]]ます。",
+      "opciones": [
+        "み",
+        "けん",
+        "しん",
+        "かん"
+      ],
+      "respuesta": 0,
+      "explicacion": "見る se lee みる (ver, mirar)."
+    },
+    {
+      "id": "V013",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "あした えきへ [[行]]きます。",
+      "opciones": [
+        "い",
+        "こう",
+        "ぎょう",
+        "ゆき"
+      ],
+      "respuesta": 0,
+      "explicacion": "行く se lee いく (ir)."
+    },
+    {
+      "id": "V014",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[来週]]、ともだちと あいます。",
+      "opciones": [
+        "らいしゅう",
+        "きたしゅう",
+        "くるしゅう",
+        "らいつ"
+      ],
+      "respuesta": 0,
+      "explicacion": "来週 se lee らいしゅう (la semana que viene)."
+    },
+    {
+      "id": "V015",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[毎日]]ジョギングを します。",
+      "opciones": [
+        "まいにち",
+        "まいび",
+        "まいじつ",
+        "いつにち"
+      ],
+      "respuesta": 0,
+      "explicacion": "毎日 se lee まいにち (todos los días)."
+    },
+    {
+      "id": "V016",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[今日]]は あついです。",
+      "opciones": [
+        "きょう",
+        "こんにち",
+        "いまひ",
+        "あした"
+      ],
+      "respuesta": 0,
+      "explicacion": "今日 se lee きょう (hoy)."
+    },
+    {
+      "id": "V017",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[水]]を のみます。",
+      "opciones": [
+        "みず",
+        "みじ",
+        "かわ",
+        "うみ"
+      ],
+      "respuesta": 0,
+      "explicacion": "水 se lee みず (agua)."
+    },
+    {
+      "id": "V018",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[火]]を つけます。",
+      "opciones": [
+        "ひ",
+        "ほ",
+        "ひい",
+        "あか"
+      ],
+      "respuesta": 0,
+      "explicacion": "火 se lee ひ (fuego)."
+    },
+    {
+      "id": "V019",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[木]]が たくさん あります。",
+      "opciones": [
+        "き",
+        "こ",
+        "ぼく",
+        "たけ"
+      ],
+      "respuesta": 0,
+      "explicacion": "木 se lee き (árbol)."
+    },
+    {
+      "id": "V020",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "わたしの [[名前]]は やまだです。",
+      "opciones": [
+        "なまえ",
+        "めいぜん",
+        "みょうまえ",
+        "なまい"
+      ],
+      "respuesta": 0,
+      "explicacion": "名前 se lee なまえ (nombre)."
+    },
+    {
+      "id": "V021",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[電車]]で がっこうへ いきます。",
+      "opciones": [
+        "でんしゃ",
+        "でんくるま",
+        "でんじゃ",
+        "でんさ"
+      ],
+      "respuesta": 0,
+      "explicacion": "電車 se lee でんしゃ (tren)."
+    },
+    {
+      "id": "V022",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "ちちは [[病院]]で はたらいて います。",
+      "opciones": [
+        "びょういん",
+        "へいいん",
+        "びょうえん",
+        "びょういい"
+      ],
+      "respuesta": 0,
+      "explicacion": "病院 se lee びょういん (hospital)."
+    },
+    {
+      "id": "V023",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "きょうは [[天気]]が いいです。",
+      "opciones": [
+        "てんき",
+        "てんけ",
+        "あまけ",
+        "てんぎ"
+      ],
+      "respuesta": 0,
+      "explicacion": "天気 se lee てんき (clima, tiempo)."
+    },
+    {
+      "id": "V024",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[友達]]と えいがを みました。",
+      "opciones": [
+        "ともだち",
+        "ゆうだち",
+        "ゆうたつ",
+        "ともたち"
+      ],
+      "respuesta": 0,
+      "explicacion": "友達 se lee ともだち (amigo/a)."
+    },
+    {
+      "id": "V025",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "わたしは [[学生]]です。",
+      "opciones": [
+        "がくせい",
+        "がっせい",
+        "がくしょう",
+        "がくしゅう"
+      ],
+      "respuesta": 0,
+      "explicacion": "学生 se lee がくせい (estudiante)."
+    },
+    {
+      "id": "V026",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "ちちは [[会社]]に いきます。",
+      "opciones": [
+        "かいしゃ",
+        "かいじゃ",
+        "えしゃ",
+        "あいしゃ"
+      ],
+      "respuesta": 0,
+      "explicacion": "会社 se lee かいしゃ (empresa, oficina)."
+    },
+    {
+      "id": "V027",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "にちようびに [[買い物]]を します。",
+      "opciones": [
+        "かいもの",
+        "ばいもつ",
+        "かいぶつ",
+        "うりもの"
+      ],
+      "respuesta": 0,
+      "explicacion": "買い物 se lee かいもの (compras)."
+    },
+    {
+      "id": "V028",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「うれしい」の はんたいは どれですか。",
+      "opciones": [
+        "かなしい",
+        "たのしい",
+        "むずかしい",
+        "おいしい"
+      ],
+      "respuesta": 0,
+      "explicacion": "うれしい (contento) es lo contrario de かなしい (triste)."
+    },
+    {
+      "id": "V029",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「ながい」の はんたいは どれですか。",
+      "opciones": [
+        "みじかい",
+        "たかい",
+        "ふるい",
+        "あつい"
+      ],
+      "respuesta": 0,
+      "explicacion": "ながい (largo) es lo contrario de みじかい (corto)."
+    },
+    {
+      "id": "V030",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「さむい」の はんたいは どれですか。",
+      "opciones": [
+        "あつい",
+        "はやい",
+        "つよい",
+        "おもい"
+      ],
+      "respuesta": 0,
+      "explicacion": "さむい (frío) es lo contrario de あつい (caliente)."
+    },
+    {
+      "id": "V031",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「おそい」の はんたいは どれですか。",
+      "opciones": [
+        "はやい",
+        "はやし",
+        "ながい",
+        "おもい"
+      ],
+      "respuesta": 0,
+      "explicacion": "おそい (lento, tarde) es lo contrario de はやい (rápido, temprano)."
+    },
+    {
+      "id": "V032",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「とおい」の はんたいは どれですか。",
+      "opciones": [
+        "ちかい",
+        "はやい",
+        "あたらしい",
+        "しずか"
+      ],
+      "respuesta": 0,
+      "explicacion": "とおい (lejos) es lo contrario de ちかい (cerca)."
+    },
+    {
+      "id": "V033",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「たかい」の はんたいは どれですか。",
+      "opciones": [
+        "やすい",
+        "ちかい",
+        "ふるい",
+        "おいしい"
+      ],
+      "respuesta": 0,
+      "explicacion": "たかい (caro, alto) es lo contrario de やすい (barato)."
+    },
+    {
+      "id": "V034",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「きれい」と だいたい おなじ いみは どれですか。",
+      "opciones": [
+        "うつくしい",
+        "つよい",
+        "あまい",
+        "さむい"
+      ],
+      "respuesta": 0,
+      "explicacion": "きれい (bonito, limpio) se parece a うつくしい (hermoso)."
+    },
+    {
+      "id": "V035",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「かく」の いみは どれですか。",
+      "opciones": [
+        "書く",
+        "読む",
+        "見る",
+        "聞く"
+      ],
+      "respuesta": 0,
+      "explicacion": "かく (escribir) se escribe 書く."
+    },
+    {
+      "id": "V036",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「きく」の いみは どれですか。",
+      "opciones": [
+        "書く",
+        "聞く",
+        "行く",
+        "来る"
+      ],
+      "respuesta": 1,
+      "explicacion": "きく (escuchar, preguntar) se escribe 聞く. 書く es escribir."
+    },
+    {
+      "id": "V037",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「はなす」の いみは どれですか。",
+      "opciones": [
+        "話す",
+        "放す",
+        "離す",
+        "引す"
+      ],
+      "respuesta": 0,
+      "explicacion": "はなす (hablar) se escribe 話す."
+    },
+    {
+      "id": "V038",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "あしたは がっこうが （　　）です。",
+      "opciones": [
+        "やすみ",
+        "はしる",
+        "あかい",
+        "たかい"
+      ],
+      "respuesta": 0,
+      "explicacion": "Mañana no hay clase: es un día de やすみ (descanso, feriado)."
+    },
+    {
+      "id": "V039",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "まいあさ、（　　）を のみます。",
+      "opciones": [
+        "みず",
+        "ほん",
+        "いぬ",
+        "はな"
+      ],
+      "respuesta": 0,
+      "explicacion": "Se bebe agua (みず). Los demás no se pueden beber."
+    },
+    {
+      "id": "V040",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "えきで （　　）を かいます。",
+      "opciones": [
+        "きっぷ",
+        "かさ",
+        "さかな",
+        "ねこ"
+      ],
+      "respuesta": 0,
+      "explicacion": "En la estación se compra el きっぷ (boleto)."
+    }
+  ]
+}
