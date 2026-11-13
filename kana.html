@@ -268,7 +268,46 @@ const VOCAB = [
   { h: 'おんがく', e: '🎵', es: 'música', b: 3 },
   { h: 'はし', e: '🌉', es: 'puente', b: 3, amb: true },
   { h: 'てんき', e: '🌦️', es: 'clima', b: 3, amb: true },
-  { h: 'いしゃ', e: '🧑‍⚕️', es: 'médico', b: 3, amb: true }
+  { h: 'いしゃ', e: '🧑‍⚕️', es: 'médico', b: 3, amb: true },
+  { h: 'かえる', e: '🐸', es: 'rana', b: 1 },
+  { h: 'ひよこ', e: '🐥', es: 'pollito', b: 1 },
+  { h: 'うさぎ', e: '🐰', es: 'conejo', b: 1 },
+  { h: 'ねずみ', e: '🐭', es: 'ratón', b: 1 },
+  { h: 'ぞう', e: '🐘', es: 'elefante', b: 1 },
+  { h: 'さる', e: '🐵', es: 'mono', b: 1 },
+  { h: 'たまご', e: '🥚', es: 'huevo', b: 1 },
+  { h: 'ごはん', e: '🍚', es: 'arroz', b: 1 },
+  { h: 'たいよう', e: '☀️', es: 'sol', b: 1 },
+  { h: 'あめ', e: '🌧️', es: 'lluvia', b: 1, amb: true },
+  { h: 'じてんしゃ', e: '🚲', es: 'bicicleta', b: 1 },
+  { h: 'いえ', e: '🏠', es: 'casa', b: 1 },
+  { h: 'みみ', e: '👂', es: 'oreja', b: 1 },
+  { h: 'した', e: '👅', es: 'lengua', b: 1, amb: true },
+  { h: 'ふうせん', e: '🎈', es: 'globo', b: 1 },
+  { h: 'かばん', e: '👜', es: 'cartera', b: 2 },
+  { h: 'えんぴつ', e: '✏️', es: 'lápiz', b: 2 },
+  { h: 'ほうき', e: '🧹', es: 'escoba', b: 2 },
+  { h: 'とけい', e: '⏰', es: 'reloj', b: 2 },
+  { h: 'でんわ', e: '☎️', es: 'teléfono', b: 2 },
+  { h: 'くも', e: '☁️', es: 'nube', b: 2, amb: true },
+  { h: 'ゆき', e: '❄️', es: 'nieve', b: 2 },
+  { h: 'かさ', e: '☂️', es: 'paraguas', b: 2, amb: true },
+  { h: 'おにぎり', e: '🍙', es: 'bolita de arroz', b: 2 },
+  { h: 'うみ', e: '🌊', es: 'mar', b: 2 },
+  { h: 'はっぱ', e: '🍃', es: 'hoja', b: 2 },
+  { h: 'まど', e: '🪟', es: 'ventana', b: 2 },
+  { h: 'おかし', e: '🍪', es: 'galletita', b: 2 },
+  { h: 'ちず', e: '🗺️', es: 'mapa', b: 3 },
+  { h: 'ほね', e: '🦴', es: 'hueso', b: 3 },
+  { h: 'きりん', e: '🦒', es: 'jirafa', b: 3 },
+  { h: 'くじら', e: '🐋', es: 'ballena', b: 3 },
+  { h: 'しんぶん', e: '📰', es: 'diario', b: 3 },
+  { h: 'ぎんこう', e: '🏦', es: 'banco', b: 3 },
+  { h: 'としょかん', e: '📚', es: 'biblioteca', b: 3 },
+  { h: 'ゆうえんち', e: '🎡', es: 'parque de diversiones', b: 3 },
+  { h: 'やきゅう', e: '⚾', es: 'béisbol', b: 3 },
+  { h: 'がくせい', e: '🎓', es: 'estudiante', b: 3 },
+  { h: 'ゆうびんきょく', e: '🏤', es: 'correo', b: 3 },
 ];
 /* Frases para el nivel 5 de la cinta. "は" se lee "wa" cuando funciona como partícula. */
 const FRASES = [
@@ -369,13 +408,19 @@ function iniciarPreguntas() {
   if (!items.length) { $('aviso').textContent = 'No hay elementos para practicar.'; return; }
   const est = Perfil.store.get('est-' + sec, {});
   const q = Perfil.store.get('q', 0);
-  J = { items, est, q, total: +ajustes.nPreg, hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [], banda };
+  J = { items, est, q, total: +ajustes.nPreg, usados: new Set(), repasar: [], hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [], banda };
   $('panel').hidden = true; $('juego').hidden = false; $('resumen').hidden = true;
   siguiente();
 }
 function elegirItem() {
-  const debidas = J.items.filter(x => J.est[x.k] && J.est[x.k].n <= J.q);
-  const nuevas = J.items.filter(x => !J.est[x.k]);
+  // 1) un error vuelve a aparecer a los 2 turnos
+  const rep = J.repasar.find(r => J.hecha >= r.en);
+  if (rep) { J.repasar = J.repasar.filter(r => r !== rep); const x = J.items.find(i => i.k === rep.k); if (x) return x; }
+  // 2) en la misma tirada no se repite lo que ya salió; si se agota el banco, se permite repetir
+  let base = J.items.filter(x => !J.usados.has(x.k));
+  if (!base.length) base = J.items;
+  const debidas = base.filter(x => J.est[x.k] && J.est[x.k].n <= J.q);
+  const nuevas = base.filter(x => !J.est[x.k]);
   let cand;
   if (debidas.length >= 2 || !nuevas.length) {
     if (debidas.length) {
@@ -403,7 +448,7 @@ function opcionesDe(x) {
 }
 function siguiente() {
   const x = elegirItem();
-  J.actual = x; J.ultimo = x.k; J.respondida = false;
+  J.actual = x; J.ultimo = x.k; J.respondida = false; J.usados.add(x.k);
   J.opts = opcionesDe(x);
   const pre = $('preg'), etq = $('etq');
   etq.hidden = true; etq.textContent = '';
@@ -456,6 +501,7 @@ function responder(btn) {
     btn.classList.add('bad');
     J.racha = 0;
     J.fallos[x.k] = (J.fallos[x.k] || 0) + 1;
+    J.repasar.push({ k: x.k, en: J.hecha + 3 });
     ex.className = 'explica bad';
     ex.innerHTML = 'Era: ' + textoCorrecto(x) + '<br><span class="hint">Esta vuelve a aparecer enseguida.</span>';
     Elogio.error();
