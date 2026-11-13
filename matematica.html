@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c0c0e">
+<title>Matemáticas rápidas</title>
+<style>
+:root{
+  --bg:#0c0c0e; --panel:#17171a; --line:#2c2c31; --fg:#f4f2ec; --muted:#9d9a92;
+  --accent:#ffcc33; --ok:#2fbf71; --bad:#e5484d; --btn:#222227;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;min-height:100%}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding-block:16px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.top h1{margin:0;font-size:1.5rem;line-height:1.2}
+.top h1 span{color:var(--accent)}
+.back{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-height:44px;display:inline-flex;align-items:center}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.group h2{margin:0;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;min-height:44px;border:1px solid var(--line);border-radius:999px;background:#1d1d21;cursor:pointer;user-select:none}
+.chip input{width:18px;height:18px;margin:0;accent-color:var(--accent)}
+.chip:has(input:checked){border-color:var(--accent);background:#2a2410}
+.field{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center}
+.field label{font-weight:700}
+select{background:#101013;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:44px}
+.hint{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.btn{border:1px solid var(--line);background:var(--btn);border-radius:12px;padding:10px 16px;min-height:48px;cursor:pointer;font-weight:700}
+.btn:hover{filter:brightness(1.12)}
+.btn.danger{background:#3a1616;border-color:#5a2222}
+.btn.primary{background:var(--accent);color:#1a1400;border-color:var(--accent)}
+.start{background:var(--accent);color:#1a1400;border:0;border-radius:14px;font-size:1.3rem;font-weight:700;padding:14px;width:100%;cursor:pointer;min-height:58px}
+.aviso{margin:0;color:var(--accent);font-weight:700;min-height:1.2em}
+.estado{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.estado div{border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.estado b{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums}
+.estado small{color:var(--muted)}
+.dificiles{margin:0;padding-left:18px;line-height:1.7}
+.sesiones{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.sesiones li{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.92rem;font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;gap:4px 12px}
+.sesiones b{color:var(--accent)}
+
+/* juego */
+.barra{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:700;font-variant-numeric:tabular-nums}
+.barra span{color:var(--accent)}
+.prog{height:8px;background:#222227;border-radius:999px;overflow:hidden}
+.prog div{height:100%;width:0;background:var(--accent);transition:width .3s}
+.preg{font-size:clamp(3.2rem,16vw,6rem);font-weight:700;text-align:center;font-variant-numeric:tabular-nums;padding:18px 0 8px;line-height:1.1}
+.opciones{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.op{min-height:84px;font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums;border:2px solid var(--line);border-radius:16px;background:var(--btn);cursor:pointer;transition:transform .08s}
+.op:active{transform:scale(.97)}
+.op:disabled{cursor:default}
+.op.ok{background:var(--ok);border-color:var(--ok);color:#06210f}
+.op.bad{background:var(--bad);border-color:var(--bad);color:#2a0606;text-decoration:line-through}
+.op:not(:disabled):hover{border-color:var(--muted)}
+.explica{border-radius:12px;padding:14px;text-align:center;line-height:1.5;font-size:1.1rem;border:1px solid var(--line);background:#1d1d21}
+.explica.ok{border-color:var(--ok)}
+.explica.bad{border-color:var(--bad)}
+.explica strong{color:var(--accent)}
+.resumen h2{margin:0;font-size:clamp(2rem,8vw,3rem);color:var(--accent);text-align:center}
+.resumen p{margin:0;text-align:center;font-size:1.1rem;line-height:1.5}
+@media (prefers-reduced-motion:reduce){.prog div{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back" href="index.html">← Inicio</a>
+    <h1>Matemáticas <span>rápidas</span></h1>
+  </header>
+
+  <section id="ajustes" class="group" aria-labelledby="h-ajustes">
+    <h2 id="h-ajustes">Qué practicar</h2>
+    <div class="chips">
+      <label class="chip"><input type="checkbox" class="opc" value="mult"> Tablas de multiplicar</label>
+      <label class="chip"><input type="checkbox" class="opc" value="suma"> Sumas</label>
+      <label class="chip"><input type="checkbox" class="opc" value="resta"> Restas</label>
+    </div>
+    <div class="field" id="boxTablas">
+      <label for="tmin">Tablas del</label>
+      <select id="tmin"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+      <label for="tmax">al</label>
+      <select id="tmax"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+    </div>
+    <div class="field" id="boxMax">
+      <label for="max">Sumas y restas hasta</label>
+      <select id="max"><option value="10">10</option><option value="20">20</option><option value="50">50</option><option value="100">100</option></select>
+    </div>
+    <div class="field">
+      <label for="nOpc">Botones de respuesta</label>
+      <select id="nOpc"><option value="5">5</option><option value="6">6</option></select>
+    </div>
+    <div class="field">
+      <label for="nPreg">Preguntas por sesión</label>
+      <select id="nPreg"><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="50">50</option></select>
+    </div>
+    <p class="hint">Las preguntas que se responden mal vuelven seguido. Las que ya salen bien aparecen cada vez menos, pero no desaparecen.</p>
+    <button class="start" id="empezar" type="button">▶ EMPEZAR</button>
+    <p class="aviso" id="aviso" role="status"></p>
+  </section>
+
+  <section id="juego" class="group" hidden aria-live="polite">
+    <div class="barra">
+      <span id="pts">0 pts</span>
+      <span id="racha">Racha 0</span>
+      <span id="num">1 / 20</span>
+    </div>
+    <div class="prog"><div id="bar"></div></div>
+    <div class="preg" id="preg"></div>
+    <div class="opciones" id="opciones"></div>
+    <div class="explica" id="explica" hidden></div>
+    <div class="row">
+      <button class="btn primary" id="sig" type="button" hidden>Siguiente ▶</button>
+      <button class="btn danger" id="terminar" type="button">Terminar</button>
+    </div>
+  </section>
+
+  <section id="resumen" class="group resumen" hidden></section>
+
+  <section class="group" aria-labelledby="h-estado">
+    <h2 id="h-estado">Cómo viene</h2>
+    <div class="estado">
+      <div><b id="eDom">0</b><small>dominadas</small></div>
+      <div><b id="eRep">0</b><small>en repaso</small></div>
+      <div><b id="eRef">0</b><small>a reforzar</small></div>
+    </div>
+    <div>
+      <p class="hint" style="margin:0 0 6px">Las que más le cuestan:</p>
+      <ol class="dificiles" id="dificiles"></ol>
+    </div>
+    <div>
+      <p class="hint" style="margin:0 0 6px">Últimas sesiones:</p>
+      <ul class="sesiones" id="sesiones"></ul>
+    </div>
+    <div class="row"><button class="btn danger" id="reiniciar" type="button">Reiniciar todo el avance</button></div>
+  </section>
+</main>
+
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+const INT = { 1: 2, 2: 6, 3: 14, 4: 35, 5: 90 }; // preguntas hasta volver a preguntar, según la caja
+const DEF = { op: ['mult'], tmin: '2', tmax: '10', max: '20', nOpc: '5', nPreg: '20' };
+let ajustes = Object.assign({}, DEF, store.get('lv2-mat-aj', {}));
+let estado = store.get('lv2-mat-estado', {});
+let q = store.get('lv2-mat-q', 0);
+let sesiones = store.get('lv2-mat-ses', []);
+let J = null;
+
+const rnd = a => a[Math.floor(Math.random() * a.length)];
+function mezclar(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+/* ---------- Datos ---------- */
+function hecho(op, a, b) {
+  if (op === 'mult') { const lo = Math.min(a, b), hi = Math.max(a, b); return { k: 'm' + lo + 'x' + hi, op, a, b, c: a * b, t: `${a} × ${b}` }; }
+  if (op === 'suma') { const lo = Math.min(a, b), hi = Math.max(a, b); return { k: 's' + lo + '+' + hi, op, a, b, c: a + b, t: `${a} + ${b}` }; }
+  return { k: 'r' + a + '-' + b, op, a, b, c: a - b, t: `${a} − ${b}` };
+}
+function todosLosHechos() {
+  const mapa = new Map();
+  const add = f => { if (!mapa.has(f.k)) mapa.set(f.k, f); };
+  let t1 = +ajustes.tmin, t2 = +ajustes.tmax; if (t1 > t2) [t1, t2] = [t2, t1];
+  const M = +ajustes.max;
+  if (ajustes.op.includes('mult')) for (let a = t1; a <= t2; a++) for (let b = 1; b <= 10; b++) add(hecho('mult', a, b));
+  if (ajustes.op.includes('suma')) for (let a = 0; a <= M; a++) for (let b = 0; a + b <= M; b++) add(hecho('suma', a, b));
+  if (ajustes.op.includes('resta')) for (let a = 1; a <= M; a++) for (let b = 0; b <= a; b++) add(hecho('resta', a, b));
+  return [...mapa.values()];
+}
+function rev(n) { if (n < 10 || n > 99) return -1; return +String(n).split('').reverse().join(''); }
+function opciones(f) {
+  const N = +ajustes.nOpc, c = f.c;
+  let cerca = [], lejos = [];
+  if (f.op === 'mult') {
+    const { a, b } = f;
+    cerca = [(a + 1) * b, (a - 1) * b, a * (b + 1), a * (b - 1)];
+    lejos = [c + 1, c - 1, c + 10, c - 10, rev(c), c + 2, c - 2];
+  } else {
+    cerca = [c + 1, c - 1, c + 10, c - 10];
+    lejos = [c + 2, c - 2, c + 5, c - 5, rev(c), c + 3, c - 3];
+  }
+  const usados = new Set([c]);
+  const elegidos = [];
+  for (const v of [...mezclar(cerca), ...mezclar(lejos)]) {
+    if (elegidos.length >= N - 1) break;
+    if (v < 0 || usados.has(v)) continue;
+    usados.add(v); elegidos.push(v);
+  }
+  for (let k = 4; elegidos.length < N - 1; k++) { const v = c + k; if (!usados.has(v)) { usados.add(v); elegidos.push(v); } }
+  return mezclar([c, ...elegidos]);
+}
+
+/* ---------- Elegir la siguiente pregunta ---------- */
+function elegirHecho(pool) {
+  const debidas = pool.filter(f => estado[f.k] && estado[f.k].n <= q);
+  const nuevas = pool.filter(f => !estado[f.k]);
+  let cand;
+  if (debidas.length >= 2 || !nuevas.length) {
+    if (debidas.length) {
+      debidas.sort((x, y) => (estado[x.k].b - estado[y.k].b) || (estado[x.k].n - estado[y.k].n));
+      cand = debidas.slice(0, 6);
+    } else {
+      cand = pool.slice().sort((x, y) => ((estado[x.k] || {}).n || 0) - ((estado[y.k] || {}).n || 0)).slice(0, 6);
+    }
+  } else {
+    cand = nuevas;
+  }
+  let f = rnd(cand);
+  if (cand.length > 1 && J.ultimo && f.k === J.ultimo) f = rnd(cand.filter(x => x.k !== J.ultimo));
+  return f;
+}
+
+/* ---------- Juego ---------- */
+function empezar() {
+  const pool = todosLosHechos();
+  if (!ajustes.op.length) { $('aviso').textContent = 'Elegí al menos un tipo de cuenta.'; return; }
+  if (!pool.length) { $('aviso').textContent = 'No hay cuentas para ese rango. Revisá las opciones.'; return; }
+  $('aviso').textContent = '';
+  J = { pool, total: +ajustes.nPreg, hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [] };
+  $('ajustes').hidden = true; $('resumen').hidden = true; $('juego').hidden = false;
+  siguiente();
+}
+function siguiente() {
+  const f = elegirHecho(J.pool);
+  const ver = (f.op === 'mult' && Math.random() < .5) ? { ...f, t: `${f.b} × ${f.a}`, a: f.b, b: f.a } : f;
+  J.actual = ver; J.ultimo = f.k; J.respondida = false;
+  J.opts = opciones(f);
+  $('preg').textContent = ver.t + ' = ?';
+  $('num').textContent = (J.hecha + 1) + ' / ' + J.total;
+  $('bar').style.width = (100 * J.hecha / J.total) + '%';
+  const cont = $('opciones'); cont.textContent = '';
+  J.opts.forEach((v, i) => {
+    const b = document.createElement('button');
+    b.className = 'op'; b.type = 'button'; b.textContent = v; b.dataset.v = v;
+    b.setAttribute('aria-label', `${v}, opción ${i + 1}`);
+    cont.appendChild(b);
+  });
+  $('explica').hidden = true; $('sig').hidden = true;
+  J.t0 = performance.now();
+}
+function textoRazon(f) {
+  if (f.op === 'mult') {
+    if (f.b === 1 || f.a === 1) return `${f.a} × ${f.b} = <strong>${f.c}</strong>`;
+    return `${f.a} × ${f.b} = ${f.a} × ${f.b - 1} + ${f.a} = ${f.a * (f.b - 1)} + ${f.a} = <strong>${f.c}</strong>`;
+  }
+  if (f.op === 'suma') {
+    if (f.a >= 10 && f.b >= 10) {
+      const dec = Math.floor(f.a / 10) * 10 + Math.floor(f.b / 10) * 10, un = f.a % 10 + f.b % 10;
+      return `${f.a} + ${f.b} = ${dec} + ${un} = <strong>${f.c}</strong>`;
+    }
+    return `${f.a} + ${f.b} = <strong>${f.c}</strong>`;
+  }
+  return `${f.a} − ${f.b} = <strong>${f.c}</strong>`;
+}
+function responder(btn) {
+  if (!J || J.respondida) return;
+  J.respondida = true;
+  const v = +btn.dataset.v, f = J.actual, real = hecho(f.op, f.a, f.b);
+  const ok = v === real.c;
+  const tiempo = (performance.now() - J.t0) / 1000;
+  document.querySelectorAll('.op').forEach(b => { b.disabled = true; if (+b.dataset.v === real.c) b.classList.add('ok'); });
+  const ex = $('explica');
+  if (ok) {
+    btn.classList.add('ok');
+    J.aciertos++; J.racha++; J.rachaMax = Math.max(J.rachaMax, J.racha);
+    J.puntos += 10 + (J.racha >= 3 ? 5 : 0);
+    ex.className = 'explica ok';
+    ex.innerHTML = `¡Muy bien! ${textoRazon(real)}`;
+  } else {
+    btn.classList.add('bad');
+    J.racha = 0;
+    J.fallos[real.k] = (J.fallos[real.k] || 0) + 1;
+    ex.className = 'explica bad';
+    ex.innerHTML = `Era ${real.c}. ${textoRazon(real)}<br><span class="hint">Esta cuenta va a volver enseguida.</span>`;
+  }
+  ex.hidden = false;
+  actualizarEstado(real, ok);
+  J.tiempos.push(tiempo);
+  J.hecha++;
+  $('pts').textContent = J.puntos + ' pts';
+  $('racha').textContent = 'Racha ' + J.racha;
+  $('sig').textContent = J.hecha >= J.total ? 'Ver resultado' : 'Siguiente ▶';
+  $('sig').hidden = false;
+  $('sig').focus();
+}
+function actualizarEstado(f, ok) {
+  const e = estado[f.k] || { b: 1, n: 0, f: 0, o: 0, t: f.t };
+  e.t = f.t;
+  if (ok) { e.b = Math.min(5, e.b + 1); e.n = q + INT[e.b]; e.o++; }
+  else { e.b = 1; e.n = q + 2; e.f++; }
+  estado[f.k] = e;
+  q++;
+  store.set('lv2-mat-estado', estado);
+  store.set('lv2-mat-q', q);
+  pintarEstado();
+}
+function finalizar() {
+  if (!J) return;
+  const prom = J.tiempos.length ? (J.tiempos.reduce((a, b) => a + b, 0) / J.tiempos.length) : 0;
+  const ses = { f: new Date().toISOString(), p: J.puntos, ac: J.aciertos, n: J.hecha, t: prom };
+  if (J.hecha > 0) { sesiones.unshift(ses); sesiones = sesiones.slice(0, 20); store.set('lv2-mat-ses', sesiones); }
+  const peores = Object.entries(J.fallos).sort((a, b) => b[1] - a[1]).slice(0, 3)
+    .map(([k]) => estado[k] ? estado[k].t : k);
+  const r = $('resumen');
+  r.hidden = false; $('juego').hidden = true;
+  r.innerHTML = `<h2>${J.hecha >= J.total ? '¡Terminaste!' : 'Sesión cortada'}</h2>
+    <p><b>${J.aciertos}</b> de ${J.hecha} bien · <b>${J.puntos}</b> puntos · racha máxima ${J.rachaMax}</p>
+    <p class="hint">Tiempo promedio por cuenta: ${prom.toFixed(1)} s</p>
+    ${peores.length ? `<p class="hint">Para repasar: ${peores.join(' · ')}</p>` : ''}
+    <div class="row"><button class="btn primary" id="otra" type="button">↺ Otra sesión</button><button class="btn" id="volverAjustes" type="button">Cambiar lo que practico</button></div>`;
+  $('otra').onclick = () => { r.hidden = true; empezar(); };
+  $('volverAjustes').onclick = () => { r.hidden = true; $('ajustes').hidden = false; };
+  J = null;
+  $('ajustes').hidden = true;
+  pintarEstado();
+}
+
+/* ---------- Estado visible ---------- */
+function pintarEstado() {
+  const vals = Object.values(estado);
+  $('eDom').textContent = vals.filter(e => e.b === 5).length;
+  $('eRep').textContent = vals.filter(e => e.b >= 2 && e.b <= 4).length;
+  $('eRef').textContent = vals.filter(e => e.b === 1).length;
+  const dif = Object.entries(estado).filter(([, e]) => e.f > 0)
+    .sort((a, b) => (b[1].f - a[1].f) || (a[1].b - b[1].b)).slice(0, 5);
+  const ol = $('dificiles'); ol.textContent = '';
+  if (!dif.length) { const li = document.createElement('li'); li.textContent = 'Todavía no hay errores registrados.'; li.style.listStyle = 'none'; ol.appendChild(li); }
+  dif.forEach(([, e]) => { const li = document.createElement('li'); li.textContent = `${e.t}  (se equivocó ${e.f} ${e.f === 1 ? 'vez' : 'veces'})`; ol.appendChild(li); });
+  const ul = $('sesiones'); ul.textContent = '';
+  if (!sesiones.length) { const li = document.createElement('li'); li.textContent = 'Todavía no hay sesiones.'; ul.appendChild(li); }
+  sesiones.slice(0, 8).forEach(s => {
+    const li = document.createElement('li');
+    const fecha = new Date(s.f).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+    li.innerHTML = `<span>${fecha}</span><span><b>${s.ac}</b> de ${s.n} bien</span><span>${s.p} pts</span><span>${s.t.toFixed(1)} s por cuenta</span>`;
+    ul.appendChild(li);
+  });
+}
+
+/* ---------- Eventos ---------- */
+function leerAjustes() {
+  ajustes.op = [...document.querySelectorAll('.opc:checked')].map(c => c.value);
+  ajustes.tmin = $('tmin').value; ajustes.tmax = $('tmax').value; ajustes.max = $('max').value;
+  ajustes.nOpc = $('nOpc').value; ajustes.nPreg = $('nPreg').value;
+  store.set('lv2-mat-aj', ajustes);
+  mostrarBoxes();
+}
+function mostrarBoxes() {
+  $('boxTablas').hidden = !ajustes.op.includes('mult');
+  $('boxMax').hidden = !(ajustes.op.includes('suma') || ajustes.op.includes('resta'));
+}
+function pintarAjustes() {
+  document.querySelectorAll('.opc').forEach(c => c.checked = ajustes.op.includes(c.value));
+  $('tmin').value = ajustes.tmin; $('tmax').value = ajustes.tmax; $('max').value = ajustes.max;
+  $('nOpc').value = ajustes.nOpc; $('nPreg').value = ajustes.nPreg;
+  mostrarBoxes();
+}
+document.querySelector('#ajustes').addEventListener('change', leerAjustes);
+$('empezar').onclick = () => { leerAjustes(); empezar(); };
+$('sig').onclick = () => { if (J.hecha >= J.total) finalizar(); else siguiente(); };
+$('terminar').onclick = () => finalizar();
+$('opciones').addEventListener('click', e => { const b = e.target.closest('.op'); if (b) responder(b); });
+$('reiniciar').onclick = () => {
+  if (!confirm('¿Borrar todo el avance de matemáticas de este celular?')) return;
+  estado = {}; q = 0; sesiones = [];
+  store.set('lv2-mat-estado', estado); store.set('lv2-mat-q', q); store.set('lv2-mat-ses', sesiones);
+  pintarEstado();
+};
+document.addEventListener('keydown', e => {
+  if (!J || $('juego').hidden) return;
+  if (/^[1-6]$/.test(e.key)) {
+    const bs = [...document.querySelectorAll('.op')];
+    const b = bs[+e.key - 1];
+    if (b && !b.disabled) responder(b);
+  } else if (e.key === 'Enter' && !$('sig').hidden) { $('sig').click(); }
+});
+
+pintarAjustes();
+pintarEstado();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Lectura veloz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Patrick+Hand&family=Playwrite+AR&family=Roboto+Slab:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#0c0c0e; --panel:#17171a; --line:#2c2c31; --fg:#f4f2ec; --muted:#9d9a92;
+  --accent:#ffcc33; --accent-ink:#1a1400; --btn:#25252a;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+
+/* ---------- Pantalla de configuración ---------- */
+.setup{max-width:780px;margin:0 auto;padding-block:18px 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px}
+h1{margin:0;font-size:1.6rem;line-height:1.2}
+h1 span{color:var(--accent)}
+.intro{margin:4px 0 0;color:var(--muted);line-height:1.45}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.group h2{margin:0;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:10px;background:#1d1d21;cursor:pointer}
+.opt input{width:20px;height:20px;margin:0;accent-color:var(--accent);flex:none}
+.opt:has(input:checked){border-color:var(--accent);background:#2a2410}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;min-height:44px;border:1px solid var(--line);border-radius:999px;background:#1d1d21;cursor:pointer;user-select:none}
+.chip input{width:18px;height:18px;margin:0;accent-color:var(--accent)}
+.chip:has(input:checked){border-color:var(--accent);background:#2a2410}
+.field{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:center}
+.field label{font-weight:700}
+.field output{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.field input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent);height:32px;margin:0}
+.field select{grid-column:1/-1}
+select,textarea{background:#101013;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:44px;width:100%}
+textarea{min-height:140px;resize:vertical;font-size:1.05rem;line-height:1.5}
+.hint{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45}
+.aviso{margin:0;color:var(--accent);min-height:1.2em;font-weight:700}
+.btn{border:1px solid var(--line);background:var(--btn);border-radius:10px;padding:10px 14px;min-height:44px;cursor:pointer}
+.btn:hover{filter:brightness(1.12)}
+.btn.danger{background:#3a1616;border-color:#5a2222}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.startbar{position:fixed;left:0;right:0;bottom:0;padding-top:14px;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:linear-gradient(transparent,var(--bg) 40%);display:flex;justify-content:center}
+.start{background:var(--accent);color:var(--accent-ink);border:0;border-radius:14px;font-size:1.3rem;font-weight:700;padding:14px 40px;min-width:min(420px,100%);cursor:pointer;letter-spacing:.04em}
+.progreso ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.progreso li{display:flex;flex-wrap:wrap;gap:4px 12px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:.92rem;font-variant-numeric:tabular-nums}
+.progreso li b{color:var(--accent);font-weight:700}
+.sug{margin:0;padding:10px 12px;border-radius:10px;background:#2a2410;border:1px solid var(--accent);line-height:1.45}
+
+/* ---------- Escenario a pantalla completa ---------- */
+.stage{position:fixed;inset:0;background:#000;color:#fff;overflow:hidden;z-index:50;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.track{position:absolute;inset:0}
+.word{position:absolute;top:50%;left:0;white-space:nowrap;line-height:1;will-change:transform}
+.progress{position:absolute;left:0;top:0;height:4px;background:var(--accent);opacity:.7;z-index:2;width:0}
+.big{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;z-index:3;background:rgba(0,0,0,.92)}
+.count{font-size:55vh;line-height:1;font-weight:700;color:var(--accent)}
+.done{display:flex;flex-direction:column;gap:16px;align-items:center;max-width:560px}
+.done h2{margin:0;font-size:clamp(2rem,9vh,4.5rem);color:var(--accent)}
+.done p{margin:0;font-size:1.15rem;line-height:1.4}
+.done .row{justify-content:center}
+.done .lbl{color:var(--muted);margin:6px 0 0}
+.done .btn{font-size:1.05rem}
+.done .btn.sel{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.rot{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:rgba(0,0,0,.94);z-index:4;font-size:1.2rem}
+.rot b{display:block;font-size:3.5rem;color:var(--accent)}
+.controls{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));background:rgba(20,20,23,.94);border-top:1px solid var(--line);transition:opacity .25s,transform .25s}
+.controls.hide{opacity:0;transform:translateY(100%);pointer-events:none}
+.controls .btn{min-width:48px;font-weight:700;background:#1c1c20}
+.controls .exit{background:#3a1616;border-color:#5a2222}
+.stylelbl{color:var(--accent);font-weight:700;font-size:.95rem;min-width:12ch;text-align:center}
+.spd{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;min-width:6ch;text-align:center}
+@media (prefers-reduced-motion:reduce){.controls{transition:none}}
+</style>
+</head>
+<body>
+
+<main class="setup" id="setup">
+  <header>
+    <a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;display:inline-flex;min-height:44px;align-items:center;margin-bottom:8px">← Inicio</a>
+    <h1>Lectura <span>veloz</span></h1>
+    <p class="intro">Las palabras cruzan la pantalla y el chico tiene que leerlas a medida que pasan. Empezá con sílabas simples y subí de nivel cuando le salga bien.</p>
+  </header>
+
+  <section class="group" aria-labelledby="h-nivel">
+    <h2 id="h-nivel">1 · Nivel</h2>
+    <div class="opts" id="niveles">
+      <label class="opt"><input type="radio" name="nivel" value="1"> <span>Nivel 1 · Pseudopalabras de 2 sílabas (ej. <i>mopa</i>, <i>lise</i>)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="2"> <span>Nivel 2 · 2 sílabas con consonante final (ej. <i>mapel</i>, <i>tosin</i>)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="3"> <span>Nivel 3 · 3 sílabas (ej. <i>pomali</i>, <i>ketaluno</i>)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="4"> <span>Nivel 4 · Palabras con sentido (tu lista)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="5"> <span>Nivel 5 · Frases con sentido (tu texto, una frase por renglón)</span></label>
+    </div>
+    <div class="field" id="cantBox">
+      <label for="cant">Cantidad de pseudopalabras por sesión</label>
+      <select id="cant">
+        <option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="50">50</option>
+      </select>
+    </div>
+    <div id="textoBox" class="opts" hidden>
+      <label for="texto" class="hint" id="textoHint">Pegá o escribí las palabras separadas por espacio.</label>
+      <textarea id="texto" spellcheck="false" aria-label="Tu texto"></textarea>
+      <p class="hint">Podés pegar texto copiado de cualquier lado, o dictarlo con el micrófono del teclado del celular.</p>
+    </div>
+  </section>
+
+  <section class="group" aria-labelledby="h-vel">
+    <h2 id="h-vel">2 · Velocidad y tamaño</h2>
+    <div class="field">
+      <label for="vel">Velocidad</label><output id="velOut"></output>
+      <input type="range" id="vel" min="1" max="10" step="1">
+    </div>
+    <div class="field">
+      <label for="tam">Altura de la letra</label><output id="tamOut"></output>
+      <input type="range" id="tam" min="40" max="95" step="5">
+    </div>
+    <div class="field">
+      <label for="sentido">Sentido</label>
+      <select id="sentido">
+        <option value="rtl">Entran por la derecha y salen por la izquierda (como la tele)</option>
+        <option value="ltr">Entran por la izquierda y salen por la derecha</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="group" aria-labelledby="h-estilo">
+    <h2 id="h-estilo">3 · Estilos de letra</h2>
+    <p class="hint">Marcá los tipos de letra y de mayúscula que quieras mezclar.</p>
+    <div class="chips" id="fuentes">
+      <label class="chip"><input type="checkbox" class="fontc" value="imprenta"> <span style="font-family:Andika,Arial,sans-serif">Imprenta</span></label>
+      <label class="chip"><input type="checkbox" class="fontc" value="cursiva"> <span style="font-family:'Playwrite AR',cursive;font-size:.95rem">Cursiva</span></label>
+      <label class="chip"><input type="checkbox" class="fontc" value="mano"> <span style="font-family:'Patrick Hand',cursive;font-size:1.2rem">A mano</span></label>
+      <label class="chip"><input type="checkbox" class="fontc" value="libro"> <span style="font-family:'Roboto Slab',Georgia,serif">De libro</span></label>
+    </div>
+    <div class="chips" id="mayus">
+      <label class="chip"><input type="checkbox" class="casec" value="min"> <span>minúscula</span></label>
+      <label class="chip"><input type="checkbox" class="casec" value="cap"> <span>Inicial mayúscula</span></label>
+      <label class="chip"><input type="checkbox" class="casec" value="may"> <span>MAYÚSCULA</span></label>
+    </div>
+    <div class="field">
+      <label for="cambio">Cambiar de estilo</label>
+      <select id="cambio">
+        <option value="0">A mano, con el botón "Estilo" durante la lectura</option>
+        <option value="10">Automático cada 10 segundos</option>
+        <option value="20">Automático cada 20 segundos</option>
+        <option value="30">Automático cada 30 segundos</option>
+        <option value="60">Automático cada 1 minuto</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="group progreso" aria-labelledby="h-prog">
+    <h2 id="h-prog">Progreso</h2>
+    <p class="sug" id="sug" hidden></p>
+    <ul id="lista"></ul>
+    <p class="hint" id="vacio">Todavía no hay sesiones. Después de cada lectura, calificá cómo le fue.</p>
+    <div class="row"><button class="btn danger" id="borrar" type="button">Borrar todo el progreso</button></div>
+  </section>
+
+  <p class="aviso" id="aviso" role="status"></p>
+</main>
+
+<div class="startbar"><button class="start" id="start" type="button">▶ EMPEZAR</button></div>
+
+<div class="stage" id="stage" hidden>
+  <div class="progress" id="bar"></div>
+  <div class="track" id="track"></div>
+  <div class="big" id="big" hidden></div>
+  <div class="rot" id="rot" hidden><div><b>⟳</b>Girá el celular para verlo mejor<br><span style="color:var(--muted);font-size:1rem">(tocá para seguir igual)</span></div></div>
+  <div class="controls hide" id="controls">
+    <button class="btn" id="pause" type="button" aria-label="Pausar">⏸</button>
+    <button class="btn" id="slower" type="button" aria-label="Más lento">− lento</button>
+    <span class="spd" id="spd"></span>
+    <button class="btn" id="faster" type="button" aria-label="Más rápido">rápido +</button>
+    <button class="btn" id="smaller" type="button" aria-label="Letra más chica">A−</button>
+    <button class="btn" id="bigger" type="button" aria-label="Letra más grande">A+</button>
+    <button class="btn" id="estilo" type="button">Estilo</button>
+    <span class="stylelbl" id="stylelbl"></span>
+    <button class="btn exit" id="exit" type="button">✕ Salir</button>
+  </div>
+</div>
+
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+
+/* ---------- Datos y configuración ---------- */
+const CONS = ['p','m','t','s','l','n','d','r','k','b','f','v'];
+const VOW  = ['a','e','i','o','u'];
+const FIN  = ['l','n','s','r','d','m','p','t'];
+const PATTERN = { 1: ['CV','CV'], 2: ['CVC','CV'], 3: ['CV','CV','CV'] };
+const FONTS = {
+  imprenta: { f: "Andika, Arial, sans-serif", s: 1,    w: 400, label: 'Imprenta' },
+  cursiva:  { f: "'Playwrite AR', 'Segoe Script', cursive", s: .8, w: 400, label: 'Cursiva' },
+  mano:     { f: "'Patrick Hand', 'Comic Sans MS', cursive", s: 1.1, w: 400, label: 'A mano' },
+  libro:    { f: "'Roboto Slab', Georgia, serif", s: .95, w: 500, label: 'De libro' }
+};
+const CASES = { min: 'minúscula', cap: 'Inicial mayúscula', may: 'MAYÚSCULA' };
+const DEF = { nivel: '1', cant: '20', vel: '4', tam: '70', sentido: 'rtl',
+              fonts: ['imprenta','cursiva','mano'], cases: ['min','cap','may'], cambio: '0', texto: '' };
+
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+let ajustes = Object.assign({}, DEF, store.get('lv2-ajustes', {}));
+let progreso = store.get('lv2-progreso', []);
+
+const rnd = a => a[Math.floor(Math.random() * a.length)];
+function silaba(p) { return rnd(CONS) + rnd(VOW) + (p === 'CVC' ? rnd(FIN) : ''); }
+function generar(patron, n) {
+  const vistos = new Set(), out = []; let guardia = 0;
+  while (out.length < n && guardia++ < 5000) {
+    const w = patron.map(p => silaba(p)).join('');
+    if (vistos.has(w)) continue;
+    vistos.add(w); out.push(w);
+  }
+  return out;
+}
+function elementosDelNivel() {
+  const n = +ajustes.nivel, texto = ajustes.texto || '';
+  if (n <= 3) return generar(PATTERN[n], +ajustes.cant);
+  if (n === 4) return texto.split(/\s+/).filter(Boolean);
+  return texto.split(/\n+/).map(s => s.replace(/\s+/g, ' ').trim()).filter(Boolean);
+}
+
+/* ---------- Pantalla de configuración ---------- */
+function leerUI() {
+  ajustes.nivel = document.querySelector('input[name=nivel]:checked').value;
+  ajustes.cant = $('cant').value;
+  ajustes.vel = $('vel').value;
+  ajustes.tam = $('tam').value;
+  ajustes.sentido = $('sentido').value;
+  ajustes.fonts = [...document.querySelectorAll('.fontc:checked')].map(c => c.value);
+  ajustes.cases = [...document.querySelectorAll('.casec:checked')].map(c => c.value);
+  ajustes.cambio = $('cambio').value;
+  ajustes.texto = $('texto').value;
+  store.set('lv2-ajustes', ajustes);
+  pintarUI();
+}
+function pintarUI() {
+  document.querySelector(`input[name=nivel][value="${ajustes.nivel}"]`).checked = true;
+  $('cant').value = ajustes.cant;
+  $('vel').value = ajustes.vel;
+  $('tam').value = ajustes.tam;
+  $('sentido').value = ajustes.sentido;
+  $('cambio').value = ajustes.cambio;
+  $('texto').value = ajustes.texto;
+  document.querySelectorAll('.fontc').forEach(c => c.checked = ajustes.fonts.includes(c.value));
+  document.querySelectorAll('.casec').forEach(c => c.checked = ajustes.cases.includes(c.value));
+  $('velOut').textContent = ajustes.vel + ' de 10';
+  $('tamOut').textContent = ajustes.tam + '% de la pantalla';
+  const n = +ajustes.nivel;
+  $('cantBox').hidden = n >= 4;
+  $('textoBox').hidden = n < 4;
+  $('textoHint').textContent = n === 4
+    ? 'Pegá o escribí las palabras que quieras leer, separadas por espacio.'
+    : 'Pegá o escribí las frases, una por renglón.';
+  pintarProgreso();
+}
+document.querySelector('#setup').addEventListener('input', leerUI);
+document.querySelector('#setup').addEventListener('change', leerUI);
+
+/* ---------- Progreso ---------- */
+function pintarProgreso() {
+  const lista = $('lista'); lista.textContent = '';
+  const etiqueta = { bien: 'Bien', regular: 'Regular', costo: 'Le costó' };
+  progreso.slice(0, 15).forEach(s => {
+    const li = document.createElement('li');
+    const fecha = new Date(s.f).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+    li.innerHTML = '';
+    [`${fecha}`, `Nivel <b>${s.n}</b>`, `Velocidad <b>${s.v}</b>`, `${s.p} palabras`, `${s.s} s`, s.c ? `<b>${etiqueta[s.c]}</b>` : 'sin calificar']
+      .forEach(t => { const sp = document.createElement('span'); sp.innerHTML = t; li.appendChild(sp); });
+    lista.appendChild(li);
+  });
+  $('vacio').hidden = progreso.length > 0;
+  $('borrar').hidden = progreso.length === 0;
+
+  const r = progreso.filter(s => s.c).slice(0, 3);
+  const sug = $('sug');
+  if (r.length === 3 && r.every(s => s.c === 'bien' && s.n === r[0].n) && r[0].n < 5) {
+    sug.hidden = false;
+    sug.textContent = `Va bien: las últimas 3 sesiones salieron bien. Podés subir la velocidad o pasar al nivel ${r[0].n + 1}.`;
+  } else if (r.length >= 2 && r.slice(0, 2).every(s => s.c === 'costo')) {
+    sug.hidden = false;
+    sug.textContent = 'Le está costando: probá bajar la velocidad o volver al nivel anterior por unas sesiones.';
+  } else {
+    sug.hidden = true;
+  }
+}
+$('borrar').addEventListener('click', () => {
+  if (!confirm('¿Borrar todo el progreso de este celular?')) return;
+  progreso = []; store.set('lv2-progreso', progreso); pintarProgreso();
+});
+
+/* ---------- Reproducción ---------- */
+const stage = $('stage'), track = $('track'), controls = $('controls');
+let P = {}, S = null, raf = 0, last = 0, hideTimer = 0, wake = null, token = 0;
+
+const H = () => stage.clientHeight || innerHeight;
+const W = () => stage.clientWidth || innerWidth;
+const fontPx = () => H() * P.tam / 100 * 0.8;
+const gapPx = () => fontPx() * 0.7;
+
+function armarEstilos() {
+  const fonts = ajustes.fonts.length ? ajustes.fonts : ['imprenta'];
+  const cases = ajustes.cases.length ? ajustes.cases : ['min'];
+  const out = [];
+  fonts.forEach(f => cases.forEach(c => out.push({ f, c })));
+  return out;
+}
+function aplicarMayus(t, c) {
+  if (c === 'min') return t.toLocaleLowerCase('es');
+  if (c === 'may') return t.toLocaleUpperCase('es');
+  if (c === 'cap') { const l = t.toLocaleLowerCase('es'); const m = l.search(/\p{L}/u); return m < 0 ? l : l.slice(0, m) + l[m].toLocaleUpperCase('es') + l.slice(m + 1); }
+  return t;
+}
+function etiquetaEstilo(s) { return FONTS[s.f].label + ' · ' + CASES[s.c]; }
+function cambiarEstilo() {
+  if (S.estilos.length > 1) {
+    let s; do { s = rnd(S.estilos); } while (s === S.cur);
+    S.cur = s;
+  } else S.cur = S.estilos[0];
+  S.ultimoCambio = S.tiempo;
+  $('stylelbl').textContent = etiquetaEstilo(S.cur);
+}
+function setFont(it) {
+  const len = it.el.textContent.length;
+  const k = len > 12 ? Math.max(.3, 12 / len) : 1; // frases largas se achican para entrar
+  it.el.style.fontSize = (fontPx() * FONTS[it.f].s * k) + 'px';
+  it.w = it.el.offsetWidth;
+}
+function place(it) { it.el.style.transform = `translate3d(${it.x}px,-50%,0)`; }
+
+function spawn() {
+  const texto = S.cola.shift();
+  if (!S.cur) cambiarEstilo();
+  const s = S.cur;
+  const el = document.createElement('div');
+  el.className = 'word';
+  el.textContent = aplicarMayus(texto, s.c);
+  el.style.fontFamily = FONTS[s.f].f;
+  el.style.fontWeight = FONTS[s.f].w;
+  track.appendChild(el);
+  const it = { el, f: s.f, w: 0, x: 0 };
+  setFont(it);
+  it.x = P.dir === 'rtl' ? W() : -it.w;
+  place(it);
+  S.live.push(it);
+  $('bar').style.width = (100 * ++S.mostradas / S.total) + '%';
+}
+function llenarPantalla() {
+  while (S.cola.length) {
+    const ult = S.live[S.live.length - 1];
+    const hay = !ult || (P.dir === 'rtl' ? ult.x + ult.w + gapPx() <= W() : ult.x - gapPx() >= 0);
+    if (!hay) break;
+    spawn();
+  }
+}
+function frame(t) {
+  if (!S || !S.corriendo) return;
+  const dt = Math.min(.05, (t - last) / 1000); last = t;
+  if (!S.pausa) {
+    S.tiempo += dt;
+    const v = fontPx() * P.vel * 0.18 * dt * (P.dir === 'rtl' ? -1 : 1);
+    S.live.forEach(it => { it.x += v; place(it); });
+    while (S.live.length && (P.dir === 'rtl' ? S.live[0].x + S.live[0].w < 0 : S.live[0].x > W())) S.live.shift().el.remove();
+    llenarPantalla();
+    if (P.cambioSeg > 0 && S.tiempo - S.ultimoCambio >= P.cambioSeg) cambiarEstilo();
+    if (!S.cola.length && !S.live.length) return terminar();
+  }
+  raf = requestAnimationFrame(frame);
+}
+
+async function pantallaCompleta() {
+  try { if (!document.fullscreenElement && stage.requestFullscreen) await stage.requestFullscreen({ navigationUI: 'hide' }); } catch (e) {}
+  try { await screen.orientation.lock('landscape'); } catch (e) {}
+  try { wake = await navigator.wakeLock?.request('screen'); } catch (e) {}
+}
+function mostrarRot() { $('rot').hidden = !(H() > W()) || rotOculto; }
+let rotOculto = false;
+
+function mostrarGrande(html) { const b = $('big'); b.innerHTML = html; b.hidden = false; }
+function ocultarGrande() { $('big').hidden = true; }
+
+async function empezar() {
+  const items = elementosDelNivel();
+  if (!items.length) { $('aviso').textContent = 'Primero escribí o pegá algo en el nivel elegido.'; return; }
+  $('aviso').textContent = '';
+  P = { vel: +ajustes.vel, tam: +ajustes.tam, dir: ajustes.sentido, cambioSeg: +ajustes.cambio, nivel: +ajustes.nivel };
+  S = { cola: items.slice(), total: items.length, mostradas: 0, live: [], estilos: armarEstilos(), cur: null,
+        tiempo: 0, ultimoCambio: 0, pausa: false, corriendo: false, inicio: 0 };
+  track.textContent = '';
+  $('bar').style.width = '0%';
+  $('pause').textContent = '⏸';
+  $('stage').hidden = false;
+  $('setup').hidden = true; document.querySelector('.startbar').hidden = true;
+  rotOculto = false; mostrarRot();
+  $('stylelbl').textContent = '';
+  await pantallaCompleta();
+  const mi = ++token;
+  try { await Promise.all(['Andika','Playwrite AR','Patrick Hand','Roboto Slab'].map(f => document.fonts?.load(`40px "${f}"`, 'aA'))); } catch (e) {}
+  for (const n of [3, 2, 1]) {
+    if (mi !== token || !S) return;
+    mostrarGrande(`<span class="count">${n}</span>`);
+    await new Promise(r => setTimeout(r, 700));
+  }
+  if (mi !== token || !S) return;
+  ocultarGrande();
+  S.corriendo = true; S.inicio = performance.now(); last = performance.now();
+  cambiarEstilo();
+  raf = requestAnimationFrame(frame);
+  mostrarControles();
+}
+
+function terminar() {
+  S.corriendo = false; cancelAnimationFrame(raf);
+  const seg = Math.round(S.tiempo);
+  const sesion = { f: new Date().toISOString(), n: P.nivel, v: P.vel, p: S.total, s: seg, c: null };
+  progreso.unshift(sesion); store.set('lv2-progreso', progreso);
+  const nivelTxt = P.nivel;
+  mostrarGrande(`<div class="done">
+    <h2>¡Listo!</h2>
+    <p>${S.total} ${P.nivel >= 5 ? 'frases' : 'palabras'} en ${seg} segundos · velocidad ${P.vel}</p>
+    <p class="lbl">¿Cómo le fue?</p>
+    <div class="row">
+      <button class="btn" data-c="bien" type="button">Bien</button>
+      <button class="btn" data-c="regular" type="button">Regular</button>
+      <button class="btn" data-c="costo" type="button">Le costó</button>
+    </div>
+    <div class="row">
+      <button class="btn" id="otra" type="button">↺ Otra vez</button>
+      <button class="btn danger" id="volver" type="button">Volver</button>
+    </div>
+  </div>`);
+  document.querySelectorAll('#big [data-c]').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation();
+    sesion.c = b.dataset.c; store.set('lv2-progreso', progreso);
+    document.querySelectorAll('#big [data-c]').forEach(x => x.classList.toggle('sel', x === b));
+  }));
+  $('otra').onclick = e => { e.stopPropagation(); salir(true); };
+  $('volver').onclick = e => { e.stopPropagation(); salir(false); };
+  void nivelTxt;
+}
+
+function salir(reiniciar) {
+  token++;
+  if (S) { S.corriendo = false; }
+  cancelAnimationFrame(raf);
+  track.textContent = '';
+  ocultarGrande();
+  stage.hidden = true; $('setup').hidden = false; document.querySelector('.startbar').hidden = false;
+  try { screen.orientation.unlock(); } catch (e) {}
+  try { if (document.fullscreenElement) document.exitFullscreen(); } catch (e) {}
+  try { wake?.release(); } catch (e) {} wake = null;
+  const quedaron = S && S.cola.length + S.live.length > 0;
+  S = null;
+  pintarProgreso();
+  if (reiniciar) empezar();
+  void quedaron;
+}
+
+/* ---------- Controles ---------- */
+function ajustarVel(d) { P.vel = Math.max(1, Math.min(10, P.vel + d)); $('spd').textContent = 'Vel. ' + P.vel; }
+function ajustarTam(d) {
+  P.tam = Math.max(40, Math.min(95, P.tam + d));
+  if (S) S.live.forEach(it => { setFont(it); place(it); });
+}
+function mostrarControles() {
+  controls.classList.remove('hide');
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(() => { if (S && !S.pausa) controls.classList.add('hide'); }, 4000);
+}
+function alternarPausa() {
+  if (!S) return;
+  S.pausa = !S.pausa;
+  $('pause').textContent = S.pausa ? '▶' : '⏸';
+  $('pause').setAttribute('aria-label', S.pausa ? 'Seguir' : 'Pausar');
+  mostrarControles();
+}
+
+stage.addEventListener('click', e => {
+  if (!$('rot').hidden) { rotOculto = true; $('rot').hidden = true; return; }
+  if (!$('big').hidden) return;
+  if (controls.contains(e.target)) { mostrarControles(); return; }
+  if (controls.classList.contains('hide')) mostrarControles(); else controls.classList.add('hide');
+});
+$('pause').onclick = e => { e.stopPropagation(); alternarPausa(); };
+$('slower').onclick = e => { e.stopPropagation(); ajustarVel(-1); mostrarControles(); };
+$('faster').onclick = e => { e.stopPropagation(); ajustarVel(1); mostrarControles(); };
+$('smaller').onclick = e => { e.stopPropagation(); ajustarTam(-5); mostrarControles(); };
+$('bigger').onclick = e => { e.stopPropagation(); ajustarTam(5); mostrarControles(); };
+$('estilo').onclick = e => { e.stopPropagation(); if (S) cambiarEstilo(); mostrarControles(); };
+$('exit').onclick = e => { e.stopPropagation(); salir(false); };
+$('start').onclick = () => empezar();
+
+document.addEventListener('keydown', e => {
+  if (stage.hidden) return;
+  if (e.key === ' ') { e.preventDefault(); alternarPausa(); }
+  else if (e.key === 'ArrowUp' || e.key === 'ArrowRight') { ajustarVel(1); }
+  else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') { ajustarVel(-1); }
+  else if (e.key === 'Escape') salir(false);
+});
+addEventListener('resize', () => { if (!stage.hidden) { mostrarRot(); if (S) S.live.forEach(it => { setFont(it); place(it); }); } });
+document.addEventListener('visibilitychange', async () => {
+  if (document.visibilityState === 'hidden' && S && !S.pausa) alternarPausa();
+  if (document.visibilityState === 'visible' && !stage.hidden && !wake) { try { wake = await navigator.wakeLock?.request('screen'); } catch (e) {} }
+});
+
+/* ---------- Inicio ---------- */
+pintarUI();
+ajustarVel(0);
+})();
+</script>
+</body>
+</html>
