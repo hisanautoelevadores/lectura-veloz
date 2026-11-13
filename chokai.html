@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c0c0e">
+<title>Comprensión auditiva · JLPT N5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+<style>
+:root{--bg:#0c0c0e;--panel:#17171a;--line:#2c2c31;--fg:#f4f2ec;--muted:#9d9a92;--accent:#ffcc33;--ok:#2fbf71;--bad:#e5484d;--btn:#222227;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.jp{font-family:"Noto Sans JP",system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding-block:16px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.top h1{margin:0;font-size:1.4rem;line-height:1.2}
+.top h1 span{color:var(--accent)}
+.back{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;background:none;cursor:pointer}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.hint{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45}
+.btn{border:1px solid var(--line);background:var(--btn);border-radius:12px;padding:10px 16px;min-height:48px;cursor:pointer;font-weight:700}
+.btn:hover{filter:brightness(1.12)}
+.btn.primary{background:var(--accent);color:#1a1400;border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.start{background:var(--accent);color:#1a1400;border:0;border-radius:14px;font-size:1.25rem;font-weight:700;padding:14px;width:100%;cursor:pointer;min-height:58px}
+.barra{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:700;font-variant-numeric:tabular-nums}
+.barra span{color:var(--accent)}
+.prog{height:8px;background:#222227;border-radius:999px;overflow:hidden}
+.prog div{height:100%;width:0;background:var(--accent);transition:width .3s}
+.tipo{font-family:"Noto Sans JP",system-ui,sans-serif;color:var(--muted);font-size:.95rem}
+.titulo{font-size:1.2rem;font-weight:700}
+.audio{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.estado{color:var(--muted);font-size:.92rem}
+.opciones{display:flex;flex-direction:column;gap:10px}
+.op{display:flex;align-items:center;gap:12px;text-align:left;min-height:56px;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--btn);cursor:pointer;font-size:1.2rem;font-family:"Noto Sans JP",system-ui,sans-serif}
+.op .n{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--muted);display:grid;place-items:center;font-size:.9rem;font-family:system-ui}
+.op:disabled{cursor:default}
+.op.ok{background:var(--ok);border-color:var(--ok);color:#06210f}
+.op.bad{background:var(--bad);border-color:var(--bad);color:#2a0606}
+.op.dim{opacity:.55}
+.explica{border-radius:12px;padding:14px;line-height:1.5;border:1px solid var(--line);background:#1d1d21}
+.explica.ok{border-color:var(--ok)}
+.explica.bad{border-color:var(--bad)}
+.guion{font-family:"Noto Sans JP",system-ui,sans-serif;line-height:1.8;font-size:1rem}
+.guion p{margin:0}
+.guion .w{color:var(--muted);font-family:system-ui;font-size:.85rem;margin-right:6px}
+.aviso{margin:0;color:var(--accent);font-weight:700;min-height:1.2em}
+.row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.resumen h2{margin:0;font-size:2rem;color:var(--accent);text-align:center}
+.resumen p{margin:0;text-align:center;font-size:1.1rem;line-height:1.5}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back" href="index.html">← Inicio</a>
+    <h1>Comprensión <span>auditiva</span></h1>
+  </header>
+
+  <section id="inicio" class="group">
+    <p class="hint">Escuchás un diálogo y elegís la respuesta. Podés escuchar de nuevo, o escucharlo más lento. El texto japonés aparece después de responder.</p>
+    <button class="start" id="empezar" type="button">▶ EMPEZAR</button>
+    <p class="aviso" id="aviso" role="status"></p>
+  </section>
+
+  <section id="juego" class="group" hidden aria-live="polite">
+    <div class="barra"><span id="pts">0 pts</span><span id="num">1 / 3</span></div>
+    <div class="prog"><div id="bar"></div></div>
+    <p class="tipo" id="tipo"></p>
+    <p class="titulo" id="titulo"></p>
+    <div class="audio">
+      <button class="btn primary" id="play" type="button">🔊 Escuchar</button>
+      <button class="btn" id="lento" type="button">Más lento</button>
+      <span class="estado" id="estado"></span>
+    </div>
+    <div class="opciones" id="opciones"></div>
+    <div class="explica" id="explica" hidden></div>
+    <div class="guion" id="guion" hidden></div>
+    <div class="row">
+      <button class="btn primary" id="sig" type="button" hidden>Siguiente ▶</button>
+      <button class="btn" id="terminar" type="button">Terminar</button>
+    </div>
+  </section>
+
+  <section id="resumen" class="group resumen" hidden></section>
+</main>
+
+<script src="comun.js"></script>
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const NUM = ['1','2','3','4','5','6'];
+let datos = [];
+let J = null;
+const audio = new Audio();
+audio.preload = 'auto';
+
+async function cargar() {
+  try {
+    const r = await fetch('audio/chokai/ejercicios.json', { cache: 'no-cache' });
+    const j = await r.json();
+    datos = j.ejercicios || [];
+  } catch (e) { datos = []; }
+}
+
+function parar() { try { audio.pause(); audio.currentTime = 0; } catch (e) {} $('estado').textContent = ''; }
+
+function escuchar(rate) {
+  parar();
+  audio.src = J.ej.audio;
+  audio.playbackRate = rate;
+  try { audio.preservesPitch = true; } catch (e) {}
+  $('estado').textContent = 'Escuchando…';
+  audio.play().catch(() => { $('estado').textContent = 'No se pudo reproducir. Revisá la conexión y volvé a intentar.'; });
+}
+audio.addEventListener('ended', () => { $('estado').textContent = 'Listo. Podés escuchar otra vez.'; });
+audio.addEventListener('error', () => { $('estado').textContent = 'No se pudo cargar el audio de este ejercicio.'; });
+
+function empezar() {
+  if (!datos.length) { $('aviso').textContent = 'No se encontraron los ejercicios.'; return; }
+  $('aviso').textContent = '';
+  Perfil.elegir(() => {
+    const orden = datos.slice().sort(() => Math.random() - .5);
+    J = { lista: orden, idx: 0, aciertos: 0, puntos: 0, racha: 0, sel: null, respondida: false };
+    $('inicio').hidden = true; $('resumen').hidden = true; $('juego').hidden = false;
+    mostrar();
+  });
+}
+
+function mostrar() {
+  const ej = J.lista[J.idx];
+  J.ej = ej; J.sel = null; J.respondida = false;
+  $('num').textContent = (J.idx + 1) + ' / ' + J.lista.length;
+  $('bar').style.width = (100 * J.idx / J.lista.length) + '%';
+  $('tipo').textContent = ej.tipo;
+  $('titulo').textContent = ej.titulo;
+  $('explica').hidden = true; $('guion').hidden = true; $('sig').hidden = true;
+  $('estado').textContent = '';
+  const cont = $('opciones'); cont.textContent = '';
+  ej.opciones.forEach((t, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'op'; b.dataset.i = i;
+    const n = document.createElement('span'); n.className = 'n'; n.textContent = NUM[i];
+    const s = document.createElement('span'); s.textContent = t;
+    b.append(n, s);
+    cont.appendChild(b);
+  });
+}
+
+function responder(i) {
+  if (J.respondida) return;
+  J.respondida = true; J.sel = i;
+  const ej = J.ej, ok = i === ej.respuesta;
+  document.querySelectorAll('.op').forEach(b => {
+    const k = +b.dataset.i;
+    b.disabled = true;
+    if (k === ej.respuesta) b.classList.add('ok');
+    else if (k === i) b.classList.add('bad');
+    else b.classList.add('dim');
+  });
+  if (ok) { J.aciertos++; J.racha++; J.puntos += 10 + (J.racha >= 3 ? 5 : 0); }
+  else J.racha = 0;
+  Perfil.store.set('chokai-' + ej.id, { ok, fecha: Date.now() });
+  $('pts').textContent = J.puntos + ' pts';
+  const ex = $('explica');
+  ex.className = 'explica ' + (ok ? 'ok' : 'bad');
+  ex.innerHTML = ok
+    ? ''
+    : 'La respuesta correcta es la ' + NUM[ej.respuesta] + ': <strong>' + ej.opciones[ej.respuesta] + '</strong>';
+  ex.hidden = false;
+  if (ok) { Elogio.bien(); if (J.racha === 3) Elogio.racha(); } else Elogio.error();
+  const g = $('guion'); g.textContent = '';
+  ej.guion.forEach(([who, say]) => {
+    const p = document.createElement('p');
+    const w = document.createElement('span'); w.className = 'w'; w.textContent = who;
+    p.append(w, say); g.appendChild(p);
+  });
+  g.hidden = false;
+  $('sig').textContent = J.idx + 1 >= J.lista.length ? 'Ver resultado' : 'Siguiente ▶';
+  $('sig').hidden = false; $('sig').focus();
+}
+
+function finalizar() {
+  parar();
+  const r = $('resumen');
+  r.innerHTML = '<h2>' + (J.idx + 1 >= J.lista.length ? '¡Terminaste!' : 'Sesión cortada') + '</h2>'
+    + '<p><b>' + J.aciertos + '</b> de ' + Math.min(J.idx + (J.respondida ? 1 : 0), J.lista.length) + ' bien · <b>' + J.puntos + '</b> puntos</p>'
+    + '<div class="row"><button class="btn primary" id="otra" type="button">↺ Otra sesión</button><button class="btn" id="volver" type="button">Volver</button></div>';
+  r.hidden = false; $('juego').hidden = true;
+  $('otra').onclick = () => { r.hidden = true; empezar(); };
+  $('volver').onclick = () => { r.hidden = true; $('inicio').hidden = false; };
+  Elogio.fin();
+  J = null;
+}
+
+$('empezar').onclick = empezar;
+$('play').onclick = () => escuchar(1);
+$('lento').onclick = () => escuchar(0.75);
+$('opciones').addEventListener('click', e => { const b = e.target.closest('.op'); if (b) responder(+b.dataset.i); });
+$('sig').onclick = () => { if (J.idx + 1 >= J.lista.length) finalizar(); else { J.idx++; mostrar(); } };
+$('terminar').onclick = () => finalizar();
+
+cargar();
+})();
+</script>
+</body>
+</html>
