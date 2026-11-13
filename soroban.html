@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#EFE8DA">
+<title>Soroban</title>
+<style>
+:root{color-scheme:light}
+body{margin:0;background:#EFE8DA;color:#3B2A1A;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;padding:16px 16px 40px;min-height:100%}
+[hidden]{display:none!important}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.back{color:#6B5A44;text-decoration:none;border:1px solid #C8B99E;border-radius:10px;padding:8px 12px;min-height:40px;display:inline-flex;align-items:center;background:none;cursor:pointer;font:inherit}
+h1{font-size:1.2rem;margin:0}
+.marco{position:relative;margin:0 auto;border-radius:14px;background:linear-gradient(180deg,#2A2A2A,#101010);border:3px solid #050505;box-shadow:0 14px 30px rgba(40,25,10,.35);overflow:hidden;width:min(268px,92vw)}
+.tablero{position:relative;height:200px;width:224px;margin:0 auto;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.marco-sup,.marco-inf{position:absolute;left:-14px;right:-14px;height:10px;background:linear-gradient(180deg,#1A1A1A,#050505);z-index:4}
+.marco-sup{top:0}.marco-inf{bottom:0;height:10px}
+.barra{position:absolute;left:-14px;right:-14px;top:60px;height:10px;background:linear-gradient(180deg,#EDE3CC,#B9AA86);box-shadow:0 3px 5px rgba(0,0,0,.35);z-index:2}
+.punto{position:absolute;left:12.5%;top:62px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#FFF7E0;box-shadow:0 0 0 1px #5A3A1A,0 1px 2px rgba(0,0,0,.6);z-index:3}
+.varilla{position:absolute;top:10px;bottom:10px;width:4px;margin-left:-2px;background:#E9DCC2;opacity:.9;border-radius:2px;z-index:1}
+.cu{position:absolute;width:40px;height:26px;margin-left:-20px;z-index:3;cursor:pointer;transition:top .25s ease;-webkit-tap-highlight-color:transparent}
+.cu svg{display:block;width:40px;height:26px;pointer-events:none}
+.cu:focus-visible{outline:3px solid #F2B300;outline-offset:2px;border-radius:6px}
+.numero{display:flex;justify-content:center;gap:12px;font-weight:700;font-size:2rem;color:#B5501F;font-variant-numeric:tabular-nums;min-height:2.4rem}
+.numero span{min-width:1ch;text-align:center}
+.numero span.cero{color:#B9A990}
+.pista{text-align:center;color:#5A4A36;font-size:.95rem;line-height:1.45;min-height:2.9em}
+.acciones{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.btn{font:inherit;font-weight:600;min-height:44px;padding:10px 16px;border-radius:10px;border:1.5px solid #6B5A44;background:transparent;color:#3B2A1A;cursor:pointer}
+.btn.primary{background:#274A8C;border-color:#274A8C;color:#fff}
+.btn:disabled{opacity:.45;cursor:default}
+.nota{font-size:.85rem;color:#6B5A44;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="index.html">← Inicio</a>
+    <h1>Soroban</h1>
+    <span></span>
+  </div>
+
+  <div class="marco"><div class="tablero" id="tab">
+    <div class="marco-sup"></div><div class="marco-inf"></div>
+    <div class="barra"></div><div class="punto"></div>
+  </div></div>
+
+  <div class="numero" id="num" aria-live="polite" aria-label="Número del soroban"></div>
+  <p class="pista" id="pista"></p>
+
+  <div class="acciones">
+    <button class="btn" id="limpiar" type="button">Poner en cero</button>
+  </div>
+  <p class="nota">Tocá una ficha para moverla. Las fichas de la barra (arriba) valen 5; las de abajo valen 1.</p>
+</div>
+
+<script>
+(() => {
+  const N = 4;                  // columnas (por ahora)
+  const ALTO = 26, PASO = 22;
+  const TOP_MARCO = 10, BARRA_TOP = 60, BARRA_BOTTOM = 70, MARCO_INF = 190;
+  const PATH_ARR = 'M15 0 H29 L44 13 L0 13 Z';
+  const PATH_ABA = 'M0 13 H44 L29 26 H15 Z';
+  const tab = document.getElementById('tab');
+
+  // estado: por columna, cielo (0/1) y tierra (0..4)
+  const est = Array.from({ length: N }, () => ({ cielo: 0, tierra: 0 }));
+
+  // degradados compartidos
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  defs.setAttribute('width', '0'); defs.setAttribute('height', '0');
+  defs.style.position = 'absolute';
+  defs.innerHTML = '<defs>' +
+    '<linearGradient id="gArr" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#FFD0A0"/><stop offset=".6" stop-color="#F08A44"/><stop offset="1" stop-color="#C4601F"/></linearGradient>' +
+    '<linearGradient id="gAba" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#C4601F"/><stop offset=".5" stop-color="#B0521A"/><stop offset="1" stop-color="#7A3510"/></linearGradient>' +
+    '</defs>';
+  tab.appendChild(defs);
+
+  const cuentas = []; // {col, tipo:'cielo'|'tierra', idx, el}
+
+  function svgCuenta() {
+    return '<svg viewBox="0 0 44 26">' +
+      `<path d="${PATH_ARR}" fill="url(#gArr)" stroke="#8A3E12" stroke-width=".6" stroke-linejoin="round"/>` +
+      `<path d="${PATH_ABA}" fill="url(#gAba)" stroke="#6A2D0C" stroke-width=".6" stroke-linejoin="round"/>` +
+      '<ellipse cx="22" cy="7" rx="9" ry="2.2" fill="#FFFFFF" opacity=".45"/>' +
+      '<path d="M1 13 H43" stroke="#7A3510" stroke-width=".7" opacity=".6"/>' +
+      '</svg>';
+  }
+
+  for (let c = 0; c < N; c++) {
+    const left = (c + 0.5) / N * 100;
+    const varilla = document.createElement('div');
+    varilla.className = 'varilla'; varilla.style.left = left + '%';
+    tab.appendChild(varilla);
+    // cuenta superior
+    const sup = crearCuenta(c, 'cielo', 0, left);
+    // cuatro cuentas inferiores
+    for (let j = 0; j < 4; j++) crearCuenta(c, 'tierra', j, left);
+  }
+
+  function crearCuenta(col, tipo, idx, left) {
+    const el = document.createElement('div');
+    el.className = 'cu';
+    el.style.left = left + '%';
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.innerHTML = svgCuenta();
+    el.addEventListener('click', () => tocar(col, tipo, idx));
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tocar(col, tipo, idx); } });
+    tab.appendChild(el);
+    cuentas.push({ col, tipo, idx, el });
+    return el;
+  }
+
+  // posición vertical de cada cuenta según el estado
+  function posiciones() {
+    for (const c of cuentas) {
+      const e = est[c.col];
+      let top;
+      if (c.tipo === 'cielo') top = e.cielo ? BARRA_TOP - ALTO : TOP_MARCO;
+      else if (c.idx < e.tierra) top = BARRA_BOTTOM + c.idx * PASO - 2;
+      else top = MARCO_INF - ALTO - (3 - c.idx) * PASO;
+      c.el.style.top = top + 'px';
+    }
+  }
+
+  function tocar(col, tipo, idx) {
+    const e = est[col];
+    if (tipo === 'cielo') {
+      e.cielo = e.cielo ? 0 : 1;
+    } else {
+      // tocar una ficha inferior: si está activa, se bajan ella y las de debajo; si no, se suben hasta ella
+      if (idx < e.tierra) e.tierra = idx;
+      else e.tierra = idx + 1;
+    }
+    render();
+  }
+
+  function valor(col) { return est[col].cielo * 5 + est[col].tierra; }
+
+  function render() {
+    posiciones();
+    const numEl = document.getElementById('num');
+    numEl.innerHTML = '';
+    let total = 0;
+    for (let c = 0; c < N; c++) {
+      const v = valor(c);
+      total = total * 10 + v;
+      const s = document.createElement('span');
+      s.textContent = String(v);
+      if (v === 0) s.className = 'cero';
+      numEl.appendChild(s);
+    }
+    document.getElementById('pista').textContent =
+      'Número: ' + total + '. ' + pistaDe();
+  }
+
+  function pistaDe() {
+    // explicación breve del último movimiento en la columna de las unidades
+    const e = est[N - 1];
+    const v = e.cielo * 5 + e.tierra;
+    if (v === 0) return 'Ninguna ficha activa en la columna de las unidades.';
+    if (e.cielo && e.tierra) return 'En las unidades: la ficha de arriba (5) más ' + e.tierra + ' de abajo.';
+    if (e.cielo) return 'En las unidades: solo la ficha de arriba (5).';
+    return 'En las unidades: ' + e.tierra + (e.tierra === 1 ? ' ficha' : ' fichas') + ' de abajo (1 cada una).';
+  }
+
+  document.getElementById('limpiar').addEventListener('click', () => {
+    est.forEach(e => { e.cielo = 0; e.tierra = 0; });
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
