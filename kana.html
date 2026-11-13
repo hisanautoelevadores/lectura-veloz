@@ -23,9 +23,14 @@ button,input,select{font:inherit;color:inherit}
 .top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .top h1{margin:0;font-size:1.5rem;line-height:1.2}
 .top h1 span{color:var(--accent)}
-.back{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-height:44px;display:inline-flex;align-items:center}
+.back{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-height:44px;display:inline-flex;align-items:center;background:none;cursor:pointer}
 .group{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
 .group h2{margin:0;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.tarjetas{display:grid;grid-template-columns:1fr;gap:12px}
+.tarjeta{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--btn);border:1px solid var(--line);border-radius:14px;padding:16px;min-height:96px;cursor:pointer}
+.tarjeta:hover{border-color:var(--accent)}
+.tarjeta b{font-size:1.15rem}
+.tarjeta span{color:var(--muted);font-size:.95rem;line-height:1.4}
 .opts{display:flex;flex-direction:column;gap:8px}
 .opt{display:flex;align-items:center;gap:10px;padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:10px;background:#1d1d21;cursor:pointer}
 .opt input{width:20px;height:20px;margin:0;accent-color:var(--accent);flex:none}
@@ -39,12 +44,8 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
 .btn:hover{filter:brightness(1.12)}
 .btn.danger{background:#3a1616;border-color:#5a2222}
 .btn.primary{background:var(--accent);color:#1a1400;border-color:var(--accent)}
-.start{background:var(--accent);color:#1a1400;border:0;border-radius:14px;font-size:1.3rem;font-weight:700;padding:14px;width:100%;cursor:pointer;min-height:58px}
+.start{background:var(--accent);color:#1a1400;border:0;border-radius:14px;font-size:1.25rem;font-weight:700;padding:14px;width:100%;cursor:pointer;min-height:58px}
 .aviso{margin:0;color:var(--accent);font-weight:700;min-height:1.2em}
-.estado{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
-.estado div{border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
-.estado b{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums}
-.estado small{color:var(--muted)}
 
 .barra{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:700;font-variant-numeric:tabular-nums}
 .barra span{color:var(--accent)}
@@ -52,10 +53,12 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
 .prog div{height:100%;width:0;background:var(--accent);transition:width .3s}
 .pregunta{font-size:clamp(5rem,26vw,9rem);font-weight:700;text-align:center;line-height:1.1;padding:10px 0 4px}
 .pregunta.palabra{font-size:clamp(3rem,13vw,5.5rem)}
+.pregunta.dibujo{font-size:clamp(5rem,22vw,8rem);font-family:system-ui,"Segoe UI Emoji",sans-serif}
+.etq{text-align:center;color:var(--muted);font-size:1.1rem}
 .escuchar{align-self:center}
 .opciones{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
 .op{min-height:84px;font-size:1.8rem;font-weight:700;border:2px solid var(--line);border-radius:16px;background:var(--btn);cursor:pointer;transition:transform .08s}
-.op.img{font-size:2.6rem}
+.op.dib{font-size:2.6rem;font-family:system-ui,"Segoe UI Emoji",sans-serif}
 .op:active{transform:scale(.97)}
 .op:disabled{cursor:default}
 .op.ok{background:var(--ok);border-color:var(--ok);color:#06210f}
@@ -70,9 +73,10 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
 
 /* cinta */
 .cinta{position:fixed;inset:0;background:#000;color:#fff;overflow:hidden;z-index:50;user-select:none;-webkit-user-select:none}
-.cinta .tok{position:absolute;top:50%;left:0;white-space:nowrap;line-height:1;will-change:transform;font-weight:700}
-.cinta .fin{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(0,0,0,.92);font-size:1.4rem;padding:24px}
+.cinta .tok{position:absolute;top:50%;left:0;white-space:nowrap;line-height:1;will-change:transform;font-weight:700;font-family:"Noto Sans JP",system-ui,sans-serif}
+.cinta .fin{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(0,0,0,.92);font-size:1.4rem;padding:24px;z-index:3}
 .cinta .fin b{display:block;font-size:3rem;color:var(--accent);margin-bottom:12px}
+.cradu{position:absolute;left:0;right:0;bottom:92px;text-align:center;font-size:1.3rem;color:var(--muted);z-index:4;min-height:1.5em}
 .ctrl{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;padding:10px max(12px,env(safe-area-inset-left,0px)) calc(10px + env(safe-area-inset-bottom,0px));background:rgba(20,20,23,.94);border-top:1px solid var(--line);transition:opacity .25s,transform .25s}
 .ctrl.hide{opacity:0;transform:translateY(100%);pointer-events:none}
 .ctrl .btn{min-width:48px;background:#1c1c20}
@@ -88,31 +92,33 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
     <h1>Hiragana y <span>katakana</span></h1>
   </header>
 
-  <section id="ajustes" class="group" aria-labelledby="h-aj">
-    <h2 id="h-aj">Qué practicar</h2>
-    <div class="field">
+  <!-- Elegir la actividad -->
+  <section id="inicio" class="group" aria-labelledby="h-act">
+    <h2 id="h-act">Elegí qué practicar</h2>
+    <div class="tarjetas">
+      <button class="tarjeta" type="button" data-sec="letras"><b>Reconocer las letras</b><span>Aparece un carácter y se elige su sonido.</span></button>
+      <button class="tarjeta" type="button" data-sec="dibujo"><b>Leer y elegir el dibujo</b><span>Aparece una palabra y se elige el dibujo que corresponde.</span></button>
+      <button class="tarjeta" type="button" data-sec="inversa"><b>Ver el dibujo y elegir la palabra</b><span>Aparece un dibujo y se elige la palabra entre varias.</span></button>
+      <button class="tarjeta" type="button" data-sec="cinta"><b>Leer en movimiento</b><span>Las letras, palabras y frases pasan por la pantalla y se leen en voz alta.</span></button>
+    </div>
+    <p class="hint">Para empezar: primero Reconocer las letras, después Leer y elegir el dibujo.</p>
+  </section>
+
+  <!-- Opciones de la actividad elegida -->
+  <section id="panel" class="group" hidden aria-live="polite">
+    <div><button class="back" id="volver" type="button">← Volver a las actividades</button></div>
+    <h2 id="tituloSec"></h2>
+    <p class="hint" id="descSec"></p>
+    <div class="field" id="fEsc">
       <label for="escritura">Escritura</label>
       <select id="escritura"><option value="h">Hiragana (あ)</option><option value="k">Katakana (ア)</option></select>
     </div>
-    <div class="opts" id="niveles">
-      <label class="opt"><input type="radio" name="nivel" value="1"> <span>Nivel 1 · Sonidos puros (あ い う え お, か き…)</span></label>
-      <label class="opt"><input type="radio" name="nivel" value="2"> <span>Nivel 2 · Con rayitas (が ざ だ ば ぱ…) (incluye el nivel 1)</span></label>
-      <label class="opt"><input type="radio" name="nivel" value="3"> <span>Nivel 3 · Combinados (きゃ しゅ ちょ…) (incluye los anteriores)</span></label>
-      <label class="opt"><input type="radio" name="nivel" value="4"> <span>Nivel 4 · Especiales (っ, la vocal larga) (incluye todo)</span></label>
-    </div>
-    <div class="field">
-      <label for="modo">Modo</label>
-      <select id="modo">
-        <option value="sonido">Elegir el sonido del carácter</option>
-        <option value="imagen">Palabra → imagen (vocabulario)</option>
-        <option value="cinta">Cinta: leer en voz alta a velocidad</option>
-      </select>
-    </div>
-    <div class="field" id="boxOpc">
+    <div class="opts" id="fNiv" role="radiogroup" aria-label="Nivel"></div>
+    <div class="field" id="fOpc">
       <label for="nOpc">Botones de respuesta</label>
       <select id="nOpc"><option value="5">5</option><option value="6">6</option></select>
     </div>
-    <div class="field" id="boxPreg">
+    <div class="field" id="fPreg">
       <label for="nPreg">Preguntas por sesión</label>
       <select id="nPreg"><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>
     </div>
@@ -121,10 +127,14 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
     <p class="aviso" id="aviso" role="status"></p>
   </section>
 
+  <!-- Preguntas -->
   <section id="juego" class="group" hidden aria-live="polite">
     <div class="barra"><span id="pts">0 pts</span><span id="racha">Racha 0</span><span id="num">1 / 10</span></div>
     <div class="prog"><div id="bar"></div></div>
-    <div class="pregunta jp" id="preg"></div>
+    <div id="pregWrap">
+      <div class="pregunta jp" id="preg"></div>
+      <div class="etq" id="etq" hidden></div>
+    </div>
     <button class="btn escuchar" id="escuchar" type="button" hidden>🔊 Escuchar</button>
     <div class="opciones" id="opciones"></div>
     <div class="explica" id="explica" hidden></div>
@@ -135,21 +145,13 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
   </section>
 
   <section id="resumen" class="group resumen" hidden></section>
-
-  <section class="group" aria-labelledby="h-est">
-    <h2 id="h-est">Cómo viene</h2>
-    <div class="estado">
-      <div><b id="eDom">0</b><small>dominados</small></div>
-      <div><b id="eRep">0</b><small>en repaso</small></div>
-      <div><b id="eRef">0</b><small>a reforzar</small></div>
-    </div>
-    <div class="row"><button class="btn danger" id="reiniciar" type="button">Reiniciar el avance de kana</button></div>
-  </section>
 </main>
 
+<!-- Cinta de lectura -->
 <div class="cinta" id="cinta" hidden>
-  <div id="ctrack" class="jp" style="position:absolute;inset:0"></div>
+  <div id="ctrack" style="position:absolute;inset:0"></div>
   <div class="fin" id="cfin" hidden></div>
+  <div class="cradu" id="cradu" hidden></div>
   <div class="ctrl hide" id="cctrl">
     <button class="btn" id="cpausa" type="button" aria-label="Pausar">⏸</button>
     <button class="btn" id="clento" type="button" aria-label="Más lento">− lento</button>
@@ -157,31 +159,33 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
     <button class="btn" id="crapido" type="button" aria-label="Más rápido">rápido +</button>
     <button class="btn" id="cchica" type="button" aria-label="Letra más chica">A−</button>
     <button class="btn" id="cgrande" type="button" aria-label="Letra más grande">A+</button>
+    <button class="btn" id="ctrad" type="button">Traducción</button>
     <button class="btn exit" id="csalir" type="button">✕ Salir</button>
   </div>
 </div>
 
+<script src="comun.js"></script>
 <script>
 (() => {
 const $ = id => document.getElementById(id);
-const store = {
+const LS = {
   get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 };
 const INT = { 1: 2, 2: 6, 3: 14, 4: 35, 5: 90 };
-const DEF = { esc: 'h', nivel: '1', modo: 'sonido', nOpc: '5', nPreg: '10' };
-let ajustes = Object.assign({}, DEF, store.get('lv2-kana-aj', {}));
-let estado = store.get('lv2-kana-estado', {});
-let q = store.get('lv2-kana-q', 0);
-let J = null;
 const rnd = a => a[Math.floor(Math.random() * a.length)];
-function mezclar(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const mezclar = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-/* ---------- Datos ---------- */
+/* ---------- Ajustes del dispositivo ---------- */
+let ajustes = Object.assign({ esc: 'h', nivelL: '1', nivelC: '1', nOpc: '5', nPreg: '10' }, LS.get('lv2-kana-aj3', {}));
+const guardarAj = () => LS.set('lv2-kana-aj3', ajustes);
+let sec = null;
+
+/* ---------- Datos de kana ---------- */
 const PURE_R = ['a','i','u','e','o','ka','ki','ku','ke','ko','sa','shi','su','se','so','ta','chi','tsu','te','to','na','ni','nu','ne','no','ha','hi','fu','he','ho','ma','mi','mu','me','mo','ya','yu','yo','ra','ri','ru','re','ro','wa','wo','n'];
 const DAK_R = ['ga','gi','gu','ge','go','za','ji','zu','ze','zo','da','de','do','ba','bi','bu','be','bo','pa','pi','pu','pe','po'];
 const COMB_R = ['kya','kyu','kyo','sha','shu','sho','cha','chu','cho','nya','nyu','nyo','hya','hyu','hyo','mya','myu','myo','rya','ryu','ryo','gya','gyu','gyo','ja','ju','jo','bya','byu','byo','pya','pyu','pyo'];
-const T = {
+const TBL = {
   h: {
     pure: 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん',
     dak:  'がぎぐげござじずぜぞだでどばびぶべぼぱぴぷぺぽ',
@@ -197,116 +201,150 @@ const T = {
     conf: [['シ','ツ','ソ'],['ワ','ク','ケ'],['ン','ソ'],['ウ','フ','ク'],['ラ','テ'],['ナ','メ','ノ'],['ア','マ'],['ヌ','ス']]
   }
 };
-const VOCAB = [
-  { h: 'りんご', r: 'ringo', es: 'manzana', e: '🍎' },
-  { h: 'ばなな', r: 'banana', es: 'banana', e: '🍌' },
-  { h: 'なし', r: 'nashi', es: 'pera', e: '🍐' },
-  { h: 'すいか', r: 'suika', es: 'sandía', e: '🍉' },
-  { h: 'ぶどう', r: 'budō', es: 'uva', e: '🍇' },
-  { h: 'みかん', r: 'mikan', es: 'mandarina', e: '🍊' },
-  { h: 'いちご', r: 'ichigo', es: 'frutilla', e: '🍓' },
-  { h: 'ねこ', r: 'neko', es: 'gato', e: '🐱' },
-  { h: 'いぬ', r: 'inu', es: 'perro', e: '🐶' },
-  { h: 'うし', r: 'ushi', es: 'vaca', e: '🐮' },
-  { h: 'さかな', r: 'sakana', es: 'pez', e: '🐟' },
-  { h: 'とり', r: 'tori', es: 'pájaro', e: '🐦' }
-];
+function silabas(sc) {
+  const t = TBL[sc], pure = [...t.pure], dak = [...t.dak], cs = [...t.comb];
+  const comb = []; for (let i = 0; i < cs.length; i += 2) comb.push(cs[i] + cs[i + 1]);
+  return {
+    pure: PURE_R.map((r, i) => ({ ch: pure[i], r })),
+    dak: DAK_R.map((r, i) => ({ ch: dak[i], r })),
+    comb: COMB_R.map((r, i) => ({ ch: comb[i], r })),
+    esp: t.esp.map(e => ({ ch: e.ch, r: e.r }))
+  };
+}
+function todosLosCaracteres(sc) { const S = silabas(sc); return [...S.pure, ...S.dak, ...S.comb, ...S.esp]; }
+function caracteresDelNivel(sc, nivel) {
+  const S = silabas(sc);
+  let arr = [...S.pure];
+  if (nivel >= 2) arr = arr.concat(S.dak);
+  if (nivel >= 3) arr = arr.concat(S.comb);
+  if (nivel >= 4) arr = arr.concat(S.esp);
+  return arr;
+}
 
-function combinados(sc) {
-  const s = [...T[sc].comb]; const out = [];
-  for (let i = 0; i < s.length; i += 2) out.push(s[i] + s[i + 1]);
-  return out;
-}
-function todosLosItems(sc) {
-  const pure = [...T[sc].pure], dak = [...T[sc].dak];
-  const out = [];
-  PURE_R.forEach((r, i) => out.push({ ch: pure[i], r, nv: 1 }));
-  DAK_R.forEach((r, i) => out.push({ ch: dak[i], r, nv: 2 }));
-  const comb = combinados(sc);
-  COMB_R.forEach((r, i) => out.push({ ch: comb[i], r, nv: 3 }));
-  T[sc].esp.forEach(e => out.push({ ch: e.ch, r: e.r, nv: 4 }));
-  return out;
-}
-function itemsDelNivel(sc, nivel) { return todosLosItems(sc).filter(x => x.nv <= nivel); }
+/* Palabras con dibujo. "b" = banda de edad en la que aparece (1: 3-5, 2: 6-7, 3: 8-10).
+   "amb": la imagen puede confundir, por eso se muestra la palabra en español. Revisar antes de usar. */
+const VOCAB = [
+  { h: 'め', e: '👁️', es: 'ojo', b: 1 },
+  { h: 'はな', e: '👃', es: 'nariz', b: 1 },
+  { h: 'くち', e: '👄', es: 'boca', b: 1 },
+  { h: 'て', e: '✋', es: 'mano', b: 1 },
+  { h: 'あし', e: '🦶', es: 'pie', b: 1 },
+  { h: 'いぬ', e: '🐶', es: 'perro', b: 1 },
+  { h: 'ねこ', e: '🐱', es: 'gato', b: 1 },
+  { h: 'とり', e: '🐦', es: 'pájaro', b: 1 },
+  { h: 'ぶた', e: '🐷', es: 'chancho', b: 1 },
+  { h: 'くま', e: '🐻', es: 'oso', b: 1 },
+  { h: 'ほん', e: '📕', es: 'libro', b: 1 },
+  { h: 'つき', e: '🌙', es: 'luna', b: 1 },
+  { h: 'りんご', e: '🍎', es: 'manzana', b: 1 },
+  { h: 'はは', e: '👩', es: 'mamá', b: 1, amb: true },
+  { h: 'ちち', e: '👨', es: 'papá', b: 1, amb: true },
+  { h: 'めがね', e: '👓', es: 'lentes', b: 2 },
+  { h: 'ぼうし', e: '👒', es: 'sombrero', b: 2 },
+  { h: 'くるま', e: '🚗', es: 'auto', b: 2 },
+  { h: 'でんしゃ', e: '🚃', es: 'tren', b: 2 },
+  { h: 'くつ', e: '👟', es: 'zapatilla', b: 2 },
+  { h: 'さら', e: '🍽️', es: 'plato', b: 2 },
+  { h: 'ほし', e: '⭐', es: 'estrella', b: 2 },
+  { h: 'やま', e: '⛰️', es: 'montaña', b: 2 },
+  { h: 'おじいさん', e: '👴', es: 'abuelo', b: 2, amb: true },
+  { h: 'おばあさん', e: '👵', es: 'abuela', b: 2, amb: true },
+  { h: 'ひこうき', e: '✈️', es: 'avión', b: 2 },
+  { h: 'すいか', e: '🍉', es: 'sandía', b: 2 },
+  { h: 'ぶどう', e: '🍇', es: 'uva', b: 2 },
+  { h: 'なし', e: '🍐', es: 'pera', b: 2 },
+  { h: 'みかん', e: '🍊', es: 'mandarina', b: 3 },
+  { h: 'いちご', e: '🍓', es: 'frutilla', b: 3 },
+  { h: 'さかな', e: '🐟', es: 'pez', b: 3 },
+  { h: 'うし', e: '🐮', es: 'vaca', b: 3 },
+  { h: 'がっこう', e: '🏫', es: 'escuela', b: 3 },
+  { h: 'びょういん', e: '🏥', es: 'hospital', b: 3 },
+  { h: 'こうえん', e: '🌳', es: 'parque', b: 3 },
+  { h: 'ふね', e: '🚢', es: 'barco', b: 3 },
+  { h: 'おんがく', e: '🎵', es: 'música', b: 3 },
+  { h: 'はし', e: '🌉', es: 'puente', b: 3, amb: true },
+  { h: 'てんき', e: '🌦️', es: 'clima', b: 3, amb: true },
+  { h: 'いしゃ', e: '🧑‍⚕️', es: 'médico', b: 3, amb: true }
+];
+/* Frases para el nivel 5 de la cinta. "は" se lee "wa" cuando funciona como partícula. */
+const FRASES = [
+  { h: 'わたしは おとこ です。', es: 'Yo soy un hombre.' },
+  { h: 'わたしは おんな です。', es: 'Yo soy una mujer.' },
+  { h: 'これは なんですか。', es: '¿Qué es esto?' },
+  { h: 'これは ほん です。', es: 'Esto es un libro.' },
+  { h: 'これは りんご です。', es: 'Esto es una manzana.' },
+  { h: 'ねこ が すき です。', es: 'Me gusta el gato.' },
+  { h: 'いぬ が います。', es: 'Hay un perro.' },
+  { h: 'おはよう ございます。', es: 'Buenos días.' },
+  { h: 'ありがとう ございます。', es: 'Muchas gracias.' },
+  { h: 'わたしは がくせい です。', es: 'Yo soy estudiante.' }
+];
+function bancoVocab(banda) { return VOCAB.filter(v => v.b <= banda); }
 
 /* ---------- Opciones ---------- */
-function opcionesSonido(item, n, sc) {
-  const all = todosLosItems(sc);
-  const byCh = new Map(all.map(x => [x.ch, x]));
-  const grupo = T[sc].conf.find(g => g.includes(item.ch));
-  const confs = grupo ? grupo.filter(c => c !== item.ch).map(c => byCh.get(c)).filter(Boolean) : [];
-  const cand = [...mezclar(confs), ...mezclar(all)];
-  const usados = new Set([item.r]); const out = [item.r];
-  for (const x of cand) { if (out.length >= n) break; if (!usados.has(x.r)) { usados.add(x.r); out.push(x.r); } }
-  return mezclar(out);
-}
-function opcionesImagen(v, n) {
-  const usados = new Set([v.e]); const out = [v.e];
-  for (const x of mezclar(VOCAB)) { if (out.length >= n) break; if (!usados.has(x.e)) { usados.add(x.e); out.push(x.e); } }
+function opciones(ans, cand, n) {
+  const usados = new Set([ans]); const out = [ans];
+  for (const v of cand) { if (out.length >= n) break; if (!usados.has(v)) { usados.add(v); out.push(v); } }
   return mezclar(out);
 }
 
-/* ---------- Elegir la siguiente ---------- */
-function elegir(pool, claveDe) {
-  const debidas = pool.filter(x => estado[claveDe(x)] && estado[claveDe(x)].n <= q);
-  const nuevas = pool.filter(x => !estado[claveDe(x)]);
-  let cand;
-  if (debidas.length >= 2 || !nuevas.length) {
-    if (debidas.length) {
-      debidas.sort((a, b) => (estado[claveDe(a)].b - estado[claveDe(b)].b) || (estado[claveDe(a)].n - estado[claveDe(b)].n));
-      cand = debidas.slice(0, 6);
-    } else {
-      cand = pool.slice().sort((a, b) => ((estado[claveDe(a)] || {}).n || 0) - ((estado[claveDe(b)] || {}).n || 0)).slice(0, 6);
-    }
-  } else cand = nuevas;
-  let x = rnd(cand);
-  if (cand.length > 1 && J.ultimo && claveDe(x) === J.ultimo) x = rnd(cand.filter(y => claveDe(y) !== J.ultimo));
-  return x;
-}
-
-/* ---------- Juego ---------- */
-function empezar() {
-  leerAjustes();
-  if (ajustes.modo === 'cinta') return iniciarCinta();
-  const sc = ajustes.esc, nivel = +ajustes.nivel;
-  const esSonido = ajustes.modo === 'sonido';
-  const pool = esSonido ? itemsDelNivel(sc, nivel) : VOCAB;
-  if (!pool.length) { $('aviso').textContent = 'No hay elementos en ese nivel.'; return; }
+/* ---------- Configuración de cada actividad ---------- */
+const SECC = {
+  letras: { titulo: 'Reconocer las letras', desc: 'Aparece un carácter grande y se elige su sonido entre varias opciones. Cada nivel incluye los anteriores.',
+    niveles: [['1','Sonidos puros (あ い う え お, か き…)'],['2','Con rayitas (が ざ だ ば ぱ…)'],['3','Combinados (きゃ しゅ ちょ…)'],['4','Especiales (っ y la vocal larga)']], usaEsc: true, usaOpc: true },
+  dibujo: { titulo: 'Leer y elegir el dibujo', desc: 'Aparece una palabra y se elige el dibujo que le corresponde. Las palabras cambian según la edad del perfil.', niveles: null, usaEsc: false, usaOpc: true },
+  inversa: { titulo: 'Ver el dibujo y elegir la palabra', desc: 'Aparece un dibujo y se elige la palabra entre varias. Cuando un dibujo puede confundir, se muestra también la palabra en español.', niveles: null, usaEsc: false, usaOpc: true },
+  cinta: { titulo: 'Leer en movimiento', desc: 'Las letras, palabras y frases pasan de derecha a izquierda, y el chico las lee en voz alta. Sin puntaje: vos llevás la cuenta.',
+    niveles: [['1','Letras sueltas'],['2','Dos sílabas, algunas con rayitas'],['3','Tres o cuatro sílabas (inventadas)'],['4','Palabras con significado'],['5','Frases']], usaEsc: true, usaOpc: false }
+};
+function abrirSeccion(s) {
+  sec = s; const c = SECC[s];
+  $('tituloSec').textContent = c.titulo;
+  $('descSec').textContent = c.desc;
+  $('fEsc').hidden = !c.usaEsc;
+  $('fOpc').hidden = !c.usaOpc;
+  $('fPreg').hidden = s === 'cinta';
+  const niv = $('fNiv'); niv.textContent = '';
+  if (c.niveles) {
+    const actual = s === 'cinta' ? ajustes.nivelC : ajustes.nivelL;
+    c.niveles.forEach(([v, t]) => {
+      const lab = document.createElement('label'); lab.className = 'opt';
+      const r = document.createElement('input'); r.type = 'radio'; r.name = 'nivel'; r.value = v; r.checked = v === actual;
+      const sp = document.createElement('span'); sp.textContent = 'Nivel ' + v + ' · ' + t;
+      lab.append(r, sp); niv.appendChild(lab);
+    });
+    niv.hidden = false;
+  } else niv.hidden = true;
+  $('escritura').value = ajustes.esc;
+  $('nOpc').value = ajustes.nOpc; $('nPreg').value = ajustes.nPreg;
+  $('ayuda').textContent = s === 'cinta'
+    ? 'En los niveles 4 y 5 las palabras y frases están en hiragana por ahora. Con el botón Traducción podés ver el significado, solo para vos.'
+    : (s === 'inversa' ? 'Si el dibujo puede confundir, la palabra en español aparece debajo.' : '');
   $('aviso').textContent = '';
-  J = { modo: ajustes.modo, sc, pool, clave: esSonido ? (x => 'S' + sc + ':' + x.ch) : (x => 'P:' + x.h),
-        total: +ajustes.nPreg, hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null };
-  $('ajustes').hidden = true; $('resumen').hidden = true; $('juego').hidden = false;
-  siguiente();
+  $('empezar').textContent = s === 'cinta' ? '▶ EMPEZAR LA CINTA' : '▶ EMPEZAR';
+  $('inicio').hidden = true; $('panel').hidden = false;
+  $('juego').hidden = true; $('resumen').hidden = true;
+  window.scrollTo(0, 0);
 }
-function siguiente() {
-  const esSonido = J.modo === 'sonido';
-  const x = elegir(J.pool, J.clave);
-  J.actual = x; J.ultimo = J.clave(x); J.respondida = false;
-  const n = +ajustes.nOpc;
-  const pre = $('preg');
-  if (esSonido) {
-    pre.className = 'pregunta jp'; pre.textContent = x.ch;
-    J.opts = opcionesSonido(x, n, J.sc);
-    $('escuchar').hidden = true;
-  } else {
-    pre.className = 'pregunta jp palabra'; pre.textContent = x.h;
-    J.opts = opcionesImagen(x, n);
-    $('escuchar').hidden = false;
-    hablar(x.h);
-  }
-  $('num').textContent = (J.hecha + 1) + ' / ' + J.total;
-  $('bar').style.width = (100 * J.hecha / J.total) + '%';
-  const cont = $('opciones'); cont.textContent = '';
-  J.opts.forEach(v => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.dataset.v = v;
-    b.className = esSonido ? 'op jp' : 'op img';
-    b.textContent = v;
-    cont.appendChild(b);
+function leerPanel() {
+  ajustes.esc = $('escritura').value;
+  ajustes.nOpc = $('nOpc').value; ajustes.nPreg = $('nPreg').value;
+  const r = document.querySelector('input[name=nivel]:checked');
+  if (r) { if (sec === 'cinta') ajustes.nivelC = r.value; else ajustes.nivelL = r.value; }
+  guardarAj();
+}
+$('volver').onclick = () => { $('panel').hidden = true; $('inicio').hidden = false; $('juego').hidden = true; $('resumen').hidden = true; };
+document.querySelectorAll('.tarjeta').forEach(b => b.addEventListener('click', () => abrirSeccion(b.dataset.sec)));
+$('empezar').onclick = () => {
+  leerPanel();
+  Perfil.elegir(() => {
+    if (sec === 'cinta') iniciarCinta();
+    else iniciarPreguntas();
   });
-  $('explica').hidden = true; $('sig').hidden = true;
-  J.t0 = performance.now();
-}
+};
+
+/* ---------- Preguntas (letras, dibujo, inversa) ---------- */
+let J = null;
 function hablar(texto) {
   try {
     if (!('speechSynthesis' in window)) return;
@@ -315,33 +353,108 @@ function hablar(texto) {
     speechSynthesis.speak(u);
   } catch (e) {}
 }
+function iniciarPreguntas() {
+  const banda = Perfil.actual().banda;
+  let items;
+  if (sec === 'letras') items = caracteresDelNivel(ajustes.esc, +ajustes.nivelL).map(x => ({ k: 'L' + ajustes.esc + x.ch, ch: x.ch, r: x.r }));
+  else items = bancoVocab(banda).map(v => ({ k: (sec === 'dibujo' ? 'D' : 'I') + v.h, ...v }));
+  if (!items.length) { $('aviso').textContent = 'No hay elementos para practicar.'; return; }
+  const est = Perfil.store.get('est-' + sec, {});
+  const q = Perfil.store.get('q', 0);
+  J = { items, est, q, total: +ajustes.nPreg, hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [], banda };
+  $('panel').hidden = true; $('juego').hidden = false; $('resumen').hidden = true;
+  siguiente();
+}
+function elegirItem() {
+  const debidas = J.items.filter(x => J.est[x.k] && J.est[x.k].n <= J.q);
+  const nuevas = J.items.filter(x => !J.est[x.k]);
+  let cand;
+  if (debidas.length >= 2 || !nuevas.length) {
+    if (debidas.length) {
+      debidas.sort((a, b) => (J.est[a.k].b - J.est[b.k].b) || (J.est[a.k].n - J.est[b.k].n));
+      cand = debidas.slice(0, 6);
+    } else {
+      cand = J.items.slice().sort((a, b) => ((J.est[a.k] || {}).n || 0) - ((J.est[b.k] || {}).n || 0)).slice(0, 6);
+    }
+  } else cand = nuevas;
+  let x = rnd(cand);
+  if (cand.length > 1 && J.ultimo && x.k === J.ultimo) x = rnd(cand.filter(y => y.k !== J.ultimo));
+  return x;
+}
+function opcionesDe(x) {
+  const n = +ajustes.nOpc;
+  if (sec === 'letras') {
+    const todos = todosLosCaracteres(ajustes.esc);
+    const grupo = TBL[ajustes.esc].conf.find(g => g.includes(x.ch));
+    const confs = grupo ? grupo.filter(c => c !== x.ch).map(c => todos.find(t => t.ch === c)).filter(Boolean).map(t => t.r) : [];
+    return opciones(x.r, [...confs, ...mezclar(todos.map(t => t.r))], n);
+  }
+  const banco = bancoVocab(J.banda);
+  if (sec === 'dibujo') return opciones(x.e, mezclar(banco.map(v => v.e)), n);
+  return opciones(x.h, mezclar(banco.map(v => v.h)), n);
+}
+function siguiente() {
+  const x = elegirItem();
+  J.actual = x; J.ultimo = x.k; J.respondida = false;
+  J.opts = opcionesDe(x);
+  const pre = $('preg'), etq = $('etq');
+  etq.hidden = true; etq.textContent = '';
+  $('escuchar').hidden = true;
+  if (sec === 'letras') {
+    pre.className = 'pregunta jp'; pre.textContent = x.ch;
+  } else if (sec === 'dibujo') {
+    pre.className = 'pregunta jp palabra'; pre.textContent = x.h;
+    $('escuchar').hidden = false;
+    hablar(x.h);
+  } else {
+    pre.className = 'pregunta dibujo'; pre.textContent = x.e;
+    if (x.amb) { etq.textContent = x.es; etq.hidden = false; }
+  }
+  const cont = $('opciones'); cont.textContent = '';
+  J.opts.forEach(v => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.dataset.v = v;
+    b.className = sec === 'dibujo' ? 'op dib' : 'op jp';
+    b.textContent = v;
+    cont.appendChild(b);
+  });
+  $('num').textContent = (J.hecha + 1) + ' / ' + J.total;
+  $('bar').style.width = (100 * J.hecha / J.total) + '%';
+  $('explica').hidden = true; $('sig').hidden = true;
+  J.t0 = performance.now();
+}
+function textoCorrecto(x) {
+  if (sec === 'letras') return x.ch + ' = <strong>' + x.r + '</strong>';
+  if (sec === 'dibujo') return x.h + ' = <strong>' + x.es + '</strong> ' + x.e;
+  return x.e + ' ' + x.es + ' = <strong>' + x.h + '</strong>';
+}
+function respuestaCorrecta(x) { return sec === 'letras' ? x.r : (sec === 'dibujo' ? x.e : x.h); }
 function responder(btn) {
   if (!J || J.respondida) return;
   J.respondida = true;
-  const x = J.actual, esSonido = J.modo === 'sonido';
-  const correcto = esSonido ? x.r : x.e;
-  const v = btn.dataset.v;
-  const ok = v === correcto;
+  const x = J.actual, correcto = respuestaCorrecta(x);
+  const ok = btn.dataset.v === correcto;
   const tiempo = (performance.now() - J.t0) / 1000;
   document.querySelectorAll('.op').forEach(b => { b.disabled = true; if (b.dataset.v === correcto) b.classList.add('ok'); });
   const ex = $('explica');
-  const textoCompleto = esSonido ? `${x.ch} = <strong>${x.r}</strong>` : `${x.h} (${x.r}) = <strong>${x.es}</strong> ${x.e}`;
   if (ok) {
     btn.classList.add('ok');
     J.aciertos++; J.racha++; J.rachaMax = Math.max(J.rachaMax, J.racha);
     J.puntos += 10 + (J.racha >= 3 ? 5 : 0);
-    ex.className = 'explica ok'; ex.innerHTML = '¡Muy bien! ' + textoCompleto;
+    ex.className = 'explica ok'; ex.innerHTML = '¡Muy bien! ' + textoCorrecto(x);
+    Elogio.bien();
+    if (J.racha === 3) Elogio.racha();
   } else {
     btn.classList.add('bad');
     J.racha = 0;
-    const etiqueta = esSonido ? x.ch : x.h;
-    J.fallos[J.clave(x)] = (J.fallos[J.clave(x)] || 0) + 1;
+    J.fallos[x.k] = (J.fallos[x.k] || 0) + 1;
     ex.className = 'explica bad';
-    ex.innerHTML = `Era: ${textoCompleto}<br><span class="hint">${etiqueta} va a volver enseguida.</span>`;
+    ex.innerHTML = 'Era: ' + textoCorrecto(x) + '<br><span class="hint">Esta vuelve a aparecer enseguida.</span>';
+    Elogio.error();
   }
-  if (J.modo === 'imagen') hablar(x.h);
+  if (sec !== 'letras') hablar(x.h);
   ex.hidden = false;
-  actualizarEstado(J.clave(x), x.ch || x.h, ok, esSonido ? x.ch : x.h);
+  actualizarEstado(x, ok);
   J.tiempos.push(tiempo);
   J.hecha++;
   $('pts').textContent = J.puntos + ' pts';
@@ -349,54 +462,72 @@ function responder(btn) {
   $('sig').textContent = J.hecha >= J.total ? 'Ver resultado' : 'Siguiente ▶';
   $('sig').hidden = false; $('sig').focus();
 }
-function actualizarEstado(clave, _, ok, etiqueta) {
-  const e = estado[clave] || { b: 1, n: 0, f: 0, t: etiqueta };
-  e.t = etiqueta;
-  if (ok) { e.b = Math.min(5, e.b + 1); e.n = q + INT[e.b]; }
-  else { e.b = 1; e.n = q + 2; e.f = (e.f || 0) + 1; }
-  estado[clave] = e;
-  q++;
-  store.set('lv2-kana-estado', estado); store.set('lv2-kana-q', q);
-  pintarEstado();
+function actualizarEstado(x, ok) {
+  const e = J.est[x.k] || { b: 1, n: 0, f: 0 };
+  e.t = sec === 'letras' ? x.ch : x.h;
+  if (ok) { e.b = Math.min(5, e.b + 1); e.n = J.q + INT[e.b]; }
+  else { e.b = 1; e.n = J.q + 2; e.f = (e.f || 0) + 1; }
+  J.est[x.k] = e;
+  J.q++;
+  Perfil.store.set('est-' + sec, J.est);
+  Perfil.store.set('q', J.q);
 }
 function finalizar() {
   if (!J) return;
   const prom = J.tiempos.length ? J.tiempos.reduce((a, b) => a + b, 0) / J.tiempos.length : 0;
-  const peores = Object.entries(J.fallos).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => estado[k] ? estado[k].t : k);
   const completa = J.hecha >= J.total;
+  const peores = Object.entries(J.fallos).sort((a, b) => b[1] - a[1]).slice(0, 3)
+    .map(([k]) => (J.est[k] && J.est[k].t) || k.slice(1));
   const r = $('resumen');
   r.innerHTML = `<h2>${completa ? '¡Terminaste!' : 'Sesión cortada'}</h2>
     <p><b>${J.aciertos}</b> de ${J.hecha} bien · <b>${J.puntos}</b> puntos · racha máxima ${J.rachaMax}</p>
     <p class="hint">Tiempo promedio: ${prom.toFixed(1)} s por respuesta</p>
     ${peores.length ? `<p class="hint">Para repasar: ${peores.join(' · ')}</p>` : ''}
-    <div class="row"><button class="btn primary" id="otra" type="button">↺ Otra sesión</button><button class="btn" id="cambiar" type="button">Cambiar lo que practico</button></div>`;
+    <div class="row"><button class="btn primary" id="otra" type="button">↺ Otra sesión</button><button class="btn" id="cambiar" type="button">Volver a las actividades</button></div>`;
   r.hidden = false; $('juego').hidden = true;
-  $('otra').onclick = () => { r.hidden = true; empezar(); };
-  $('cambiar').onclick = () => { r.hidden = true; $('ajustes').hidden = false; };
-  J = null; $('ajustes').hidden = true;
-  pintarEstado();
+  $('otra').onclick = () => { Perfil.elegir(() => iniciarPreguntas()); };
+  $('cambiar').onclick = () => { r.hidden = true; $('inicio').hidden = false; };
+  Elogio.fin();
+  J = null;
 }
-function pintarEstado() {
-  const vals = Object.values(estado);
-  $('eDom').textContent = vals.filter(e => e.b === 5).length;
-  $('eRep').textContent = vals.filter(e => e.b >= 2 && e.b <= 4).length;
-  $('eRef').textContent = vals.filter(e => e.b === 1).length;
-}
+$('sig').onclick = () => { if (J.hecha >= J.total) finalizar(); else siguiente(); };
+$('terminar').onclick = () => finalizar();
+$('escuchar').onclick = () => { if (J && J.actual) hablar(J.actual.h); };
+$('opciones').addEventListener('click', e => { const b = e.target.closest('.op'); if (b) responder(b); });
+document.addEventListener('keydown', e => {
+  if (!J || $('juego').hidden) return;
+  if (/^[1-6]$/.test(e.key)) { const b = [...document.querySelectorAll('.op')][+e.key - 1]; if (b && !b.disabled) responder(b); }
+  else if (e.key === 'Enter' && !$('sig').hidden) $('sig').click();
+});
 
-/* ---------- Cinta (lectura veloz) ---------- */
-const C = { cola: [], live: [], vel: 4, tam: 60, pausa: false, run: false, last: 0, raf: 0, playT: 0 };
+/* ---------- Cinta de lectura ---------- */
+const C = { cola: [], live: [], vel: 4, tam: 60, pausa: false, run: false, last: 0, raf: 0, sc: 'h', nivel: 1, banda: 1, ultimoEs: '' };
 const H = () => $('cinta').clientHeight || innerHeight;
 const W = () => $('cinta').clientWidth || innerWidth;
 const fpx = () => H() * C.tam / 100 * 0.8;
+function genCinta() {
+  const S = silabas(C.sc);
+  const s1 = S.pure, s2 = [...S.pure, ...S.dak], s3 = [...S.pure, ...S.dak, ...S.comb];
+  const construir = (arr, n) => { let w = ''; for (let i = 0; i < n; i++) w += rnd(arr).ch; return w; };
+  if (C.nivel === 1) return { txt: rnd(s1).ch };
+  if (C.nivel === 2) return { txt: construir(s2, 2) };
+  if (C.nivel === 3) return { txt: construir(s3, Math.random() < .5 ? 3 : 4) };
+  if (C.nivel === 4) { const v = rnd(bancoVocab(C.banda)); return { txt: v.h, es: v.es }; }
+  const f = rnd(FRASES); return { txt: f.h, es: f.es };
+}
 function ponerTok(it) { it.el.style.transform = `translate3d(${it.x}px,-50%,0)`; }
 function spawnCinta() {
-  const t = C.cola.shift();
-  const el = document.createElement('div'); el.className = 'tok'; el.textContent = t;
-  el.style.fontSize = fpx() + 'px';
+  const t = genCinta();
+  const el = document.createElement('div'); el.className = 'tok';
+  el.textContent = t.txt;
+  const escala = t.txt.length > 8 ? Math.max(.4, 8 / t.txt.length) : 1;
+  el.style.fontSize = (fpx() * escala) + 'px';
   $('ctrack').appendChild(el);
-  const it = { el, w: el.offsetWidth, x: W() };
-  it.el.style.transform = `translate3d(${it.x}px,-50%,0)`;
+  const it = { el, w: el.offsetWidth, x: W(), es: t.es || '' };
+  ponerTok(it);
   C.live.push(it);
+  C.ultimoEs = it.es;
+  if (!$('cradu').hidden) $('cradu').textContent = it.es;
 }
 function frameCinta(t) {
   if (!C.run) return;
@@ -405,27 +536,33 @@ function frameCinta(t) {
     const v = fpx() * C.vel * 0.18 * dt;
     C.live.forEach(it => { it.x -= v; ponerTok(it); });
     while (C.live.length && C.live[0].x + C.live[0].w < 0) C.live.shift().el.remove();
-    while (C.cola.length) {
+    while (C.restan > 0) {
       const ult = C.live[C.live.length - 1];
       if (ult && ult.x + ult.w + fpx() * .7 > W()) break;
-      spawnCinta();
+      spawnCinta(); C.restan--;
     }
-    if (!C.cola.length && !C.live.length) { C.run = false; $('cfin').hidden = false; $('cfin').innerHTML = `<div><b>¡Listo!</b><span class="hint">Pulsá Salir para volver.</span></div>`; return; }
+    if (C.restan === 0 && !C.live.length) {
+      C.run = false;
+      $('cfin').hidden = false;
+      $('cfin').innerHTML = '<div><b>¡Listo!</b><span class="hint">Pulsá Salir para volver.</span></div>';
+      Elogio.fin();
+      return;
+    }
   }
   C.raf = requestAnimationFrame(frameCinta);
 }
 function iniciarCinta() {
-  const items = itemsDelNivel(ajustes.esc, +ajustes.nivel);
-  const esSilabas = items.map(x => x.ch);
-  C.cola = Array.from({ length: 40 }, () => rnd(esSilabas));
-  C.vel = 4; C.tam = 60; C.pausa = false; C.run = true;
-  $('ctrack').textContent = ''; C.live = [];
-  $('cfin').hidden = true;
-  $('cinta').hidden = false; $('juego').hidden = true; $('ajustes').hidden = true;
+  const banda = Perfil.actual().banda;
+  C.sc = ajustes.esc; C.nivel = +ajustes.nivelC; C.banda = banda;
+  if (C.nivel >= 4) C.sc = 'h';
+  C.vel = 4; C.tam = 60; C.pausa = false; C.run = true; C.restan = 30;
+  C.live = []; $('ctrack').textContent = '';
+  $('cfin').hidden = true; $('cradu').hidden = true; $('cradu').textContent = '';
+  $('cinta').hidden = false; $('juego').hidden = true; $('panel').hidden = true; $('inicio').hidden = true;
   $('cpausa').textContent = '⏸';
   actualizarSpd();
   C.last = performance.now();
-  requestAnimationFrame(frameCinta);
+  C.raf = requestAnimationFrame(frameCinta);
   mostrarCtrl();
 }
 function actualizarSpd() { $('cspd').textContent = 'Vel. ' + C.vel; }
@@ -433,59 +570,27 @@ function mostrarCtrl() { $('cctrl').classList.remove('hide'); clearTimeout(C.hid
 function salirCinta() {
   C.run = false; cancelAnimationFrame(C.raf);
   $('ctrack').textContent = ''; C.live = [];
-  $('cinta').hidden = true; $('ajustes').hidden = false;
+  $('cinta').hidden = true; $('inicio').hidden = false;
 }
-$('cinta').addEventListener('click', e => { if (e.target.closest('#cctrl')) { mostrarCtrl(); return; } if ($('cctrl').classList.contains('hide')) mostrarCtrl(); else $('cctrl').classList.add('hide'); });
+$('cinta').addEventListener('click', e => {
+  if (e.target.closest('#cctrl')) { mostrarCtrl(); return; }
+  if ($('cctrl').classList.contains('hide')) mostrarCtrl(); else $('cctrl').classList.add('hide');
+});
 $('cpausa').onclick = e => { e.stopPropagation(); C.pausa = !C.pausa; $('cpausa').textContent = C.pausa ? '▶' : '⏸'; mostrarCtrl(); };
 $('clento').onclick = e => { e.stopPropagation(); C.vel = Math.max(1, C.vel - 1); actualizarSpd(); mostrarCtrl(); };
 $('crapido').onclick = e => { e.stopPropagation(); C.vel = Math.min(10, C.vel + 1); actualizarSpd(); mostrarCtrl(); };
-$('cchica').onclick = e => { e.stopPropagation(); C.tam = Math.max(30, C.tam - 10); C.live.forEach(it => { it.el.style.fontSize = fpx() + 'px'; it.w = it.el.offsetWidth; }); mostrarCtrl(); };
-$('cgrande').onclick = e => { e.stopPropagation(); C.tam = Math.min(95, C.tam + 10); C.live.forEach(it => { it.el.style.fontSize = fpx() + 'px'; it.w = it.el.offsetWidth; }); mostrarCtrl(); };
+const reescalar = () => C.live.forEach(it => { const esc = it.el.textContent.length > 8 ? Math.max(.4, 8 / it.el.textContent.length) : 1; it.el.style.fontSize = (fpx() * esc) + 'px'; it.w = it.el.offsetWidth; });
+$('cchica').onclick = e => { e.stopPropagation(); C.tam = Math.max(30, C.tam - 10); reescalar(); mostrarCtrl(); };
+$('cgrande').onclick = e => { e.stopPropagation(); C.tam = Math.min(95, C.tam + 10); reescalar(); mostrarCtrl(); };
+$('ctrad').onclick = e => {
+  e.stopPropagation();
+  const r = $('cradu');
+  r.hidden = !r.hidden;
+  r.textContent = r.hidden ? '' : C.ultimoEs;
+  mostrarCtrl();
+};
 $('csalir').onclick = e => { e.stopPropagation(); salirCinta(); };
 
-/* ---------- Ajustes ---------- */
-function leerAjustes() {
-  ajustes.esc = $('escritura').value;
-  ajustes.nivel = (document.querySelector('input[name=nivel]:checked') || { value: '1' }).value;
-  ajustes.modo = $('modo').value;
-  ajustes.nOpc = $('nOpc').value; ajustes.nPreg = $('nPreg').value;
-  store.set('lv2-kana-aj', ajustes);
-  pintarAjustes();
-}
-function pintarAjustes() {
-  $('escritura').value = ajustes.esc;
-  document.querySelectorAll('input[name=nivel]').forEach(r => r.checked = r.value === ajustes.nivel);
-  $('modo').value = ajustes.modo;
-  $('nOpc').value = ajustes.nOpc; $('nPreg').value = ajustes.nPreg;
-  const esSonido = ajustes.modo === 'sonido';
-  $('boxOpc').hidden = ajustes.modo === 'cinta';
-  $('boxPreg').hidden = ajustes.modo === 'cinta';
-  $('ayuda').textContent = ajustes.modo === 'cinta'
-    ? 'En cinta no hay puntaje: el chico lee en voz alta mientras pasan los caracteres, y vos llevás la cuenta.'
-    : (esSonido ? 'Las opciones incluyen caracteres que se confunden, como ぬ / め / ね.'
-                : 'Aparece la palabra y el chico elige el dibujo. El botón Escuchar la lee en voz alta, si el dispositivo tiene voz japonesa.');
-  $('empezar').textContent = ajustes.modo === 'cinta' ? '▶ EMPEZAR LA CINTA' : '▶ EMPEZAR';
-}
-document.querySelector('#ajustes').addEventListener('change', leerAjustes);
-$('empezar').onclick = () => empezar();
-$('sig').onclick = () => { if (J.hecha >= J.total) finalizar(); else siguiente(); };
-$('terminar').onclick = () => finalizar();
-$('escuchar').onclick = () => { if (J && J.actual && J.actual.h) hablar(J.actual.h); };
-$('opciones').addEventListener('click', e => { const b = e.target.closest('.op'); if (b) responder(b); });
-$('reiniciar').onclick = () => {
-  if (!confirm('¿Borrar el avance de kana de este dispositivo?')) return;
-  estado = {}; q = 0;
-  store.set('lv2-kana-estado', estado); store.set('lv2-kana-q', q);
-  pintarEstado();
-};
-document.addEventListener('keydown', e => {
-  if (!J || $('juego').hidden) return;
-  if (/^[1-6]$/.test(e.key)) { const b = [...document.querySelectorAll('.op')][+e.key - 1]; if (b && !b.disabled) responder(b); }
-  else if (e.key === 'Enter' && !$('sig').hidden) $('sig').click();
-});
-
-pintarAjustes();
-pintarEstado();
 })();
 </script>
 </body>

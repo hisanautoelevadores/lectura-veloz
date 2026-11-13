@@ -143,6 +143,7 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
   </section>
 </main>
 
+<script src="comun.js"></script>
 <script>
 (() => {
 const $ = id => document.getElementById(id);
@@ -153,9 +154,9 @@ const store = {
 const INT = { 1: 2, 2: 6, 3: 14, 4: 35, 5: 90 }; // preguntas hasta volver a preguntar, según la caja
 const DEF = { op: ['mult'], tmin: '2', tmax: '10', max: '20', nOpc: '5', nPreg: '20' };
 let ajustes = Object.assign({}, DEF, store.get('lv2-mat-aj', {}));
-let estado = store.get('lv2-mat-estado', {});
-let q = store.get('lv2-mat-q', 0);
-let sesiones = store.get('lv2-mat-ses', []);
+let estado = {};
+let q = 0;
+let sesiones = [];
 let J = null;
 
 const rnd = a => a[Math.floor(Math.random() * a.length)];
@@ -274,12 +275,14 @@ function responder(btn) {
     btn.classList.add('ok');
     J.aciertos++; J.racha++; J.rachaMax = Math.max(J.rachaMax, J.racha);
     J.puntos += 10 + (J.racha >= 3 ? 5 : 0);
+    Elogio.bien(); if (J.racha === 3) Elogio.racha();
     ex.className = 'explica ok';
     ex.innerHTML = `¡Muy bien! ${textoRazon(real)}`;
   } else {
     btn.classList.add('bad');
     J.racha = 0;
     J.fallos[real.k] = (J.fallos[real.k] || 0) + 1;
+    Elogio.error();
     ex.className = 'explica bad';
     ex.innerHTML = `Era ${real.c}. ${textoRazon(real)}<br><span class="hint">Esta cuenta va a volver enseguida.</span>`;
   }
@@ -300,17 +303,18 @@ function actualizarEstado(f, ok) {
   else { e.b = 1; e.n = q + 2; e.f++; }
   estado[f.k] = e;
   q++;
-  store.set('lv2-mat-estado', estado);
-  store.set('lv2-mat-q', q);
+  Perfil.store.set('lv2-mat-estado', estado);
+  Perfil.store.set('lv2-mat-q', q);
   pintarEstado();
 }
 function finalizar() {
   if (!J) return;
   const prom = J.tiempos.length ? (J.tiempos.reduce((a, b) => a + b, 0) / J.tiempos.length) : 0;
   const ses = { f: new Date().toISOString(), p: J.puntos, ac: J.aciertos, n: J.hecha, t: prom };
-  if (J.hecha > 0) { sesiones.unshift(ses); sesiones = sesiones.slice(0, 20); store.set('lv2-mat-ses', sesiones); }
+  if (J.hecha > 0) { sesiones.unshift(ses); sesiones = sesiones.slice(0, 20); Perfil.store.set('lv2-mat-ses', sesiones); }
   const peores = Object.entries(J.fallos).sort((a, b) => b[1] - a[1]).slice(0, 3)
     .map(([k]) => estado[k] ? estado[k].t : k);
+  Elogio.fin();
   const r = $('resumen');
   r.hidden = false; $('juego').hidden = true;
   r.innerHTML = `<h2>${J.hecha >= J.total ? '¡Terminaste!' : 'Sesión cortada'}</h2>
@@ -346,6 +350,13 @@ function pintarEstado() {
   });
 }
 
+function cargarPerfil() {
+  estado = Perfil.store.get('lv2-mat-estado', {});
+  q = Perfil.store.get('lv2-mat-q', 0);
+  sesiones = Perfil.store.get('lv2-mat-ses', []);
+  pintarEstado();
+}
+
 /* ---------- Eventos ---------- */
 function leerAjustes() {
   ajustes.op = [...document.querySelectorAll('.opc:checked')].map(c => c.value);
@@ -365,14 +376,14 @@ function pintarAjustes() {
   mostrarBoxes();
 }
 document.querySelector('#ajustes').addEventListener('change', leerAjustes);
-$('empezar').onclick = () => { leerAjustes(); empezar(); };
+$('empezar').onclick = () => { leerAjustes(); Perfil.elegir(() => { cargarPerfil(); empezar(); }); };
 $('sig').onclick = () => { if (J.hecha >= J.total) finalizar(); else siguiente(); };
 $('terminar').onclick = () => finalizar();
 $('opciones').addEventListener('click', e => { const b = e.target.closest('.op'); if (b) responder(b); });
 $('reiniciar').onclick = () => {
   if (!confirm('¿Borrar todo el avance de matemáticas de este celular?')) return;
   estado = {}; q = 0; sesiones = [];
-  store.set('lv2-mat-estado', estado); store.set('lv2-mat-q', q); store.set('lv2-mat-ses', sesiones);
+  Perfil.store.set('lv2-mat-estado', estado); Perfil.store.set('lv2-mat-q', q); Perfil.store.set('lv2-mat-ses', sesiones);
   pintarEstado();
 };
 document.addEventListener('keydown', e => {

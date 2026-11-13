@@ -188,6 +188,7 @@ textarea{min-height:140px;resize:vertical;font-size:1.05rem;line-height:1.5}
   </div>
 </div>
 
+<script src="comun.js"></script>
 <script>
 (() => {
 const $ = id => document.getElementById(id);
@@ -212,7 +213,7 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 };
 let ajustes = Object.assign({}, DEF, store.get('lv2-ajustes', {}));
-let progreso = store.get('lv2-progreso', []);
+let progreso = [];
 
 const rnd = a => a[Math.floor(Math.random() * a.length)];
 function silaba(p) { return rnd(CONS) + rnd(VOW) + (p === 'CVC' ? rnd(FIN) : ''); }
@@ -298,7 +299,7 @@ function pintarProgreso() {
 }
 $('borrar').addEventListener('click', () => {
   if (!confirm('¿Borrar todo el progreso de este celular?')) return;
-  progreso = []; store.set('lv2-progreso', progreso); pintarProgreso();
+  progreso = []; Perfil.store.set('lv2-progreso', progreso); pintarProgreso();
 });
 
 /* ---------- Reproducción ---------- */
@@ -422,10 +423,11 @@ async function empezar() {
 }
 
 function terminar() {
+  Elogio.fin();
   S.corriendo = false; cancelAnimationFrame(raf);
   const seg = Math.round(S.tiempo);
   const sesion = { f: new Date().toISOString(), n: P.nivel, v: P.vel, p: S.total, s: seg, c: null };
-  progreso.unshift(sesion); store.set('lv2-progreso', progreso);
+  progreso.unshift(sesion); Perfil.store.set('lv2-progreso', progreso);
   const nivelTxt = P.nivel;
   mostrarGrande(`<div class="done">
     <h2>¡Listo!</h2>
@@ -443,7 +445,7 @@ function terminar() {
   </div>`);
   document.querySelectorAll('#big [data-c]').forEach(b => b.addEventListener('click', e => {
     e.stopPropagation();
-    sesion.c = b.dataset.c; store.set('lv2-progreso', progreso);
+    sesion.c = b.dataset.c; Perfil.store.set('lv2-progreso', progreso);
     document.querySelectorAll('#big [data-c]').forEach(x => x.classList.toggle('sel', x === b));
   }));
   $('otra').onclick = e => { e.stopPropagation(); salir(true); };
@@ -500,7 +502,7 @@ $('smaller').onclick = e => { e.stopPropagation(); ajustarTam(-5); mostrarContro
 $('bigger').onclick = e => { e.stopPropagation(); ajustarTam(5); mostrarControles(); };
 $('estilo').onclick = e => { e.stopPropagation(); if (S) cambiarEstilo(); mostrarControles(); };
 $('exit').onclick = e => { e.stopPropagation(); salir(false); };
-$('start').onclick = () => empezar();
+$('start').onclick = () => Perfil.elegir(() => { progreso = Perfil.store.get('lv2-progreso', []); pintarProgreso(); empezar(); });
 
 document.addEventListener('keydown', e => {
   if (stage.hidden) return;
