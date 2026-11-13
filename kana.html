@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c0c0e">
+<title>Hiragana y katakana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#0c0c0e; --panel:#17171a; --line:#2c2c31; --fg:#f4f2ec; --muted:#9d9a92;
+  --accent:#ffcc33; --ok:#2fbf71; --bad:#e5484d; --btn:#222227;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100%}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+.jp{font-family:"Noto Sans JP",system-ui,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding-block:16px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.top h1{margin:0;font-size:1.5rem;line-height:1.2}
+.top h1 span{color:var(--accent)}
+.back{color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-height:44px;display:inline-flex;align-items:center}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.group h2{margin:0;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:10px;background:#1d1d21;cursor:pointer}
+.opt input{width:20px;height:20px;margin:0;accent-color:var(--accent);flex:none}
+.opt:has(input:checked){border-color:var(--accent);background:#2a2410}
+.field{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center}
+.field label{font-weight:700}
+select{background:#101013;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:44px;width:100%}
+.hint{margin:0;color:var(--muted);font-size:.92rem;line-height:1.45}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center}
+.btn{border:1px solid var(--line);background:var(--btn);border-radius:12px;padding:10px 16px;min-height:48px;cursor:pointer;font-weight:700}
+.btn:hover{filter:brightness(1.12)}
+.btn.danger{background:#3a1616;border-color:#5a2222}
+.btn.primary{background:var(--accent);color:#1a1400;border-color:var(--accent)}
+.start{background:var(--accent);color:#1a1400;border:0;border-radius:14px;font-size:1.3rem;font-weight:700;padding:14px;width:100%;cursor:pointer;min-height:58px}
+.aviso{margin:0;color:var(--accent);font-weight:700;min-height:1.2em}
+.estado{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.estado div{border:1px solid var(--line);border-radius:10px;padding:10px;text-align:center}
+.estado b{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums}
+.estado small{color:var(--muted)}
+
+.barra{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-weight:700;font-variant-numeric:tabular-nums}
+.barra span{color:var(--accent)}
+.prog{height:8px;background:#222227;border-radius:999px;overflow:hidden}
+.prog div{height:100%;width:0;background:var(--accent);transition:width .3s}
+.pregunta{font-size:clamp(5rem,26vw,9rem);font-weight:700;text-align:center;line-height:1.1;padding:10px 0 4px}
+.pregunta.palabra{font-size:clamp(3rem,13vw,5.5rem)}
+.escuchar{align-self:center}
+.opciones{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.op{min-height:84px;font-size:1.8rem;font-weight:700;border:2px solid var(--line);border-radius:16px;background:var(--btn);cursor:pointer;transition:transform .08s}
+.op.img{font-size:2.6rem}
+.op:active{transform:scale(.97)}
+.op:disabled{cursor:default}
+.op.ok{background:var(--ok);border-color:var(--ok);color:#06210f}
+.op.bad{background:var(--bad);border-color:var(--bad);color:#2a0606;text-decoration:line-through}
+.op:not(:disabled):hover{border-color:var(--muted)}
+.explica{border-radius:12px;padding:14px;text-align:center;line-height:1.5;font-size:1.05rem;border:1px solid var(--line);background:#1d1d21}
+.explica.ok{border-color:var(--ok)}
+.explica.bad{border-color:var(--bad)}
+.explica strong{color:var(--accent)}
+.resumen h2{margin:0;font-size:clamp(2rem,8vw,3rem);color:var(--accent);text-align:center}
+.resumen p{margin:0;text-align:center;font-size:1.1rem;line-height:1.5}
+
+/* cinta */
+.cinta{position:fixed;inset:0;background:#000;color:#fff;overflow:hidden;z-index:50;user-select:none;-webkit-user-select:none}
+.cinta .tok{position:absolute;top:50%;left:0;white-space:nowrap;line-height:1;will-change:transform;font-weight:700}
+.cinta .fin{position:absolute;inset:0;display:grid;place-items:center;text-align:center;background:rgba(0,0,0,.92);font-size:1.4rem;padding:24px}
+.cinta .fin b{display:block;font-size:3rem;color:var(--accent);margin-bottom:12px}
+.ctrl{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;padding:10px max(12px,env(safe-area-inset-left,0px)) calc(10px + env(safe-area-inset-bottom,0px));background:rgba(20,20,23,.94);border-top:1px solid var(--line);transition:opacity .25s,transform .25s}
+.ctrl.hide{opacity:0;transform:translateY(100%);pointer-events:none}
+.ctrl .btn{min-width:48px;background:#1c1c20}
+.ctrl .spd{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;min-width:6ch;text-align:center}
+.ctrl .exit{background:#3a1616;border-color:#5a2222}
+@media (prefers-reduced-motion:reduce){.prog div,.ctrl{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <a class="back" href="index.html">← Inicio</a>
+    <h1>Hiragana y <span>katakana</span></h1>
+  </header>
+
+  <section id="ajustes" class="group" aria-labelledby="h-aj">
+    <h2 id="h-aj">Qué practicar</h2>
+    <div class="field">
+      <label for="escritura">Escritura</label>
+      <select id="escritura"><option value="h">Hiragana (あ)</option><option value="k">Katakana (ア)</option></select>
+    </div>
+    <div class="opts" id="niveles">
+      <label class="opt"><input type="radio" name="nivel" value="1"> <span>Nivel 1 · Sonidos puros (あ い う え お, か き…)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="2"> <span>Nivel 2 · Con rayitas (が ざ だ ば ぱ…) (incluye el nivel 1)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="3"> <span>Nivel 3 · Combinados (きゃ しゅ ちょ…) (incluye los anteriores)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="4"> <span>Nivel 4 · Especiales (っ, la vocal larga) (incluye todo)</span></label>
+    </div>
+    <div class="field">
+      <label for="modo">Modo</label>
+      <select id="modo">
+        <option value="sonido">Elegir el sonido del carácter</option>
+        <option value="imagen">Palabra → imagen (vocabulario)</option>
+        <option value="cinta">Cinta: leer en voz alta a velocidad</option>
+      </select>
+    </div>
+    <div class="field" id="boxOpc">
+      <label for="nOpc">Botones de respuesta</label>
+      <select id="nOpc"><option value="5">5</option><option value="6">6</option></select>
+    </div>
+    <div class="field" id="boxPreg">
+      <label for="nPreg">Preguntas por sesión</label>
+      <select id="nPreg"><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>
+    </div>
+    <p class="hint" id="ayuda"></p>
+    <button class="start" id="empezar" type="button">▶ EMPEZAR</button>
+    <p class="aviso" id="aviso" role="status"></p>
+  </section>
+
+  <section id="juego" class="group" hidden aria-live="polite">
+    <div class="barra"><span id="pts">0 pts</span><span id="racha">Racha 0</span><span id="num">1 / 10</span></div>
+    <div class="prog"><div id="bar"></div></div>
+    <div class="pregunta jp" id="preg"></div>
+    <button class="btn escuchar" id="escuchar" type="button" hidden>🔊 Escuchar</button>
+    <div class="opciones" id="opciones"></div>
+    <div class="explica" id="explica" hidden></div>
+    <div class="row">
+      <button class="btn primary" id="sig" type="button" hidden>Siguiente ▶</button>
+      <button class="btn danger" id="terminar" type="button">Terminar</button>
+    </div>
+  </section>
+
+  <section id="resumen" class="group resumen" hidden></section>
+
+  <section class="group" aria-labelledby="h-est">
+    <h2 id="h-est">Cómo viene</h2>
+    <div class="estado">
+      <div><b id="eDom">0</b><small>dominados</small></div>
+      <div><b id="eRep">0</b><small>en repaso</small></div>
+      <div><b id="eRef">0</b><small>a reforzar</small></div>
+    </div>
+    <div class="row"><button class="btn danger" id="reiniciar" type="button">Reiniciar el avance de kana</button></div>
+  </section>
+</main>
+
+<div class="cinta" id="cinta" hidden>
+  <div id="ctrack" class="jp" style="position:absolute;inset:0"></div>
+  <div class="fin" id="cfin" hidden></div>
+  <div class="ctrl hide" id="cctrl">
+    <button class="btn" id="cpausa" type="button" aria-label="Pausar">⏸</button>
+    <button class="btn" id="clento" type="button" aria-label="Más lento">− lento</button>
+    <span class="spd" id="cspd"></span>
+    <button class="btn" id="crapido" type="button" aria-label="Más rápido">rápido +</button>
+    <button class="btn" id="cchica" type="button" aria-label="Letra más chica">A−</button>
+    <button class="btn" id="cgrande" type="button" aria-label="Letra más grande">A+</button>
+    <button class="btn exit" id="csalir" type="button">✕ Salir</button>
+  </div>
+</div>
+
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+const INT = { 1: 2, 2: 6, 3: 14, 4: 35, 5: 90 };
+const DEF = { esc: 'h', nivel: '1', modo: 'sonido', nOpc: '5', nPreg: '10' };
+let ajustes = Object.assign({}, DEF, store.get('lv2-kana-aj', {}));
+let estado = store.get('lv2-kana-estado', {});
+let q = store.get('lv2-kana-q', 0);
+let J = null;
+const rnd = a => a[Math.floor(Math.random() * a.length)];
+function mezclar(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+/* ---------- Datos ---------- */
+const PURE_R = ['a','i','u','e','o','ka','ki','ku','ke','ko','sa','shi','su','se','so','ta','chi','tsu','te','to','na','ni','nu','ne','no','ha','hi','fu','he','ho','ma','mi','mu','me','mo','ya','yu','yo','ra','ri','ru','re','ro','wa','wo','n'];
+const DAK_R = ['ga','gi','gu','ge','go','za','ji','zu','ze','zo','da','de','do','ba','bi','bu','be','bo','pa','pi','pu','pe','po'];
+const COMB_R = ['kya','kyu','kyo','sha','shu','sho','cha','chu','cho','nya','nyu','nyo','hya','hyu','hyo','mya','myu','myo','rya','ryu','ryo','gya','gyu','gyo','ja','ju','jo','bya','byu','byo','pya','pyu','pyo'];
+const T = {
+  h: {
+    pure: 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん',
+    dak:  'がぎぐげござじずぜぞだでどばびぶべぼぱぴぷぺぽ',
+    comb: 'きゃきゅきょしゃしゅしょちゃちゅちょにゃにゅにょひゃひゅひょみゃみゅみょりゃりゅりょぎゃぎゅぎょじゃじゅじょびゃびゅびょぴゃぴゅぴょ',
+    esp:  [{ ch: 'っ', r: 'doble consonante' }],
+    conf: [['ぬ','め','ね','の'],['さ','ち','き'],['る','ろ','れ'],['わ','ね','れ'],['あ','お'],['は','ほ'],['か','が'],['し','つ'],['ひ','ぴ'],['ま','も']]
+  },
+  k: {
+    pure: 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン',
+    dak:  'ガギグゲゴザジズゼゾダデドバビブベボパピプペポ',
+    comb: 'キャキュキョシャシュショチャチュチョニャニュニョヒャヒュヒョミャミュミョリャリュリョギャギュギョジャジュジョビャビュビョピャピュピョ',
+    esp:  [{ ch: 'ッ', r: 'doble consonante' }, { ch: 'ー', r: 'alarga la vocal' }],
+    conf: [['シ','ツ','ソ'],['ワ','ク','ケ'],['ン','ソ'],['ウ','フ','ク'],['ラ','テ'],['ナ','メ','ノ'],['ア','マ'],['ヌ','ス']]
+  }
+};
+const VOCAB = [
+  { h: 'りんご', r: 'ringo', es: 'manzana', e: '🍎' },
+  { h: 'ばなな', r: 'banana', es: 'banana', e: '🍌' },
+  { h: 'なし', r: 'nashi', es: 'pera', e: '🍐' },
+  { h: 'すいか', r: 'suika', es: 'sandía', e: '🍉' },
+  { h: 'ぶどう', r: 'budō', es: 'uva', e: '🍇' },
+  { h: 'みかん', r: 'mikan', es: 'mandarina', e: '🍊' },
+  { h: 'いちご', r: 'ichigo', es: 'frutilla', e: '🍓' },
+  { h: 'ねこ', r: 'neko', es: 'gato', e: '🐱' },
+  { h: 'いぬ', r: 'inu', es: 'perro', e: '🐶' },
+  { h: 'うし', r: 'ushi', es: 'vaca', e: '🐮' },
+  { h: 'さかな', r: 'sakana', es: 'pez', e: '🐟' },
+  { h: 'とり', r: 'tori', es: 'pájaro', e: '🐦' }
+];
+
+function combinados(sc) {
+  const s = [...T[sc].comb]; const out = [];
+  for (let i = 0; i < s.length; i += 2) out.push(s[i] + s[i + 1]);
+  return out;
+}
+function todosLosItems(sc) {
+  const pure = [...T[sc].pure], dak = [...T[sc].dak];
+  const out = [];
+  PURE_R.forEach((r, i) => out.push({ ch: pure[i], r, nv: 1 }));
+  DAK_R.forEach((r, i) => out.push({ ch: dak[i], r, nv: 2 }));
+  const comb = combinados(sc);
+  COMB_R.forEach((r, i) => out.push({ ch: comb[i], r, nv: 3 }));
+  T[sc].esp.forEach(e => out.push({ ch: e.ch, r: e.r, nv: 4 }));
+  return out;
+}
+function itemsDelNivel(sc, nivel) { return todosLosItems(sc).filter(x => x.nv <= nivel); }
+
+/* ---------- Opciones ---------- */
+function opcionesSonido(item, n, sc) {
+  const all = todosLosItems(sc);
+  const byCh = new Map(all.map(x => [x.ch, x]));
+  const grupo = T[sc].conf.find(g => g.includes(item.ch));
+  const confs = grupo ? grupo.filter(c => c !== item.ch).map(c => byCh.get(c)).filter(Boolean) : [];
+  const cand = [...mezclar(confs), ...mezclar(all)];
+  const usados = new Set([item.r]); const out = [item.r];
+  for (const x of cand) { if (out.length >= n) break; if (!usados.has(x.r)) { usados.add(x.r); out.push(x.r); } }
+  return mezclar(out);
+}
+function opcionesImagen(v, n) {
+  const usados = new Set([v.e]); const out = [v.e];
+  for (const x of mezclar(VOCAB)) { if (out.length >= n) break; if (!usados.has(x.e)) { usados.add(x.e); out.push(x.e); } }
+  return mezclar(out);
+}
+
+/* ---------- Elegir la siguiente ---------- */
+function elegir(pool, claveDe) {
+  const debidas = pool.filter(x => estado[claveDe(x)] && estado[claveDe(x)].n <= q);
+  const nuevas = pool.filter(x => !estado[claveDe(x)]);
+  let cand;
+  if (debidas.length >= 2 || !nuevas.length) {
+    if (debidas.length) {
+      debidas.sort((a, b) => (estado[claveDe(a)].b - estado[claveDe(b)].b) || (estado[claveDe(a)].n - estado[claveDe(b)].n));
+      cand = debidas.slice(0, 6);
+    } else {
+      cand = pool.slice().sort((a, b) => ((estado[claveDe(a)] || {}).n || 0) - ((estado[claveDe(b)] || {}).n || 0)).slice(0, 6);
+    }
+  } else cand = nuevas;
+  let x = rnd(cand);
+  if (cand.length > 1 && J.ultimo && claveDe(x) === J.ultimo) x = rnd(cand.filter(y => claveDe(y) !== J.ultimo));
+  return x;
+}
+
+/* ---------- Juego ---------- */
+function empezar() {
+  leerAjustes();
+  if (ajustes.modo === 'cinta') return iniciarCinta();
+  const sc = ajustes.esc, nivel = +ajustes.nivel;
+  const esSonido = ajustes.modo === 'sonido';
+  const pool = esSonido ? itemsDelNivel(sc, nivel) : VOCAB;
+  if (!pool.length) { $('aviso').textContent = 'No hay elementos en ese nivel.'; return; }
+  $('aviso').textContent = '';
+  J = { modo: ajustes.modo, sc, pool, clave: esSonido ? (x => 'S' + sc + ':' + x.ch) : (x => 'P:' + x.h),
+        total: +ajustes.nPreg, hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null };
+  $('ajustes').hidden = true; $('resumen').hidden = true; $('juego').hidden = false;
+  siguiente();
+}
+function siguiente() {
+  const esSonido = J.modo === 'sonido';
+  const x = elegir(J.pool, J.clave);
+  J.actual = x; J.ultimo = J.clave(x); J.respondida = false;
+  const n = +ajustes.nOpc;
+  const pre = $('preg');
+  if (esSonido) {
+    pre.className = 'pregunta jp'; pre.textContent = x.ch;
+    J.opts = opcionesSonido(x, n, J.sc);
+    $('escuchar').hidden = true;
+  } else {
+    pre.className = 'pregunta jp palabra'; pre.textContent = x.h;
+    J.opts = opcionesImagen(x, n);
+    $('escuchar').hidden = false;
+    hablar(x.h);
+  }
+  $('num').textContent = (J.hecha + 1) + ' / ' + J.total;
+  $('bar').style.width = (100 * J.hecha / J.total) + '%';
+  const cont = $('opciones'); cont.textContent = '';
+  J.opts.forEach(v => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.dataset.v = v;
+    b.className = esSonido ? 'op jp' : 'op img';
+    b.textContent = v;
+    cont.appendChild(b);
+  });
+  $('explica').hidden = true; $('sig').hidden = true;
+  J.t0 = performance.now();
+}
+function hablar(texto) {
+  try {
+    if (!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(texto); u.lang = 'ja-JP'; u.rate = .8;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function responder(btn) {
+  if (!J || J.respondida) return;
+  J.respondida = true;
+  const x = J.actual, esSonido = J.modo === 'sonido';
+  const correcto = esSonido ? x.r : x.e;
+  const v = btn.dataset.v;
+  const ok = v === correcto;
+  const tiempo = (performance.now() - J.t0) / 1000;
+  document.querySelectorAll('.op').forEach(b => { b.disabled = true; if (b.dataset.v === correcto) b.classList.add('ok'); });
+  const ex = $('explica');
+  const textoCompleto = esSonido ? `${x.ch} = <strong>${x.r}</strong>` : `${x.h} (${x.r}) = <strong>${x.es}</strong> ${x.e}`;
+  if (ok) {
+    btn.classList.add('ok');
+    J.aciertos++; J.racha++; J.rachaMax = Math.max(J.rachaMax, J.racha);
+    J.puntos += 10 + (J.racha >= 3 ? 5 : 0);
+    ex.className = 'explica ok'; ex.innerHTML = '¡Muy bien! ' + textoCompleto;
+  } else {
+    btn.classList.add('bad');
+    J.racha = 0;
+    const etiqueta = esSonido ? x.ch : x.h;
+    J.fallos[J.clave(x)] = (J.fallos[J.clave(x)] || 0) + 1;
+    ex.className = 'explica bad';
+    ex.innerHTML = `Era: ${textoCompleto}<br><span class="hint">${etiqueta} va a volver enseguida.</span>`;
+  }
+  if (J.modo === 'imagen') hablar(x.h);
+  ex.hidden = false;
+  actualizarEstado(J.clave(x), x.ch || x.h, ok, esSonido ? x.ch : x.h);
+  J.tiempos.push(tiempo);
+  J.hecha++;
+  $('pts').textContent = J.puntos + ' pts';
+  $('racha').textContent = 'Racha ' + J.racha;
+  $('sig').textContent = J.hecha >= J.total ? 'Ver resultado' : 'Siguiente ▶';
+  $('sig').hidden = false; $('sig').focus();
+}
+function actualizarEstado(clave, _, ok, etiqueta) {
+  const e = estado[clave] || { b: 1, n: 0, f: 0, t: etiqueta };
+  e.t = etiqueta;
+  if (ok) { e.b = Math.min(5, e.b + 1); e.n = q + INT[e.b]; }
+  else { e.b = 1; e.n = q + 2; e.f = (e.f || 0) + 1; }
+  estado[clave] = e;
+  q++;
+  store.set('lv2-kana-estado', estado); store.set('lv2-kana-q', q);
+  pintarEstado();
+}
+function finalizar() {
+  if (!J) return;
+  const prom = J.tiempos.length ? J.tiempos.reduce((a, b) => a + b, 0) / J.tiempos.length : 0;
+  const peores = Object.entries(J.fallos).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => estado[k] ? estado[k].t : k);
+  const completa = J.hecha >= J.total;
+  const r = $('resumen');
+  r.innerHTML = `<h2>${completa ? '¡Terminaste!' : 'Sesión cortada'}</h2>
+    <p><b>${J.aciertos}</b> de ${J.hecha} bien · <b>${J.puntos}</b> puntos · racha máxima ${J.rachaMax}</p>
+    <p class="hint">Tiempo promedio: ${prom.toFixed(1)} s por respuesta</p>
+    ${peores.length ? `<p class="hint">Para repasar: ${peores.join(' · ')}</p>` : ''}
+    <div class="row"><button class="btn primary" id="otra" type="button">↺ Otra sesión</button><button class="btn" id="cambiar" type="button">Cambiar lo que practico</button></div>`;
+  r.hidden = false; $('juego').hidden = true;
+  $('otra').onclick = () => { r.hidden = true; empezar(); };
+  $('cambiar').onclick = () => { r.hidden = true; $('ajustes').hidden = false; };
+  J = null; $('ajustes').hidden = true;
+  pintarEstado();
+}
+function pintarEstado() {
+  const vals = Object.values(estado);
+  $('eDom').textContent = vals.filter(e => e.b === 5).length;
+  $('eRep').textContent = vals.filter(e => e.b >= 2 && e.b <= 4).length;
+  $('eRef').textContent = vals.filter(e => e.b === 1).length;
+}
+
+/* ---------- Cinta (lectura veloz) ---------- */
+const C = { cola: [], live: [], vel: 4, tam: 60, pausa: false, run: false, last: 0, raf: 0, playT: 0 };
+const H = () => $('cinta').clientHeight || innerHeight;
+const W = () => $('cinta').clientWidth || innerWidth;
+const fpx = () => H() * C.tam / 100 * 0.8;
+function ponerTok(it) { it.el.style.transform = `translate3d(${it.x}px,-50%,0)`; }
+function spawnCinta() {
+  const t = C.cola.shift();
+  const el = document.createElement('div'); el.className = 'tok'; el.textContent = t;
+  el.style.fontSize = fpx() + 'px';
+  $('ctrack').appendChild(el);
+  const it = { el, w: el.offsetWidth, x: W() };
+  it.el.style.transform = `translate3d(${it.x}px,-50%,0)`;
+  C.live.push(it);
+}
+function frameCinta(t) {
+  if (!C.run) return;
+  const dt = Math.min(.05, (t - C.last) / 1000); C.last = t;
+  if (!C.pausa) {
+    const v = fpx() * C.vel * 0.18 * dt;
+    C.live.forEach(it => { it.x -= v; ponerTok(it); });
+    while (C.live.length && C.live[0].x + C.live[0].w < 0) C.live.shift().el.remove();
+    while (C.cola.length) {
+      const ult = C.live[C.live.length - 1];
+      if (ult && ult.x + ult.w + fpx() * .7 > W()) break;
+      spawnCinta();
+    }
+    if (!C.cola.length && !C.live.length) { C.run = false; $('cfin').hidden = false; $('cfin').innerHTML = `<div><b>¡Listo!</b><span class="hint">Pulsá Salir para volver.</span></div>`; return; }
+  }
+  C.raf = requestAnimationFrame(frameCinta);
+}
+function iniciarCinta() {
+  const items = itemsDelNivel(ajustes.esc, +ajustes.nivel);
+  const esSilabas = items.map(x => x.ch);
+  C.cola = Array.from({ length: 40 }, () => rnd(esSilabas));
+  C.vel = 4; C.tam = 60; C.pausa = false; C.run = true;
+  $('ctrack').textContent = ''; C.live = [];
+  $('cfin').hidden = true;
+  $('cinta').hidden = false; $('juego').hidden = true; $('ajustes').hidden = true;
+  $('cpausa').textContent = '⏸';
+  actualizarSpd();
+  C.last = performance.now();
+  requestAnimationFrame(frameCinta);
+  mostrarCtrl();
+}
+function actualizarSpd() { $('cspd').textContent = 'Vel. ' + C.vel; }
+function mostrarCtrl() { $('cctrl').classList.remove('hide'); clearTimeout(C.hide); C.hide = setTimeout(() => { if (!C.pausa) $('cctrl').classList.add('hide'); }, 3500); }
+function salirCinta() {
+  C.run = false; cancelAnimationFrame(C.raf);
+  $('ctrack').textContent = ''; C.live = [];
+  $('cinta').hidden = true; $('ajustes').hidden = false;
+}
+$('cinta').addEventListener('click', e => { if (e.target.closest('#cctrl')) { mostrarCtrl(); return; } if ($('cctrl').classList.contains('hide')) mostrarCtrl(); else $('cctrl').classList.add('hide'); });
+$('cpausa').onclick = e => { e.stopPropagation(); C.pausa = !C.pausa; $('cpausa').textContent = C.pausa ? '▶' : '⏸'; mostrarCtrl(); };
+$('clento').onclick = e => { e.stopPropagation(); C.vel = Math.max(1, C.vel - 1); actualizarSpd(); mostrarCtrl(); };
+$('crapido').onclick = e => { e.stopPropagation(); C.vel = Math.min(10, C.vel + 1); actualizarSpd(); mostrarCtrl(); };
+$('cchica').onclick = e => { e.stopPropagation(); C.tam = Math.max(30, C.tam - 10); C.live.forEach(it => { it.el.style.fontSize = fpx() + 'px'; it.w = it.el.offsetWidth; }); mostrarCtrl(); };
+$('cgrande').onclick = e => { e.stopPropagation(); C.tam = Math.min(95, C.tam + 10); C.live.forEach(it => { it.el.style.fontSize = fpx() + 'px'; it.w = it.el.offsetWidth; }); mostrarCtrl(); };
+$('csalir').onclick = e => { e.stopPropagation(); salirCinta(); };
+
+/* ---------- Ajustes ---------- */
+function leerAjustes() {
+  ajustes.esc = $('escritura').value;
+  ajustes.nivel = (document.querySelector('input[name=nivel]:checked') || { value: '1' }).value;
+  ajustes.modo = $('modo').value;
+  ajustes.nOpc = $('nOpc').value; ajustes.nPreg = $('nPreg').value;
+  store.set('lv2-kana-aj', ajustes);
+  pintarAjustes();
+}
+function pintarAjustes() {
+  $('escritura').value = ajustes.esc;
+  document.querySelectorAll('input[name=nivel]').forEach(r => r.checked = r.value === ajustes.nivel);
+  $('modo').value = ajustes.modo;
+  $('nOpc').value = ajustes.nOpc; $('nPreg').value = ajustes.nPreg;
+  const esSonido = ajustes.modo === 'sonido';
+  $('boxOpc').hidden = ajustes.modo === 'cinta';
+  $('boxPreg').hidden = ajustes.modo === 'cinta';
+  $('ayuda').textContent = ajustes.modo === 'cinta'
+    ? 'En cinta no hay puntaje: el chico lee en voz alta mientras pasan los caracteres, y vos llevás la cuenta.'
+    : (esSonido ? 'Las opciones incluyen caracteres que se confunden, como ぬ / め / ね.'
+                : 'Aparece la palabra y el chico elige el dibujo. El botón Escuchar la lee en voz alta, si el dispositivo tiene voz japonesa.');
+  $('empezar').textContent = ajustes.modo === 'cinta' ? '▶ EMPEZAR LA CINTA' : '▶ EMPEZAR';
+}
+document.querySelector('#ajustes').addEventListener('change', leerAjustes);
+$('empezar').onclick = () => empezar();
+$('sig').onclick = () => { if (J.hecha >= J.total) finalizar(); else siguiente(); };
+$('terminar').onclick = () => finalizar();
+$('escuchar').onclick = () => { if (J && J.actual && J.actual.h) hablar(J.actual.h); };
+$('opciones').addEventListener('click', e => { const b = e.target.closest('.op'); if (b) responder(b); });
+$('reiniciar').onclick = () => {
+  if (!confirm('¿Borrar el avance de kana de este dispositivo?')) return;
+  estado = {}; q = 0;
+  store.set('lv2-kana-estado', estado); store.set('lv2-kana-q', q);
+  pintarEstado();
+};
+document.addEventListener('keydown', e => {
+  if (!J || $('juego').hidden) return;
+  if (/^[1-6]$/.test(e.key)) { const b = [...document.querySelectorAll('.op')][+e.key - 1]; if (b && !b.disabled) responder(b); }
+  else if (e.key === 'Enter' && !$('sig').hidden) $('sig').click();
+});
+
+pintarAjustes();
+pintarEstado();
+})();
+</script>
+</body>
+</html>
