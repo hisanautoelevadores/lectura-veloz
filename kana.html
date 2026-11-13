@@ -109,6 +109,10 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
     <div><button class="back" id="volver" type="button">← Volver a las actividades</button></div>
     <h2 id="tituloSec"></h2>
     <p class="hint" id="descSec"></p>
+    <div class="field" id="fTam">
+      <label for="tam">Altura de la letra</label><output id="tamOut"></output>
+      <input type="range" id="tam" min="30" max="95" step="5" style="grid-column:1/-1;width:100%;accent-color:var(--accent)">
+    </div>
     <div class="field" id="fEsc">
       <label for="escritura">Escritura</label>
       <select id="escritura"><option value="h">Hiragana (あ)</option><option value="k">Katakana (ア)</option></select>
@@ -177,7 +181,7 @@ const rnd = a => a[Math.floor(Math.random() * a.length)];
 const mezclar = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- Ajustes del dispositivo ---------- */
-let ajustes = Object.assign({ esc: 'h', nivelL: '1', nivelC: '1', nOpc: '5', nPreg: '10' }, LS.get('lv2-kana-aj3', {}));
+let ajustes = Object.assign({ esc: 'h', nivelL: '1', nivelC: '1', nOpc: '5', nPreg: '10', tam: '70' }, LS.get('lv2-kana-aj3', {}));
 const guardarAj = () => LS.set('lv2-kana-aj3', ajustes);
 let sec = null;
 
@@ -304,6 +308,9 @@ function abrirSeccion(s) {
   $('fEsc').hidden = !c.usaEsc;
   $('fOpc').hidden = !c.usaOpc;
   $('fPreg').hidden = s === 'cinta';
+  $('fTam').hidden = s !== 'cinta';
+  $('tam').value = ajustes.tam; $('tamOut').textContent = ajustes.tam + '% de la pantalla';
+  $('tam').oninput = () => { $('tamOut').textContent = $('tam').value + '% de la pantalla'; };
   const niv = $('fNiv'); niv.textContent = '';
   if (c.niveles) {
     const actual = s === 'cinta' ? ajustes.nivelC : ajustes.nivelL;
@@ -329,6 +336,7 @@ function abrirSeccion(s) {
 function leerPanel() {
   ajustes.esc = $('escritura').value;
   ajustes.nOpc = $('nOpc').value; ajustes.nPreg = $('nPreg').value;
+  ajustes.tam = $('tam').value;
   const r = document.querySelector('input[name=nivel]:checked');
   if (r) { if (sec === 'cinta') ajustes.nivelC = r.value; else ajustes.nivelL = r.value; }
   guardarAj();
@@ -504,7 +512,7 @@ document.addEventListener('keydown', e => {
 const C = { cola: [], live: [], vel: 4, tam: 60, pausa: false, run: false, last: 0, raf: 0, sc: 'h', nivel: 1, banda: 1, ultimoEs: '' };
 const H = () => $('cinta').clientHeight || innerHeight;
 const W = () => $('cinta').clientWidth || innerWidth;
-const fpx = () => H() * C.tam / 100 * 0.8;
+const fpx = () => H() * C.tam / 100;
 function genCinta() {
   const S = silabas(C.sc);
   const s1 = S.pure, s2 = [...S.pure, ...S.dak], s3 = [...S.pure, ...S.dak, ...S.comb];
@@ -555,7 +563,7 @@ function iniciarCinta() {
   const banda = Perfil.actual().banda;
   C.sc = ajustes.esc; C.nivel = +ajustes.nivelC; C.banda = banda;
   if (C.nivel >= 4) C.sc = 'h';
-  C.vel = 4; C.tam = 60; C.pausa = false; C.run = true; C.restan = 30;
+  C.vel = 4; C.tam = +ajustes.tam; C.pausa = false; C.run = true; C.restan = 30;
   C.live = []; $('ctrack').textContent = '';
   $('cfin').hidden = true; $('cradu').hidden = true; $('cradu').textContent = '';
   $('cinta').hidden = false; $('juego').hidden = true; $('panel').hidden = true; $('inicio').hidden = true;
