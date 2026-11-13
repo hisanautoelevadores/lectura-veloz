@@ -227,9 +227,13 @@ function iniciarPractica(area) {
   Perfil.elegir(() => {
     const todas = area === 'escucha' ? ejercicios : banco.filter(e => e.area === area);
     if (!todas.length) { go('practica'); return; }
-    S.area = area; S.lista = shuffle(todas); S.idx = 0; S.resp = {}; S.ok = 0;
+    S.area = area; S.lista = shuffle(todas.map(barajarOpciones)); S.idx = 0; S.resp = {}; S.ok = 0;
     go('preguntas');
   }, { banda: false });
+}
+function barajarOpciones(e) {
+  const orden = shuffle(e.opciones.map((_, i) => i));
+  return { ...e, opciones: orden.map(i => e.opciones[i]), respuesta: orden.indexOf(e.respuesta) };
 }
 function rich(str) {
   const frag = document.createDocumentFragment();
