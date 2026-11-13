@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ECEFF4">
+<title>Práctica JLPT N5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* Diseño tomado de la app "Práctica JLPT N5": cuaderno de examen, índigo como único acento. */
+:root{
+  --paper:#ECEFF4; --sheet:#FAFBFD; --ink:#141E2C; --ink2:#4A576B; --rule:#C8D1DD;
+  --indigo:#274A8C; --on-indigo:#FFFFFF; --indigo-soft:#DCE4F4;
+  --ok:#23784F; --ok-soft:#D9EFE2; --bad:#B03A28; --bad-soft:#F8E0DA;
+  --font-jp:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  --font-ui:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E131B; --sheet:#161D28; --ink:#E6EBF3; --ink2:#9BA8BB; --rule:#2A3546;
+    --indigo:#8DAEF0; --on-indigo:#0E131B; --indigo-soft:#1D2A45;
+    --ok:#5CC495; --ok-soft:#123024; --bad:#F0907A; --bad-soft:#3A1F1A;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E131B; --sheet:#161D28; --ink:#E6EBF3; --ink2:#9BA8BB; --rule:#2A3546;
+  --indigo:#8DAEF0; --on-indigo:#0E131B; --indigo-soft:#1D2A45;
+  --ok:#5CC495; --ok-soft:#123024; --bad:#F0907A; --bad-soft:#3A1F1A;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 var(--font-ui);padding-block:24px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px;min-width:0}
+h1,h2,h3,p{margin:0}
+h1{font:700 clamp(1.7rem,6vw,2.3rem)/1.15 var(--font-jp);text-wrap:balance}
+h2{font:700 1.2rem/1.3 var(--font-ui);text-wrap:balance}
+.kicker{font:500 .75rem/1 var(--font-ui);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.muted{color:var(--ink2)}
+.small{font-size:.875rem}
+.btn{font:500 1rem/1.2 var(--font-ui);min-height:44px;padding:10px 18px;border-radius:10px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+.btn:hover:not(:disabled){background:var(--indigo-soft)}
+.btn.primary{background:var(--indigo);border-color:var(--indigo);color:var(--on-indigo)}
+.btn.ghost{border-color:transparent;padding-inline:8px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.toplabel{font:500 .9rem var(--font-ui);color:var(--ink2);text-align:right}
+.head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.title{display:flex;flex-direction:column;gap:8px;min-width:0}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.mode{display:flex;flex-direction:column;gap:6px;text-align:left;padding:18px;min-height:156px;border-radius:14px;border:1.5px solid var(--ink);background:var(--sheet);color:var(--ink);cursor:pointer;font:inherit}
+.mode.primary{background:var(--indigo);border-color:var(--indigo);color:var(--on-indigo)}
+.mode:hover{filter:brightness(1.05)}
+.mode .glyph{font:700 2.2rem/1 var(--font-jp)}
+.mode .name{font:700 1.3rem/1.2 var(--font-ui)}
+.mode .sub{font-size:.9rem;opacity:.88}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.secs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.sec{display:flex;flex-direction:column;gap:4px;text-align:left;padding:16px;border-radius:12px;border:1.5px solid var(--ink);background:var(--sheet);color:var(--ink);cursor:pointer;font:inherit;min-height:132px}
+.sec:hover:not(:disabled){background:var(--indigo-soft)}
+.sec:disabled{border-style:dashed;border-color:var(--rule);color:var(--ink2);cursor:default}
+.sec .glyph{font:700 2rem/1.1 var(--font-jp);color:var(--indigo)}
+.sec:disabled .glyph{color:var(--ink2)}
+.sec .name{font-weight:700;font-size:1.1rem}
+.sec .desc{font-size:.85rem;color:var(--ink2)}
+.sec .acc{font-size:.8rem;color:var(--ink2);margin-top:auto;font-variant-numeric:tabular-nums}
+.stat{display:grid;grid-template-columns:minmax(6rem,8rem) 1fr 5rem;gap:12px;align-items:center;font-size:.95rem}
+.stat .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink2)}
+.bar{height:8px;background:var(--rule);border-radius:4px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--indigo)}
+.qcard{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.qmeta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tag{font:500 .8rem/1 var(--font-jp);padding:5px 9px;border-radius:6px;background:var(--indigo-soft);color:var(--indigo)}
+.qnum{font-size:.85rem;color:var(--ink2);font-variant-numeric:tabular-nums}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:12px 14px;min-height:52px;border:1.5px solid var(--rule);border-radius:10px;background:var(--sheet);color:var(--ink);cursor:pointer;font:inherit}
+.opt:hover:not(:disabled){border-color:var(--ink2)}
+.opt:disabled{cursor:default}
+.bubble{flex:none;width:32px;height:22px;border:1.5px solid var(--ink2);border-radius:50%;display:grid;place-items:center;font:700 .78rem/1 var(--font-ui);color:var(--ink2)}
+.otext{font:500 1.2rem/1.5 var(--font-jp);overflow-wrap:anywhere;min-width:0}
+.opt.sel{border-color:var(--ink)}
+.opt.sel .bubble{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.ok .bubble{background:var(--ok);border-color:var(--ok);color:var(--paper)}
+.opt.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.bad .bubble{background:var(--bad);border-color:var(--bad);color:var(--paper)}
+.opt.dim{opacity:.6}
+.listen{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px dashed var(--rule);border-radius:10px}
+.transcript{display:flex;flex-direction:column;gap:6px;font-family:var(--font-jp);font-size:1.05rem}
+.transcript .who{color:var(--ink2);font-size:.85rem;margin-right:6px}
+.fb{border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;border:1.5px solid var(--rule)}
+.fb.okbox{background:var(--ok-soft);border-color:var(--ok)}
+.fb.badbox{background:var(--bad-soft);border-color:var(--bad)}
+.verdict{font-weight:700}
+.okbox .verdict{color:var(--ok)}
+.badbox .verdict{color:var(--bad)}
+.exambar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--rule)}
+.nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px}
+.nb{min-height:36px;border:1.5px solid var(--rule);border-radius:8px;background:var(--sheet);color:var(--ink);font:500 .85rem var(--font-ui);cursor:pointer;font-variant-numeric:tabular-nums}
+.nb.done{background:var(--indigo-soft);border-color:var(--indigo);color:var(--indigo)}
+.nb.cur{outline:2.5px solid var(--ink);outline-offset:1px}
+.pager{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.sc{border:1px solid var(--rule);border-radius:10px;padding:12px;background:var(--paper);display:flex;flex-direction:column;gap:4px}
+.sc b{font:700 1.8rem/1 var(--font-ui);font-variant-numeric:tabular-nums}
+.sc span{font-size:.82rem;color:var(--ink2)}
+.banner{border:1.5px solid var(--indigo);background:var(--indigo-soft);border-radius:10px;padding:12px 14px}
+.aviso{margin:0;color:var(--bad);font-weight:700;min-height:1.2em}
+.explain{white-space:pre-wrap;padding:12px 14px;border-radius:10px;background:var(--paper);border:1px solid var(--rule)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script src="comun.js"></script>
+<script>
+(() => {
+const $app = document.getElementById('app');
+const EXAM = { nivel: 'N5', fecha: new Date(2026, 11, 6) };
+const AREAS = [
+  { id: 'escucha', jp: '聴解', es: 'Comprensión auditiva', desc: 'Diálogos grabados. Se elige la respuesta y se ve el texto después.', listo: true },
+  { id: 'vocab', jp: '語彙', es: 'Vocabulario', desc: 'Lectura de palabras y de kanji. En preparación.', listo: false },
+  { id: 'gram', jp: '文法', es: 'Gramática', desc: 'Partículas, formas verbales y orden de la oración. En preparación.', listo: false },
+  { id: 'lect', jp: '読解', es: 'Lectura', desc: 'Textos breves y avisos con datos. En preparación.', listo: false }
+];
+
+let ejercicios = [];
+let S = { pantalla: 'inicio', area: null, lista: [], idx: 0, resp: {}, ok: 0 };
+const LS = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+};
+
+function h(tag, props, ...kids) {
+  const el = document.createElement(tag);
+  if (props) for (const k in props) {
+    const v = props[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k === 'text') el.textContent = v;
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else el.setAttribute(k, v === true ? '' : String(v));
+  }
+  for (const kid of kids.flat(Infinity)) if (kid != null && kid !== false) el.append(kid);
+  return el;
+}
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pct(a, b) { return b ? Math.round(100 * a / b) : 0; }
+function diasHasta() {
+  const t = new Date(); const hoy = new Date(t.getFullYear(), t.getMonth(), t.getDate());
+  return Math.round((EXAM.fecha - hoy) / 86400000);
+}
+function go(p, area) { S.pantalla = p; if (area !== undefined) S.area = area; render(); window.scrollTo(0, 0); }
+
+/* ---------- Estadísticas por perfil ---------- */
+function stats() { return Perfil.store.get('exam-stats', { escucha: { n: 0, ok: 0 }, vocab: { n: 0, ok: 0 }, gram: { n: 0, ok: 0 }, lect: { n: 0, ok: 0 } }); }
+function registrar(area, ok) {
+  const s = stats(); s[area].n++; if (ok) s[area].ok++;
+  Perfil.store.set('exam-stats', s);
+}
+
+/* ---------- Inicio ---------- */
+function vistaInicio() {
+  const d = diasHasta();
+  const wrap = h('div', { class: 'wrap' });
+  wrap.append(h('div', { class: 'head' },
+    h('div', { class: 'title' },
+      h('span', { class: 'kicker', lang: 'ja', text: '日本語能力試験' }),
+      h('h1', { text: 'Práctica JLPT ' + EXAM.nivel }),
+      h('p', { class: 'muted', text: 'Examen: 6 de diciembre de 2026' })),
+    d > 0 ? h('div', { style: 'flex:none;width:88px;height:88px;border-radius:50%;border:2.5px solid var(--indigo);color:var(--indigo);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-7deg);font-family:var(--font-jp);line-height:1', 'aria-label': 'Faltan ' + d + ' días' },
+      h('b', { style: 'font-size:2rem;font-weight:700', text: String(d) }), h('span', { style: 'font-size:.8rem;margin-top:4px', text: 'días' })) : null));
+
+  wrap.append(h('div', { class: 'modes' },
+    h('button', { class: 'mode primary', type: 'button', onclick: () => go('practica') },
+      h('span', { class: 'glyph', lang: 'ja', text: '練習' }), h('span', { class: 'name', text: 'Práctica para el examen' }),
+      h('span', { class: 'sub', text: 'Preguntas por área, con explicación y repetición de los errores.' })),
+    h('button', { class: 'mode', type: 'button', onclick: () => go('simulacro') },
+      h('span', { class: 'glyph', lang: 'ja', text: '模擬' }), h('span', { class: 'name', text: 'Simulación de examen' }),
+      h('span', { class: 'sub', text: 'Tres partes con tiempo, como el examen real. Próximamente.' }))));
+
+  const st = stats();
+  const prog = h('div', { class: 'sheet' }, h('h2', { text: 'Tu progreso' }));
+  let hay = false;
+  for (const a of AREAS) {
+    const x = st[a.id]; if (x.n) hay = true;
+    prog.append(h('div', { class: 'stat' },
+      h('span', null, a.es),
+      h('div', { class: 'bar' }, h('i', { style: 'width:' + pct(x.ok, x.n) + '%' })),
+      h('span', { class: 'val', text: x.n ? pct(x.ok, x.n) + '% · ' + x.n : 'Sin datos' })));
+  }
+  if (!hay) prog.append(h('p', { class: 'muted small', text: 'Todavía no hay respuestas en este perfil.' }));
+  wrap.append(prog);
+  wrap.append(h('p', { class: 'muted small', text: 'Las preguntas se guardan en este dispositivo. Nada se envía a ningún servidor.' }));
+  return wrap;
+}
+
+/* ---------- Práctica: elegir área ---------- */
+function vistaPractica() {
+  const wrap = h('div', { class: 'wrap' });
+  wrap.append(h('div', { class: 'topbar' },
+    h('button', { class: 'btn ghost', type: 'button', onclick: () => go('inicio') }, '← Volver'),
+    h('span', { class: 'toplabel', text: 'Práctica' })));
+  wrap.append(h('div', { class: 'title' }, h('h1', { text: '¿Qué área querés practicar?' }),
+    h('p', { class: 'muted', text: 'Cada respuesta se corrige y se explica en español.' })));
+  const grid = h('div', { class: 'secs' });
+  for (const a of AREAS) {
+    const x = stats()[a.id];
+    grid.append(h('button', { class: 'sec', type: 'button', disabled: a.listo ? null : true,
+      onclick: a.listo ? () => iniciarPractica(a.id) : null },
+      h('span', { class: 'glyph', lang: 'ja', text: a.jp }),
+      h('span', { class: 'name', text: a.es }),
+      h('span', { class: 'desc', text: a.desc }),
+      h('span', { class: 'acc', text: a.listo ? (x.n ? pct(x.ok, x.n) + '% de acierto · ' + x.n + ' respondidas' : 'Sin respuestas todavía') : 'En preparación' })));
+  }
+  wrap.append(grid);
+  return wrap;
+}
+
+/* ---------- Práctica: preguntas ---------- */
+function iniciarPractica(area) {
+  Perfil.elegir(() => {
+    const todas = ejercicios.filter(e => (e.tipo || '').length && area === 'escucha' && e.audio);
+    if (!todas.length) { go('practica'); return; }
+    S.area = area; S.lista = shuffle(todas); S.idx = 0; S.resp = {}; S.ok = 0;
+    go('preguntas');
+  });
+}
+const NUM = ['1', '2', '3', '4', '5', '6'];
+function vistaPreguntas() {
+  const wrap = h('div', { class: 'wrap' });
+  const ej = S.lista[S.idx];
+  const area = AREAS.find(a => a.id === S.area);
+  wrap.append(h('div', { class: 'topbar' },
+    h('button', { class: 'btn ghost', type: 'button', onclick: () => go('practica') }, '← Áreas'),
+    h('span', { class: 'toplabel', text: area.es + ' · ' + (S.idx + 1) + ' de ' + S.lista.length })));
+
+  const nav = h('div', { class: 'nav', role: 'navigation', 'aria-label': 'Preguntas' });
+  S.lista.forEach((_, i) => nav.append(h('button', { class: 'nb' + (S.resp[i] != null ? ' done' : '') + (i === S.idx ? ' cur' : ''), type: 'button',
+    onclick: () => { S.idx = i; render(); }, 'aria-label': 'Pregunta ' + (i + 1) }, String(i + 1))));
+  wrap.append(nav);
+
+  const card = h('div', { class: 'qcard' });
+  card.append(h('div', { class: 'qmeta' }, h('span', { class: 'tag', lang: 'ja', text: ej.tipo }), h('span', { class: 'qnum', text: ej.titulo || '' })));
+  const listen = h('div', { class: 'listen' });
+  const audio = new Audio(ej.audio);
+  const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
+  const lento = h('button', { class: 'btn', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 0.75; audio.play().catch(() => {}); } }, 'Más lento');
+  const estado = h('span', { class: 'small muted', text: '' });
+  listen.append(h('div', { class: 'row', style: 'display:flex;gap:10px;flex-wrap:wrap' }, play, lento), estado);
+  card.append(listen);
+
+  const sel = S.resp[S.idx];
+  const contestada = sel != null;
+  const opts = h('div', { class: 'opts', role: 'radiogroup' });
+  ej.opciones.forEach((t, i) => {
+    let cls = 'opt';
+    if (contestada) cls += i === ej.respuesta ? ' ok' : (i === sel ? ' bad' : ' dim');
+    else if (i === sel) cls += ' sel';
+    opts.append(h('button', { class: cls, type: 'button', role: 'radio', disabled: contestada ? true : null,
+      onclick: () => responder(i) },
+      h('span', { class: 'bubble', text: NUM[i] }), h('span', { class: 'otext', lang: 'ja', text: t })));
+  });
+  card.append(opts);
+  wrap.append(card);
+
+  if (contestada) {
+    const ok = sel === ej.respuesta;
+    const fb = h('div', { class: 'fb ' + (ok ? 'okbox' : 'badbox') });
+    fb.append(h('p', { class: 'verdict', text: ok ? 'Correcto' : 'Incorrecto' }));
+    if (!ok) fb.append(h('p', null, 'La respuesta correcta es la ', h('b', { text: NUM[ej.respuesta] }), ': ', h('span', { lang: 'ja', text: ej.opciones[ej.respuesta] })));
+    const guion = h('div', { class: 'transcript', lang: 'ja' });
+    ej.guion.forEach(([who, say]) => guion.append(h('p', null, h('span', { class: 'who', text: who }), say)));
+    fb.append(h('p', { class: 'small muted', text: 'Texto del audio:' }), guion);
+    wrap.append(fb);
+  }
+
+  wrap.append(h('div', { class: 'pager' },
+    h('button', { class: 'btn', type: 'button', disabled: S.idx === 0 ? true : null, onclick: () => { S.idx--; render(); } }, '← Anterior'),
+    S.idx + 1 < S.lista.length
+      ? h('button', { class: 'btn primary', type: 'button', onclick: () => { S.idx++; render(); } }, 'Siguiente →')
+      : h('button', { class: 'btn primary', type: 'button', onclick: () => go('resumen') }, 'Ver resultado')));
+  return wrap;
+}
+function responder(i) {
+  if (S.resp[S.idx] != null) return;
+  const ej = S.lista[S.idx];
+  S.resp[S.idx] = i;
+  const ok = i === ej.respuesta;
+  registrar(S.area, ok);
+  if (ok) { S.ok++; Elogio.bien(); } else Elogio.error();
+  render();
+}
+
+/* ---------- Resumen ---------- */
+function vistaResumen() {
+  const total = S.lista.length, hechas = Object.keys(S.resp).length;
+  const wrap = h('div', { class: 'wrap' });
+  wrap.append(h('div', { class: 'title' }, h('h1', { text: '¡Terminaste!' })));
+  wrap.append(h('div', { class: 'sheet' }, h('div', { class: 'score' },
+    h('div', { class: 'sc' }, h('b', { text: S.ok + '/' + hechas }), h('span', { text: 'correctas' })),
+    h('div', { class: 'sc' }, h('b', { text: pct(S.ok, hechas) + '%' }), h('span', { text: 'de acierto' })),
+    h('div', { class: 'sc' }, h('b', { text: String(total) }), h('span', { text: 'preguntas' })))));
+  wrap.append(h('div', { class: 'pager' },
+    h('button', { class: 'btn primary', type: 'button', onclick: () => { Elogio.fin(); iniciarPractica(S.area); } }, '↺ Otra ronda'),
+    h('button', { class: 'btn', type: 'button', onclick: () => go('practica') }, 'Elegir otra área')));
+  return wrap;
+}
+
+/* ---------- Simulacro (pendiente) ---------- */
+function vistaSimulacro() {
+  const wrap = h('div', { class: 'wrap' });
+  wrap.append(h('div', { class: 'topbar' }, h('button', { class: 'btn ghost', type: 'button', onclick: () => go('inicio') }, '← Volver')));
+  wrap.append(h('div', { class: 'banner' }, h('p', { text: 'La simulación con tiempo se arma en la etapa 3, cuando estén verificados los tiempos y cantidades del examen oficial N5.' })));
+  return wrap;
+}
+
+function render() {
+  $app.textContent = '';
+  const v = { inicio: vistaInicio, practica: vistaPractica, preguntas: vistaPreguntas, resumen: vistaResumen, simulacro: vistaSimulacro }[S.pantalla] || vistaInicio;
+  $app.append(v());
+}
+
+/* ---------- Carga y arranque ---------- */
+fetch('audio/chokai/ejercicios.json', { cache: 'no-cache' })
+  .then(r => r.json())
+  .then(j => { ejercicios = (j.ejercicios || []).map(e => ({ ...e, tipo: e.tipo || '' })); })
+  .catch(() => { ejercicios = []; })
+  .finally(render);
+})();
+</script>
+</body>
+</html>
