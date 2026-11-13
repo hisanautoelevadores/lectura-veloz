@@ -40,7 +40,9 @@
         "うちで べんきょうする",
         "ともだちの うちに いく"
       ],
-      "respuesta": 1
+      "respuesta": 1,
+      "tema": "Qué va a hacer mañana",
+      "explicacion": "Mañana llueve, así que hoy van a hacer las compras. Mañana el hombre va a ver una película con un amigo."
     },
     {
       "id": "P02",
@@ -87,7 +89,9 @@
         "じゅういちがつ じゅうににち",
         "じゅうにがつ じゅうよっか"
       ],
-      "respuesta": 0
+      "respuesta": 0,
+      "tema": "Fecha de cumpleaños",
+      "explicacion": "Mañana es el 12 de octubre, y ese día es el cumpleaños del hombre. Cumple 14 años."
     },
     {
       "id": "P03",
@@ -134,7 +138,9 @@
         "はちじ",
         "はちじ はん"
       ],
-      "respuesta": 1
+      "respuesta": 1,
+      "tema": "Hora de ir a la escuela",
+      "explicacion": "El hombre sale para la escuela a las 7 y media de la mañana. Antes ya desayunó pan."
     },
     {
       "id": "E04",
@@ -169,7 +175,9 @@
         "じゅうじはん",
         "じゅういちじ"
       ],
-      "respuesta": 1
+      "respuesta": 1,
+      "tema": "Hora de la reunión",
+      "explicacion": "La reunión empieza a las 10 en punto."
     },
     {
       "id": "E05",
@@ -204,7 +212,9 @@
         "たまご",
         "りんご"
       ],
-      "respuesta": 1
+      "respuesta": 1,
+      "tema": "Qué comprar",
+      "explicacion": "Ayer compraron pan, pero hoy no hay leche. El hombre le pide que compre leche."
     },
     {
       "id": "E06",
@@ -222,7 +232,9 @@
         "はい、ありがとう ございます。",
         "きのう かいました。"
       ],
-      "respuesta": 0
+      "respuesta": 0,
+      "tema": "¿De quién es el libro?",
+      "explicacion": "Cuando preguntan de quién es algo, se responde diciendo que es propio: «es mi libro»."
     },
     {
       "id": "E07",
@@ -253,7 +265,9 @@
         "えきの なか",
         "びょういんの まえ"
       ],
-      "respuesta": 0
+      "respuesta": 0,
+      "tema": "Dónde está la librería",
+      "explicacion": "La librería está delante de la estación. No está al lado del banco."
     },
     {
       "id": "E08",
@@ -284,7 +298,9 @@
         "としょかんに いく",
         "うちで ねる"
       ],
-      "respuesta": 0
+      "respuesta": 0,
+      "tema": "Plan del sábado",
+      "explicacion": "El sábado el hombre va al mar. La mujer también quisiera ir."
     },
     {
       "id": "E09",
@@ -315,7 +331,9 @@
         "にこ",
         "はっこ"
       ],
-      "respuesta": 2
+      "respuesta": 2,
+      "tema": "Cuántas manzanas quedan",
+      "explicacion": "Había 5. Se comieron 3. Quedan 2."
     },
     {
       "id": "E10",
@@ -333,7 +351,9 @@
         "おやすみなさい。",
         "いってきます。"
       ],
-      "respuesta": 1
+      "respuesta": 1,
+      "tema": "Buenas noches",
+      "explicacion": "Cuando alguien dice buenas noches, se responde con la misma frase."
     },
     {
       "id": "E11",
@@ -364,7 +384,9 @@
         "いえ",
         "がっこう"
       ],
-      "respuesta": 1
+      "respuesta": 1,
+      "tema": "Dónde está la persona",
+      "explicacion": "Ahora la persona está en la biblioteca."
     },
     {
       "id": "E12",
@@ -382,7 +404,9 @@
         "はい、そうです。",
         "きのう いきました。"
       ],
-      "respuesta": 0
+      "respuesta": 0,
+      "tema": "Preguntar por el baño",
+      "explicacion": "Para indicar dónde está un lugar que no está cerca, se responde señalando: «allá»."
     },
     {
       "id": "E13",
@@ -417,7 +441,9 @@
         "ねる",
         "そとに でる"
       ],
-      "respuesta": 0
+      "respuesta": 0,
+      "tema": "Qué hace primero",
+      "explicacion": "Tiene hambre y quieren comer, pero antes se lava las manos. Lo primero es lavarse las manos."
     }
   ]
 }

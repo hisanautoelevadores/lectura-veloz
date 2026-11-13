@@ -245,7 +245,7 @@ function vistaPreguntas() {
   wrap.append(nav);
 
   const card = h('div', { class: 'qcard' });
-  card.append(h('div', { class: 'qmeta' }, h('span', { class: 'tag', lang: 'ja', text: ej.tipo }), h('span', { class: 'qnum', text: ej.titulo || '' })));
+  card.append(h('p', { class: 'small muted', text: 'Escuchá el audio y elegí la respuesta.' }));
   const listen = h('div', { class: 'listen' });
   const audio = new Audio(ej.audio);
   const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
@@ -271,11 +271,16 @@ function vistaPreguntas() {
   if (contestada) {
     const ok = sel === ej.respuesta;
     const fb = h('div', { class: 'fb ' + (ok ? 'okbox' : 'badbox') });
-    fb.append(h('p', { class: 'verdict', text: ok ? 'Correcto' : 'Incorrecto' }));
-    if (!ok) fb.append(h('p', null, 'La respuesta correcta es la ', h('b', { text: NUM[ej.respuesta] }), ': ', h('span', { lang: 'ja', text: ej.opciones[ej.respuesta] })));
-    const guion = h('div', { class: 'transcript', lang: 'ja' });
-    ej.guion.forEach(([who, say]) => guion.append(h('p', null, h('span', { class: 'who', text: who }), say)));
-    fb.append(h('p', { class: 'small muted', text: 'Texto del audio:' }), guion);
+    fb.append(h('p', { class: 'verdict', text: ok ? '¡Muy bien!' : 'Esta vez no era esa.' }));
+    fb.append(h('p', null, 'Tema: ', h('b', { text: ej.tema || ej.titulo || '' })));
+    fb.append(h('p', null, 'La respuesta es la ', h('b', { text: NUM[ej.respuesta] }), ': ', h('span', { lang: 'ja', text: ej.opciones[ej.respuesta] })));
+    if (!ok && ej.explicacion) fb.append(h('p', { text: ej.explicacion }));
+    if (!ok) {
+      const guion = h('div', { class: 'transcript', lang: 'ja', hidden: true });
+      ej.guion.forEach(([who, say]) => guion.append(h('p', null, h('span', { class: 'who', text: who }), say)));
+      const btn = h('button', { class: 'btn', type: 'button', onclick: () => { guion.hidden = !guion.hidden; btn.textContent = guion.hidden ? 'Ver el texto del audio' : 'Ocultar el texto'; } }, 'Ver el texto del audio');
+      fb.append(btn, guion);
+    }
     wrap.append(fb);
   }
 
