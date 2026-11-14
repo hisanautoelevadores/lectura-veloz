@@ -43,6 +43,11 @@ h1{font-size:1.2rem;margin:0}
 .opc-num button.ok{background:#2E8B57;border-color:#2E8B57;color:#fff}
 .opc-num button.bad{background:#B03A28;border-color:#B03A28;color:#fff}
 .ej-fila{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.leyenda{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.92rem;line-height:1.35}
+.leyenda div{background:#fff;border:1px solid #C8B99E;border-radius:10px;padding:8px}
+.leyenda b{font-size:1.2rem}
+.etq{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#FF1E8C;font:800 14px system-ui,sans-serif;text-shadow:0 0 2px #fff,0 0 3px #fff,0 0 4px #fff;pointer-events:none}
+.tab-etq .cu.activo .etq{display:block}
 </style>
 </head>
 <body>
@@ -125,7 +130,7 @@ h1{font-size:1.2rem;margin:0}
     el.style.left = left + '%';
     el.tabIndex = 0;
     el.setAttribute('role', 'button');
-    el.innerHTML = svgCuenta();
+    el.innerHTML = svgCuenta() + '<span class="etq">' + (tipo === 'cielo' ? '5' : '1') + '</span>';
     // arrastre táctil y con mouse: subir o bajar la ficha; un toque sin arrastre la mueve igual
     let inicioY = null, arrastrado = false;
     el.addEventListener('pointerdown', (e) => { inicioY = e.clientY; arrastrado = false; el.setPointerCapture(e.pointerId); el.style.transition = 'none'; });
@@ -166,11 +171,11 @@ h1{font-size:1.2rem;margin:0}
   function posiciones() {
     for (const c of cuentas) {
       const e = est[c.col];
-      let top;
-      if (c.tipo === 'cielo') top = e.cielo ? BARRA_TOP - ALTO : TOP_MARCO;
-      else if (c.idx < e.tierra) top = BARRA_BOTTOM + c.idx * PASO - 2;
-      else top = MARCO_INF - ALTO - (3 - c.idx) * PASO;
+      let top, activo;
+      if (c.tipo === 'cielo') { activo = !!e.cielo; top = e.cielo ? BARRA_TOP - ALTO : TOP_MARCO; }
+      else { activo = c.idx < e.tierra; top = activo ? BARRA_BOTTOM + c.idx * PASO - 2 : MARCO_INF - ALTO - (3 - c.idx) * PASO; }
       c.el.style.top = top + 'px';
+      c.el.classList.toggle('activo', activo);
     }
   }
 
@@ -224,24 +229,33 @@ h1{font-size:1.2rem;margin:0}
   // ----- Ejercicios -----
   const caja = document.getElementById('ejCaja');
   const PASOS_FICHA = [
-    { t: 'Esta ficha de abajo vale 1.', f: () => soloUnidades(1) },
-    { t: 'Dos fichas de abajo valen 2.', f: () => soloUnidades(2) },
-    { t: 'La ficha de arriba vale 5. Bajala hasta la barra: 5 más 2 es 7.', f: () => soloUnidades(7) },
-    { t: 'Tres fichas de abajo y la de arriba: 5 más 3 es 8.', f: () => soloUnidades(8) },
-    { t: 'Las cuatro de abajo y la de arriba: 5 más 4 es 9, el número más grande de una columna.', f: () => soloUnidades(9) }
+    { t: 'Esta es la columna de las unidades. Las fichas de abajo valen 1 cada una. La de arriba vale 5.', f: () => soloUnidades(0) },
+    { t: 'Con el pulgar subí una ficha de abajo, hasta la barra. Vale 1.', f: () => soloUnidades(1) },
+    { t: 'Subí otra con el pulgar. Ahora son 2.', f: () => soloUnidades(2) },
+    { t: 'Una más: 3.', f: () => soloUnidades(3) },
+    { t: 'Y la cuarta: 4. Las cuatro de abajo están pegadas a la barra.', f: () => soloUnidades(4) },
+    { t: 'Para volver a cero, el pulgar empuja las de abajo hacia abajo.', f: () => soloUnidades(0) },
+    { t: 'Ahora el índice baja la ficha de arriba hasta la barra. Vale 5, y aparece el 5 en la ficha.', f: () => soloUnidades(5) },
+    { t: 'Con el 5 bajado, sumamos 3 más subiendo tres de abajo con el pulgar: 5 más 3 es 8.', f: () => soloUnidades(8) },
+    { t: 'Con las cuatro de abajo: 5 más 4 es 9. Es el número más grande de una columna.', f: () => soloUnidades(9) },
+    { t: 'Para mostrar 2, el índice sube la ficha de arriba (ya no vale nada) y el pulgar deja dos de abajo: 2.', f: () => soloUnidades(2) },
+    { t: 'Ahora practicá: volvé a cero con el índice y el pulgar, y después probá el ejercicio 2.', f: () => soloUnidades(0) }
   ];
   let paso = 0;
   function ejFicha() {
     caja.hidden = false;
     caja.innerHTML = '';
     const h2 = document.createElement('h2'); h2.textContent = '1 · Qué vale cada ficha';
-    const t = document.createElement('p'); t.className = 'txt'; t.textContent = PASOS_FICHA[paso].t;
+    const leyenda = document.createElement('div'); leyenda.className = 'leyenda';
+    leyenda.innerHTML = '<div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube las de abajo: cada una vale 1.</div>';
+    const t = document.createElement('p'); t.className = 'txt'; t.textContent = (paso + 1) + ' de ' + PASOS_FICHA.length + '. ' + PASOS_FICHA[paso].t;
     const fila = document.createElement('div'); fila.className = 'ej-fila';
     const b = document.createElement('button'); b.type = 'button'; b.className = 'btn primary';
     b.textContent = paso + 1 < PASOS_FICHA.length ? 'Siguiente' : 'Empezar de nuevo';
     b.onclick = () => { paso = (paso + 1) % PASOS_FICHA.length; PASOS_FICHA[paso].f(); render(); ejFicha(); };
     fila.append(b);
-    caja.append(h2, t, fila);
+    caja.append(h2, leyenda, t, fila);
+    document.getElementById('tab').classList.add('tab-etq');
     PASOS_FICHA[paso].f(); render();
   }
   function ejArmar() {
@@ -286,6 +300,7 @@ h1{font-size:1.2rem;margin:0}
   function setModo(m) {
     MODO = m;
     document.querySelectorAll('.menu-ej button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ej === m)));
+    document.getElementById('tab').classList.toggle('tab-etq', m === 'ficha');
     if (m === 'libre') { caja.hidden = true; render(); return; }
     if (m === 'ficha') { paso = 0; ejFicha(); }
     if (m === 'armar') { ejArmar(); }
