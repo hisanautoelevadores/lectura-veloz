@@ -79,3 +79,8 @@ Se hacen juntos, en una sola tanda, para probar una vez.
 - Las palabras y frases reales se filtran por banda (3-5, 6-7, 8-10). Las pseudopalabras no dependen de la edad.
 - Página de administración (con enlace privado) para agregar palabras y frases: se exporta a un archivo, se revisa la ortografía y se incorpora al repositorio.
 - Pendiente de aprobación: los cinco niveles y las bandas.
+
+## Lectura: nombres y perfil visible (lectura.html)
+- Cambiar "Nivel" por "Tipo de ejercicio"; las opciones dicen "Ejercicio 1" a "Ejercicio 5".
+- Ejercicio 5 (frases): deshabilitado para 3 a 5 años. Para 6 a 7 y 8 a 10 se habilita, con frases simples para los más chicos y más complejas para los mayores.
+- En todas las pantallas, arriba, se muestra el perfil activo y su banda (por ejemplo, "Pepito · 3 a 5 años"), con botón para cambiar de perfil.
