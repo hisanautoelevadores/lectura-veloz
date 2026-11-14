@@ -49,3 +49,12 @@ Se hacen juntos, en una sola tanda, para probar una vez.
   - Acciones, lugares y escuela (jugar, ir a la plaza, la maestra), sentimientos simples: 6 a 7 años.
   - Juegos, celulares y cosas de chicos más grandes; naturaleza, ciencia y geografía básicas; palabras abstractas simples ("amistad", "paciencia", "esfuerzo"): 8 a 10 años.
 - Revisar que no haya palabras de un nivel superior en una banda inferior.
+
+## Kanji por grado (sección japonés)
+- Filtro por edad según la lista oficial de kanji de educación primaria por grado (Ministerio de Educación de Japón; verificar la lista exacta antes de cargar).
+  - 3 a 5 años: solo hiragana y katakana.
+  - 6 años: kanji de primer grado (números, 大, 小, 中, 犬, 人, 日, 月, etc.).
+  - 7 años: primer y segundo grado.
+  - 8 a 10 años: tercero a quinto grado, con furigana (lectura en hiragana al lado).
+- Verificar el grado de cada kanji de uso común (por ejemplo, 猫) contra la lista oficial antes de asignarlo.
+- Sección nueva: "Lectura de kanji", con el mismo sistema de repetición de errores.
