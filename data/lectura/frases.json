@@ -1,0 +1,85 @@
+{
+ "ejercicio": 5,
+ "items": [
+  {
+   "t": "Mi mamá me ama.",
+   "b": 2
+  },
+  {
+   "t": "Mi perro se llama Toby.",
+   "b": 2
+  },
+  {
+   "t": "Fuimos al parque con mis amigos.",
+   "b": 2
+  },
+  {
+   "t": "Después de la escuela, jugamos en el patio.",
+   "b": 2
+  },
+  {
+   "t": "Mi abuela cocina sopa, y yo ayudo.",
+   "b": 2
+  },
+  {
+   "t": "El gato duerme en la cama.",
+   "b": 2
+  },
+  {
+   "t": "Hoy llueve, así que llevo paraguas.",
+   "b": 2
+  },
+  {
+   "t": "Mi hermano y yo jugamos a la pelota.",
+   "b": 2
+  },
+  {
+   "t": "Vamos a la plaza cuando hace sol.",
+   "b": 2
+  },
+  {
+   "t": "La maestra nos lee un cuento.",
+   "b": 2
+  },
+  {
+   "t": "Aunque llovía, fuimos a la plaza para jugar.",
+   "b": 3
+  },
+  {
+   "t": "El agua hierve a cien grados, por eso se usa para cocinar.",
+   "b": 3
+  },
+  {
+   "t": "La tortuga camina despacio, pero llega lejos.",
+   "b": 3
+  },
+  {
+   "t": "Cuando termine la tarea, voy a leer en la biblioteca.",
+   "b": 3
+  },
+  {
+   "t": "Mi abuelo cuenta historias de cuando era chico.",
+   "b": 3
+  },
+  {
+   "t": "Con paciencia y esfuerzo, se aprende a leer.",
+   "b": 3
+  },
+  {
+   "t": "Antes de cruzar la calle, hay que mirar a los dos lados.",
+   "b": 3
+  },
+  {
+   "t": "Los pájaros migran en otoño hacia lugares más cálidos.",
+   "b": 3
+  },
+  {
+   "t": "La montaña estaba cubierta de nieve, y el aire era frío.",
+   "b": 3
+  },
+  {
+   "t": "Después de la lluvia, apareció un arcoíris sobre el campo.",
+   "b": 3
+  }
+ ]
+}
