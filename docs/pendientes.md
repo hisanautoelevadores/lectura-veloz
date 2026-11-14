@@ -90,3 +90,9 @@ Se hacen juntos, en una sola tanda, para probar una vez.
 - Ejercicio 5 (frases) deshabilitado para 3 a 5 años.
 - Perfil activo visible en todas las páginas, con botón "Cambiar"; se recuerda al cambiar de página.
 - Opciones de audio mezcladas en cada ronda: ya estaba hecho en la práctica JLPT y la simulación.
+
+## Destello (lectura en español, ejercicios 1 a 4)
+- Dos modos para los ejercicios 1, 2, 3 y 4: "Deslizar" (como hoy) y "Destello" (la palabra aparece en el centro y desaparece).
+- Ejercicio 5 (frases): solo "Deslizar", por ahora.
+- En destello, el botón de velocidad controla el tiempo en pantalla: de 2 segundos hasta 1/10 de segundo, para los más avanzados.
+- Pausa entre palabras: independiente del destello, de 1 segundo como referencia. No se acelera junto con el destello. Más pausa para las bandas más chicas, un poco menos para las más grandes, y un piso mínimo. Regulable con un control aparte.
