@@ -340,16 +340,113 @@ function vistaResumen() {
 }
 
 /* ---------- Simulacro (pendiente) ---------- */
+/* ---------- Simulación con tiempo ---------- */
+// Tiempos y cantidades PROVISORIOS: verificar con la fuente oficial antes de usar en serio.
+const SIM_PARTES = [
+  { nombre: 'Vocabulario y gramática', minutos: 25, n: 20, fuentes: ['vocab', 'gram'] },
+  { nombre: 'Comprensión auditiva', minutos: 20, n: 5, fuentes: ['escucha'] }
+];
+let SIM = null;
+
+function simPoolDe(fuentes) {
+  return fuentes.flatMap(f => f === 'escucha' ? ejercicios : banco.filter(e => e.area === f));
+}
+function simIniciar() {
+  const partes = SIM_PARTES.map(p => {
+    const pool = shuffle(simPoolDe(p.fuentes)).slice(0, p.n).map(barajarOpciones);
+    return { nombre: p.nombre, minutos: p.minutos, lista: pool, resp: {}, idx: 0 };
+  });
+  SIM = { partes, parte: 0, restante: partes[0].minutos * 60, timer: null, fase: 'pregs' };
+  Perfil.elegir(() => { simArrancarReloj(); go('simProc'); }, { banda: false });
+}
+function simArrancarReloj() {
+  clearInterval(SIM.timer);
+  SIM.timer = setInterval(() => {
+    SIM.restante--;
+    const el = document.getElementById('simReloj');
+    if (el) el.textContent = simFmt(SIM.restante);
+    if (SIM.restante <= 0) simSiguienteParte(true);
+  }, 1000);
+}
+function simFmt(t) { t = Math.max(0, t); return String(Math.floor(t / 60)).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0'); }
+function simSiguienteParte(porTiempo) {
+  clearInterval(SIM.timer);
+  if (SIM.parte + 1 < SIM.partes.length) {
+    SIM.parte++;
+    SIM.restante = SIM.partes[SIM.parte].minutos * 60;
+    simArrancarReloj();
+    go('simProc');
+  } else {
+    go('simRes');
+  }
+}
 function vistaSimulacro() {
   const wrap = h('div', { class: 'wrap' });
   wrap.append(h('div', { class: 'topbar' }, h('button', { class: 'btn ghost', type: 'button', onclick: () => go('inicio') }, '← Volver')));
-  wrap.append(h('div', { class: 'banner' }, h('p', { text: 'La simulación con tiempo se arma en la etapa 3, cuando estén verificados los tiempos y cantidades del examen oficial N5.' })));
+  wrap.append(h('div', { class: 'title' }, h('h1', { text: 'Simulación de examen' }),
+    h('p', { class: 'muted', text: 'Tres partes con tiempo, sin explicaciones hasta el final, como en el examen.' })));
+  wrap.append(h('div', { class: 'sheet' }, SIM_PARTES.map(p => h('p', null, h('b', { text: p.nombre }), ' · ' + p.n + ' preguntas · ' + p.minutos + ' minutos'))));
+  wrap.append(h('div', { class: 'banner' }, h('p', { text: 'Tiempos y cantidades provisorios, pendientes de verificar con la fuente oficial. El resultado es una estimación, no un resultado oficial.' })));
+  wrap.append(h('button', { class: 'btn primary', type: 'button', onclick: simIniciar }, 'Empezar la simulación'));
+  return wrap;
+}
+function vistaSimProc() {
+  const P = SIM.partes[SIM.parte];
+  const wrap = h('div', { class: 'wrap' });
+  wrap.append(h('div', { class: 'exambar' },
+    h('span', { class: 'small', text: P.nombre + ' · parte ' + (SIM.parte + 1) + ' de ' + SIM.partes.length }),
+    h('span', { class: 'timer', id: 'simReloj', style: 'font:700 1.4rem var(--font-ui);font-variant-numeric:tabular-nums', text: simFmt(SIM.restante) })));
+  const nav = h('div', { class: 'nav' });
+  P.lista.forEach((_, i) => nav.append(h('button', { class: 'nb' + (P.resp[i] != null ? ' done' : '') + (i === P.idx ? ' cur' : ''), type: 'button',
+    onclick: () => { P.idx = i; render(); } }, String(i + 1))));
+  wrap.append(nav);
+  const ej = P.lista[P.idx];
+  const card = h('div', { class: 'qcard' });
+  if (ej.audio) {
+    const audio = new Audio(ej.audio);
+    card.append(h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap' },
+      h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.play().catch(() => {}); } }, '🔊 Escuchar')));
+  } else {
+    card.append(h('div', { class: 'qtext', lang: 'ja', style: 'font:500 1.3rem/1.9 var(--font-jp);overflow-wrap:anywhere' }, rich(ej.q)));
+  }
+  const opts = h('div', { class: 'opts', role: 'radiogroup' });
+  ej.opciones.forEach((t, i) => opts.append(h('button', { class: 'opt' + (P.resp[P.idx] === i ? ' sel' : ''), type: 'button', role: 'radio',
+    onclick: () => { P.resp[P.idx] = i; render(); } },
+    h('span', { class: 'bubble', text: NUM[i] }), h('span', { class: 'otext', lang: 'ja', text: t }))));
+  card.append(opts);
+  wrap.append(card);
+  wrap.append(h('div', { class: 'pager' },
+    h('button', { class: 'btn', type: 'button', disabled: P.idx === 0 ? true : null, onclick: () => { P.idx--; render(); } }, '← Anterior'),
+    P.idx + 1 < P.lista.length
+      ? h('button', { class: 'btn', type: 'button', onclick: () => { P.idx++; render(); } }, 'Siguiente →')
+      : null,
+    h('button', { class: 'btn primary', type: 'button', onclick: () => { if (confirm('¿Terminar esta parte? No vas a poder volver atrás.')) simSiguienteParte(false); } },
+      SIM.parte + 1 < SIM.partes.length ? 'Terminar parte' : 'Terminar examen')));
+  return wrap;
+}
+function vistaSimRes() {
+  const wrap = h('div', { class: 'wrap' });
+  wrap.append(h('div', { class: 'title' }, h('h1', { text: 'Resultado de la simulación' }),
+    h('p', { class: 'muted', text: 'Estimación con preguntas de práctica, no un resultado oficial.' })));
+  let total = 0, totalN = 0;
+  const grid = h('div', { class: 'score' });
+  SIM.partes.forEach(p => {
+    const ok = p.lista.reduce((n, e, i) => n + (p.resp[i] === e.respuesta ? 1 : 0), 0);
+    total += ok; totalN += p.lista.length;
+    grid.append(h('div', { class: 'sc' }, h('b', { text: ok + '/' + p.lista.length }), h('span', { text: p.nombre })));
+  });
+  wrap.append(h('div', { class: 'sheet' }, grid, h('p', { text: 'Total: ' + total + ' de ' + totalN + ' (' + pct(total, totalN) + '%).' })));
+  wrap.append(h('div', { class: 'pager' },
+    h('button', { class: 'btn primary', type: 'button', onclick: simIniciar }, '↺ Hacer otra simulación'),
+    h('button', { class: 'btn', type: 'button', onclick: () => go('inicio') }, 'Volver al inicio')));
   return wrap;
 }
 
 function render() {
   $app.textContent = '';
   const v = { inicio: vistaInicio, practica: vistaPractica, preguntas: vistaPreguntas, resumen: vistaResumen, simulacro: vistaSimulacro }[S.pantalla] || vistaInicio;
+  if (S.pantalla === 'simProc') { $app.append(vistaSimProc()); return; }
+  if (S.pantalla === 'simRes') { $app.append(vistaSimRes()); return; }
   $app.append(v());
 }
 
