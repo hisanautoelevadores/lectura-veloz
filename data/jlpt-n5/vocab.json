@@ -601,6 +601,306 @@
       ],
       "respuesta": 0,
       "explicacion": "En la estación se compra el きっぷ (boleto)."
+    },
+    {
+      "id": "V041",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[水]]曜日に ともだちと あいます。",
+      "opciones": [
+        "すい",
+        "みず",
+        "ひ",
+        "き"
+      ],
+      "respuesta": 0,
+      "explicacion": "水曜日 se lee すいようび (miércoles)."
+    },
+    {
+      "id": "V042",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[木]]曜日に うんどうします。",
+      "opciones": [
+        "もく",
+        "き",
+        "ぼく",
+        "こ"
+      ],
+      "respuesta": 0,
+      "explicacion": "木曜日 se lee もくようび (jueves)."
+    },
+    {
+      "id": "V043",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[金]]曜日に がっこうが あります。",
+      "opciones": [
+        "きん",
+        "かね",
+        "こん",
+        "ぎん"
+      ],
+      "respuesta": 0,
+      "explicacion": "金曜日 se lee きんようび (viernes)."
+    },
+    {
+      "id": "V044",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[土]]曜日に かいものに いきます。",
+      "opciones": [
+        "ど",
+        "つち",
+        "と",
+        "つ"
+      ],
+      "respuesta": 0,
+      "explicacion": "土曜日 se lee どようび (sábado)."
+    },
+    {
+      "id": "V045",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[月]]曜日に ともだちと あそびます。",
+      "opciones": [
+        "げつ",
+        "つき",
+        "がつ",
+        "げ"
+      ],
+      "respuesta": 0,
+      "explicacion": "月曜日 se lee げつようび (lunes)."
+    },
+    {
+      "id": "V046",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[手]]を あらいます。",
+      "opciones": [
+        "て",
+        "しゅ",
+        "ず",
+        "てい"
+      ],
+      "respuesta": 0,
+      "explicacion": "手 se lee て (mano)."
+    },
+    {
+      "id": "V047",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[足]]が いたいです。",
+      "opciones": [
+        "あし",
+        "そく",
+        "あしび",
+        "たし"
+      ],
+      "respuesta": 0,
+      "explicacion": "足 se lee あし (pie, pierna)."
+    },
+    {
+      "id": "V048",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[目]]が おおきいです。",
+      "opciones": [
+        "め",
+        "もく",
+        "ぼく",
+        "ま"
+      ],
+      "respuesta": 0,
+      "explicacion": "目 se lee め (ojo)."
+    },
+    {
+      "id": "V049",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[耳]]が いたいです。",
+      "opciones": [
+        "みみ",
+        "じ",
+        "くち",
+        "みみく"
+      ],
+      "respuesta": 0,
+      "explicacion": "耳 se lee みみ (oreja)."
+    },
+    {
+      "id": "V050",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[口]]を あけて ください。",
+      "opciones": [
+        "くち",
+        "こう",
+        "ぐち",
+        "くちびる"
+      ],
+      "respuesta": 0,
+      "explicacion": "口 se lee くち (boca)."
+    },
+    {
+      "id": "V051",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[雨]]が ふって います。",
+      "opciones": [
+        "あめ",
+        "う",
+        "ゆう",
+        "さめ"
+      ],
+      "respuesta": 0,
+      "explicacion": "雨 se lee あめ (lluvia)."
+    },
+    {
+      "id": "V052",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「あかるい」の はんたいは どれですか。",
+      "opciones": [
+        "くらい",
+        "はやい",
+        "たかい",
+        "つよい"
+      ],
+      "respuesta": 0,
+      "explicacion": "あかるい (claro, luminoso) es lo contrario de くらい (oscuro)."
+    },
+    {
+      "id": "V053",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「あたらしい」の はんたいは どれですか。",
+      "opciones": [
+        "ふるい",
+        "ちいさい",
+        "ながい",
+        "はやい"
+      ],
+      "respuesta": 0,
+      "explicacion": "あたらしい (nuevo) es lo contrario de ふるい (viejo)."
+    },
+    {
+      "id": "V054",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「のぼる」の はんたいは どれですか。",
+      "opciones": [
+        "おりる",
+        "あるく",
+        "はしる",
+        "たつ"
+      ],
+      "respuesta": 0,
+      "explicacion": "のぼる (subir) es lo contrario de おりる (bajar)."
+    },
+    {
+      "id": "V055",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「あける」の はんたいは どれですか。",
+      "opciones": [
+        "しめる",
+        "あるく",
+        "きく",
+        "よむ"
+      ],
+      "respuesta": 0,
+      "explicacion": "あける (abrir) es lo contrario de しめる (cerrar)."
+    },
+    {
+      "id": "V056",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "ゆうがた、（　　）が しずみます。",
+      "opciones": [
+        "たいよう",
+        "つき",
+        "くも",
+        "ほし"
+      ],
+      "respuesta": 0,
+      "explicacion": "Al atardecer se pone el sol (たいよう)."
+    },
+    {
+      "id": "V057",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "のどが かわきました。（　　）を のみます。",
+      "opciones": [
+        "みず",
+        "ごはん",
+        "ねこ",
+        "くつ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Si tienes sed, bebes agua (みず)."
+    },
+    {
+      "id": "V058",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "あしたは ともだちの（　　）です。",
+      "opciones": [
+        "たんじょうび",
+        "がっこう",
+        "うみ",
+        "えき"
+      ],
+      "respuesta": 0,
+      "explicacion": "Mañana es el cumpleaños de un amigo (たんじょうび)."
+    },
+    {
+      "id": "V059",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "かぜを ひいたので、（　　）へ いきます。",
+      "opciones": [
+        "びょういん",
+        "こうえん",
+        "ほんや",
+        "としょかん"
+      ],
+      "respuesta": 0,
+      "explicacion": "Con resfrío se va al hospital (びょういん)."
+    },
+    {
+      "id": "V060",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「うる」と はんたいの いみは どれですか。",
+      "opciones": [
+        "かう",
+        "みる",
+        "あう",
+        "はなす"
+      ],
+      "respuesta": 0,
+      "explicacion": "うる (vender) es lo contrario de かう (comprar)."
     }
   ]
 }

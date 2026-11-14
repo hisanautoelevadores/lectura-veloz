@@ -1,0 +1,327 @@
+{
+  "estado": "pendiente: texto listo, sin audio. Generar audio requiere aprobación (cuota HeyGen)",
+  "ejercicios": [
+    {
+      "id": "EP01",
+      "tipo": "課題理解",
+      "tema": "Hora de salir",
+      "pregunta": "¿Qué va a hacer el hombre primero?",
+      "guion": [
+        [
+          "Narrador",
+          "おとこの ひとが はなして います。おとこの ひとは まず なにを しますか。"
+        ],
+        [
+          "Mujer",
+          "もう いきますか。"
+        ],
+        [
+          "Hombre",
+          "いいえ、まず かばんを とります。"
+        ],
+        [
+          "Mujer",
+          "そうですか。じゃあ、わたしは さきに いきますね。"
+        ],
+        [
+          "Narrador",
+          "おとこの ひとは まず なにを しますか。"
+        ]
+      ],
+      "opciones": [
+        "かばんを とる",
+        "いえを でる",
+        "でんわを する",
+        "ごはんを たべる"
+      ],
+      "respuesta": 0,
+      "explicacion": "Antes de salir, primero toma la mochila (かばんを とります).",
+      "audio": null
+    },
+    {
+      "id": "EP02",
+      "tipo": "ポイント理解",
+      "tema": "Compras",
+      "pregunta": "¿Cuánto cuesta el pan?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。パンは いくらですか。"
+        ],
+        [
+          "Mujer",
+          "すみません、パンは いくらですか。"
+        ],
+        [
+          "Hombre",
+          "ひとつ ひゃくえんです。ふたつ かうと、にひゃくえんです。"
+        ],
+        [
+          "Narrador",
+          "パンは ひとつ いくらですか。"
+        ]
+      ],
+      "opciones": [
+        "100 yenes",
+        "200 yenes",
+        "150 yenes",
+        "300 yenes"
+      ],
+      "respuesta": 0,
+      "explicacion": "Cada pan cuesta 100 yenes (ひとつ ひゃくえん).",
+      "audio": null
+    },
+    {
+      "id": "EP03",
+      "tipo": "ポイント理解",
+      "tema": "Cita con amigos",
+      "pregunta": "¿A qué hora se encuentran?",
+      "guion": [
+        [
+          "Narrador",
+          "ふたりが はなして います。なんじに あいますか。"
+        ],
+        [
+          "Mujer",
+          "あした、なんじに あいましょうか。"
+        ],
+        [
+          "Hombre",
+          "ごご さんじは どうですか。"
+        ],
+        [
+          "Mujer",
+          "いいですね。えきの まえで まちましょう。"
+        ],
+        [
+          "Narrador",
+          "なんじに あいますか。"
+        ]
+      ],
+      "opciones": [
+        "ごご さんじ",
+        "ごぜん じゅうじ",
+        "ごご よじ",
+        "ごぜん はちじ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Se encuentran a las 3 de la tarde (ごご さんじ).",
+      "audio": null
+    },
+    {
+      "id": "EP04",
+      "tipo": "ポイント理解",
+      "tema": "Lugar del examen",
+      "pregunta": "¿Dónde es la reunión?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。かいぎは どこですか。"
+        ],
+        [
+          "Mujer",
+          "かいぎは どこで しますか。"
+        ],
+        [
+          "Hombre",
+          "がっこうの としょかんで します。"
+        ],
+        [
+          "Narrador",
+          "かいぎは どこですか。"
+        ]
+      ],
+      "opciones": [
+        "en la escuela, en la biblioteca",
+        "en la estación",
+        "en el parque",
+        "en casa"
+      ],
+      "respuesta": 0,
+      "explicacion": "La reunión es en la biblioteca de la escuela (としょかんで).",
+      "audio": null
+    },
+    {
+      "id": "EP05",
+      "tipo": "課題理解",
+      "tema": "Plan de la semana",
+      "pregunta": "¿Qué hará la mujer el sábado?",
+      "guion": [
+        [
+          "Narrador",
+          "おんなの ひとが はなして います。おんなの ひとは どようびに なにを しますか。"
+        ],
+        [
+          "Hombre",
+          "どようびは あそびに いきますか。"
+        ],
+        [
+          "Mujer",
+          "いいえ、どようびは かぞくと りょうりを します。"
+        ],
+        [
+          "Narrador",
+          "おんなの ひとは どようびに なにを しますか。"
+        ]
+      ],
+      "opciones": [
+        "cocinar con la familia",
+        "ir de paseo",
+        "estudiar",
+        "dormir"
+      ],
+      "respuesta": 0,
+      "explicacion": "El sábado cocina con la familia (かぞくと りょうりを します).",
+      "audio": null
+    },
+    {
+      "id": "EP06",
+      "tipo": "ポイント理解",
+      "tema": "Clima",
+      "pregunta": "¿Qué tiempo hace mañana?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。あしたの てんきは どうですか。"
+        ],
+        [
+          "Mujer",
+          "あした、あめが ふりますか。"
+        ],
+        [
+          "Hombre",
+          "いいえ、はれます。でも、かぜが つよいです。"
+        ],
+        [
+          "Narrador",
+          "あしたの てんきは どうですか。"
+        ]
+      ],
+      "opciones": [
+        "soleado y con viento",
+        "lluvioso",
+        "nublado",
+        "nevado"
+      ],
+      "respuesta": 0,
+      "explicacion": "Mañana estará soleado, pero con viento fuerte (はれます, かぜが つよい).",
+      "audio": null
+    },
+    {
+      "id": "EP07",
+      "tipo": "課題理解",
+      "tema": "Una cosa perdida",
+      "pregunta": "¿Qué busca el hombre?",
+      "guion": [
+        [
+          "Narrador",
+          "おとこの ひとが はなして います。おとこの ひとは なにを さがして いますか。"
+        ],
+        [
+          "Mujer",
+          "どうしましたか。"
+        ],
+        [
+          "Hombre",
+          "かぎを なくしました。きいろい かぎです。"
+        ],
+        [
+          "Mujer",
+          "いっしょに さがしましょう。"
+        ],
+        [
+          "Narrador",
+          "おとこの ひとは なにを さがして いますか。"
+        ]
+      ],
+      "opciones": [
+        "una llave",
+        "un libro",
+        "un paraguas",
+        "un teléfono"
+      ],
+      "respuesta": 0,
+      "explicacion": "Busca una llave amarilla que perdió (かぎを なくしました).",
+      "audio": null
+    },
+    {
+      "id": "EP08",
+      "tipo": "発話表現",
+      "tema": "Pedir ayuda",
+      "pregunta": "¿Qué debe decir la persona?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが えきで こまって います。なんと いいますか。"
+        ]
+      ],
+      "opciones": [
+        "すみません、みちを おしえて ください。",
+        "さようなら。",
+        "おやすみなさい。",
+        "いただきます。"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para pedir una indicación en la calle se dice すみません、みちを おしえて ください.",
+      "audio": null
+    },
+    {
+      "id": "EP09",
+      "tipo": "ポイント理解",
+      "tema": "Cumpleaños",
+      "pregunta": "¿Cuántos años cumple?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。なんさいに なりましたか。"
+        ],
+        [
+          "Mujer",
+          "きょうは たんじょうびですね。おめでとう。"
+        ],
+        [
+          "Hombre",
+          "ありがとう。きょうで はっさいに なりました。"
+        ],
+        [
+          "Narrador",
+          "なんさいに なりましたか。"
+        ]
+      ],
+      "opciones": [
+        "ocho años",
+        "siete años",
+        "nueve años",
+        "diez años"
+      ],
+      "respuesta": 0,
+      "explicacion": "Cumple ocho años (はっさい).",
+      "audio": null
+    },
+    {
+      "id": "EP10",
+      "tipo": "即時応答",
+      "tema": "Ir a la escuela",
+      "pregunta": "¿Qué responde el alumno?",
+      "guion": [
+        [
+          "Narrador",
+          "おんなの ひとが いいます。「あしたは やすみですよ。」"
+        ],
+        [
+          "Narrador",
+          "せんせいに なんと いいますか。"
+        ]
+      ],
+      "opciones": [
+        "わかりました。ありがとう ございます。",
+        "いただきます。",
+        "ただいま。",
+        "いってきます。"
+      ],
+      "respuesta": 0,
+      "explicacion": "Ante un aviso del maestro, se responde わかりました。ありがとう ございます。",
+      "audio": null
+    }
+  ]
+}

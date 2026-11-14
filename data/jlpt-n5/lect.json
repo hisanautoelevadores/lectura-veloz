@@ -1,0 +1,166 @@
+{
+  "area": "lect",
+  "nivel": "N5",
+  "items": [
+    {
+      "id": "LE001",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Presentación",
+      "passage": "わたしの なまえは たなか です。わたしは がくせい です。まいにち がっこうに いきます。",
+      "q": "たなかさんは なにですか。",
+      "opciones": [
+        "せんせい",
+        "がくせい",
+        "いしゃ",
+        "かいしゃいん"
+      ],
+      "respuesta": 1,
+      "explicacion": "El texto dice がくせいです: Tanaka es estudiante."
+    },
+    {
+      "id": "LE002",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Pasado",
+      "passage": "きのう ともだちと こうえんに いきました。あつい てんきでした。みずを たくさん のみました。",
+      "q": "きのう どこに いきましたか。",
+      "opciones": [
+        "がっこう",
+        "こうえん",
+        "ぎんこう",
+        "としょかん"
+      ],
+      "respuesta": 1,
+      "explicacion": "きのう こうえんに いきました: ayer fueron al parque."
+    },
+    {
+      "id": "LE003",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Aviso",
+      "passage": "ぎんこう：げつようび から きんようび、9じ から 3じ まで。どようびと にちようびは やすみです。",
+      "q": "ぎんこうは なんじに あきますか。",
+      "opciones": [
+        "8じ",
+        "9じ",
+        "10じ",
+        "3じ"
+      ],
+      "respuesta": 1,
+      "explicacion": "El banco abre a las 9 (9じ から)."
+    },
+    {
+      "id": "LE004",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Mascotas",
+      "passage": "わたしの いえには いぬが います。なまえは ぽちです。ぽちは しろい いぬです。",
+      "q": "ぽちの いろは なんですか。",
+      "opciones": [
+        "くろい",
+        "しろい",
+        "あかい",
+        "きいろい"
+      ],
+      "respuesta": 1,
+      "explicacion": "ぽちは しろい いぬです: el perro es blanco."
+    },
+    {
+      "id": "LE005",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Plan",
+      "passage": "あした、うみに いきます。いい てんきに なると いいですね。",
+      "q": "あしたは どこに いきますか。",
+      "opciones": [
+        "やま",
+        "うみ",
+        "こうえん",
+        "がっこう"
+      ],
+      "respuesta": 1,
+      "explicacion": "あした、うみに いきます: mañana van al mar."
+    },
+    {
+      "id": "LE006",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Rutina",
+      "passage": "まいあさ 6じに おきます。あさごはんは パンと ぎゅうにゅう です。それから がっこうに いきます。",
+      "q": "あさごはんに なにを たべますか。",
+      "opciones": [
+        "ごはんと みそしる",
+        "パンと ぎゅうにゅう",
+        "さかな",
+        "くだもの"
+      ],
+      "respuesta": 1,
+      "explicacion": "El desayuno es pan y leche (パンと ぎゅうにゅう)."
+    },
+    {
+      "id": "LE007",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Regalo",
+      "passage": "ともだちの たんじょうびです。プレゼントに ほんを あげました。ともだちは とても よろこびました。",
+      "q": "ともだちは どう しましたか。",
+      "opciones": [
+        "かなしみました",
+        "よろこびました",
+        "おこりました",
+        "ねました"
+      ],
+      "respuesta": 1,
+      "explicacion": "ともだちは とても よろこびました: el amigo se alegró mucho."
+    },
+    {
+      "id": "LE008",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Lugares",
+      "passage": "えきの まえに ほんやが あります。ほんやの となりは パンやです。ほんやは 9じに あきます。",
+      "q": "ほんやの となりは なんですか。",
+      "opciones": [
+        "ぎんこう",
+        "パンや",
+        "びょういん",
+        "こうえん"
+      ],
+      "respuesta": 1,
+      "explicacion": "ほんやの となりは パンやです: al lado de la librería está la panadería."
+    },
+    {
+      "id": "LE009",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Lluvia",
+      "passage": "きょうは あめです。かさを もって いきました。がっこうに つくと、ともだちが いました。",
+      "q": "どうして かさを もって いきましたか。",
+      "opciones": [
+        "あついからです",
+        "あめだからです",
+        "うみに いくからです",
+        "てんきが いいからです"
+      ],
+      "respuesta": 1,
+      "explicacion": "Llovía, por eso llevó paraguas (あめだから)."
+    },
+    {
+      "id": "LE010",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Fin de semana",
+      "passage": "わたしは まいにち にじかんぐらい べんきょうします。しゅうまつは えいがを みます。",
+      "q": "しゅうまつに なにを しますか。",
+      "opciones": [
+        "べんきょう",
+        "えいがを みる",
+        "ねる",
+        "りょうり"
+      ],
+      "respuesta": 1,
+      "explicacion": "しゅうまつは えいがを みます: los fines de semana ve películas."
+    }
+  ]
+}

@@ -391,6 +391,306 @@
       ],
       "respuesta": 0,
       "explicacion": "～ませんか invita a hacer algo: «¿no comemos juntos?»."
+    },
+    {
+      "id": "G027",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "あしたは ともだち（　　）あいます。",
+      "opciones": [
+        "と",
+        "に",
+        "を",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "あう (encontrarse con) va con と: «me encuentro con amigos»."
+    },
+    {
+      "id": "G028",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "きょうは がっこう（　　）やすみです。",
+      "opciones": [
+        "が",
+        "を",
+        "に",
+        "は"
+      ],
+      "respuesta": 0,
+      "explicacion": "がっこうが やすみです: hoy la escuela está cerrada."
+    },
+    {
+      "id": "G029",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "えんぴつ（　　）かきます。",
+      "opciones": [
+        "で",
+        "を",
+        "に",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "で indica el medio o herramienta: «escribo con lápiz»."
+    },
+    {
+      "id": "G030",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "きのう ともだちと はなし（　　）。",
+      "opciones": [
+        "ました",
+        "ます",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "きのう indica pasado: ～ました."
+    },
+    {
+      "id": "G031",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "あした いっしょに あそば（　　）か。",
+      "opciones": [
+        "ませんか",
+        "ましょう",
+        "ました",
+        "たい"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ませんか invita: «¿no jugamos mañana?»."
+    },
+    {
+      "id": "G032",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "まいにち いえで ごはんを たべ（　　）。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Una acción habitual se expresa con ～ます."
+    },
+    {
+      "id": "G033",
+      "area": "gram",
+      "tipo": "Adjetivos",
+      "tema": "Adjetivos",
+      "q": "きのうは あつかっ（　　）です。",
+      "opciones": [
+        "た",
+        "だ",
+        "て",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "En pasado, un adjetivo en い cambia a かった: あつい → あつかった. Aquí se completa con た: あつかったです."
+    },
+    {
+      "id": "G034",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "まどを あけて（　　）。",
+      "opciones": [
+        "ください",
+        "ます",
+        "ました",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "～てください pide algo con cortesía: «abra la ventana, por favor»."
+    },
+    {
+      "id": "G035",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "いつも あさ（　　）おきます。",
+      "opciones": [
+        "に",
+        "を",
+        "で",
+        "へ"
+      ],
+      "respuesta": 0,
+      "explicacion": "La hora se marca con に: «me levanto por la mañana»."
+    },
+    {
+      "id": "G036",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "ともだちに ほん（　　）あげます。",
+      "opciones": [
+        "を",
+        "に",
+        "で",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "El objeto de あげます va con を: «doy un libro»."
+    },
+    {
+      "id": "G037",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "つくえの うえに ほん（　　）あります。",
+      "opciones": [
+        "が",
+        "を",
+        "に",
+        "は"
+      ],
+      "respuesta": 0,
+      "explicacion": "あります usa が con el sujeto: «hay un libro»."
+    },
+    {
+      "id": "G038",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "ねこ（　　）ここに います。",
+      "opciones": [
+        "が",
+        "を",
+        "は",
+        "の"
+      ],
+      "respuesta": 0,
+      "explicacion": "います usa が con el sujeto animado: «hay un gato aquí»."
+    },
+    {
+      "id": "G039",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "りんごが みっ（　　）あります。",
+      "opciones": [
+        "つ",
+        "まい",
+        "ひき",
+        "にん"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para cosas en general, se cuentan con ～つ."
+    },
+    {
+      "id": "G040",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "がっこうに ともだちが さん（　　）います。",
+      "opciones": [
+        "にん",
+        "ひき",
+        "まい",
+        "かい"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para personas se usa ～にん: tres personas."
+    },
+    {
+      "id": "G041",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "あした ともだちに あい（　　）。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción futura y habitual: ～ます."
+    },
+    {
+      "id": "G042",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いま ほんを よんで（　　）。",
+      "opciones": [
+        "います",
+        "ます",
+        "ました",
+        "ください"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ています indica una acción en curso."
+    },
+    {
+      "id": "G043",
+      "area": "gram",
+      "tipo": "Negación",
+      "tema": "Negación",
+      "q": "あした がっこうに（　　）。",
+      "opciones": [
+        "いきません",
+        "いきます",
+        "いきました",
+        "いこう"
+      ],
+      "respuesta": 0,
+      "explicacion": "La negación de ～ます es ～ません."
+    },
+    {
+      "id": "G044",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "しつれいします。（　　）。",
+      "opciones": [
+        "さようなら",
+        "ありがとう",
+        "こんにちは",
+        "すみません"
+      ],
+      "respuesta": 0,
+      "explicacion": "Al salir de una casa u oficina se dice さようなら o しつれいします."
+    },
+    {
+      "id": "G045",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "はじめまして。（　　）。",
+      "opciones": [
+        "よろしく おねがいします",
+        "さようなら",
+        "おやすみなさい",
+        "いただきます"
+      ],
+      "respuesta": 0,
+      "explicacion": "En una presentación se dice よろしく おねがいします."
+    },
+    {
+      "id": "G046",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いっしょに ごはんを（　　）。",
+      "opciones": [
+        "たべましょう",
+        "たべます",
+        "たべました",
+        "たべません"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ましょう propone hacer algo juntos: «comamos juntos»."
     }
   ]
 }
