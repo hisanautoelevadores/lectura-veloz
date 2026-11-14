@@ -66,6 +66,8 @@ h1{font-size:1.2rem;margin:0}
     <button type="button" data-ej="ficha" aria-pressed="false">1 · Qué vale cada ficha</button>
     <button type="button" data-ej="armar" aria-pressed="false">2 · Armar el número</button>
     <button type="button" data-ej="leer" aria-pressed="false">3 · Leer el número</button>
+    <button type="button" data-ej="sumar" aria-pressed="false">4 · Cómo sumar</button>
+    <button type="button" data-ej="restar" aria-pressed="false">5 · Cómo restar</button>
   </div>
 
   <div class="fila-sob"><div class="marco"><div class="tablero" id="tab">
@@ -305,6 +307,71 @@ h1{font-size:1.2rem;margin:0}
     fila.append(otro);
     caja.append(h2, t, grilla, fila);
   }
+  function setU(cielo, tierra) { est.forEach(e => { e.cielo = 0; e.tierra = 0; }); est[N - 1].cielo = cielo; est[N - 1].tierra = tierra; }
+  // Suma dentro de una columna (resultado de 0 a 9). Si hace falta, se usa la ficha de arriba (5) y se quita lo que sobra.
+  function pasosSumar(a, b) {
+    const r = a + b, P = [];
+    P.push({ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => soloUnidades(a) });
+    if (a < 5 && r < 5) {
+      for (let k = a + 1; k <= r; k++) P.push({ t: 'Con el pulgar subimos una ficha de abajo: ahora son ' + k + '.', f: () => setU(0, k) });
+      P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
+    } else if (a < 5) {
+      P.push({ t: 'Para sumar ' + b + ' conviene sumar 5 primero y después quitar lo que sobra. Con el índice bajamos la ficha de arriba: ahora vale ' + (5 + a) + '.', f: () => setU(1, a) });
+      const quitar = 5 - b;
+      for (let k = a - 1; k >= a - quitar; k--) P.push({ t: 'Ahora quitamos ' + (a - k) + ' de abajo, con el pulgar. Vamos a ' + (5 + k) + '.', f: () => setU(1, k) });
+      P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
+    } else {
+      P.push({ t: 'Como ya hay una ficha de arriba (5), sumamos ' + b + ' subiendo fichas de abajo.', f: () => setU(1, a - 5) });
+      for (let k = a - 4; k <= r - 5; k++) P.push({ t: 'Subimos una más con el pulgar: ahora es ' + r + ' en ' + (k) + ' de abajo.', f: () => setU(1, k) });
+      P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
+    }
+    return P;
+  }
+  // Resta dentro de una columna. Si no alcanza con las de abajo, se quita la ficha de arriba (5) y se agregan las que faltan.
+  function pasosRestar(a, b) {
+    const r = a - b, P = [];
+    P.push({ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => soloUnidades(a) });
+    const abajo = a % 5, arriba = a >= 5;
+    if (b <= abajo) {
+      for (let k = abajo - 1; k >= abajo - b; k--) P.push({ t: 'Con el pulgar bajamos una ficha de abajo. Vamos a ' + (a - (abajo - k)) + '.', f: () => setU(arriba ? 1 : 0, k) });
+    } else {
+      P.push({ t: 'No alcanzan las de abajo para quitar ' + b + '. Con el índice subimos la ficha de arriba: se quitan 5. Ahora vale ' + (a - 5) + '.', f: () => setU(0, a - 5) });
+      for (let k = a - 6; k >= r; k--) P.push({ t: 'Ahora agregamos de abajo con el pulgar para completar: ' + (a - 5 - k) + '. Vamos a ' + (k + 0) + '.', f: () => setU(0, k) });
+    }
+    P.push({ t: 'Listo: ' + a + ' menos ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
+    return P;
+  }
+  // Muestra una secuencia de pasos con Anterior / Siguiente, y un ejemplo nuevo.
+  let seq = null, seqPaso = 0, seqTitulo = '', seqNuevo = null;
+  function mostrarSeq() {
+    caja.hidden = false; caja.innerHTML = '';
+    const h2 = document.createElement('h2'); h2.textContent = seqTitulo;
+    const leyenda = document.createElement('div'); leyenda.className = 'leyenda';
+    leyenda.innerHTML = '<div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube o baja las de abajo: cada una vale 1.</div>';
+    const t = document.createElement('p'); t.className = 'txt'; t.textContent = seq[seqPaso].t;
+    const fila = document.createElement('div'); fila.className = 'ej-fila';
+    const ant = document.createElement('button'); ant.type = 'button'; ant.className = 'btn'; ant.textContent = '← Anterior'; ant.disabled = seqPaso === 0;
+    ant.onclick = () => { seqPaso = Math.max(0, seqPaso - 1); seq[seqPaso].f(); render(); mostrarSeq(); };
+    const ultimo = seqPaso === seq.length - 1;
+    const sig = document.createElement('button'); sig.type = 'button'; sig.className = 'btn primary';
+    sig.textContent = ultimo ? 'Otro ejemplo' : 'Siguiente →';
+    sig.onclick = () => { if (ultimo) { seqNuevo(); return; } seqPaso++; seq[seqPaso].f(); render(); mostrarSeq(); };
+    fila.append(ant, sig);
+    const cont = document.createElement('p'); cont.className = 'contador'; cont.textContent = 'Paso ' + (seqPaso + 1) + ' de ' + seq.length;
+    caja.append(h2, leyenda, t, fila, cont);
+    document.getElementById('tab').classList.add('tab-etq');
+    seq[seqPaso].f(); render();
+  }
+  function ejSumar() {
+    seqTitulo = '4 · Cómo sumar';
+    seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 8); const b = 1 + Math.floor(Math.random() * (9 - a)); seq = pasosSumar(a, b); seqPaso = 0; mostrarSeq(); };
+    seqNuevo();
+  }
+  function ejRestar() {
+    seqTitulo = '5 · Cómo restar';
+    seqNuevo = () => { const a = 2 + Math.floor(Math.random() * 8); const b = 1 + Math.floor(Math.random() * a); seq = pasosRestar(a, b); seqPaso = 0; mostrarSeq(); };
+    seqNuevo();
+  }
   function shuffleArr(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   function setModo(m) {
     MODO = m;
@@ -314,6 +381,8 @@ h1{font-size:1.2rem;margin:0}
     if (m === 'ficha') { paso = 0; ejFicha(); }
     if (m === 'armar') { ejArmar(); }
     if (m === 'leer') { ejLeer(); }
+    if (m === 'sumar') { ejSumar(); }
+    if (m === 'restar') { ejRestar(); }
   }
   document.querySelectorAll('.menu-ej button').forEach(b => b.addEventListener('click', () => setModo(b.dataset.ej)));
   // en "armar" se revisa cada vez que se mueve una ficha
