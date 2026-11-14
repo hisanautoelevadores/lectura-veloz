@@ -40,3 +40,12 @@ Se hacen juntos, en una sola tanda, para probar una vez.
   - 8 a 10 años: más complejas, con más de una idea.
 - Variedad: cada frase base tiene variantes (orden de palabras cambiado, palabras parecidas), y se mezclan al azar en cada sesión.
 - Cantidad objetivo: a definir (propuesta: unas 300 palabras y 300 frases, en total).
+
+## Clasificación por significado (además de sílabas)
+- Cada palabra y frase lleva dos marcas: cantidad de sílabas y categoría de significado.
+- La edad depende de las dos.
+- Categorías, de lo más concreto a lo más abstracto:
+  - Concretas y cotidianas (familia, casa, animales, comida, cuerpo): 3 a 5 años.
+  - Acciones, lugares y escuela (jugar, ir a la plaza, la maestra), sentimientos simples: 6 a 7 años.
+  - Juegos, celulares y cosas de chicos más grandes; naturaleza, ciencia y geografía básicas; palabras abstractas simples ("amistad", "paciencia", "esfuerzo"): 8 a 10 años.
+- Revisar que no haya palabras de un nivel superior en una banda inferior.
