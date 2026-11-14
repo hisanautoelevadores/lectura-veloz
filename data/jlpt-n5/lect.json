@@ -417,6 +417,230 @@
       ],
       "respuesta": 2,
       "explicacion": "Van al parque (こうえん)."
+    },
+    {
+      "id": "LE027",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Mensaje",
+      "passage": "やまだ：あしたの かいぎは 10じに なりました。おくれないで ください。",
+      "q": "かいぎは なんじですか。",
+      "opciones": [
+        "9じ",
+        "10じ",
+        "11じ",
+        "12じ"
+      ],
+      "respuesta": 1,
+      "explicacion": "La reunión es a las 10 (10じ)."
+    },
+    {
+      "id": "LE028",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Carta",
+      "passage": "ゆきちゃんへ。きのうは ありがとう。えいがは とても おもしろかったです。また あそびましょう。",
+      "q": "えいがは どうでしたか。",
+      "opciones": [
+        "つまらなかった",
+        "おもしろかった",
+        "こわかった",
+        "ながかった"
+      ],
+      "respuesta": 1,
+      "explicacion": "La película fue interesante (おもしろかった)."
+    },
+    {
+      "id": "LE029",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Diario",
+      "passage": "きょうは あめが ふって いました。でも、わたしは がっこうで たくさん べんきょうしました。",
+      "q": "あめは どうでしたか。",
+      "opciones": [
+        "ふって いた",
+        "はれて いた",
+        "ゆきが ふって いた",
+        "くもって いた"
+      ],
+      "respuesta": 0,
+      "explicacion": "Llovía (ふって いました)."
+    },
+    {
+      "id": "LE030",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Aviso",
+      "passage": "プールの おしらせ：げつようびから きんようびまで、10じから 6じまで あいて います。どようびと にちようびは やすみです。",
+      "q": "どようびは あいて いますか。",
+      "opciones": [
+        "あいて います",
+        "やすみです",
+        "6じまで",
+        "10じから"
+      ],
+      "respuesta": 1,
+      "explicacion": "El sábado está cerrado (やすみです)."
+    },
+    {
+      "id": "LE031",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Compras",
+      "passage": "スーパー：りんご 3こ 300円。ぎゅうにゅう 1ぽん 200円。パン 1つ 150円。",
+      "q": "りんご 3こは いくらですか。",
+      "opciones": [
+        "150円",
+        "200円",
+        "300円",
+        "450円"
+      ],
+      "respuesta": 2,
+      "explicacion": "Tres manzanas cuestan 300 yenes."
+    },
+    {
+      "id": "LE032",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Familia",
+      "passage": "わたしの かぞくは 4にんです。ちちと はは、あねと わたしです。あねは こうこうせいです。",
+      "q": "かぞくは なんにんですか。",
+      "opciones": [
+        "3にん",
+        "4にん",
+        "5にん",
+        "2にん"
+      ],
+      "respuesta": 1,
+      "explicacion": "La familia tiene 4 personas (4にん)."
+    },
+    {
+      "id": "LE033",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Visita",
+      "passage": "きのう、おばあちゃんの いえへ いきました。にわに はなが たくさん さいて いました。",
+      "q": "にわには なにが ありましたか。",
+      "opciones": [
+        "いぬ",
+        "はな",
+        "くるま",
+        "ほん"
+      ],
+      "respuesta": 1,
+      "explicacion": "En el jardín había muchas flores (はな)."
+    },
+    {
+      "id": "LE034",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Horario",
+      "passage": "としょかん：げつようびから きんようびまで 9じから 17じ。どようびは 9じから 12じ。にちようびは やすみです。",
+      "q": "にちようびは どうですか。",
+      "opciones": [
+        "9じから 17じ",
+        "9じから 12じ",
+        "やすみ",
+        "17じまで"
+      ],
+      "respuesta": 2,
+      "explicacion": "El domingo la biblioteca está cerrada (やすみ)."
+    },
+    {
+      "id": "LE035",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Nota",
+      "passage": "おかあさんへ：かいものに いってきます。ごはんは れいぞうこに あります。6じに かえります。",
+      "q": "ごはんは どこに ありますか。",
+      "opciones": [
+        "テーブルの うえ",
+        "れいぞうこの なか",
+        "ふくろの なか",
+        "つくえの した"
+      ],
+      "respuesta": 1,
+      "explicacion": "La comida está en la heladera (れいぞうこの なか)."
+    },
+    {
+      "id": "LE036",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Clima",
+      "passage": "あしたの てんき：はれ。ただし、かぜが つよいです。さむいので、コートを もって いきましょう。",
+      "q": "あしたは なにを もって いきますか。",
+      "opciones": [
+        "かさ",
+        "コート",
+        "ぼうし",
+        "てぶくろ"
+      ],
+      "respuesta": 1,
+      "explicacion": "Hace frío: lleven abrigo (コート)."
+    },
+    {
+      "id": "LE037",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Deporte",
+      "passage": "ぼくの ともだちは サッカーが すきです。まいしゅう どようびに こうえんで れんしゅうします。",
+      "q": "いつ れんしゅうしますか。",
+      "opciones": [
+        "にちようび",
+        "どようび",
+        "きんようび",
+        "もくようび"
+      ],
+      "respuesta": 1,
+      "explicacion": "Entrenan los sábados (どようび)."
+    },
+    {
+      "id": "LE038",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Mascota",
+      "passage": "ぽちは いぬです。とても げんきで、まいにち さんぽが すきです。しろくて ちいさいです。",
+      "q": "ぽちは どんな いぬですか。",
+      "opciones": [
+        "くろくて おおきい",
+        "しろくて ちいさい",
+        "あかくて おおきい",
+        "しろくて おおきい"
+      ],
+      "respuesta": 1,
+      "explicacion": "Pochi es blanco y pequeño (しろくて ちいさい)."
+    },
+    {
+      "id": "LE039",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Regalo",
+      "passage": "わたしは たんじょうびに ほんを もらいました。とても うれしかったです。",
+      "q": "わたしは どうでしたか。",
+      "opciones": [
+        "かなしかった",
+        "うれしかった",
+        "こわかった",
+        "さむかった"
+      ],
+      "respuesta": 1,
+      "explicacion": "Estaba contenta (うれしかった)."
+    },
+    {
+      "id": "LE040",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Tren",
+      "passage": "つぎの でんしゃは 10じ15ぷんに でます。えきの 2ばんせんです。",
+      "q": "でんしゃは なんじに でますか。",
+      "opciones": [
+        "10じ",
+        "10じ15ぷん",
+        "10じ50ぷん",
+        "2じ15ぷん"
+      ],
+      "respuesta": 1,
+      "explicacion": "El tren sale a las 10:15 (10じ15ぷん)."
     }
   ]
 }

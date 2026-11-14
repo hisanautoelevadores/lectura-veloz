@@ -1261,6 +1261,246 @@
       ],
       "respuesta": 0,
       "explicacion": "から indica la razón: «como hace buen tiempo, juguemos»."
+    },
+    {
+      "id": "G085",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "あした は、ともだちの いえに（　　）。",
+      "opciones": [
+        "いきます",
+        "いきました",
+        "いこう",
+        "いった"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción futura: ～ます."
+    },
+    {
+      "id": "G086",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "きのう、がっこうへ（　　）。",
+      "opciones": [
+        "いきました",
+        "いきます",
+        "いきません",
+        "いきましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "きのう indica pasado: ～ました."
+    },
+    {
+      "id": "G087",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "てんきが わるい（　　）、うちに います。",
+      "opciones": [
+        "ので",
+        "まで",
+        "だけ",
+        "ほど"
+      ],
+      "respuesta": 0,
+      "explicacion": "ので indica la razón: «como hace mal tiempo, estoy en casa»."
+    },
+    {
+      "id": "G088",
+      "area": "gram",
+      "tipo": "Adjetivos",
+      "tema": "Adjetivos",
+      "q": "この ほんは おもしろく（　　）。",
+      "opciones": [
+        "ありません",
+        "ありました",
+        "です",
+        "ました"
+      ],
+      "respuesta": 0,
+      "explicacion": "Negación de adjetivo: おもしろく ありません."
+    },
+    {
+      "id": "G089",
+      "area": "gram",
+      "tipo": "Adjetivos",
+      "tema": "Adjetivos",
+      "q": "ゆうべは とても さむかった（　　）。",
+      "opciones": [
+        "です",
+        "ます",
+        "でした",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "Pasado de adjetivo con です."
+    },
+    {
+      "id": "G090",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "わたしは まいあさ、ぎゅうにゅうを のみ（　　）。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción habitual: ～ます."
+    },
+    {
+      "id": "G091",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "じかんが ない（　　）、いそいで ください。",
+      "opciones": [
+        "ので",
+        "まで",
+        "だけ",
+        "ほど"
+      ],
+      "respuesta": 0,
+      "explicacion": "ので indica la razón: «como no hay tiempo, apúrense»."
+    },
+    {
+      "id": "G092",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "ここに くるまを とめて（　　）。",
+      "opciones": [
+        "ください",
+        "ます",
+        "ました",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "Pedido cortés: ～てください."
+    },
+    {
+      "id": "G093",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "まいにち 六じに（　　）。",
+      "opciones": [
+        "ねます",
+        "たべます",
+        "あるきます",
+        "のみます"
+      ],
+      "respuesta": 0,
+      "explicacion": "Dormirse: ねます."
+    },
+    {
+      "id": "G094",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "くすりを のんで（　　）。",
+      "opciones": [
+        "ください",
+        "ます",
+        "ました",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "Pedido cortés: ～てください."
+    },
+    {
+      "id": "G095",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "でんわ（　　）はなします。",
+      "opciones": [
+        "で",
+        "に",
+        "を",
+        "と"
+      ],
+      "respuesta": 0,
+      "explicacion": "で indica el medio: «hablo por teléfono»."
+    },
+    {
+      "id": "G096",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "わたしは ともだち（　　）あそびました。",
+      "opciones": [
+        "と",
+        "に",
+        "を",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "と indica compañía: «jugué con amigos»."
+    },
+    {
+      "id": "G097",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "しんぶん（　　）よみます。",
+      "opciones": [
+        "を",
+        "に",
+        "で",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "El objeto de よみます va con を."
+    },
+    {
+      "id": "G098",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "ともだち（　　）おかしを あげました。",
+      "opciones": [
+        "に",
+        "を",
+        "で",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "Dar algo a alguien: に para la persona."
+    },
+    {
+      "id": "G099",
+      "area": "gram",
+      "tipo": "Existencia",
+      "tema": "Existencia",
+      "q": "ちかくに こうえんが（　　）。",
+      "opciones": [
+        "あります",
+        "います",
+        "です",
+        "ます"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para lugares y cosas se usa あります."
+    },
+    {
+      "id": "G100",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "あした、えきで ともだちを まち（　　）。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción futura: ～ます."
     }
   ]
 }
