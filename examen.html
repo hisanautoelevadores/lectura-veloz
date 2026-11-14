@@ -263,8 +263,8 @@ function vistaPreguntas() {
   if (esAudio) {
     card.append(h('p', { class: 'small muted', text: 'Escuchá el audio y elegí la respuesta.' }));
     const audio = new Audio(ej.audio); AUDIO_ACTUAL = audio;
-    const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
-    let lentoOn = false;
+    let lentoOn = false;   // la velocidad lenta vale solo para esta pregunta
+    const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = lentoOn ? 0.75 : 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
     const lento = h('button', { class: 'btn', type: 'button', onclick: () => {
       lentoOn = !lentoOn;
       audio.playbackRate = lentoOn ? 0.75 : 1;
