@@ -122,6 +122,13 @@ textarea{min-height:140px;resize:vertical;font-size:1.05rem;line-height:1.5}
       <label for="tam">Altura de la letra</label><output id="tamOut"></output>
       <input type="range" id="tam" min="40" max="95" step="5">
     </div>
+    <div class="field" id="fModo">
+      <label for="modo">Modo</label>
+      <select id="modo">
+        <option value="deslizar">Deslizar (la palabra cruza la pantalla)</option>
+        <option value="destello">Destello (la palabra aparece y desaparece)</option>
+      </select>
+    </div>
     <div class="field">
       <label for="sentido">Sentido</label>
       <select id="sentido">
@@ -240,6 +247,7 @@ function leerUI() {
   ajustes.vel = $('vel').value;
   ajustes.tam = $('tam').value;
   ajustes.sentido = $('sentido').value;
+  ajustes.modo = $('modo').value;
   ajustes.fonts = [...document.querySelectorAll('.fontc:checked')].map(c => c.value);
   ajustes.cases = [...document.querySelectorAll('.casec:checked')].map(c => c.value);
   ajustes.cambio = $('cambio').value;
@@ -253,11 +261,15 @@ function pintarUI() {
   $('vel').value = ajustes.vel;
   $('tam').value = ajustes.tam;
   $('sentido').value = ajustes.sentido;
+  $('modo').value = ajustes.modo || 'deslizar';
+  const dest = ajustes.modo === 'destello' && +ajustes.nivel <= 4;
+  $('fModo').hidden = +ajustes.nivel >= 5;
+  $('sentido').closest('.field').hidden = dest;
   $('cambio').value = ajustes.cambio;
   $('texto').value = ajustes.texto;
   document.querySelectorAll('.fontc').forEach(c => c.checked = ajustes.fonts.includes(c.value));
   document.querySelectorAll('.casec').forEach(c => c.checked = ajustes.cases.includes(c.value));
-  $('velOut').textContent = ajustes.vel + ' de 10';
+  $('velOut').textContent = dest ? 'Tiempo en pantalla: ' + tiempoDestelloMs(+ajustes.vel) / 1000 + ' s' : ajustes.vel + ' de 10';
   $('tamOut').textContent = ajustes.tam + '% de la pantalla';
   const n = +ajustes.nivel;
   $('cantBox').hidden = n >= 4;
@@ -366,6 +378,34 @@ function llenarPantalla() {
     spawn();
   }
 }
+// Destello: la palabra aparece en el centro y desaparece. La velocidad es el tiempo en pantalla (2 s a 1/10 s).
+function tiempoDestelloMs(v) { return Math.round(2000 * Math.pow(100 / 2000, (v - 1) / 9)); }
+// Pausa entre palabras: no depende de la velocidad; más chica para las bandas más grandes, nunca menos de 0,8 s.
+function pausaDestelloMs() { const b = Perfil.actual().banda || 1; return { 1: 1200, 2: 1000, 3: 800 }[b] || 1000; }
+function destelloPaso() {
+  if (!S || !S.corriendo) return;
+  if (S.pausa) { S.timerD = setTimeout(destelloPaso, 200); return; }
+  if (!S.cola.length) return terminar();
+  const texto = S.cola.shift();
+  if (!S.cur) cambiarEstilo();
+  const s = S.cur;
+  const el = document.createElement('div');
+  el.className = 'word';
+  el.textContent = aplicarMayus(texto, s.c);
+  el.style.fontFamily = FONTS[s.f].f;
+  el.style.fontWeight = FONTS[s.f].w;
+  el.style.top = '50%'; el.style.left = '50%';
+  el.style.transform = 'translate(-50%,-50%)';
+  el.style.fontSize = (fontPx() * FONTS[s.f].s) + 'px';
+  track.appendChild(el);
+  S.mostradas++;
+  $('bar').style.width = (100 * S.mostradas / S.total) + '%';
+  S.tiempo += tiempoDestelloMs(P.vel) / 1000 + pausaDestelloMs() / 1000;
+  S.timerD = setTimeout(() => {
+    el.remove();
+    S.timerD = setTimeout(destelloPaso, pausaDestelloMs());
+  }, tiempoDestelloMs(P.vel));
+}
 function frame(t) {
   if (!S || !S.corriendo) return;
   const dt = Math.min(.05, (t - last) / 1000); last = t;
@@ -396,7 +436,8 @@ async function empezar() {
   const items = elementosDelNivel();
   if (!items.length) { $('aviso').textContent = 'Primero escribí o pegá algo en el nivel elegido.'; return; }
   $('aviso').textContent = '';
-  P = { vel: +ajustes.vel, tam: +ajustes.tam, dir: ajustes.sentido, cambioSeg: +ajustes.cambio, nivel: +ajustes.nivel };
+  const modo = (+ajustes.nivel <= 4 && ajustes.modo === 'destello') ? 'destello' : 'deslizar';
+  P = { vel: +ajustes.vel, tam: +ajustes.tam, dir: ajustes.sentido, cambioSeg: +ajustes.cambio, nivel: +ajustes.nivel, modo };
   S = { cola: items.slice(), total: items.length, mostradas: 0, live: [], estilos: armarEstilos(), cur: null,
         tiempo: 0, ultimoCambio: 0, pausa: false, corriendo: false, inicio: 0 };
   track.textContent = '';
@@ -418,13 +459,13 @@ async function empezar() {
   ocultarGrande();
   S.corriendo = true; S.inicio = performance.now(); last = performance.now();
   cambiarEstilo();
-  raf = requestAnimationFrame(frame);
+  if (P.modo === 'destello') destelloPaso(); else raf = requestAnimationFrame(frame);
   mostrarControles();
 }
 
 function terminar() {
   Elogio.fin();
-  S.corriendo = false; cancelAnimationFrame(raf);
+  S.corriendo = false; cancelAnimationFrame(raf); clearTimeout(S.timerD);
   const seg = Math.round(S.tiempo);
   const sesion = { f: new Date().toISOString(), n: P.nivel, v: P.vel, p: S.total, s: seg, c: null };
   progreso.unshift(sesion); Perfil.store.set('lv2-progreso', progreso);
