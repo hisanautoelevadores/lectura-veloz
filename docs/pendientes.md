@@ -65,3 +65,10 @@ Se hacen juntos, en una sola tanda, para probar una vez.
 - 6 a 7 años: hiragana, katakana y kanji de primer grado (6 años) y segundo grado (7 años).
 - 8 a 10 años: se suman kanji de tercero a quinto grado, con furigana.
 - Cada banda incluye lo de la anterior: la complejidad sube de a poco.
+
+## Furigana (lectura en hiragana al lado de los kanji)
+- Según la caja de cada kanji (sistema de repetición):
+  - Nuevo, o con error reciente: furigana visible.
+  - Empieza a salir bien: furigana aleatorio (a veces sí, a veces no), para que no se acostumbre a leer el hiragana.
+  - Dominado: sin furigana, salvo alguna vez de repaso.
+- Objetivo: que el furigana sea una ayuda que se retira, no una muleta permanente.
