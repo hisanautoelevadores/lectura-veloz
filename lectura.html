@@ -87,17 +87,17 @@ textarea{min-height:140px;resize:vertical;font-size:1.05rem;line-height:1.5}
   <header>
     <a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;display:inline-flex;min-height:44px;align-items:center;margin-bottom:8px">← Inicio</a>
     <h1>Lectura <span>veloz</span></h1>
-    <p class="intro">Las palabras cruzan la pantalla y el chico tiene que leerlas a medida que pasan. Empezá con sílabas simples y subí de nivel cuando le salga bien.</p>
+    <p class="intro">Las palabras cruzan la pantalla y el chico tiene que leerlas a medida que pasan. Empezá con sílabas simples y pasá al ejercicio siguiente cuando le salga bien.</p>
   </header>
 
   <section class="group" aria-labelledby="h-nivel">
-    <h2 id="h-nivel">1 · Nivel</h2>
+    <h2 id="h-nivel">1 · Tipo de ejercicio</h2>
     <div class="opts" id="niveles">
-      <label class="opt"><input type="radio" name="nivel" value="1"> <span>Nivel 1 · Pseudopalabras de 2 sílabas (ej. <i>mopa</i>, <i>lise</i>)</span></label>
-      <label class="opt"><input type="radio" name="nivel" value="2"> <span>Nivel 2 · 2 sílabas con consonante final (ej. <i>mapel</i>, <i>tosin</i>)</span></label>
-      <label class="opt"><input type="radio" name="nivel" value="3"> <span>Nivel 3 · 3 sílabas (ej. <i>pomali</i>, <i>ketaluno</i>)</span></label>
-      <label class="opt"><input type="radio" name="nivel" value="4"> <span>Nivel 4 · Palabras con sentido (tu lista)</span></label>
-      <label class="opt"><input type="radio" name="nivel" value="5"> <span>Nivel 5 · Frases con sentido (tu texto, una frase por renglón)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="1"> <span>Ejercicio 1 · Pseudopalabras de 2 sílabas (ej. <i>mopa</i>, <i>lise</i>)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="2"> <span>Ejercicio 2 · 2 sílabas con consonante final (ej. <i>mapel</i>, <i>tosin</i>)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="3"> <span>Ejercicio 3 · 3 sílabas (ej. <i>pomali</i>, <i>ketaluno</i>)</span></label>
+      <label class="opt"><input type="radio" name="nivel" value="4"> <span>Ejercicio 4 · Palabras con sentido</span></label>
+      <label class="opt" id="ej5"><input type="radio" name="nivel" value="5"> <span>Ejercicio 5 · Frases con sentido <small id="ej5aviso" class="muted"></small></span></label>
     </div>
     <div class="field" id="cantBox">
       <label for="cant">Cantidad de pseudopalabras por sesión</label>
@@ -502,6 +502,21 @@ $('smaller').onclick = e => { e.stopPropagation(); ajustarTam(-5); mostrarContro
 $('bigger').onclick = e => { e.stopPropagation(); ajustarTam(5); mostrarControles(); };
 $('estilo').onclick = e => { e.stopPropagation(); if (S) cambiarEstilo(); mostrarControles(); };
 $('exit').onclick = e => { e.stopPropagation(); salir(false); };
+
+// Las frases (ejercicio 5) no se ofrecen a los más chicos: se habilitan desde los 6 años.
+function aplicarReglaEdad() {
+  const r5 = document.querySelector('input[name=nivel][value="5"]');
+  const aviso = document.getElementById('ej5aviso');
+  if (!r5 || !window.Perfil) return;
+  const banda = Perfil.actual().banda;
+  const bloqueado = Perfil.actual().id && banda === 1;
+  r5.disabled = !!bloqueado;
+  document.getElementById('ej5').style.opacity = bloqueado ? '.45' : '1';
+  aviso.textContent = bloqueado ? ' (se habilita a partir de los 6 años)' : '';
+  if (bloqueado && r5.checked) document.querySelector('input[name=nivel][value="4"]').checked = true;
+}
+document.addEventListener('perfil-cambiado', aplicarReglaEdad);
+aplicarReglaEdad();
 $('start').onclick = () => Perfil.elegir(() => { progreso = Perfil.store.get('lv2-progreso', []); pintarProgreso(); empezar(); });
 
 document.addEventListener('keydown', e => {

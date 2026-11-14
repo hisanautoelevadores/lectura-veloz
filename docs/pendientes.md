@@ -84,3 +84,9 @@ Se hacen juntos, en una sola tanda, para probar una vez.
 - Cambiar "Nivel" por "Tipo de ejercicio"; las opciones dicen "Ejercicio 1" a "Ejercicio 5".
 - Ejercicio 5 (frases): deshabilitado para 3 a 5 años. Para 6 a 7 y 8 a 10 se habilita, con frases simples para los más chicos y más complejas para los mayores.
 - En todas las pantallas, arriba, se muestra el perfil activo y su banda (por ejemplo, "Pepito · 3 a 5 años"), con botón para cambiar de perfil.
+
+## Hecho (grupo 3)
+- Lectura: "Tipo de ejercicio" y "Ejercicio 1 a 5" en lugar de "Nivel".
+- Ejercicio 5 (frases) deshabilitado para 3 a 5 años.
+- Perfil activo visible en todas las páginas, con botón "Cambiar"; se recuerda al cambiar de página.
+- Opciones de audio mezcladas en cada ronda: ya estaba hecho en la práctica JLPT y la simulación.

@@ -12,6 +12,27 @@
   /* ---------- Perfiles ---------- */
   function el(tag, texto, clase) { const e = document.createElement(tag); e.textContent = texto; if (clase) e.className = clase; return e; }
 
+  function setActual(p) {
+    actual = { id: p.id, apodo: p.apodo || '', banda: p.banda };
+    LS.set('lv2-perfil-activo', p.id);
+    pintarBanner();
+    document.dispatchEvent(new Event('perfil-cambiado'));
+  }
+  function pintarBanner() {
+    let b = document.getElementById('pf-banner');
+    if (!actual.id) { if (b) b.remove(); return; }
+    if (!b) {
+      b = document.createElement('div'); b.id = 'pf-banner'; b.setAttribute('role', 'status');
+      document.body.appendChild(b);
+    }
+    b.textContent = '';
+    const t = document.createElement('span');
+    t.textContent = 'Perfil: ' + (actual.apodo || 'sin apodo') + ' · ' + BANDAS[actual.banda];
+    const c = document.createElement('button');
+    c.type = 'button'; c.textContent = 'Cambiar';
+    c.onclick = () => Perfil.elegir(() => {});
+    b.append(t, c);
+  }
   function abrirPicker(cb, opts) {
     opts = opts || {};
     const conBanda = opts.banda !== false;
@@ -26,7 +47,7 @@
       box.appendChild(el('h2', '¿Quién practica hoy?'));
       Perfil.lista().forEach(p => {
         const b = el('button', etiqueta(p), 'pf-btn');
-        b.onclick = () => { actual = { id: p.id, apodo: p.apodo || '', banda: p.banda }; cerrar(); cb(); };
+        b.onclick = () => { setActual(p); cerrar(); cb(); };
         box.appendChild(b);
       });
       const nuevo = el('button', '+ Nuevo perfil', 'pf-btn pf-sec');
@@ -51,7 +72,7 @@
         const apodo = inp.value.trim();
         const p = { id: Date.now().toString(36), apodo, banda: conBanda ? +sel.value : 1 };
         LS.set('lv2-perfiles', [...Perfil.lista(), p]);
-        actual = { id: p.id, apodo, banda: p.banda };
+        setActual(p);
         cerrar(); cb();
       };
       const volver = el('button', 'Volver', 'pf-btn pf-sec');
@@ -142,10 +163,18 @@
     .pf-cri{position:fixed;right:max(8px,env(safe-area-inset-right,0px));bottom:max(8px,env(safe-area-inset-bottom,0px));z-index:85;width:64px;height:64px;padding:0;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}\n  .pf-cri img{width:64px;height:64px;display:block;pointer-events:none}\n  .pf-burb{position:fixed;right:max(10px,env(safe-area-inset-right,0px));bottom:84px;z-index:86;width:min(300px,88vw);background:#17171a;color:#f4f2ec;border:1px solid #2c2c31;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 28px rgba(0,0,0,.5);font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}\n  .pf-burb p{margin:0;line-height:1.45}\n  .pf-burb::after{content:'';position:absolute;right:26px;bottom:-8px;width:14px;height:14px;background:#17171a;border-right:1px solid #2c2c31;border-bottom:1px solid #2c2c31;transform:rotate(45deg)}
   .pf-cred p{margin:0;line-height:1.5}
   .pf-cred .pf-cred-firma{color:#ffcc33;font-weight:700}
+  #pf-banner{position:fixed;top:max(6px,env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:70;display:flex;gap:8px;align-items:center;background:#17171a;color:#f4f2ec;border:1px solid #2c2c31;border-radius:999px;padding:4px 6px 4px 12px;font:600 .8rem system-ui,sans-serif;white-space:nowrap;max-width:94vw}
+  #pf-banner button{background:#222227;color:#f4f2ec;border:1px solid #3a3a40;border-radius:999px;padding:4px 10px;font:inherit;cursor:pointer}
   #elogio{position:fixed;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:80;background:#ffcc33;color:#1a1400;font-weight:700;font-family:system-ui,sans-serif;padding:12px 18px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.4);opacity:0;transition:opacity .25s;max-width:92vw;text-align:center;pointer-events:none}`;
   const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
+  (function restaurar() {
+    const id = LS.get('lv2-perfil-activo', null);
+    const p = LS.get('lv2-perfiles', []).find(x => x.id === id);
+    if (p) actual = { id: p.id, apodo: p.apodo || '', banda: p.banda };
+  })();
   document.addEventListener('DOMContentLoaded', () => {
+    pintarBanner();
     const b = document.createElement('button');
     b.className = 'pf-voz'; b.type = 'button';
     b.setAttribute('aria-label', 'Activar o silenciar la voz');
