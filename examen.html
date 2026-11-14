@@ -262,7 +262,7 @@ function vistaPreguntas() {
   const card = h('div', { class: 'qcard' });
   if (esAudio) {
     card.append(h('p', { class: 'small muted', text: 'Escuchá el audio y elegí la respuesta.' }));
-    const audio = new Audio(ej.audio);
+    const audio = new Audio(ej.audio); AUDIO_ACTUAL = audio;
     const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
     let lentoOn = false;
     const lento = h('button', { class: 'btn', type: 'button', onclick: () => {
@@ -412,7 +412,7 @@ function vistaSimProc() {
   const ej = P.lista[P.idx];
   const card = h('div', { class: 'qcard' });
   if (ej.audio) {
-    const audio = new Audio(ej.audio);
+    const audio = new Audio(ej.audio); AUDIO_ACTUAL = audio;
     card.append(h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap' },
       h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.play().catch(() => {}); } }, '🔊 Escuchar')));
   } else {
@@ -452,7 +452,10 @@ function vistaSimRes() {
   return wrap;
 }
 
+let AUDIO_ACTUAL = null;
+function pararAudio() { if (AUDIO_ACTUAL) { try { AUDIO_ACTUAL.pause(); } catch (e) {} AUDIO_ACTUAL = null; } }
 function render() {
+  pararAudio();
   $app.textContent = '';
   const v = { inicio: vistaInicio, practica: vistaPractica, preguntas: vistaPreguntas, resumen: vistaResumen, simulacro: vistaSimulacro }[S.pantalla] || vistaInicio;
   if (S.pantalla === 'simProc') { $app.append(vistaSimProc()); return; }
