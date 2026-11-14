@@ -1,108 +1,38 @@
-# Pendientes acumulados
+# Estado del proyecto y pendientes
 
-Se hacen juntos, en una sola tanda, para probar una vez.
+Última actualización: ver el historial de commits.
 
-## Práctica JLPT (examen.html)
-- Ampliar el banco de comprensión auditiva (hoy 13 ejercicios): más diálogos, con opciones mezcladas en cada ronda.
-- Lectura: textos cortos con preguntas (tercera parte de la simulación).
-- Ampliar vocabulario (hoy 40) y gramática (hoy 26), para que no se repitan en simulaciones seguidas.
-- Verificar tiempos y cantidades de la simulación con la fuente oficial (hoy provisorios).
-- Verificar y revisar las explicaciones en español escritas hasta ahora.
+## Hecho
+- Lectura en español: ejercicios 1 a 5 con nombres claros, modalidad visible (Deslizar / Destello), destello con tiempo regulable (2 s a 1/10 s), perfil visible en todas las páginas, frases de ánimo con el nombre cada 5 frases, palabras y frases por banda de edad (bancos iniciales).
+- Práctica JLPT N5: vocabulario (60), gramática (46), lectura (10 textos), comprensión auditiva (14 ejercicios; 1 con audio nuevo, EP01), explicaciones en español, opciones mezcladas, simulación con 3 partes y tiempo (tiempos provisorios).
+- Hiragana y katakana: ejercicios de letras y de dibujo, con tiradas sin repeticiones y errores que vuelven a los dos turnos.
+- Soroban interactivo de 4 columnas, con toque y arrastre.
+- Dominio: archivo CNAME preparado, pero retirado temporalmente para que el sitio funcione.
 
-## Hiragana y katakana (kana.html)
-- Katakana: palabras de préstamos extranjeros (con katakana) en las bandas por edad.
-- Revisar las palabras nuevas agregadas (30 más para las bandas), sobre todo las marcadas como ambiguas.
+## Esperando tu decisión
+1. Dominio crisalidas.ar: esperar que esté a tu nombre (2 o 3 días). Después: registros DNS, registro TXT de verificación, dominio en Pages y archivo CNAME.
+2. Audios de comprensión auditiva: quedan 9 ejercicios sin audio. Decime cuántos grabamos (cada línea consume cuota de HeyGen).
+3. Página de administración para agregar palabras y frases: decidir cómo se exporta la lista.
+4. Tiempos y cantidades oficiales del examen N5: verificar con la fuente oficial.
 
-## Soroban (soroban.html)
-- Agregar columnas (hoy 4), con la misma separación.
-- Ejercicios: que aparezca un número y el alumno lo forme.
-- Revisar el arrastre en celular real.
+## Contenido por revisar o ampliar
+- Lectura en español: 73 palabras y 20 frases. Objetivo: unas 300 de cada una, por banda de edad.
+- Práctica JLPT: ampliar vocabulario, gramática y lectura. Revisar las explicaciones en español.
+- Hiragana y katakana: revisar las palabras nuevas (ambiguas sobre todo). Agregar katakana con palabras de origen extranjero.
+- Kanji por grado: lista oficial del Ministerio de Educación de Japón a verificar, y la sección con furigana que se retira según el avance.
 
-## Dominio y publicación
-- Esperar que el dominio crisalidas.ar esté a nombre del titular.
-- Registros DNS (A y CNAME) y registro TXT de verificación.
-- Volver a agregar el archivo CNAME y el dominio en Pages.
+## Código por hacer
+- Soroban: más columnas (cuando lo pidas), y ejercicios en los que el alumno forme un número.
+- Lectura: control de pausa entre palabras en destello, regulable aparte.
+- Lectura de nivel avanzado: doble palabra.
 
-## Principio general (vale para todo)
-- Las opciones y las preguntas tienen que ser aleatorias y lo menos repetitivas posible.
-- Lo único que se repite a propósito son los errores, hasta que se aprenden.
-
-## Lectura en español (lectura.html): palabras y frases con sentido
-- Quitar la lista que se escribe a mano en los niveles 4 y 5, y reemplazarla por una base de datos propia, revisada.
-- Palabras por banda de edad:
-  - 3 a 5 años: casi todas de 2 sílabas, de vez en cuando una de 3.
-  - 6 a 7 años: pocas de 2, la mayoría de 3, algunas de 4.
-  - 8 a 10 años: la mayoría de 3 y 4 sílabas.
-  - Lenguaje cotidiano, sin términos tecnológicos.
-- Frases por banda de edad:
-  - 3 a 5 años: cortas y simples ("Mi mamá me ama").
-  - 6 a 7 años: más largas, con comas y preposiciones.
-  - 8 a 10 años: más complejas, con más de una idea.
-- Variedad: cada frase base tiene variantes (orden de palabras cambiado, palabras parecidas), y se mezclan al azar en cada sesión.
-- Cantidad objetivo: a definir (propuesta: unas 300 palabras y 300 frases, en total).
-
-## Clasificación por significado (además de sílabas)
-- Cada palabra y frase lleva dos marcas: cantidad de sílabas y categoría de significado.
-- La edad depende de las dos.
-- Categorías, de lo más concreto a lo más abstracto:
-  - Concretas y cotidianas (familia, casa, animales, comida, cuerpo): 3 a 5 años.
-  - Acciones, lugares y escuela (jugar, ir a la plaza, la maestra), sentimientos simples: 6 a 7 años.
-  - Juegos, celulares y cosas de chicos más grandes; naturaleza, ciencia y geografía básicas; palabras abstractas simples ("amistad", "paciencia", "esfuerzo"): 8 a 10 años.
-- Revisar que no haya palabras de un nivel superior en una banda inferior.
-
-## Kanji por grado (sección japonés)
-- Filtro por edad según la lista oficial de kanji de educación primaria por grado (Ministerio de Educación de Japón; verificar la lista exacta antes de cargar).
-  - 3 a 5 años: solo hiragana y katakana.
-  - 6 años: kanji de primer grado (números, 大, 小, 中, 犬, 人, 日, 月, etc.).
-  - 7 años: primer y segundo grado.
-  - 8 a 10 años: tercero a quinto grado, con furigana (lectura en hiragana al lado).
-- Verificar el grado de cada kanji de uso común (por ejemplo, 猫) contra la lista oficial antes de asignarlo.
-- Sección nueva: "Lectura de kanji", con el mismo sistema de repetición de errores.
-
-## Título y selección por edad (japonés)
-- Título de la sección: "Hiragana, katakana y kanji".
-- 3 a 5 años: solo hiragana y katakana.
-- 6 a 7 años: hiragana, katakana y kanji de primer grado (6 años) y segundo grado (7 años).
-- 8 a 10 años: se suman kanji de tercero a quinto grado, con furigana.
-- Cada banda incluye lo de la anterior: la complejidad sube de a poco.
-
-## Furigana (lectura en hiragana al lado de los kanji)
-- Según la caja de cada kanji (sistema de repetición):
-  - Nuevo, o con error reciente: furigana visible.
-  - Empieza a salir bien: furigana aleatorio (a veces sí, a veces no), para que no se acostumbre a leer el hiragana.
-  - Dominado: sin furigana, salvo alguna vez de repaso.
-- Objetivo: que el furigana sea una ayuda que se retira, no una muleta permanente.
-
-## Reestructura de lectura en español (lectura.html)
-- Separar dos ejes: nivel de dificultad del estímulo y banda de edad del vocabulario.
-- Niveles: 1 pseudopalabras de 2 sílabas; 2 sílabas con consonante final y palabras reales de 2 sílabas; 3 pseudopalabras de 3 sílabas y palabras de 2 y 3; 4 palabras de 3 y 4 sílabas y grupos consonánticos; 5 frases cortas y después más largas.
-- Las palabras y frases reales se filtran por banda (3-5, 6-7, 8-10). Las pseudopalabras no dependen de la edad.
-- Página de administración (con enlace privado) para agregar palabras y frases: se exporta a un archivo, se revisa la ortografía y se incorpora al repositorio.
-- Pendiente de aprobación: los cinco niveles y las bandas.
-
-## Lectura: nombres y perfil visible (lectura.html)
-- Cambiar "Nivel" por "Tipo de ejercicio"; las opciones dicen "Ejercicio 1" a "Ejercicio 5".
-- Ejercicio 5 (frases): deshabilitado para 3 a 5 años. Para 6 a 7 y 8 a 10 se habilita, con frases simples para los más chicos y más complejas para los mayores.
-- En todas las pantallas, arriba, se muestra el perfil activo y su banda (por ejemplo, "Pepito · 3 a 5 años"), con botón para cambiar de perfil.
-
-## Hecho (grupo 3)
-- Lectura: "Tipo de ejercicio" y "Ejercicio 1 a 5" en lugar de "Nivel".
-- Ejercicio 5 (frases) deshabilitado para 3 a 5 años.
-- Perfil activo visible en todas las páginas, con botón "Cambiar"; se recuerda al cambiar de página.
-- Opciones de audio mezcladas en cada ronda: ya estaba hecho en la práctica JLPT y la simulación.
-
-## Destello (lectura en español, ejercicios 1 a 4)
-- Dos modos para los ejercicios 1, 2, 3 y 4: "Deslizar" (como hoy) y "Destello" (la palabra aparece en el centro y desaparece).
-- Ejercicio 5 (frases): solo "Deslizar", por ahora.
-- En destello, el botón de velocidad controla el tiempo en pantalla: de 2 segundos hasta 1/10 de segundo, para los más avanzados.
-- Pausa entre palabras: independiente del destello, de 1 segundo como referencia. No se acelera junto con el destello. Más pausa para las bandas más chicas, un poco menos para las más grandes, y un piso mínimo. Regulable con un control aparte.
+## Ideas para más adelante (necesitan poder comprobar aciertos)
+- Velocidad automática según aciertos.
+- Repetición de errores dentro de la lectura en movimiento.
 
 ## Descartado por ahora
-- Modo memoria (que el chico escriba la palabra o la elija entre varias después del destello). No se hace por ahora.
+- Modo memoria (escribir o elegir la palabra después del destello).
 
-## Ideas para más adelante (sin verificación de aciertos)
-- Velocidad automática según aciertos: depende de poder comprobar las respuestas (modo memoria, descartado por ahora).
-- Repetición de errores dentro de la lectura en movimiento: depende de poder comprobar los errores. Idea para más adelante.
-
-## Próximo para nivel avanzado
-- Doble palabra: aparecen dos palabras seguidas, muy rápido, y el chico las lee en voz alta. El adulto sigue la lectura. Para el nivel más avanzado.
+## Principio general
+- Las opciones y las preguntas son aleatorias y lo menos repetitivas posible.
+- Lo único que se repite a propósito son los errores, hasta que se aprenden.
