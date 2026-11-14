@@ -1,43 +1,6 @@
 {
-  "estado": "pendiente: texto listo, sin audio. Generar audio requiere aprobación (cuota HeyGen)",
+  "estado": "pendiente: texto listo, sin audio. Generar audio requiere aprobación (cuota HeyGen). EP01 ya tiene audio.",
   "ejercicios": [
-    {
-      "id": "EP01",
-      "tipo": "課題理解",
-      "tema": "Hora de salir",
-      "pregunta": "¿Qué va a hacer el hombre primero?",
-      "guion": [
-        [
-          "Narrador",
-          "おとこの ひとが はなして います。おとこの ひとは まず なにを しますか。"
-        ],
-        [
-          "Mujer",
-          "もう いきますか。"
-        ],
-        [
-          "Hombre",
-          "いいえ、まず かばんを とります。"
-        ],
-        [
-          "Mujer",
-          "そうですか。じゃあ、わたしは さきに いきますね。"
-        ],
-        [
-          "Narrador",
-          "おとこの ひとは まず なにを しますか。"
-        ]
-      ],
-      "opciones": [
-        "かばんを とる",
-        "いえを でる",
-        "でんわを する",
-        "ごはんを たべる"
-      ],
-      "respuesta": 0,
-      "explicacion": "Antes de salir, primero toma la mochila (かばんを とります).",
-      "audio": null
-    },
     {
       "id": "EP02",
       "tipo": "ポイント理解",

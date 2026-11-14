@@ -444,6 +444,43 @@
       "respuesta": 0,
       "tema": "Qué hace primero",
       "explicacion": "Tiene hambre y quieren comer, pero antes se lava las manos. Lo primero es lavarse las manos."
+    },
+    {
+      "id": "EP01",
+      "tipo": "課題理解",
+      "titulo": "Hora de salir",
+      "tema": "Hora de salir",
+      "audio": "audio/chokai/EP01.mp3",
+      "guion": [
+        [
+          "Narrador",
+          "おとこの ひとが はなして います。おとこの ひとは まず なにを しますか。"
+        ],
+        [
+          "Mujer",
+          "もう いきますか。"
+        ],
+        [
+          "Hombre",
+          "いいえ、まず かばんを とります。"
+        ],
+        [
+          "Mujer",
+          "そうですか。じゃあ、わたしは さきに いきますね。"
+        ],
+        [
+          "Narrador",
+          "おとこの ひとは まず なにを しますか。"
+        ]
+      ],
+      "opciones": [
+        "かばんを とる",
+        "いえを でる",
+        "でんわを する",
+        "ごはんを たべる"
+      ],
+      "respuesta": 0,
+      "explicacion": "Antes de salir, primero toma la mochila (かばんを とります)."
     }
   ]
 }
