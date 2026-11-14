@@ -72,3 +72,10 @@ Se hacen juntos, en una sola tanda, para probar una vez.
   - Empieza a salir bien: furigana aleatorio (a veces sí, a veces no), para que no se acostumbre a leer el hiragana.
   - Dominado: sin furigana, salvo alguna vez de repaso.
 - Objetivo: que el furigana sea una ayuda que se retira, no una muleta permanente.
+
+## Reestructura de lectura en español (lectura.html)
+- Separar dos ejes: nivel de dificultad del estímulo y banda de edad del vocabulario.
+- Niveles: 1 pseudopalabras de 2 sílabas; 2 sílabas con consonante final y palabras reales de 2 sílabas; 3 pseudopalabras de 3 sílabas y palabras de 2 y 3; 4 palabras de 3 y 4 sílabas y grupos consonánticos; 5 frases cortas y después más largas.
+- Las palabras y frases reales se filtran por banda (3-5, 6-7, 8-10). Las pseudopalabras no dependen de la edad.
+- Página de administración (con enlace privado) para agregar palabras y frases: se exporta a un archivo, se revisa la ortografía y se incorpora al repositorio.
+- Pendiente de aprobación: los cinco niveles y las bandas.
