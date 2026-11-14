@@ -161,6 +161,262 @@
       ],
       "respuesta": 1,
       "explicacion": "しゅうまつは えいがを みます: los fines de semana ve películas."
+    },
+    {
+      "id": "LE011",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Agenda",
+      "passage": "きょうは にちようびです。あしたは がっこうが あります。あさ 8じに でかけます。",
+      "q": "あしたは なにが ありますか。",
+      "opciones": [
+        "がっこう",
+        "やすみ",
+        "りょこう",
+        "びょういん"
+      ],
+      "respuesta": 0,
+      "explicacion": "Mañana hay escuela (がっこうが あります)."
+    },
+    {
+      "id": "LE012",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Gustos",
+      "passage": "わたしの おとうとは 7さいです。だいすきな のりものは でんしゃです。",
+      "q": "おとうとは なにが すきですか。",
+      "opciones": [
+        "でんしゃ",
+        "くるま",
+        "ひこうき",
+        "ふね"
+      ],
+      "respuesta": 0,
+      "explicacion": "Le gusta el tren (でんしゃ)."
+    },
+    {
+      "id": "LE013",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Aviso",
+      "passage": "ちかてつの えきの ちかくに ほんやが あります。ほんやは 10じに あきます。",
+      "q": "ほんやは なんじに あきますか。",
+      "opciones": [
+        "8じ",
+        "10じ",
+        "12じ",
+        "9じ"
+      ],
+      "respuesta": 1,
+      "explicacion": "La librería abre a las 10 (10じ)."
+    },
+    {
+      "id": "LE014",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Rutina",
+      "passage": "まいあさ、いぬと さんぽを します。こうえんまで あるいて いきます。",
+      "q": "どこまで あるいて いきますか。",
+      "opciones": [
+        "えき",
+        "こうえん",
+        "がっこう",
+        "いえ"
+      ],
+      "respuesta": 1,
+      "explicacion": "Caminan hasta el parque (こうえん)."
+    },
+    {
+      "id": "LE015",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Compras",
+      "passage": "あしたは おかあさんの たんじょうびです。ケーキを かいに いきます。",
+      "q": "なにを かいに いきますか。",
+      "opciones": [
+        "ほん",
+        "くつ",
+        "ケーキ",
+        "はな"
+      ],
+      "respuesta": 2,
+      "explicacion": "Van a comprar un pastel (ケーキ)."
+    },
+    {
+      "id": "LE016",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Paseo",
+      "passage": "きのう、ともだちと やまに のぼりました。たのしかったです。",
+      "q": "どこに いきましたか。",
+      "opciones": [
+        "うみ",
+        "やま",
+        "まち",
+        "もり"
+      ],
+      "respuesta": 1,
+      "explicacion": "Subieron a la montaña (やま)."
+    },
+    {
+      "id": "LE017",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Aviso",
+      "passage": "えいがかんの ちかくに パンやが あります。あさ 7じから あいて います。",
+      "q": "パンやは なんじから あいていますか。",
+      "opciones": [
+        "6じ",
+        "7じ",
+        "8じ",
+        "9じ"
+      ],
+      "respuesta": 1,
+      "explicacion": "La panadería abre a las 7 (7じ)."
+    },
+    {
+      "id": "LE018",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Mascotas",
+      "passage": "わたしは ねこが すきです。ねこの なまえは ミミです。しろい ねこです。",
+      "q": "ミミの いろは なんですか。",
+      "opciones": [
+        "くろ",
+        "しろ",
+        "あか",
+        "きいろ"
+      ],
+      "respuesta": 1,
+      "explicacion": "Mimi es blanca (しろい)."
+    },
+    {
+      "id": "LE019",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Cena",
+      "passage": "ゆうがた、かぞくと りょうりを します。ばんごはんは カレーです。",
+      "q": "ばんごはんは なんですか。",
+      "opciones": [
+        "カレー",
+        "ラーメン",
+        "すし",
+        "サラダ"
+      ],
+      "respuesta": 0,
+      "explicacion": "La cena es curry (カレー)."
+    },
+    {
+      "id": "LE020",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Biblioteca",
+      "passage": "やすみの日に、としょかんへ いきます。ほんを 3さつ かります。",
+      "q": "なんさつ かりますか。",
+      "opciones": [
+        "1さつ",
+        "2さつ",
+        "3さつ",
+        "4さつ"
+      ],
+      "respuesta": 2,
+      "explicacion": "Piden 3 libros (3さつ)."
+    },
+    {
+      "id": "LE021",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Aviso",
+      "passage": "てんきよほう：あしたは あめです。かさを わすれないで ください。",
+      "q": "なにを わすれないで ください？",
+      "opciones": [
+        "かさ",
+        "ぼうし",
+        "めがね",
+        "てぶくろ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Hay que no olvidar el paraguas (かさ)."
+    },
+    {
+      "id": "LE022",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Ubicación",
+      "passage": "わたしの がっこうは えきの まえに あります。としょかんも ちかくに あります。",
+      "q": "としょかんは どこに ありますか。",
+      "opciones": [
+        "がっこうの ちかく",
+        "えきの なか",
+        "こうえんの まえ",
+        "うみの そば"
+      ],
+      "respuesta": 0,
+      "explicacion": "La biblioteca está cerca de la escuela."
+    },
+    {
+      "id": "LE023",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Reunión",
+      "passage": "かいぎは 午後 2じに はじまります。じかんは 1じかんです。",
+      "q": "かいぎは なんじに おわりますか。",
+      "opciones": [
+        "1じ",
+        "2じ",
+        "3じ",
+        "4じ"
+      ],
+      "respuesta": 2,
+      "explicacion": "Empieza a las 2 y dura 1 hora: termina a las 3."
+    },
+    {
+      "id": "LE024",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Rutina",
+      "passage": "たなかさんは まいにち 6じに おきます。そして 7じに がっこうへ いきます。",
+      "q": "たなかさんは なんじに がっこうへ いきますか。",
+      "opciones": [
+        "6じ",
+        "7じ",
+        "8じ",
+        "9じ"
+      ],
+      "respuesta": 1,
+      "explicacion": "Va a la escuela a las 7 (7じ)."
+    },
+    {
+      "id": "LE025",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Hotel",
+      "passage": "ホテルの へやは 2かいに あります。 えれべーたーは あの みぎがわです。",
+      "q": "へやは どこに ありますか。",
+      "opciones": [
+        "1かい",
+        "2かい",
+        "3かい",
+        "ちか"
+      ],
+      "respuesta": 1,
+      "explicacion": "La habitación está en el segundo piso (2かい)."
+    },
+    {
+      "id": "LE026",
+      "area": "lect",
+      "tipo": "Lectura",
+      "tema": "Plan",
+      "passage": "あしたは あさ はやく おきます。えきで ともだちを まって、こうえんへ いきます。",
+      "q": "どこへ いきますか。",
+      "opciones": [
+        "がっこう",
+        "えき",
+        "こうえん",
+        "びょういん"
+      ],
+      "respuesta": 2,
+      "explicacion": "Van al parque (こうえん)."
     }
   ]
 }

@@ -618,21 +618,6 @@
       "explicacion": "Acción futura y habitual: ～ます."
     },
     {
-      "id": "G042",
-      "area": "gram",
-      "tipo": "Verbos",
-      "tema": "Verbos",
-      "q": "いま ほんを よんで（　　）。",
-      "opciones": [
-        "います",
-        "ます",
-        "ました",
-        "ください"
-      ],
-      "respuesta": 0,
-      "explicacion": "～ています indica una acción en curso."
-    },
-    {
       "id": "G043",
       "area": "gram",
       "tipo": "Negación",
@@ -691,6 +676,591 @@
       ],
       "respuesta": 0,
       "explicacion": "～ましょう propone hacer algo juntos: «comamos juntos»."
+    },
+    {
+      "id": "G047",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "ともだち（　　）いっしょに がっこうへ いきます。",
+      "opciones": [
+        "と",
+        "に",
+        "を",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "と significa «con»: «voy a la escuela con mis amigos»."
+    },
+    {
+      "id": "G048",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "でんしゃ（　　）がっこうへ いきます。",
+      "opciones": [
+        "で",
+        "を",
+        "は",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "で indica el medio de transporte: «voy en tren»."
+    },
+    {
+      "id": "G049",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "いぬ（　　）さんぽを します。",
+      "opciones": [
+        "と",
+        "に",
+        "を",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "さんぽを します: «salgo a pasear con el perro» (と)."
+    },
+    {
+      "id": "G050",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "はこ（　　）なかに ほんが あります。",
+      "opciones": [
+        "の",
+        "に",
+        "を",
+        "は"
+      ],
+      "respuesta": 0,
+      "explicacion": "の une: «dentro de la caja»."
+    },
+    {
+      "id": "G051",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "えき（　　）ともだちが まって います。",
+      "opciones": [
+        "で",
+        "に",
+        "を",
+        "へ"
+      ],
+      "respuesta": 0,
+      "explicacion": "El lugar donde se espera se marca con で."
+    },
+    {
+      "id": "G052",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "わたしは にほん（　　）きました。",
+      "opciones": [
+        "から",
+        "まで",
+        "に",
+        "を"
+      ],
+      "respuesta": 0,
+      "explicacion": "から indica el origen: «vine de Japón»."
+    },
+    {
+      "id": "G053",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "ここ（　　）あそこまで あるきます。",
+      "opciones": [
+        "から",
+        "まで",
+        "に",
+        "と"
+      ],
+      "respuesta": 0,
+      "explicacion": "から marca el punto de partida: «desde aquí»."
+    },
+    {
+      "id": "G054",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "てがみ（　　）かきます。",
+      "opciones": [
+        "を",
+        "で",
+        "に",
+        "と"
+      ],
+      "respuesta": 0,
+      "explicacion": "El objeto de かきます va con を."
+    },
+    {
+      "id": "G055",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "まど（　　）そとを みます。",
+      "opciones": [
+        "から",
+        "で",
+        "に",
+        "を"
+      ],
+      "respuesta": 0,
+      "explicacion": "から indica por dónde se mira: «miro desde la ventana»."
+    },
+    {
+      "id": "G056",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "ともだち（　　）でんわを します。",
+      "opciones": [
+        "に",
+        "を",
+        "で",
+        "へ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Llamar a alguien: でんわを します con に para la persona."
+    },
+    {
+      "id": "G057",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "わたしは さかな（　　）すきじゃ ありません。",
+      "opciones": [
+        "が",
+        "を",
+        "に",
+        "は"
+      ],
+      "respuesta": 0,
+      "explicacion": "すき (gustar) va con が."
+    },
+    {
+      "id": "G058",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "あした、かぞくと りょこう（　　）いきます。",
+      "opciones": [
+        "に",
+        "を",
+        "で",
+        "と"
+      ],
+      "respuesta": 0,
+      "explicacion": "りょこうに いきます: «voy de viaje»."
+    },
+    {
+      "id": "G059",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "あした テストが あり（　　）。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción futura o habitual: ～ます."
+    },
+    {
+      "id": "G060",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "まいにち あさ、はを みがき（　　）。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción habitual: ～ます."
+    },
+    {
+      "id": "G061",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "きのうは うちで ほんを よみ（　　）。",
+      "opciones": [
+        "ました",
+        "ます",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "きのう indica pasado: ～ました."
+    },
+    {
+      "id": "G062",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "わたしは ねこが すき（　　）。",
+      "opciones": [
+        "です",
+        "ます",
+        "ました",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "Una afirmación con adjetivo de gusto termina en です."
+    },
+    {
+      "id": "G063",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いま しゅくだいを し（　　）います。",
+      "opciones": [
+        "て",
+        "ま",
+        "た",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción en curso: ～て います."
+    },
+    {
+      "id": "G064",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "えきまで あるい（　　）いきます。",
+      "opciones": [
+        "て",
+        "ま",
+        "た",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "Dos acciones seguidas: ～て。"
+    },
+    {
+      "id": "G065",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "かぞくと りょこう（　　）いきます。",
+      "opciones": [
+        "に",
+        "を",
+        "で",
+        "と"
+      ],
+      "respuesta": 0,
+      "explicacion": "りょこうに いきます."
+    },
+    {
+      "id": "G066",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "わたしは パン（　　）たべません。",
+      "opciones": [
+        "を",
+        "に",
+        "で",
+        "が"
+      ],
+      "respuesta": 0,
+      "explicacion": "El objeto de たべます va con を."
+    },
+    {
+      "id": "G067",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "あした えきで ともだちを まち（　　）。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Acción futura: ～ます."
+    },
+    {
+      "id": "G068",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "なかに なにが あり（　　）か。",
+      "opciones": [
+        "ます",
+        "ました",
+        "ません",
+        "ましょう"
+      ],
+      "respuesta": 0,
+      "explicacion": "Pregunta cortés: ～ますか."
+    },
+    {
+      "id": "G069",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "まいあさ 七じに（　　）。",
+      "opciones": [
+        "おきます",
+        "たべます",
+        "のみます",
+        "あるきます"
+      ],
+      "respuesta": 0,
+      "explicacion": "Levantarse: おきます."
+    },
+    {
+      "id": "G070",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いっしょに ごはんを たべ（　　）か。",
+      "opciones": [
+        "ませんか",
+        "ましょう",
+        "ました",
+        "たい"
+      ],
+      "respuesta": 0,
+      "explicacion": "～ませんか invita: «¿no comemos juntos?»."
+    },
+    {
+      "id": "G071",
+      "area": "gram",
+      "tipo": "Verbos",
+      "tema": "Verbos",
+      "q": "いま、ほんを よみ（　　）です。",
+      "opciones": [
+        "たい",
+        "ます",
+        "ない",
+        "て"
+      ],
+      "respuesta": 0,
+      "explicacion": "～たい expresa deseo: «quiero leer»."
+    },
+    {
+      "id": "G072",
+      "area": "gram",
+      "tipo": "Adjetivos",
+      "tema": "Adjetivos",
+      "q": "この へやは ひろい（　　）です。",
+      "opciones": [
+        "です",
+        "ます",
+        "でした",
+        "ません"
+      ],
+      "respuesta": 0,
+      "explicacion": "Un adjetivo い en presente se completa con です."
+    },
+    {
+      "id": "G073",
+      "area": "gram",
+      "tipo": "Adjetivos",
+      "tema": "Adjetivos",
+      "q": "きのうは とても さむかっ（　　）です。",
+      "opciones": [
+        "た",
+        "だ",
+        "て",
+        "で"
+      ],
+      "respuesta": 0,
+      "explicacion": "En pasado, さむかった + です: la forma es さむかったです."
+    },
+    {
+      "id": "G074",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "いぬが さん（　　）います。",
+      "opciones": [
+        "びき",
+        "まい",
+        "にん",
+        "かい"
+      ],
+      "respuesta": 0,
+      "explicacion": "Los animales se cuentan con びき (con sonido de b)."
+    },
+    {
+      "id": "G075",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "つくえの うえに ほんが にさつ（　　）あります。",
+      "opciones": [
+        "さつ",
+        "まい",
+        "だい",
+        "はい"
+      ],
+      "respuesta": 0,
+      "explicacion": "Los libros se cuentan con さつ."
+    },
+    {
+      "id": "G076",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "かさが いっぽん（　　）あります。",
+      "opciones": [
+        "ほん",
+        "まい",
+        "ひき",
+        "にん"
+      ],
+      "respuesta": 0,
+      "explicacion": "Las cosas largas y delgadas se cuentan con ほん."
+    },
+    {
+      "id": "G077",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "ねこが いっぴき（　　）います。",
+      "opciones": [
+        "ぴき",
+        "まい",
+        "にん",
+        "さつ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Los animales pequeños se cuentan con ぴき."
+    },
+    {
+      "id": "G078",
+      "area": "gram",
+      "tipo": "Contadores",
+      "tema": "Contadores",
+      "q": "おかしを ごこ（　　）たべました。",
+      "opciones": [
+        "こ",
+        "まい",
+        "にん",
+        "さつ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Los objetos pequeños se cuentan con こ."
+    },
+    {
+      "id": "G079",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "いってきます。（　　）。",
+      "opciones": [
+        "いってらっしゃい",
+        "おかえりなさい",
+        "いただきます",
+        "さようなら"
+      ],
+      "respuesta": 0,
+      "explicacion": "Al que sale, se le responde いってらっしゃい."
+    },
+    {
+      "id": "G080",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "ごはんを たべるまえに、（　　）と いいます。",
+      "opciones": [
+        "いただきます",
+        "ごちそうさま",
+        "おやすみ",
+        "ただいま"
+      ],
+      "respuesta": 0,
+      "explicacion": "Antes de comer se dice いただきます."
+    },
+    {
+      "id": "G081",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "ありがとう ございました。（　　）。",
+      "opciones": [
+        "どういたしまして",
+        "さようなら",
+        "おはよう",
+        "いただきます"
+      ],
+      "respuesta": 0,
+      "explicacion": "Al agradecimiento se responde どういたしまして."
+    },
+    {
+      "id": "G082",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "おなかが いっぱいに なりました。（　　）。",
+      "opciones": [
+        "ごちそうさまでした",
+        "いただきます",
+        "おやすみなさい",
+        "ただいま"
+      ],
+      "respuesta": 0,
+      "explicacion": "Al terminar de comer se dice ごちそうさまでした."
+    },
+    {
+      "id": "G083",
+      "area": "gram",
+      "tipo": "Expresiones",
+      "tema": "Expresiones",
+      "q": "ただいま。（　　）。",
+      "opciones": [
+        "おかえりなさい",
+        "いってらっしゃい",
+        "さようなら",
+        "いただきます"
+      ],
+      "respuesta": 0,
+      "explicacion": "Al que vuelve se le responde おかえりなさい."
+    },
+    {
+      "id": "G085",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "わたしの なまえは ひろし（　　）。",
+      "opciones": [
+        "です",
+        "ます",
+        "ました",
+        "でした"
+      ],
+      "respuesta": 0,
+      "explicacion": "Presentación: 名前は ～です."
+    },
+    {
+      "id": "G086",
+      "area": "gram",
+      "tipo": "Partículas",
+      "tema": "Partículas",
+      "q": "てんきが いいです（　　）、あそびましょう。",
+      "opciones": [
+        "から",
+        "まで",
+        "だけ",
+        "ので"
+      ],
+      "respuesta": 0,
+      "explicacion": "から indica la razón: «como hace buen tiempo, juguemos»."
     }
   ]
 }

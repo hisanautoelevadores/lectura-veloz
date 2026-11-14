@@ -901,6 +901,636 @@
       ],
       "respuesta": 0,
       "explicacion": "うる (vender) es lo contrario de かう (comprar)."
+    },
+    {
+      "id": "V061",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[本]]を よみます。",
+      "opciones": [
+        "ほん",
+        "しん",
+        "けん",
+        "こん"
+      ],
+      "respuesta": 0,
+      "explicacion": "本 se lee ほん (libro)."
+    },
+    {
+      "id": "V062",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[車]]で いきます。",
+      "opciones": [
+        "くるま",
+        "かぜ",
+        "ゆき",
+        "はな"
+      ],
+      "respuesta": 0,
+      "explicacion": "車 se lee くるま (auto)."
+    },
+    {
+      "id": "V063",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[男]]の こは げんきです。",
+      "opciones": [
+        "おとこ",
+        "おんな",
+        "おこ",
+        "たん"
+      ],
+      "respuesta": 0,
+      "explicacion": "男 se lee おとこ (hombre, varón)."
+    },
+    {
+      "id": "V064",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[女]]の ひとが います。",
+      "opciones": [
+        "おんな",
+        "おとこ",
+        "めん",
+        "じょ"
+      ],
+      "respuesta": 0,
+      "explicacion": "女 se lee おんな (mujer)."
+    },
+    {
+      "id": "V065",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[子]]どもが あそんで います。",
+      "opciones": [
+        "こ",
+        "し",
+        "す",
+        "ね"
+      ],
+      "respuesta": 0,
+      "explicacion": "子ども se lee こども (niños). Aquí 子 se lee こ."
+    },
+    {
+      "id": "V066",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[白]]い くもです。",
+      "opciones": [
+        "しろ",
+        "はく",
+        "ひゃく",
+        "さく"
+      ],
+      "respuesta": 0,
+      "explicacion": "白い se lee しろい (blanco)."
+    },
+    {
+      "id": "V067",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[赤]]い りんごです。",
+      "opciones": [
+        "あか",
+        "せき",
+        "しゃく",
+        "あけ"
+      ],
+      "respuesta": 0,
+      "explicacion": "赤い se lee あかい (rojo)."
+    },
+    {
+      "id": "V068",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[青]]い そらです。",
+      "opciones": [
+        "あお",
+        "せい",
+        "しょう",
+        "ひゃく"
+      ],
+      "respuesta": 0,
+      "explicacion": "青い se lee あおい (azul)."
+    },
+    {
+      "id": "V069",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[空]]が あおいです。",
+      "opciones": [
+        "そら",
+        "くう",
+        "から",
+        "あき"
+      ],
+      "respuesta": 0,
+      "explicacion": "空 se lee そら (cielo)."
+    },
+    {
+      "id": "V070",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[花]]が さいて います。",
+      "opciones": [
+        "はな",
+        "か",
+        "けい",
+        "こう"
+      ],
+      "respuesta": 0,
+      "explicacion": "花 se lee はな (flor)."
+    },
+    {
+      "id": "V071",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[森]]の なかへ いきます。",
+      "opciones": [
+        "もり",
+        "しん",
+        "そう",
+        "はやし"
+      ],
+      "respuesta": 0,
+      "explicacion": "森 se lee もり (bosque)."
+    },
+    {
+      "id": "V072",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[石]]を ひろいます。",
+      "opciones": [
+        "いし",
+        "せき",
+        "こく",
+        "さん"
+      ],
+      "respuesta": 0,
+      "explicacion": "石 se lee いし (piedra)."
+    },
+    {
+      "id": "V073",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[町]]へ いきます。",
+      "opciones": [
+        "まち",
+        "ちょう",
+        "まん",
+        "てい"
+      ],
+      "respuesta": 0,
+      "explicacion": "町 se lee まち (pueblo, ciudad)."
+    },
+    {
+      "id": "V074",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[米]]を たべます。",
+      "opciones": [
+        "こめ",
+        "べい",
+        "まい",
+        "よね"
+      ],
+      "respuesta": 0,
+      "explicacion": "米 se lee こめ (arroz)."
+    },
+    {
+      "id": "V075",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[安]]い ふくです。",
+      "opciones": [
+        "やすい",
+        "あん",
+        "ぎん",
+        "だい"
+      ],
+      "respuesta": 0,
+      "explicacion": "安い se lee やすい (barato)."
+    },
+    {
+      "id": "V076",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[上]]に ほんが あります。",
+      "opciones": [
+        "うえ",
+        "した",
+        "なか",
+        "そと"
+      ],
+      "respuesta": 0,
+      "explicacion": "上 se lee うえ (arriba)."
+    },
+    {
+      "id": "V077",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[下]]に ねこが います。",
+      "opciones": [
+        "した",
+        "うえ",
+        "なか",
+        "よこ"
+      ],
+      "respuesta": 0,
+      "explicacion": "下 se lee した (abajo)."
+    },
+    {
+      "id": "V078",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[中]]に はいります。",
+      "opciones": [
+        "なか",
+        "うち",
+        "そと",
+        "よこ"
+      ],
+      "respuesta": 0,
+      "explicacion": "中 se lee なか (dentro)."
+    },
+    {
+      "id": "V079",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[大]]きい いぬです。",
+      "opciones": [
+        "おお",
+        "だい",
+        "たい",
+        "ひろ"
+      ],
+      "respuesta": 0,
+      "explicacion": "大きい se lee おおきい (grande)."
+    },
+    {
+      "id": "V080",
+      "area": "vocab",
+      "tipo": "Lectura de kanji",
+      "tema": "Lectura de kanji",
+      "q": "[[小]]さい ねこです。",
+      "opciones": [
+        "ちい",
+        "しょう",
+        "こ",
+        "お"
+      ],
+      "respuesta": 0,
+      "explicacion": "小さい se lee ちいさい (pequeño)."
+    },
+    {
+      "id": "V081",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「かるい」の はんたいは どれですか。",
+      "opciones": [
+        "おもい",
+        "かたい",
+        "ながい",
+        "はやい"
+      ],
+      "respuesta": 0,
+      "explicacion": "かるい (liviano) es lo contrario de おもい (pesado)."
+    },
+    {
+      "id": "V082",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「ひくい」の はんたいは どれですか。",
+      "opciones": [
+        "たかい",
+        "ふかい",
+        "みじかい",
+        "ふるい"
+      ],
+      "respuesta": 0,
+      "explicacion": "ひくい (bajo) es lo contrario de たかい (alto)."
+    },
+    {
+      "id": "V083",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「ふかい」の はんたいは どれですか。",
+      "opciones": [
+        "あさい",
+        "ひろい",
+        "せまい",
+        "ちかい"
+      ],
+      "respuesta": 0,
+      "explicacion": "ふかい (profundo) es lo contrario de あさい (poco profundo)."
+    },
+    {
+      "id": "V084",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「ひろい」の はんたいは どれですか。",
+      "opciones": [
+        "せまい",
+        "ながい",
+        "たかい",
+        "やすい"
+      ],
+      "respuesta": 0,
+      "explicacion": "ひろい (amplio) es lo contrario de せまい (estrecho)."
+    },
+    {
+      "id": "V085",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「しずか」の はんたいは どれですか。",
+      "opciones": [
+        "にぎやか",
+        "ひろい",
+        "やすい",
+        "やわらかい"
+      ],
+      "respuesta": 0,
+      "explicacion": "しずか (tranquilo) es lo contrario de にぎやか (animado)."
+    },
+    {
+      "id": "V086",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「おおい」の はんたいは どれですか。",
+      "opciones": [
+        "すくない",
+        "ちいさい",
+        "ひくい",
+        "はやい"
+      ],
+      "respuesta": 0,
+      "explicacion": "おおい (mucho) es lo contrario de すくない (poco)."
+    },
+    {
+      "id": "V087",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「かたい」の はんたいは どれですか。",
+      "opciones": [
+        "やわらかい",
+        "ふとい",
+        "ほそい",
+        "ゆるい"
+      ],
+      "respuesta": 0,
+      "explicacion": "かたい (duro) es lo contrario de やわらかい (blando)."
+    },
+    {
+      "id": "V088",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「しろい」の はんたいは どれですか。",
+      "opciones": [
+        "くろい",
+        "あかい",
+        "あおい",
+        "ちゃいろ"
+      ],
+      "respuesta": 0,
+      "explicacion": "しろい (blanco) es lo contrario de くろい (negro)."
+    },
+    {
+      "id": "V089",
+      "area": "vocab",
+      "tipo": "Significado",
+      "tema": "Significado",
+      "q": "「たのしい」の はんたいは どれですか。",
+      "opciones": [
+        "つまらない",
+        "おいしい",
+        "むずかしい",
+        "かなしい"
+      ],
+      "respuesta": 0,
+      "explicacion": "たのしい (divertido) es lo contrario de つまらない (aburrido)."
+    },
+    {
+      "id": "V090",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "あさ、（　　）で かおを あらいます。",
+      "opciones": [
+        "みず",
+        "ほん",
+        "はし",
+        "かさ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para lavarse la cara se usa agua (みず)."
+    },
+    {
+      "id": "V091",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "あついので、（　　）を あけます。",
+      "opciones": [
+        "まど",
+        "ほん",
+        "くつ",
+        "さかな"
+      ],
+      "respuesta": 0,
+      "explicacion": "Con calor se abre la ventana (まど)."
+    },
+    {
+      "id": "V092",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "そとに でるとき、（　　）を はきます。",
+      "opciones": [
+        "くつ",
+        "ぼうし",
+        "てぶくろ",
+        "めがね"
+      ],
+      "respuesta": 0,
+      "explicacion": "Los zapatos se calzan (はきます)."
+    },
+    {
+      "id": "V093",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "あした、（　　）へ いって ほんを かります。",
+      "opciones": [
+        "としょかん",
+        "びょういん",
+        "ぎんこう",
+        "えき"
+      ],
+      "respuesta": 0,
+      "explicacion": "En la biblioteca (としょかん) se piden libros prestados."
+    },
+    {
+      "id": "V094",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "にほんごの（　　）を おぼえます。",
+      "opciones": [
+        "ことば",
+        "あめ",
+        "いぬ",
+        "やま"
+      ],
+      "respuesta": 0,
+      "explicacion": "Se memorizan palabras (ことば)."
+    },
+    {
+      "id": "V095",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "あめが ふったので、（　　）を さします。",
+      "opciones": [
+        "かさ",
+        "ほん",
+        "たまご",
+        "みず"
+      ],
+      "respuesta": 0,
+      "explicacion": "Con lluvia se abre el paraguas (かさ)."
+    },
+    {
+      "id": "V096",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "きれいな（　　）が さいて います。",
+      "opciones": [
+        "はな",
+        "いし",
+        "もり",
+        "やま"
+      ],
+      "respuesta": 0,
+      "explicacion": "Lo que florece es una flor (はな)."
+    },
+    {
+      "id": "V097",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "ともだちと（　　）を します。",
+      "opciones": [
+        "はなし",
+        "ほん",
+        "あめ",
+        "つくえ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Se conversa (はなし)."
+    },
+    {
+      "id": "V098",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "まいにち（　　）を みがきます。",
+      "opciones": [
+        "は",
+        "て",
+        "め",
+        "みみ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Se cepillan los dientes (は)."
+    },
+    {
+      "id": "V099",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "てんきが いいので、（　　）へ いきます。",
+      "opciones": [
+        "こうえん",
+        "びょういん",
+        "ぎんこう",
+        "としょかん"
+      ],
+      "respuesta": 0,
+      "explicacion": "Con buen tiempo se va al parque (こうえん)."
+    },
+    {
+      "id": "V100",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "おなかが すいたので、（　　）を たべます。",
+      "opciones": [
+        "ごはん",
+        "ほん",
+        "くつ",
+        "いぬ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Con hambre se come (ごはん)."
+    },
+    {
+      "id": "V101",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "あさ おきたら、まず（　　）を あらいます。",
+      "opciones": [
+        "かお",
+        "くつ",
+        "ほん",
+        "いぬ"
+      ],
+      "respuesta": 0,
+      "explicacion": "Al levantarse se lava la cara (かお)."
+    },
+    {
+      "id": "V102",
+      "area": "vocab",
+      "tipo": "Uso de palabras",
+      "tema": "Uso de palabras",
+      "q": "ゆうびんきょくで、（　　）を だします。",
+      "opciones": [
+        "て がみ",
+        "くるま",
+        "たまご",
+        "いす"
+      ],
+      "respuesta": 0,
+      "explicacion": "En el correo se envía una carta (て がみ)."
     }
   ]
 }
