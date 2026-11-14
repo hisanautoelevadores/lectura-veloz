@@ -58,3 +58,10 @@ Se hacen juntos, en una sola tanda, para probar una vez.
   - 8 a 10 años: tercero a quinto grado, con furigana (lectura en hiragana al lado).
 - Verificar el grado de cada kanji de uso común (por ejemplo, 猫) contra la lista oficial antes de asignarlo.
 - Sección nueva: "Lectura de kanji", con el mismo sistema de repetición de errores.
+
+## Título y selección por edad (japonés)
+- Título de la sección: "Hiragana, katakana y kanji".
+- 3 a 5 años: solo hiragana y katakana.
+- 6 a 7 años: hiragana, katakana y kanji de primer grado (6 años) y segundo grado (7 años).
+- 8 a 10 años: se suman kanji de tercero a quinto grado, con furigana.
+- Cada banda incluye lo de la anterior: la complejidad sube de a poco.
