@@ -440,7 +440,8 @@ function opcionesDe(x) {
     const todos = todosLosCaracteres(ajustes.esc);
     const grupo = TBL[ajustes.esc].conf.find(g => g.includes(x.ch));
     const confs = grupo ? grupo.filter(c => c !== x.ch).map(c => todos.find(t => t.ch === c)).filter(Boolean).map(t => t.r) : [];
-    return opciones(x.r, [...confs, ...mezclar(todos.map(t => t.r))], n);
+    // las parecidas no van siempre primero: se mezclan con el resto, así no hay un patrón que memorizar
+    return opciones(x.r, mezclar([...confs, ...todos.map(t => t.r)]), n);
   }
   const banco = bancoVocab(J.banda);
   if (sec === 'dibujo') return opciones(x.e, mezclar(banco.map(v => v.e)), n);

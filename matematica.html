@@ -192,7 +192,7 @@ function opciones(f) {
   }
   const usados = new Set([c]);
   const elegidos = [];
-  for (const v of [...mezclar(cerca), ...mezclar(lejos)]) {
+  for (const v of mezclar([...cerca, ...lejos])) {
     if (elegidos.length >= N - 1) break;
     if (v < 0 || usados.has(v)) continue;
     usados.add(v); elegidos.push(v);
