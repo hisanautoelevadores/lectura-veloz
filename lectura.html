@@ -79,6 +79,13 @@ textarea{min-height:140px;resize:vertical;font-size:1.05rem;line-height:1.5}
 .stylelbl{color:var(--accent);font-weight:700;font-size:.95rem;min-width:12ch;text-align:center}
 .spd{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;min-width:6ch;text-align:center}
 @media (prefers-reduced-motion:reduce){.controls{transition:none}}
+.seg-modo{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.etq-modo{font-weight:700;font-size:.95rem}
+.seg-botones{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg-btn{min-height:56px;border-radius:12px;border:2px solid var(--line);background:#1d1d21;color:var(--fg);font:inherit;font-size:1.1rem;font-weight:700;cursor:pointer}
+.seg-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1400}
+.seg-btn:disabled{opacity:.4;cursor:not-allowed}
+.nota-modo{margin:0;color:var(--muted);font-size:.9rem;min-height:1.2em}
 </style>
 </head>
 <body>
@@ -92,6 +99,18 @@ textarea{min-height:140px;resize:vertical;font-size:1.05rem;line-height:1.5}
 
   <section class="group" aria-labelledby="h-nivel">
     <h2 id="h-nivel">1 · Tipo de ejercicio</h2>
+    <div class="seg-modo" id="segModo">
+      <span class="etq-modo">Modalidad</span>
+      <div class="seg-botones" role="group" aria-label="Modalidad">
+        <button type="button" class="seg-btn" data-modo="deslizar" aria-pressed="true">Deslizar</button>
+        <button type="button" class="seg-btn" data-modo="destello" aria-pressed="false">Destello</button>
+      </div>
+      <p class="nota-modo" id="notaModo"></p>
+    </div>
+    <select id="modo" hidden>
+      <option value="deslizar">Deslizar</option>
+      <option value="destello">Destello</option>
+    </select>
     <div class="opts" id="niveles">
       <label class="opt"><input type="radio" name="nivel" value="1"> <span>Ejercicio 1 · Pseudopalabras de 2 sílabas (ej. <i>mopa</i>, <i>lise</i>)</span></label>
       <label class="opt"><input type="radio" name="nivel" value="2"> <span>Ejercicio 2 · 2 sílabas con consonante final (ej. <i>mapel</i>, <i>tosin</i>)</span></label>
@@ -121,13 +140,6 @@ textarea{min-height:140px;resize:vertical;font-size:1.05rem;line-height:1.5}
     <div class="field">
       <label for="tam">Altura de la letra</label><output id="tamOut"></output>
       <input type="range" id="tam" min="40" max="95" step="5">
-    </div>
-    <div class="field" id="fModo">
-      <label for="modo">Modo</label>
-      <select id="modo">
-        <option value="deslizar">Deslizar (la palabra cruza la pantalla)</option>
-        <option value="destello">Destello (la palabra aparece y desaparece)</option>
-      </select>
     </div>
     <div class="field">
       <label for="sentido">Sentido</label>
@@ -263,8 +275,12 @@ function pintarUI() {
   $('sentido').value = ajustes.sentido;
   $('modo').value = ajustes.modo || 'deslizar';
   const dest = ajustes.modo === 'destello' && +ajustes.nivel <= 4;
-  $('fModo').hidden = +ajustes.nivel >= 5;
   $('sentido').closest('.field').hidden = dest;
+  document.querySelectorAll('.seg-btn').forEach(b => {
+    b.setAttribute('aria-pressed', String(b.dataset.modo === (ajustes.modo || 'deslizar')));
+    if (b.dataset.modo === 'destello') b.disabled = +ajustes.nivel >= 5;
+  });
+  $('notaModo').textContent = +ajustes.nivel >= 5 ? 'El ejercicio 5 (frases) se hace solo deslizando, por ahora.' : '';
   $('cambio').value = ajustes.cambio;
   $('texto').value = ajustes.texto;
   document.querySelectorAll('.fontc').forEach(c => c.checked = ajustes.fonts.includes(c.value));
@@ -280,6 +296,7 @@ function pintarUI() {
   pintarProgreso();
 }
 document.querySelector('#setup').addEventListener('input', leerUI);
+document.querySelectorAll('.seg-btn').forEach(b => b.addEventListener('click', () => { $('modo').value = b.dataset.modo; leerUI(); }));
 document.querySelector('#setup').addEventListener('change', leerUI);
 
 /* ---------- Progreso ---------- */
