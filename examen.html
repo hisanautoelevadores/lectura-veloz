@@ -126,7 +126,7 @@ const AREAS = [
   { id: 'escucha', jp: '聴解', es: 'Comprensión auditiva', desc: 'Diálogos grabados. Se elige la respuesta y se ve el texto después.', listo: true },
   { id: 'vocab', jp: '語彙', es: 'Vocabulario', desc: 'Lectura de kanji, significado y uso de palabras.', listo: true },
   { id: 'gram', jp: '文法', es: 'Gramática', desc: 'Partículas, formas verbales y uso de la oración.', listo: true },
-  { id: 'lect', jp: '読解', es: 'Lectura', desc: 'Textos breves y avisos con datos. En preparación.', listo: false }
+  { id: 'lect', jp: '読解', es: 'Lectura', desc: 'Textos breves, avisos y mensajes con preguntas.', listo: true }
 ];
 
 let ejercicios = [];
@@ -267,6 +267,7 @@ function vistaPreguntas() {
     card.append(h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap' }, play, lento));
   } else {
     card.append(h('p', { class: 'small muted', text: 'Elegí la respuesta correcta.' }));
+    if (ej.passage) card.append(h('div', { class: 'passage', lang: 'ja', style: 'font:500 1.1rem/1.9 var(--font-jp);white-space:pre-wrap;padding:14px 16px;background:var(--paper);border:1px dashed var(--rule);border-radius:8px;overflow-wrap:anywhere' }, ej.passage));
     card.append(h('div', { class: 'qtext', lang: 'ja', style: 'font:500 1.3rem/1.9 var(--font-jp);overflow-wrap:anywhere' }, rich(ej.q)));
   }
 
@@ -344,7 +345,8 @@ function vistaResumen() {
 // Tiempos y cantidades PROVISORIOS: verificar con la fuente oficial antes de usar en serio.
 const SIM_PARTES = [
   { nombre: 'Vocabulario y gramática', minutos: 25, n: 20, fuentes: ['vocab', 'gram'] },
-  { nombre: 'Comprensión auditiva', minutos: 20, n: 5, fuentes: ['escucha'] }
+  { nombre: 'Comprensión auditiva', minutos: 20, n: 5, fuentes: ['escucha'] },
+  { nombre: 'Lectura', minutos: 20, n: 5, fuentes: ['lect'] }
 ];
 let SIM = null;
 
@@ -407,6 +409,7 @@ function vistaSimProc() {
     card.append(h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap' },
       h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.play().catch(() => {}); } }, '🔊 Escuchar')));
   } else {
+    if (ej.passage) card.append(h('div', { class: 'passage', lang: 'ja', style: 'font:500 1.1rem/1.9 var(--font-jp);white-space:pre-wrap;padding:14px 16px;background:var(--paper);border:1px dashed var(--rule);border-radius:8px;overflow-wrap:anywhere' }, ej.passage));
     card.append(h('div', { class: 'qtext', lang: 'ja', style: 'font:500 1.3rem/1.9 var(--font-jp);overflow-wrap:anywhere' }, rich(ej.q)));
   }
   const opts = h('div', { class: 'opts', role: 'radiogroup' });
@@ -454,10 +457,11 @@ function render() {
 Promise.all([
   fetch('audio/chokai/ejercicios.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ ejercicios: [] })),
   fetch('data/jlpt-n5/vocab.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] })),
-  fetch('data/jlpt-n5/gram.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] }))
-]).then(([a, v, g]) => {
+  fetch('data/jlpt-n5/gram.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] })),
+  fetch('data/jlpt-n5/lect.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({ items: [] }))
+]).then(([a, v, g, l]) => {
   ejercicios = (a.ejercicios || []).map(e => ({ ...e, area: 'escucha' }));
-  banco = [...(v.items || []), ...(g.items || [])];
+  banco = [...(v.items || []), ...(g.items || []), ...(l.items || [])];
 }).finally(render);
 })();
 </script>
