@@ -264,7 +264,13 @@ function vistaPreguntas() {
     card.append(h('p', { class: 'small muted', text: 'Escuchá el audio y elegí la respuesta.' }));
     const audio = new Audio(ej.audio);
     const play = h('button', { class: 'btn primary', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 1; audio.play().catch(() => {}); } }, '🔊 Escuchar');
-    const lento = h('button', { class: 'btn', type: 'button', onclick: () => { audio.currentTime = 0; audio.playbackRate = 0.75; audio.play().catch(() => {}); } }, 'Más lento');
+    let lentoOn = false;
+    const lento = h('button', { class: 'btn', type: 'button', onclick: () => {
+      lentoOn = !lentoOn;
+      audio.playbackRate = lentoOn ? 0.75 : 1;
+      audio.currentTime = 0; audio.play().catch(() => {});
+      lento.textContent = lentoOn ? 'Velocidad normal' : 'Más lento';
+    } }, 'Más lento');
     card.append(h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap' }, play, lento));
   } else {
     card.append(h('p', { class: 'small muted', text: 'Elegí la respuesta correcta.' }));
