@@ -36,3 +36,8 @@
 ## Principio general
 - Las opciones y las preguntas son aleatorias y lo menos repetitivas posible.
 - Lo único que se repite a propósito son los errores, hasta que se aprenden.
+
+## Simulación JLPT N5: tiempos y cantidades (estado)
+- Tiempos oficiales: vocabulario 20 min, gramática y lectura 40 min, comprensión auditiva 30 min.
+- Cantidades de referencia (rango de fuentes no oficiales, pendiente de verificar con las preguntas de muestra oficiales): 25, 22 y 24 ítems.
+- Bancos a agrandar hasta cubrir esas cantidades con holgura: vocabulario y gramática cerca de 100; lectura unas 40 consignas; comprensión auditiva, según lo que se grabe.

@@ -343,11 +343,11 @@ function vistaResumen() {
 
 /* ---------- Simulacro (pendiente) ---------- */
 /* ---------- Simulación con tiempo ---------- */
-// Tiempos y cantidades PROVISORIOS: verificar con la fuente oficial antes de usar en serio.
+// Tiempos oficiales (confirmados). Cantidades: rango de referencia, pendiente de verificar con las preguntas de muestra oficiales.
 const SIM_PARTES = [
-  { nombre: 'Vocabulario y gramática', minutos: 25, n: 20, fuentes: ['vocab', 'gram'] },
-  { nombre: 'Comprensión auditiva', minutos: 20, n: 5, fuentes: ['escucha'] },
-  { nombre: 'Lectura', minutos: 20, n: 5, fuentes: ['lect'] }
+  { nombre: 'Vocabulario', minutos: 20, n: 25, fuentes: ['vocab'] },
+  { nombre: 'Gramática y lectura', minutos: 40, n: 22, fuentes: ['gram', 'lect'] },
+  { nombre: 'Comprensión auditiva', minutos: 30, n: 24, fuentes: ['escucha'] }
 ];
 let SIM = null;
 
@@ -389,7 +389,7 @@ function vistaSimulacro() {
   wrap.append(h('div', { class: 'title' }, h('h1', { text: 'Simulación de examen' }),
     h('p', { class: 'muted', text: 'Tres partes con tiempo, sin explicaciones hasta el final, como en el examen.' })));
   wrap.append(h('div', { class: 'sheet' }, SIM_PARTES.map(p => h('p', null, h('b', { text: p.nombre }), ' · ' + p.n + ' preguntas · ' + p.minutos + ' minutos'))));
-  wrap.append(h('div', { class: 'banner' }, h('p', { text: 'Tiempos y cantidades provisorios, pendientes de verificar con la fuente oficial. El resultado es una estimación, no un resultado oficial.' })));
+  wrap.append(h('div', { class: 'banner' }, h('p', { text: 'Tiempos oficiales. Cantidades de referencia, pendientes de verificar. El resultado es una estimación, no un resultado oficial.' })));
   wrap.append(h('button', { class: 'btn primary', type: 'button', onclick: simIniciar }, 'Empezar la simulación'));
   return wrap;
 }
