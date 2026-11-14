@@ -96,3 +96,6 @@ Se hacen juntos, en una sola tanda, para probar una vez.
 - Ejercicio 5 (frases): solo "Deslizar", por ahora.
 - En destello, el botón de velocidad controla el tiempo en pantalla: de 2 segundos hasta 1/10 de segundo, para los más avanzados.
 - Pausa entre palabras: independiente del destello, de 1 segundo como referencia. No se acelera junto con el destello. Más pausa para las bandas más chicas, un poco menos para las más grandes, y un piso mínimo. Regulable con un control aparte.
+
+## Descartado por ahora
+- Modo memoria (que el chico escriba la palabra o la elija entre varias después del destello). No se hace por ahora.
