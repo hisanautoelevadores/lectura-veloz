@@ -168,6 +168,7 @@ function registrar(area, ok) {
 function vistaInicio() {
   const d = diasHasta();
   const wrap = h('div', { class: 'wrap' });
+  wrap.append(h('div', { class: 'topbar' }, h('a', { class: 'btn ghost', href: 'index.html', style: 'text-decoration:none' }, '← Inicio')));
   wrap.append(h('div', { class: 'head' },
     h('div', { class: 'title' },
       h('span', { class: 'kicker', lang: 'ja', text: '日本語能力試験' }),
