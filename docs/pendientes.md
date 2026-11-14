@@ -99,3 +99,10 @@ Se hacen juntos, en una sola tanda, para probar una vez.
 
 ## Descartado por ahora
 - Modo memoria (que el chico escriba la palabra o la elija entre varias después del destello). No se hace por ahora.
+
+## Ideas para más adelante (sin verificación de aciertos)
+- Velocidad automática según aciertos: depende de poder comprobar las respuestas (modo memoria, descartado por ahora).
+- Repetición de errores dentro de la lectura en movimiento: depende de poder comprobar los errores. Idea para más adelante.
+
+## Próximo para nivel avanzado
+- Doble palabra: aparecen dos palabras seguidas, muy rápido, y el chico las lee en voz alta. El adulto sigue la lectura. Para el nivel más avanzado.
