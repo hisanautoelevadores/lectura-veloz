@@ -32,6 +32,17 @@ h1{font-size:1.2rem;margin:0}
 .btn.primary{background:#274A8C;border-color:#274A8C;color:#fff}
 .btn:disabled{opacity:.45;cursor:default}
 .nota{font-size:.85rem;color:#6B5A44;text-align:center}
+.menu-ej{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.menu-ej button{min-height:48px;border-radius:12px;border:2px solid #C8B99E;background:#FAF6EE;color:#3B2A1A;font:inherit;font-weight:600;cursor:pointer}
+.menu-ej button[aria-pressed="true"]{background:#274A8C;border-color:#274A8C;color:#fff}
+.ej-caja{background:#FAF6EE;border:1px solid #C8B99E;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.ej-caja h2{margin:0;font-size:1.05rem}
+.ej-caja .txt{font-size:1.05rem;line-height:1.45;min-height:2.9em}
+.opc-num{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.opc-num button{min-height:52px;border-radius:12px;border:2px solid #C8B99E;background:#fff;font:inherit;font-size:1.3rem;font-weight:700;cursor:pointer}
+.opc-num button.ok{background:#2E8B57;border-color:#2E8B57;color:#fff}
+.opc-num button.bad{background:#B03A28;border-color:#B03A28;color:#fff}
+.ej-fila{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 </style>
 </head>
 <body>
@@ -42,11 +53,19 @@ h1{font-size:1.2rem;margin:0}
     <span></span>
   </div>
 
+  <div class="menu-ej" role="group" aria-label="Ejercicios">
+    <button type="button" data-ej="libre" aria-pressed="true">Explorar</button>
+    <button type="button" data-ej="ficha" aria-pressed="false">1 · Qué vale cada ficha</button>
+    <button type="button" data-ej="armar" aria-pressed="false">2 · Armar el número</button>
+    <button type="button" data-ej="leer" aria-pressed="false">3 · Leer el número</button>
+  </div>
+
   <div class="marco"><div class="tablero" id="tab">
     <div class="marco-sup"></div><div class="marco-inf"></div>
     <div class="barra"></div><div class="punto"></div>
   </div></div>
 
+  <div class="ej-caja" id="ejCaja" hidden></div>
   <div class="numero" id="num" aria-live="polite" aria-label="Número del soroban"></div>
   <p class="pista" id="pista"></p>
 
@@ -155,7 +174,13 @@ h1{font-size:1.2rem;margin:0}
     }
   }
 
+  let MODO = 'libre';   // libre | ficha | armar | leer
+  let objetivo = null;  // para armar y leer
+  function fijar(col, cielo, tierra) { est[col].cielo = cielo; est[col].tierra = tierra; }
+  function soloUnidades(v) { est.forEach((e, c) => { e.cielo = 0; e.tierra = 0; }); const u = est[N - 1]; u.cielo = v >= 5 ? 1 : 0; u.tierra = v % 5; }
+
   function tocar(col, tipo, idx) {
+    if (MODO === 'ficha' || MODO === 'leer') return;   // en estos ejercicios las fichas no se mueven a mano
     const e = est[col];
     if (tipo === 'cielo') {
       e.cielo = e.cielo ? 0 : 1;
@@ -195,6 +220,87 @@ h1{font-size:1.2rem;margin:0}
     if (e.cielo) return 'En las unidades: solo la ficha de arriba (5).';
     return 'En las unidades: ' + e.tierra + (e.tierra === 1 ? ' ficha' : ' fichas') + ' de abajo (1 cada una).';
   }
+
+  // ----- Ejercicios -----
+  const caja = document.getElementById('ejCaja');
+  const PASOS_FICHA = [
+    { t: 'Esta ficha de abajo vale 1.', f: () => soloUnidades(1) },
+    { t: 'Dos fichas de abajo valen 2.', f: () => soloUnidades(2) },
+    { t: 'La ficha de arriba vale 5. Bajala hasta la barra: 5 más 2 es 7.', f: () => soloUnidades(7) },
+    { t: 'Tres fichas de abajo y la de arriba: 5 más 3 es 8.', f: () => soloUnidades(8) },
+    { t: 'Las cuatro de abajo y la de arriba: 5 más 4 es 9, el número más grande de una columna.', f: () => soloUnidades(9) }
+  ];
+  let paso = 0;
+  function ejFicha() {
+    caja.hidden = false;
+    caja.innerHTML = '';
+    const h2 = document.createElement('h2'); h2.textContent = '1 · Qué vale cada ficha';
+    const t = document.createElement('p'); t.className = 'txt'; t.textContent = PASOS_FICHA[paso].t;
+    const fila = document.createElement('div'); fila.className = 'ej-fila';
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'btn primary';
+    b.textContent = paso + 1 < PASOS_FICHA.length ? 'Siguiente' : 'Empezar de nuevo';
+    b.onclick = () => { paso = (paso + 1) % PASOS_FICHA.length; PASOS_FICHA[paso].f(); render(); ejFicha(); };
+    fila.append(b);
+    caja.append(h2, t, fila);
+    PASOS_FICHA[paso].f(); render();
+  }
+  function ejArmar() {
+    caja.hidden = false;
+    objetivo = 1 + Math.floor(Math.random() * 9);   // del 1 al 9: el 0 no tiene nada que mover
+    soloUnidades(0); render();
+    caja.innerHTML = '';
+    const h2 = document.createElement('h2'); h2.textContent = '2 · Armar el número';
+    const t = document.createElement('p'); t.className = 'txt'; t.id = 'ejTxt';
+    t.textContent = 'Mostrame el ' + objetivo + ' con las fichas.';
+    const fila = document.createElement('div'); fila.className = 'ej-fila';
+    const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
+    otro.textContent = 'Otro número'; otro.onclick = ejArmar;
+    fila.append(otro);
+    caja.append(h2, t, fila);
+  }
+  function ejLeer() {
+    caja.hidden = false;
+    objetivo = Math.floor(Math.random() * 10);
+    soloUnidades(objetivo); render();
+    caja.innerHTML = '';
+    const h2 = document.createElement('h2'); h2.textContent = '3 · Leer el número';
+    const t = document.createElement('p'); t.className = 'txt'; t.textContent = '¿Qué número muestra el soroban?';
+    const ops = new Set([objetivo]);
+    while (ops.size < 5) ops.add(Math.floor(Math.random() * 10));
+    const grilla = document.createElement('div'); grilla.className = 'opc-num';
+    shuffleArr([...ops]).forEach(n => {
+      const bt = document.createElement('button'); bt.type = 'button'; bt.textContent = String(n);
+      bt.onclick = () => {
+        if (n === objetivo) { bt.classList.add('ok'); t.textContent = '¡Muy bien! Es el ' + n + '.'; }
+        else { bt.classList.add('bad'); t.textContent = 'No es ese. Mirá otra vez: las de abajo suman 1 cada una, la de arriba vale 5.'; }
+      };
+      grilla.append(bt);
+    });
+    const fila = document.createElement('div'); fila.className = 'ej-fila';
+    const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
+    otro.textContent = 'Otro número'; otro.onclick = ejLeer;
+    fila.append(otro);
+    caja.append(h2, t, grilla, fila);
+  }
+  function shuffleArr(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  function setModo(m) {
+    MODO = m;
+    document.querySelectorAll('.menu-ej button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ej === m)));
+    if (m === 'libre') { caja.hidden = true; render(); return; }
+    if (m === 'ficha') { paso = 0; ejFicha(); }
+    if (m === 'armar') { ejArmar(); }
+    if (m === 'leer') { ejLeer(); }
+  }
+  document.querySelectorAll('.menu-ej button').forEach(b => b.addEventListener('click', () => setModo(b.dataset.ej)));
+  // en "armar" se revisa cada vez que se mueve una ficha
+  const _render = render;
+  render = function () {
+    _render();
+    if (MODO === 'armar' && objetivo !== null && valor(N - 1) === objetivo) {
+      const t = document.getElementById('ejTxt');
+      if (t && !t.dataset.ok) { t.dataset.ok = '1'; t.textContent = '¡Muy bien! Ese es el ' + objetivo + '.'; setTimeout(() => { if (MODO === 'armar') ejArmar(); }, 1200); }
+    }
+  };
 
   document.getElementById('limpiar').addEventListener('click', () => {
     est.forEach(e => { e.cielo = 0; e.tierra = 0; });
