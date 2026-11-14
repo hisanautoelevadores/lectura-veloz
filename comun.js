@@ -76,16 +76,25 @@
 
   /* ---------- Frases de ánimo (sin género, con apodo opcional) ---------- */
   const FRASES = {
-    bien: ['¡Muy bien{N}!', '¡Lo lograste{N}!', '¡Así se hace{N}!', '¡Vas muy bien{N}!', '¡Qué bien lo hiciste{N}!', '¡Seguí así{N}!'],
-    racha: ['¡Qué racha{N}!', '¡Tres seguidas{N}! Qué bien', '¡Estás en racha{N}!'],
-    error: ['Casi{N}. Ahora lo recordás', 'Probemos otra vez{N}', 'Equivocarse también ayuda{N}'],
-    fin: ['¡Terminaste{N}! Qué buen trabajo', '¡Muy bien por hoy{N}!', 'Lo hiciste con ganas{N}. ¡Buen trabajo!']
+    bien: ['¡Muy bien!', '¡Lo lograste!', '¡Así se hace!', '¡Vas muy bien!', '¡Qué bien lo hiciste!', '¡Seguí así!'],
+    racha: ['¡Qué racha!', '¡Tres seguidas! Qué bien', '¡Estás en racha!'],
+    error: ['Casi. Ahora lo recordás', 'Probemos otra vez', 'Equivocarse también ayuda'],
+    fin: ['¡Terminaste! Qué buen trabajo', '¡Muy bien por hoy!', 'Lo hiciste con ganas. ¡Buen trabajo!']
   };
   let voz = LS.get('lv2-voz', true);
 
+  let contadorFrases = 0;
+  // El nombre no se repite en cada frase: aparece cada 5 frases, a veces al principio y a veces al final.
   function frase(tipo) {
+    contadorFrases++;
     const ap = actual.apodo;
-    return rnd(FRASES[tipo]).replaceAll('{N}', ap ? ', ' + ap : '');
+    const t = rnd(FRASES[tipo]);
+    if (!ap || contadorFrases % 5 !== 0) return t;
+    if (Math.random() < 0.5 || !/!$/.test(t)) {
+      const sin = t.replace(/^¡/, '').replace(/!$/, '.');
+      return ap + ', ' + sin.charAt(0).toLowerCase() + sin.slice(1);
+    }
+    return t.replace(/!$/, ', ' + ap + '!');
   }
   function decir(texto, lang) {
     if (!voz) return;
