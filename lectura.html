@@ -245,11 +245,17 @@ function generar(patron, n) {
   }
   return out;
 }
+// Bancos de palabras (ejercicio 4) y frases (ejercicio 5), filtrados por la banda del perfil.
+let BANCO_PAL = [], BANCO_FRA = [];
+fetch('data/lectura/palabras.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { BANCO_PAL = j.items || []; }).catch(() => {});
+fetch('data/lectura/frases.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { BANCO_FRA = j.items || []; }).catch(() => {});
+function mezclarLista(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 function elementosDelNivel() {
-  const n = +ajustes.nivel, texto = ajustes.texto || '';
+  const n = +ajustes.nivel;
   if (n <= 3) return generar(PATTERN[n], +ajustes.cant);
-  if (n === 4) return texto.split(/\s+/).filter(Boolean);
-  return texto.split(/\n+/).map(s => s.replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const banda = (window.Perfil && Perfil.actual().banda) || 1;
+  const banco = n === 4 ? BANCO_PAL : BANCO_FRA;
+  return mezclarLista(banco.filter(x => x.b <= banda)).slice(0, +ajustes.cant).map(x => x.t);
 }
 
 /* ---------- Pantalla de configuración ---------- */
@@ -289,10 +295,8 @@ function pintarUI() {
   $('tamOut').textContent = ajustes.tam + '% de la pantalla';
   const n = +ajustes.nivel;
   $('cantBox').hidden = n >= 4;
-  $('textoBox').hidden = n < 4;
-  $('textoHint').textContent = n === 4
-    ? 'Pegá o escribí las palabras que quieras leer, separadas por espacio.'
-    : 'Pegá o escribí las frases, una por renglón.';
+  $('textoBox').hidden = true;
+  $('cantBox').hidden = false;
   pintarProgreso();
 }
 document.querySelector('#setup').addEventListener('input', leerUI);
