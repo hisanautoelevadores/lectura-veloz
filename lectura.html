@@ -404,8 +404,7 @@ function tiempoDestelloMs(v) { return Math.round(2000 * Math.pow(100 / 2000, (v 
 // Pausa entre palabras: no depende de la velocidad; más chica para las bandas más grandes, nunca menos de 0,8 s.
 function pausaDestelloMs() { const b = Perfil.actual().banda || 1; return { 1: 1200, 2: 1000, 3: 800 }[b] || 1000; }
 function destelloPaso() {
-  if (!S || !S.corriendo) return;
-  if (S.pausa) { S.timerD = setTimeout(destelloPaso, 200); return; }
+  if (!S || !S.corriendo || S.pausa) return;
   if (!S.cola.length) return terminar();
   const texto = S.cola.shift();
   if (!S.cur) cambiarEstilo();
@@ -422,10 +421,27 @@ function destelloPaso() {
   S.mostradas++;
   $('bar').style.width = (100 * S.mostradas / S.total) + '%';
   S.tiempo += tiempoDestelloMs(P.vel) / 1000 + pausaDestelloMs() / 1000;
-  S.timerD = setTimeout(() => {
-    el.remove();
-    S.timerD = setTimeout(destelloPaso, pausaDestelloMs());
-  }, tiempoDestelloMs(P.vel));
+  S.el = el; S.fase = 'mostrar'; S.resto = tiempoDestelloMs(P.vel); S.inicioT = performance.now();
+  S.timerD = setTimeout(ocultarDestello, S.resto);
+}
+function ocultarDestello() {
+  if (!S) return;
+  if (S.el) S.el.remove();
+  S.el = null; S.fase = 'espera'; S.resto = pausaDestelloMs(); S.inicioT = performance.now();
+  S.timerD = setTimeout(destelloPaso, S.resto);
+}
+// Al pausar se guarda cuánto tiempo le quedaba a la palabra o a la espera; al seguir, se retoma desde ahí.
+function pausarDestello() {
+  if (!S) return;
+  clearTimeout(S.timerD);
+  if (S.fase) S.resto = Math.max(0, S.resto - (performance.now() - S.inicioT));
+}
+function reanudarDestello() {
+  if (!S) return;
+  S.inicioT = performance.now();
+  if (S.fase === 'mostrar') S.timerD = setTimeout(ocultarDestello, S.resto);
+  else if (S.fase === 'espera') S.timerD = setTimeout(destelloPaso, S.resto);
+  else destelloPaso();
 }
 function frame(t) {
   if (!S || !S.corriendo) return;
@@ -546,6 +562,7 @@ function mostrarControles() {
 function alternarPausa() {
   if (!S) return;
   S.pausa = !S.pausa;
+  if (P.modo === 'destello') { if (S.pausa) pausarDestello(); else reanudarDestello(); }
   $('pause').textContent = S.pausa ? '▶' : '⏸';
   $('pause').setAttribute('aria-label', S.pausa ? 'Seguir' : 'Pausar');
   mostrarControles();
@@ -555,7 +572,8 @@ stage.addEventListener('click', e => {
   if (!$('rot').hidden) { rotOculto = true; $('rot').hidden = true; return; }
   if (!$('big').hidden) return;
   if (controls.contains(e.target)) { mostrarControles(); return; }
-  if (controls.classList.contains('hide')) mostrarControles(); else controls.classList.add('hide');
+  if (S && S.corriendo) { alternarPausa(); return; }   // tocar la pantalla pausa, y tocar de nuevo sigue
+  mostrarControles();
 });
 $('pause').onclick = e => { e.stopPropagation(); alternarPausa(); };
 $('slower').onclick = e => { e.stopPropagation(); ajustarVel(-1); mostrarControles(); };
