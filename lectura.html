@@ -571,11 +571,23 @@ function alternarPausa() {
   mostrarControles();
 }
 
+// Mantener el dedo en la pantalla frena; al soltarlo sigue. (El botón ⏸ sigue siendo de dos toques.)
+let pausaPorDedo = false;
+stage.addEventListener('pointerdown', e => {
+  if (!$('rot').hidden || !$('big').hidden || controls.contains(e.target)) return;
+  if (S && S.corriendo && !S.pausa) { pausaPorDedo = true; alternarPausa(); }
+});
+function soltarDedo() {
+  if (!pausaPorDedo) return;
+  pausaPorDedo = false;
+  if (S && S.corriendo && S.pausa) alternarPausa();
+}
+stage.addEventListener('pointerup', soltarDedo);
+stage.addEventListener('pointercancel', soltarDedo);
+stage.addEventListener('pointerleave', soltarDedo);
 stage.addEventListener('click', e => {
   if (!$('rot').hidden) { rotOculto = true; $('rot').hidden = true; return; }
   if (!$('big').hidden) return;
-  if (controls.contains(e.target)) { mostrarControles(); return; }
-  if (S && S.corriendo) { alternarPausa(); return; }   // tocar la pantalla pausa, y tocar de nuevo sigue
   mostrarControles();
 });
 $('pause').onclick = e => { e.stopPropagation(); alternarPausa(); };
