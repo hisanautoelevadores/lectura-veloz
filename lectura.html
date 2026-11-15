@@ -418,6 +418,9 @@ function destelloPaso() {
   el.style.transform = 'translate(-50%,-50%)';
   el.style.fontSize = (fontPx() * FONTS[s.f].s) + 'px';
   track.appendChild(el);
+  // si la palabra no entra en la pantalla, se achica hasta que entre completa (no se recortan las puntas)
+  const anchoMax = W() * 0.94;
+  if (el.offsetWidth > anchoMax) el.style.fontSize = (parseFloat(el.style.fontSize) * anchoMax / el.offsetWidth) + 'px';
   S.mostradas++;
   $('bar').style.width = (100 * S.mostradas / S.total) + '%';
   S.tiempo += tiempoDestelloMs(P.vel) / 1000 + pausaDestelloMs() / 1000;
