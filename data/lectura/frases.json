@@ -2,10 +2,6 @@
  "ejercicio": 5,
  "items": [
   {
-   "t": "Mi mamá me ama.",
-   "b": 2
-  },
-  {
    "t": "Mi perro se llama Toby.",
    "b": 2
   },
@@ -39,6 +35,262 @@
   },
   {
    "t": "La maestra nos lee un cuento.",
+   "b": 2
+  },
+  {
+   "t": "Tengo un cuaderno azul.",
+   "b": 2
+  },
+  {
+   "t": "El sol brilla en el cielo.",
+   "b": 2
+  },
+  {
+   "t": "Mi bicicleta es roja.",
+   "b": 2
+  },
+  {
+   "t": "Papá prepara el desayuno los domingos.",
+   "b": 2
+  },
+  {
+   "t": "En el recreo comimos galletitas.",
+   "b": 2
+  },
+  {
+   "t": "La flor del jardín huele muy rico.",
+   "b": 2
+  },
+  {
+   "t": "Me gusta dibujar casas y árboles.",
+   "b": 2
+  },
+  {
+   "t": "El perro corre detrás de la pelota.",
+   "b": 2
+  },
+  {
+   "t": "Pedro trajo una manzana para compartir.",
+   "b": 2
+  },
+  {
+   "t": "Los patos nadan en el lago.",
+   "b": 2
+  },
+  {
+   "t": "Ayer hicimos un dibujo para la abuela.",
+   "b": 2
+  },
+  {
+   "t": "La luna se ve de noche.",
+   "b": 2
+  },
+  {
+   "t": "Guardé mis juguetes en la caja.",
+   "b": 2
+  },
+  {
+   "t": "Mi mochila tiene un dinosaurio.",
+   "b": 2
+  },
+  {
+   "t": "En verano vamos a la playa.",
+   "b": 2
+  },
+  {
+   "t": "El tren pasa por el puente.",
+   "b": 2
+  },
+  {
+   "t": "Juana tiene un gatito muy chiquito.",
+   "b": 2
+  },
+  {
+   "t": "Lavé las manos antes de comer.",
+   "b": 2
+  },
+  {
+   "t": "Los niños cantaron una canción alegre.",
+   "b": 2
+  },
+  {
+   "t": "Mañana es mi cumpleaños.",
+   "b": 2
+  },
+  {
+   "t": "Encontramos un nido con tres huevitos.",
+   "b": 2
+  },
+  {
+   "t": "El camión lleva arena al pozo.",
+   "b": 2
+  },
+  {
+   "t": "Cerramos la puerta para que no entre el frío.",
+   "b": 2
+  },
+  {
+   "t": "Nos sacamos una foto con el perro.",
+   "b": 2
+  },
+  {
+   "t": "La tortuga come lechuga.",
+   "b": 2
+  },
+  {
+   "t": "En el invierno usamos bufanda.",
+   "b": 2
+  },
+  {
+   "t": "Mi tía vive en otra ciudad.",
+   "b": 2
+  },
+  {
+   "t": "Ordené mi cuarto sin que me lo pidan.",
+   "b": 2
+  },
+  {
+   "t": "El pan se hace con harina y agua.",
+   "b": 2
+  },
+  {
+   "t": "Subimos la escalera de a dos escalones.",
+   "b": 2
+  },
+  {
+   "t": "Los caballos galopan por el campo.",
+   "b": 2
+  },
+  {
+   "t": "El abuelo lee el diario en el sillón.",
+   "b": 2
+  },
+  {
+   "t": "Puse la mesa para la cena.",
+   "b": 2
+  },
+  {
+   "t": "Ayudé a regar las plantas.",
+   "b": 2
+  },
+  {
+   "t": "El semáforo se puso verde.",
+   "b": 2
+  },
+  {
+   "t": "Hay muchas estrellas esta noche.",
+   "b": 2
+  },
+  {
+   "t": "Mi mejor amigo se llama Lucas.",
+   "b": 2
+  },
+  {
+   "t": "Las hormigas llevan comida al hormiguero.",
+   "b": 2
+  },
+  {
+   "t": "Hicimos torta de chocolate.",
+   "b": 2
+  },
+  {
+   "t": "El bebé duerme con su osito.",
+   "b": 2
+  },
+  {
+   "t": "Pinté el sol de color amarillo.",
+   "b": 2
+  },
+  {
+   "t": "Mi escuela tiene un jardín grande.",
+   "b": 2
+  },
+  {
+   "t": "Nos pusimos el guardapolvo blanco.",
+   "b": 2
+  },
+  {
+   "t": "La vaca da leche fresca.",
+   "b": 2
+  },
+  {
+   "t": "Tomé agua fría después del recreo.",
+   "b": 2
+  },
+  {
+   "t": "Mi papá maneja el auto con cuidado.",
+   "b": 2
+  },
+  {
+   "t": "En la granja hay gallinas y conejos.",
+   "b": 2
+  },
+  {
+   "t": "Me puse las zapatillas para correr.",
+   "b": 2
+  },
+  {
+   "t": "El mar es grande y tiene olas.",
+   "b": 2
+  },
+  {
+   "t": "Saludé a la vecina cuando pasó.",
+   "b": 2
+  },
+  {
+   "t": "Hoy vi una mariposa amarilla.",
+   "b": 2
+  },
+  {
+   "t": "Jugamos a la mancha en el patio.",
+   "b": 2
+  },
+  {
+   "t": "El helado de frutilla es mi preferido.",
+   "b": 2
+  },
+  {
+   "t": "Tenemos un perro que se llama Max.",
+   "b": 2
+  },
+  {
+   "t": "La pava hace ruido cuando hierve el agua.",
+   "b": 2
+  },
+  {
+   "t": "Mamá plantó tomates en el balcón.",
+   "b": 2
+  },
+  {
+   "t": "Cuando llueve, me pongo las botas.",
+   "b": 2
+  },
+  {
+   "t": "Ana hizo un castillo de arena.",
+   "b": 2
+  },
+  {
+   "t": "El cartero trae cartas todos los días.",
+   "b": 2
+  },
+  {
+   "t": "Los pollitos piaban en la granja.",
+   "b": 2
+  },
+  {
+   "t": "Leí un libro sobre animales del bosque.",
+   "b": 2
+  },
+  {
+   "t": "Buscamos caracoles en el jardín.",
+   "b": 2
+  },
+  {
+   "t": "Le di un abrazo a mi mamá.",
+   "b": 2
+  },
+  {
+   "t": "El tren llega a la estación a las seis.",
    "b": 2
   },
   {
@@ -79,6 +331,218 @@
   },
   {
    "t": "Después de la lluvia, apareció un arcoíris sobre el campo.",
+   "b": 3
+  },
+  {
+   "t": "Si estudiamos todos los días, el examen será más fácil.",
+   "b": 3
+  },
+  {
+   "t": "Aunque hacía frío, decidimos acampar junto al río.",
+   "b": 3
+  },
+  {
+   "t": "El río arrastra piedras y arena desde la montaña hasta el mar.",
+   "b": 3
+  },
+  {
+   "t": "Mi hermana prefiere leer en silencio, mientras yo escucho música.",
+   "b": 3
+  },
+  {
+   "t": "Durante la excursión, el guía nos explicó cómo se forma una cueva.",
+   "b": 3
+  },
+  {
+   "t": "Las abejas recorren muchas flores para producir miel.",
+   "b": 3
+  },
+  {
+   "t": "Cuando terminó la función, el público aplaudió durante largo rato.",
+   "b": 3
+  },
+  {
+   "t": "Como olvidé el paraguas, llegué a casa completamente mojado.",
+   "b": 3
+  },
+  {
+   "t": "El museo tiene una colección de fósiles de dinosaurios que impresiona a todos.",
+   "b": 3
+  },
+  {
+   "t": "Para cuidar el planeta, conviene reducir la basura y reciclar.",
+   "b": 3
+  },
+  {
+   "t": "Ayer, después de almorzar, salimos a caminar por el barrio.",
+   "b": 3
+  },
+  {
+   "t": "La biblioteca del colegio presta libros durante dos semanas.",
+   "b": 3
+  },
+  {
+   "t": "Aunque no le gustaba el fútbol, Tomás se anotó en el equipo.",
+   "b": 3
+  },
+  {
+   "t": "Los científicos observaron el cielo con un telescopio muy potente.",
+   "b": 3
+  },
+  {
+   "t": "El agua del lago estaba tan clara que se veían los peces.",
+   "b": 3
+  },
+  {
+   "t": "Cuando el semáforo cambió a rojo, todos los autos se detuvieron.",
+   "b": 3
+  },
+  {
+   "t": "Mi prima aprendió a andar en bicicleta sin ayuda de nadie.",
+   "b": 3
+  },
+  {
+   "t": "En otoño, las hojas de los árboles cambian de color y caen al suelo.",
+   "b": 3
+  },
+  {
+   "t": "Antes de dormir, leemos un capítulo del libro que estamos disfrutando.",
+   "b": 3
+  },
+  {
+   "t": "Si llueve mañana, el picnic se hará la semana que viene.",
+   "b": 3
+  },
+  {
+   "t": "El panadero se levanta de madrugada para hacer pan fresco.",
+   "b": 3
+  },
+  {
+   "t": "Nos costó armar el rompecabezas, pero al final encontramos todas las piezas.",
+   "b": 3
+  },
+  {
+   "t": "La ciudad se llenó de luces para celebrar el año nuevo.",
+   "b": 3
+  },
+  {
+   "t": "Los delfines saltan fuera del agua y juegan con las olas.",
+   "b": 3
+  },
+  {
+   "t": "Mi abuela guarda cartas viejas en una caja de madera.",
+   "b": 3
+  },
+  {
+   "t": "En la clase de ciencias hicimos un volcán con bicarbonato y vinagre.",
+   "b": 3
+  },
+  {
+   "t": "Cuando llegó la primavera, los jardines se llenaron de flores de colores.",
+   "b": 3
+  },
+  {
+   "t": "El conductor del colectivo nos saludó con una sonrisa al subir.",
+   "b": 3
+  },
+  {
+   "t": "Para llegar a la cima, tuvimos que caminar durante tres horas.",
+   "b": 3
+  },
+  {
+   "t": "Los vecinos organizaron una feria para juntar ropa y juguetes.",
+   "b": 3
+  },
+  {
+   "t": "Aunque el viaje fue largo, todos llegamos contentos y descansados.",
+   "b": 3
+  },
+  {
+   "t": "Antes de cruzar, miramos a ambos lados y esperamos la señal verde.",
+   "b": 3
+  },
+  {
+   "t": "La selva tiene una enorme variedad de plantas y animales.",
+   "b": 3
+  },
+  {
+   "t": "Mi hermano pintó un mural en la pared del garaje con sus amigos.",
+   "b": 3
+  },
+  {
+   "t": "El agricultor siembra trigo en primavera y lo cosecha en verano.",
+   "b": 3
+  },
+  {
+   "t": "Cuando el perro escuchó el timbre, corrió hasta la puerta moviendo la cola.",
+   "b": 3
+  },
+  {
+   "t": "Los atletas entrenaron todo el año para la competencia de la escuela.",
+   "b": 3
+  },
+  {
+   "t": "Durante la tormenta se cortó la luz, así que cenamos a la luz de una vela.",
+   "b": 3
+  },
+  {
+   "t": "La historia del barrio está escrita en las paredes de las casas más antiguas.",
+   "b": 3
+  },
+  {
+   "t": "Escribí una carta para mi amigo que vive en otra provincia.",
+   "b": 3
+  },
+  {
+   "t": "Los árboles del parque dan sombra en los días de calor.",
+   "b": 3
+  },
+  {
+   "t": "Después de mucho buscar, encontramos la llave debajo de la alfombra.",
+   "b": 3
+  },
+  {
+   "t": "El tren bala viaja tan rápido que parece un relámpago.",
+   "b": 3
+  },
+  {
+   "t": "Si ahorramos un poco cada semana, podremos comprar la bicicleta.",
+   "b": 3
+  },
+  {
+   "t": "Los niños construyeron una casita de cartón y la pintaron de verde.",
+   "b": 3
+  },
+  {
+   "t": "El médico nos explicó que dormir bien ayuda a crecer y a estar sanos.",
+   "b": 3
+  },
+  {
+   "t": "Cuando el sol se escondió, el cielo se tiñó de naranja y violeta.",
+   "b": 3
+  },
+  {
+   "t": "En la granja aprendimos cómo se ordeña una vaca.",
+   "b": 3
+  },
+  {
+   "t": "Las tortugas marinas viajan miles de kilómetros para poner sus huevos.",
+   "b": 3
+  },
+  {
+   "t": "Mi equipo perdió el partido, pero igual nos divertimos mucho.",
+   "b": 3
+  },
+  {
+   "t": "Ordenamos la cocina después de preparar la comida para toda la familia.",
+   "b": 3
+  },
+  {
+   "t": "Al amanecer, los pájaros empezaron a cantar en los árboles del patio.",
+   "b": 3
+  },
+  {
+   "t": "Aunque era tarde, el maestro nos ayudó a terminar el trabajo práctico.",
    "b": 3
   }
  ]
