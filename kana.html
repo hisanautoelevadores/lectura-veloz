@@ -32,6 +32,13 @@ button,input,select{font:inherit;color:inherit}
 .tarjeta b{font-size:1.15rem}
 .tarjeta span{color:var(--muted);font-size:.95rem;line-height:1.4}
 .opts{display:flex;flex-direction:column;gap:8px}
+.seg-modo{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.etq-modo{font-weight:700;font-size:.95rem}
+.seg-botones{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg-btn{min-height:56px;border-radius:12px;border:2px solid var(--line);background:#1d1d21;color:var(--fg);font:inherit;font-size:1.1rem;font-weight:700;cursor:pointer}
+.seg-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1400}
+.seg-btn:disabled{opacity:.4;cursor:not-allowed}
+.nota-modo{margin:0;color:var(--muted);font-size:.9rem;min-height:1.2em}
 .opt{display:flex;align-items:center;gap:10px;padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:10px;background:#1d1d21;cursor:pointer}
 .opt input{width:20px;height:20px;margin:0;accent-color:var(--accent);flex:none}
 .opt:has(input:checked){border-color:var(--accent);background:#2a2410}
@@ -118,6 +125,14 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
       <select id="escritura"><option value="h">Hiragana (あ)</option><option value="k">Katakana (ア)</option></select>
     </div>
     <div class="opts" id="fNiv" role="radiogroup" aria-label="Nivel"></div>
+    <div class="seg-modo" id="fModo" hidden>
+      <span class="etq-modo">Modalidad</span>
+      <div class="seg-botones" role="group" aria-label="Modalidad">
+        <button type="button" class="seg-btn" data-modo="deslizar" aria-pressed="true">Deslizar</button>
+        <button type="button" class="seg-btn" data-modo="destello" aria-pressed="false">Destello</button>
+      </div>
+      <p class="nota-modo" id="notaModo"></p>
+    </div>
     <div class="field" id="fOpc">
       <label for="nOpc">Botones de respuesta</label>
       <select id="nOpc"><option value="5">5</option><option value="6">6</option></select>
@@ -181,7 +196,7 @@ const rnd = a => a[Math.floor(Math.random() * a.length)];
 const mezclar = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- Ajustes del dispositivo ---------- */
-let ajustes = Object.assign({ esc: 'h', nivelL: '1', nivelC: '1', nOpc: '5', nPreg: '10', tam: '70' }, LS.get('lv2-kana-aj3', {}));
+let ajustes = Object.assign({ esc: 'h', nivelL: '1', nivelC: '1', modoC: 'deslizar', nOpc: '5', nPreg: '10', tam: '70' }, LS.get('lv2-kana-aj3', {}));
 const guardarAj = () => LS.set('lv2-kana-aj3', ajustes);
 let sec = null;
 
@@ -227,88 +242,9 @@ function caracteresDelNivel(sc, nivel) {
 
 /* Palabras con dibujo. "b" = banda de edad en la que aparece (1: 3-5, 2: 6-7, 3: 8-10).
    "amb": la imagen puede confundir, por eso se muestra la palabra en español. Revisar antes de usar. */
-const VOCAB = [
-  { h: 'め', e: '👁️', es: 'ojo', b: 1 },
-  { h: 'はな', e: '👃', es: 'nariz', b: 1 },
-  { h: 'くち', e: '👄', es: 'boca', b: 1 },
-  { h: 'て', e: '✋', es: 'mano', b: 1 },
-  { h: 'あし', e: '🦶', es: 'pie', b: 1 },
-  { h: 'いぬ', e: '🐶', es: 'perro', b: 1 },
-  { h: 'ねこ', e: '🐱', es: 'gato', b: 1 },
-  { h: 'とり', e: '🐦', es: 'pájaro', b: 1 },
-  { h: 'ぶた', e: '🐷', es: 'chancho', b: 1 },
-  { h: 'くま', e: '🐻', es: 'oso', b: 1 },
-  { h: 'ほん', e: '📕', es: 'libro', b: 1 },
-  { h: 'つき', e: '🌙', es: 'luna', b: 1 },
-  { h: 'りんご', e: '🍎', es: 'manzana', b: 1 },
-  { h: 'はは', e: '👩', es: 'mamá', b: 1, amb: true },
-  { h: 'ちち', e: '👨', es: 'papá', b: 1, amb: true },
-  { h: 'めがね', e: '👓', es: 'lentes', b: 2 },
-  { h: 'ぼうし', e: '👒', es: 'sombrero', b: 2 },
-  { h: 'くるま', e: '🚗', es: 'auto', b: 2 },
-  { h: 'でんしゃ', e: '🚃', es: 'tren', b: 2 },
-  { h: 'くつ', e: '👟', es: 'zapatilla', b: 2 },
-  { h: 'さら', e: '🍽️', es: 'plato', b: 2 },
-  { h: 'ほし', e: '⭐', es: 'estrella', b: 2 },
-  { h: 'やま', e: '⛰️', es: 'montaña', b: 2 },
-  { h: 'おじいさん', e: '👴', es: 'abuelo', b: 2, amb: true },
-  { h: 'おばあさん', e: '👵', es: 'abuela', b: 2, amb: true },
-  { h: 'ひこうき', e: '✈️', es: 'avión', b: 2 },
-  { h: 'すいか', e: '🍉', es: 'sandía', b: 2 },
-  { h: 'ぶどう', e: '🍇', es: 'uva', b: 2 },
-  { h: 'なし', e: '🍐', es: 'pera', b: 2 },
-  { h: 'みかん', e: '🍊', es: 'mandarina', b: 3 },
-  { h: 'いちご', e: '🍓', es: 'frutilla', b: 3 },
-  { h: 'さかな', e: '🐟', es: 'pez', b: 3 },
-  { h: 'うし', e: '🐮', es: 'vaca', b: 3 },
-  { h: 'がっこう', e: '🏫', es: 'escuela', b: 3 },
-  { h: 'びょういん', e: '🏥', es: 'hospital', b: 3 },
-  { h: 'こうえん', e: '🌳', es: 'parque', b: 3 },
-  { h: 'ふね', e: '🚢', es: 'barco', b: 3 },
-  { h: 'おんがく', e: '🎵', es: 'música', b: 3 },
-  { h: 'はし', e: '🌉', es: 'puente', b: 3, amb: true },
-  { h: 'てんき', e: '🌦️', es: 'clima', b: 3, amb: true },
-  { h: 'いしゃ', e: '🧑‍⚕️', es: 'médico', b: 3, amb: true },
-  { h: 'かえる', e: '🐸', es: 'rana', b: 1 },
-  { h: 'ひよこ', e: '🐥', es: 'pollito', b: 1 },
-  { h: 'うさぎ', e: '🐰', es: 'conejo', b: 1 },
-  { h: 'ねずみ', e: '🐭', es: 'ratón', b: 1 },
-  { h: 'ぞう', e: '🐘', es: 'elefante', b: 1 },
-  { h: 'さる', e: '🐵', es: 'mono', b: 1 },
-  { h: 'たまご', e: '🥚', es: 'huevo', b: 1 },
-  { h: 'ごはん', e: '🍚', es: 'arroz', b: 1 },
-  { h: 'たいよう', e: '☀️', es: 'sol', b: 1 },
-  { h: 'あめ', e: '🌧️', es: 'lluvia', b: 1, amb: true },
-  { h: 'じてんしゃ', e: '🚲', es: 'bicicleta', b: 1 },
-  { h: 'いえ', e: '🏠', es: 'casa', b: 1 },
-  { h: 'みみ', e: '👂', es: 'oreja', b: 1 },
-  { h: 'した', e: '👅', es: 'lengua', b: 1, amb: true },
-  { h: 'ふうせん', e: '🎈', es: 'globo', b: 1 },
-  { h: 'かばん', e: '👜', es: 'cartera', b: 2 },
-  { h: 'えんぴつ', e: '✏️', es: 'lápiz', b: 2 },
-  { h: 'ほうき', e: '🧹', es: 'escoba', b: 2 },
-  { h: 'とけい', e: '⏰', es: 'reloj', b: 2 },
-  { h: 'でんわ', e: '☎️', es: 'teléfono', b: 2 },
-  { h: 'くも', e: '☁️', es: 'nube', b: 2, amb: true },
-  { h: 'ゆき', e: '❄️', es: 'nieve', b: 2 },
-  { h: 'かさ', e: '☂️', es: 'paraguas', b: 2, amb: true },
-  { h: 'おにぎり', e: '🍙', es: 'bolita de arroz', b: 2 },
-  { h: 'うみ', e: '🌊', es: 'mar', b: 2 },
-  { h: 'はっぱ', e: '🍃', es: 'hoja', b: 2 },
-  { h: 'まど', e: '🪟', es: 'ventana', b: 2 },
-  { h: 'おかし', e: '🍪', es: 'galletita', b: 2 },
-  { h: 'ちず', e: '🗺️', es: 'mapa', b: 3 },
-  { h: 'ほね', e: '🦴', es: 'hueso', b: 3 },
-  { h: 'きりん', e: '🦒', es: 'jirafa', b: 3 },
-  { h: 'くじら', e: '🐋', es: 'ballena', b: 3 },
-  { h: 'しんぶん', e: '📰', es: 'diario', b: 3 },
-  { h: 'ぎんこう', e: '🏦', es: 'banco', b: 3 },
-  { h: 'としょかん', e: '📚', es: 'biblioteca', b: 3 },
-  { h: 'ゆうえんち', e: '🎡', es: 'parque de diversiones', b: 3 },
-  { h: 'やきゅう', e: '⚾', es: 'béisbol', b: 3 },
-  { h: 'がくせい', e: '🎓', es: 'estudiante', b: 3 },
-  { h: 'ゆうびんきょく', e: '🏤', es: 'correo', b: 3 },
-];
+/* Banco de palabras con dibujo: data/kana/vocab.json (se amplía editando ese archivo). */
+let VOCAB = [];
+const VOCAB_LISTO = fetch('data/kana/vocab.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { VOCAB = j.items || []; }).catch(() => {});
 /* Frases para el nivel 5 de la cinta. "は" se lee "wa" cuando funciona como partícula. */
 const FRASES = [
   { h: 'わたしは おとこ です。', es: 'Yo soy un hombre.' },
@@ -348,6 +284,8 @@ function abrirSeccion(s) {
   $('fOpc').hidden = !c.usaOpc;
   $('fPreg').hidden = s === 'cinta';
   $('fTam').hidden = s !== 'cinta';
+  $('fModo').hidden = s !== 'cinta';
+  pintarModo();
   $('tam').value = ajustes.tam; $('tamOut').textContent = ajustes.tam + '% de la pantalla';
   $('tam').oninput = () => { $('tamOut').textContent = $('tam').value + '% de la pantalla'; };
   const niv = $('fNiv'); niv.textContent = '';
@@ -360,6 +298,7 @@ function abrirSeccion(s) {
       lab.append(r, sp); niv.appendChild(lab);
     });
     niv.hidden = false;
+    niv.onchange = pintarModo;
   } else niv.hidden = true;
   $('escritura').value = ajustes.esc;
   $('nOpc').value = ajustes.nOpc; $('nPreg').value = ajustes.nPreg;
@@ -372,22 +311,38 @@ function abrirSeccion(s) {
   $('juego').hidden = true; $('resumen').hidden = true;
   window.scrollTo(0, 0);
 }
+function modoElegido() { const b = document.querySelector('#fModo .seg-btn[aria-pressed="true"]'); return b ? b.dataset.modo : 'deslizar'; }
+function pintarModo() {
+  const niv = document.querySelector('input[name=nivel]:checked');
+  const nivel = niv ? +niv.value : +ajustes.nivelC;
+  const actual = sec === 'cinta' && !$('fModo').hidden ? modoElegido() : ajustes.modoC;
+  const m = sec === 'cinta' && nivel >= 5 ? 'deslizar' : (actual || 'deslizar');
+  document.querySelectorAll('#fModo .seg-btn').forEach(b => {
+    b.setAttribute('aria-pressed', String(b.dataset.modo === m));
+    if (b.dataset.modo === 'destello') b.disabled = nivel >= 5;
+  });
+  $('notaModo').textContent = nivel >= 5 ? 'Las frases se leen solo deslizando, por ahora.' : '';
+}
+document.querySelectorAll('#fModo .seg-btn').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#fModo .seg-btn').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+}));
 function leerPanel() {
   ajustes.esc = $('escritura').value;
   ajustes.nOpc = $('nOpc').value; ajustes.nPreg = $('nPreg').value;
   ajustes.tam = $('tam').value;
   const r = document.querySelector('input[name=nivel]:checked');
   if (r) { if (sec === 'cinta') ajustes.nivelC = r.value; else ajustes.nivelL = r.value; }
+  if (sec === 'cinta') ajustes.modoC = modoElegido();
   guardarAj();
 }
 $('volver').onclick = () => { $('panel').hidden = true; $('inicio').hidden = false; $('juego').hidden = true; $('resumen').hidden = true; };
 document.querySelectorAll('.tarjeta').forEach(b => b.addEventListener('click', () => abrirSeccion(b.dataset.sec)));
 $('empezar').onclick = () => {
   leerPanel();
-  Perfil.elegir(() => {
+  VOCAB_LISTO.then(() => Perfil.elegir(() => {
     if (sec === 'cinta') iniciarCinta();
     else iniciarPreguntas();
-  });
+  }));
 };
 
 /* ---------- Preguntas (letras, dibujo, inversa) ---------- */
@@ -556,7 +511,7 @@ document.addEventListener('keydown', e => {
 });
 
 /* ---------- Cinta de lectura ---------- */
-const C = { cola: [], live: [], vel: 4, tam: 60, pausa: false, run: false, last: 0, raf: 0, sc: 'h', nivel: 1, banda: 1, ultimoEs: '' };
+const C = { cola: [], live: [], vel: 4, tam: 60, pausa: false, run: false, last: 0, raf: 0, sc: 'h', nivel: 1, banda: 1, ultimoEs: '', modo: 'deslizar', D: null, restan: 0 };
 const H = () => $('cinta').clientHeight || innerHeight;
 const W = () => $('cinta').clientWidth || innerWidth;
 const fpx = () => H() * C.tam / 100;
@@ -584,6 +539,57 @@ function spawnCinta() {
   C.ultimoEs = it.es;
   if (!$('cradu').hidden) $('cradu').textContent = it.es;
 }
+// Destello: una palabra aparece en el centro y desaparece; entre palabras hay una pausa según la banda.
+function tiempoDestelloMs(v) { return Math.round(2000 * Math.pow(100 / 2000, (v - 1) / 9)); }
+function pausaDestelloMs() { const b = Perfil.actual().banda || 1; return { 1: 1200, 2: 1000, 3: 800 }[b] || 1000; }
+function destelloPaso() {
+  if (!C.run || C.pausa) return;
+  if (C.restan <= 0) return terminarCinta();
+  C.restan--;
+  const t = genCinta();
+  const el = document.createElement('div'); el.className = 'tok';
+  el.textContent = t.txt;
+  el.style.left = '50%'; el.style.transform = 'translate(-50%,-50%)';
+  const escala = t.txt.length > 8 ? Math.max(.4, 8 / t.txt.length) : 1;
+  el.style.fontSize = (fpx() * escala) + 'px';
+  $('ctrack').appendChild(el);
+  // si la palabra no entra en la pantalla, se achica hasta que entre completa
+  const anchoMax = W() * 0.94;
+  if (el.offsetWidth > anchoMax) el.style.fontSize = (parseFloat(el.style.fontSize) * anchoMax / el.offsetWidth) + 'px';
+  C.ultimoEs = t.es || '';
+  if (!$('cradu').hidden) $('cradu').textContent = C.ultimoEs;
+  C.D = { el, fase: 'mostrar', resto: tiempoDestelloMs(C.vel), t0: performance.now() };
+  C.D.timer = setTimeout(destelloOcultar, C.D.resto);
+}
+function destelloOcultar() {
+  if (!C.run || !C.D) return;
+  if (C.D.el) C.D.el.remove();
+  C.D = { el: null, fase: 'espera', resto: pausaDestelloMs(), t0: performance.now() };
+  C.D.timer = setTimeout(destelloPaso, C.D.resto);
+}
+// Al pausar se guarda cuánto le faltaba a la palabra o a la espera; al seguir se retoma desde ahí.
+function destelloPausar() {
+  if (!C.D) return;
+  clearTimeout(C.D.timer);
+  C.D.resto = Math.max(0, C.D.resto - (performance.now() - C.D.t0));
+}
+function destelloSeguir() {
+  if (!C.D || !C.run) return;
+  C.D.t0 = performance.now();
+  C.D.timer = setTimeout(C.D.fase === 'mostrar' ? destelloOcultar : destelloPaso, C.D.resto);
+}
+function terminarCinta() {
+  C.run = false;
+  $('cfin').hidden = false;
+  $('cfin').innerHTML = '<div><b>¡Listo!</b><span class="hint">Pulsá Salir para volver.</span></div>';
+  Elogio.fin();
+}
+function alternarPausaCinta() {
+  C.pausa = !C.pausa;
+  $('cpausa').textContent = C.pausa ? '▶' : '⏸';
+  if (C.modo === 'destello') { if (C.pausa) destelloPausar(); else destelloSeguir(); }
+  mostrarCtrl();
+}
 function frameCinta(t) {
   if (!C.run) return;
   const dt = Math.min(.05, (t - C.last) / 1000); C.last = t;
@@ -610,6 +616,9 @@ function iniciarCinta() {
   const banda = Perfil.actual().banda;
   C.sc = ajustes.esc; C.nivel = +ajustes.nivelC; C.banda = banda;
   if (C.nivel >= 4) C.sc = 'h';
+  C.modo = ajustes.modoC === 'destello' && C.nivel <= 4 ? 'destello' : 'deslizar';
+  if (C.D && C.D.timer) clearTimeout(C.D.timer);
+  C.D = null;
   C.vel = 4; C.tam = +ajustes.tam; C.pausa = false; C.run = true; C.restan = 30;
   C.live = []; $('ctrack').textContent = '';
   $('cfin').hidden = true; $('cradu').hidden = true; $('cradu').textContent = '';
@@ -617,13 +626,16 @@ function iniciarCinta() {
   $('cpausa').textContent = '⏸';
   actualizarSpd();
   C.last = performance.now();
-  C.raf = requestAnimationFrame(frameCinta);
+  if (C.modo === 'destello') destelloPaso();
+  else C.raf = requestAnimationFrame(frameCinta);
   mostrarCtrl();
 }
 function actualizarSpd() { $('cspd').textContent = 'Vel. ' + C.vel; }
 function mostrarCtrl() { $('cctrl').classList.remove('hide'); clearTimeout(C.hide); C.hide = setTimeout(() => { if (!C.pausa) $('cctrl').classList.add('hide'); }, 3500); }
 function salirCinta() {
   C.run = false; cancelAnimationFrame(C.raf);
+  if (C.D && C.D.timer) clearTimeout(C.D.timer);
+  C.D = null; C.pausa = false;
   $('ctrack').textContent = ''; C.live = [];
   $('cinta').hidden = true; $('inicio').hidden = false;
 }
@@ -631,7 +643,21 @@ $('cinta').addEventListener('click', e => {
   if (e.target.closest('#cctrl')) { mostrarCtrl(); return; }
   if ($('cctrl').classList.contains('hide')) mostrarCtrl(); else $('cctrl').classList.add('hide');
 });
-$('cpausa').onclick = e => { e.stopPropagation(); C.pausa = !C.pausa; $('cpausa').textContent = C.pausa ? '▶' : '⏸'; mostrarCtrl(); };
+$('cpausa').onclick = e => { e.stopPropagation(); alternarPausaCinta(); };
+// Mantener el dedo en la pantalla frena; al soltarlo sigue. (El botón ⏸ sigue siendo de dos toques.)
+let pausaPorDedo = false;
+$('cinta').addEventListener('pointerdown', e => {
+  if (e.target.closest('#cctrl') || !$('cfin').hidden || !C.run || C.pausa) return;
+  pausaPorDedo = true; alternarPausaCinta();
+});
+function soltarDedoCinta() {
+  if (!pausaPorDedo) return;
+  pausaPorDedo = false;
+  if (C.run && C.pausa) alternarPausaCinta();
+}
+$('cinta').addEventListener('pointerup', soltarDedoCinta);
+$('cinta').addEventListener('pointercancel', soltarDedoCinta);
+$('cinta').addEventListener('pointerleave', soltarDedoCinta);
 $('clento').onclick = e => { e.stopPropagation(); C.vel = Math.max(1, C.vel - 1); actualizarSpd(); mostrarCtrl(); };
 $('crapido').onclick = e => { e.stopPropagation(); C.vel = Math.min(10, C.vel + 1); actualizarSpd(); mostrarCtrl(); };
 const reescalar = () => C.live.forEach(it => { const esc = it.el.textContent.length > 8 ? Math.max(.4, 8 / it.el.textContent.length) : 1; it.el.style.fontSize = (fpx() * esc) + 'px'; it.w = it.el.offsetWidth; });
