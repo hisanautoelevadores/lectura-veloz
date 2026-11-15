@@ -7,7 +7,7 @@
 - Práctica JLPT N5: vocabulario (60), gramática (46), lectura (10 textos), comprensión auditiva (14 ejercicios; 1 con audio nuevo, EP01), explicaciones en español, opciones mezcladas, simulación con 3 partes y tiempo (tiempos provisorios).
 - Hiragana y katakana: ejercicios de letras y de dibujo, con tiradas sin repeticiones y errores que vuelven a los dos turnos.
 - Hiragana: Leer en movimiento con modalidad Deslizar y Destello (como en lectura), y pausa mientras se mantiene el dedo en la pantalla.
-- Hiragana: banco de palabras con dibujo en data/kana/vocab.json (179 palabras: 56 para 3–5, 76 para 6–7, 47 para 8–10).
+- Hiragana y katakana: banco de palabras con dibujo en data/kana/vocab.json: 301 palabras (237 en hiragana: 68 para 3–5, 95 para 6–7, 74 para 8–10; 64 en katakana, solo para 6 años en adelante: 44 para 6–7, 20 para 8–10). El katakana no aparece para 3–5 años.
 - Soroban interactivo de 4 columnas, con toque y arrastre.
 - Dominio: archivo CNAME preparado, pero retirado temporalmente para que el sitio funcione.
 
@@ -20,7 +20,7 @@
 ## Contenido por revisar o ampliar
 - Lectura en español: 73 palabras y 20 frases. Objetivo: unas 300 de cada una, por banda de edad.
 - Práctica JLPT: ampliar vocabulario, gramática y lectura. Revisar las explicaciones en español.
-- Hiragana y katakana: revisar las palabras nuevas (ambiguas sobre todo; los emojis de algunas palabras pueden verse distinto según el teléfono). Agregar katakana con palabras de origen extranjero. Seguir ampliando data/kana/vocab.json (objetivo: unas 300 palabras).
+- Hiragana y katakana: revisar las palabras nuevas (ambiguas sobre todo; los emojis de algunas palabras pueden verse distinto según el teléfono). Seguir ampliando data/kana/vocab.json (objetivo: unas 300 palabras de hiragana, más katakana).
 - Kanji por grado: lista oficial del Ministerio de Educación de Japón a verificar, y la sección con furigana que se retira según el avance.
 
 ## Código por hacer

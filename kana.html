@@ -123,6 +123,7 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
     <div class="field" id="fEsc">
       <label for="escritura">Escritura</label>
       <select id="escritura"><option value="h">Hiragana (あ)</option><option value="k">Katakana (ア)</option></select>
+      <p class="nota-modo" id="notaEsc"></p>
     </div>
     <div class="opts" id="fNiv" role="radiogroup" aria-label="Nivel"></div>
     <div class="seg-modo" id="fModo" hidden>
@@ -258,7 +259,17 @@ const FRASES = [
   { h: 'ありがとう ございます。', es: 'Muchas gracias.' },
   { h: 'わたしは がくせい です。', es: 'Yo soy estudiante.' }
 ];
-function bancoVocab(banda) { return VOCAB.filter(v => v.b <= banda); }
+// Katakana solo desde los 6 años (banda 2 en adelante). Para 3-5 años siempre hiragana.
+function escActual() { const b = Perfil.actual().banda || 1; return ajustes.esc === 'k' && b >= 2 ? 'k' : 'h'; }
+// Banda del perfil elegido (antes de confirmarlo en el selector de perfil, se lee el guardado).
+function bandaGuardada() {
+  try {
+    const id = localStorage.getItem('lv2-perfil-activo');
+    const p = (JSON.parse(localStorage.getItem('lv2-perfiles') || '[]')).find(x => x.id === id);
+    return (p && p.banda) || 1;
+  } catch (e) { return 1; }
+}
+function bancoVocab(banda, esc) { return VOCAB.filter(v => v.b <= banda && (v.esc || 'h') === (esc || 'h')); }
 
 /* ---------- Opciones ---------- */
 function opciones(ans, cand, n) {
@@ -271,8 +282,8 @@ function opciones(ans, cand, n) {
 const SECC = {
   letras: { titulo: 'Reconocer las letras', desc: 'Aparece un carácter grande y se elige su sonido entre varias opciones. Cada nivel incluye los anteriores.',
     niveles: [['1','Sonidos puros (あ い う え お, か き…)'],['2','Con rayitas (が ざ だ ば ぱ…)'],['3','Combinados (きゃ しゅ ちょ…)'],['4','Especiales (っ y la vocal larga)']], usaEsc: true, usaOpc: true },
-  dibujo: { titulo: 'Leer y elegir el dibujo', desc: 'Aparece una palabra y se elige el dibujo que le corresponde. Las palabras cambian según la edad del perfil.', niveles: null, usaEsc: false, usaOpc: true },
-  inversa: { titulo: 'Ver el dibujo y elegir la palabra', desc: 'Aparece un dibujo y se elige la palabra entre varias. Cuando un dibujo puede confundir, se muestra también la palabra en español.', niveles: null, usaEsc: false, usaOpc: true },
+  dibujo: { titulo: 'Leer y elegir el dibujo', desc: 'Aparece una palabra y se elige el dibujo que le corresponde. Las palabras cambian según la edad del perfil.', niveles: null, usaEsc: true, usaOpc: true },
+  inversa: { titulo: 'Ver el dibujo y elegir la palabra', desc: 'Aparece un dibujo y se elige la palabra entre varias. Cuando un dibujo puede confundir, se muestra también la palabra en español.', niveles: null, usaEsc: true, usaOpc: true },
   cinta: { titulo: 'Leer en movimiento', desc: 'Las letras, palabras y frases pasan de derecha a izquierda, y el chico las lee en voz alta. Sin puntaje: vos llevás la cuenta.',
     niveles: [['1','Letras sueltas'],['2','Dos sílabas, algunas con rayitas'],['3','Tres o cuatro sílabas (inventadas)'],['4','Palabras con significado'],['5','Frases']], usaEsc: true, usaOpc: false }
 };
@@ -300,10 +311,14 @@ function abrirSeccion(s) {
     niv.hidden = false;
     niv.onchange = pintarModo;
   } else niv.hidden = true;
-  $('escritura').value = ajustes.esc;
+  const kOpt = document.querySelector('#escritura option[value="k"]');
+  const k36 = bandaGuardada() < 2;
+  kOpt.disabled = k36;
+  $('escritura').value = k36 && ajustes.esc === 'k' ? 'h' : ajustes.esc;
+  $('notaEsc').textContent = k36 ? 'El katakana es para 6 años en adelante.' : '';
   $('nOpc').value = ajustes.nOpc; $('nPreg').value = ajustes.nPreg;
   $('ayuda').textContent = s === 'cinta'
-    ? 'En los niveles 4 y 5 las palabras y frases están en hiragana por ahora. Con el botón Traducción podés ver el significado, solo para vos.'
+    ? 'Las frases del nivel 5 están en hiragana por ahora. Con el botón Traducción podés ver el significado, solo para vos.'
     : (s === 'inversa' ? 'Si el dibujo puede confundir, la palabra en español aparece debajo.' : '');
   $('aviso').textContent = '';
   $('empezar').textContent = s === 'cinta' ? '▶ EMPEZAR LA CINTA' : '▶ EMPEZAR';
@@ -347,6 +362,7 @@ $('empezar').onclick = () => {
 
 /* ---------- Preguntas (letras, dibujo, inversa) ---------- */
 let J = null;
+let J_ESC = 'h';
 function hablar(texto) {
   try {
     if (!('speechSynthesis' in window)) return;
@@ -358,12 +374,13 @@ function hablar(texto) {
 function iniciarPreguntas() {
   const banda = Perfil.actual().banda;
   let items;
-  if (sec === 'letras') items = caracteresDelNivel(ajustes.esc, +ajustes.nivelL).map(x => ({ k: 'L' + ajustes.esc + x.ch, ch: x.ch, r: x.r }));
-  else items = bancoVocab(banda).map(v => ({ k: (sec === 'dibujo' ? 'D' : 'I') + v.h, ...v }));
+  J_ESC = escActual();
+  if (sec === 'letras') items = caracteresDelNivel(J_ESC, +ajustes.nivelL).map(x => ({ k: 'L' + J_ESC + x.ch, ch: x.ch, r: x.r }));
+  else items = bancoVocab(banda, J_ESC).map(v => ({ k: (sec === 'dibujo' ? 'D' : 'I') + v.h, ...v }));
   if (!items.length) { $('aviso').textContent = 'No hay elementos para practicar.'; return; }
   const est = Perfil.store.get('est-' + sec, {});
   const q = Perfil.store.get('q', 0);
-  J = { items, est, q, total: +ajustes.nPreg, usados: new Set(), repasar: [], hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [], banda };
+  J = { esc: J_ESC, items, est, q, total: +ajustes.nPreg, usados: new Set(), repasar: [], hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [], banda };
   $('panel').hidden = true; $('juego').hidden = false; $('resumen').hidden = true;
   siguiente();
 }
@@ -392,13 +409,13 @@ function elegirItem() {
 function opcionesDe(x) {
   const n = +ajustes.nOpc;
   if (sec === 'letras') {
-    const todos = todosLosCaracteres(ajustes.esc);
-    const grupo = TBL[ajustes.esc].conf.find(g => g.includes(x.ch));
+    const todos = todosLosCaracteres(J.esc);
+    const grupo = TBL[J.esc].conf.find(g => g.includes(x.ch));
     const confs = grupo ? grupo.filter(c => c !== x.ch).map(c => todos.find(t => t.ch === c)).filter(Boolean).map(t => t.r) : [];
     // las parecidas no van siempre primero: se mezclan con el resto, así no hay un patrón que memorizar
     return opciones(x.r, mezclar([...confs, ...todos.map(t => t.r)]), n);
   }
-  const banco = bancoVocab(J.banda);
+  const banco = bancoVocab(J.banda, J.esc);
   if (sec === 'dibujo') return opciones(x.e, mezclar(banco.map(v => v.e)), n);
   return opciones(x.h, mezclar(banco.map(v => v.h)), n);
 }
@@ -522,7 +539,7 @@ function genCinta() {
   if (C.nivel === 1) return { txt: rnd(s1).ch };
   if (C.nivel === 2) return { txt: construir(s2, 2) };
   if (C.nivel === 3) return { txt: construir(s3, Math.random() < .5 ? 3 : 4) };
-  if (C.nivel === 4) { const v = rnd(bancoVocab(C.banda)); return { txt: v.h, es: v.es }; }
+  if (C.nivel === 4) { const v = rnd(bancoVocab(C.banda, C.sc)); return { txt: v.h, es: v.es }; }
   const f = rnd(FRASES); return { txt: f.h, es: f.es };
 }
 function ponerTok(it) { it.el.style.transform = `translate3d(${it.x}px,-50%,0)`; }
@@ -614,8 +631,7 @@ function frameCinta(t) {
 }
 function iniciarCinta() {
   const banda = Perfil.actual().banda;
-  C.sc = ajustes.esc; C.nivel = +ajustes.nivelC; C.banda = banda;
-  if (C.nivel >= 4) C.sc = 'h';
+  C.sc = escActual(); C.nivel = +ajustes.nivelC; C.banda = banda;
   C.modo = ajustes.modoC === 'destello' && C.nivel <= 4 ? 'destello' : 'deslizar';
   if (C.D && C.D.timer) clearTimeout(C.D.timer);
   C.D = null;
