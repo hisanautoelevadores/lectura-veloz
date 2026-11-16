@@ -13,7 +13,7 @@
 
 ## Esperando tu decisión
 1. Dominio crisalidas.ar: esperar que esté a tu nombre (2 o 3 días). Después: registros DNS, registro TXT de verificación, dominio en Pages y archivo CNAME.
-2. Audios de comprensión auditiva: quedan 9 ejercicios sin audio. Decime cuántos grabamos (cada línea consume cuota de HeyGen).
+2. Audios de comprensión auditiva: quedan 5 ejercicios sin audio (EP06 a EP10). Decime cuántos grabamos (cada línea consume cuota de HeyGen).
 3. Página de administración para agregar palabras y frases: decidir cómo se exporta la lista.
 4. Tiempos y cantidades oficiales del examen N5: verificar con la fuente oficial.
 
