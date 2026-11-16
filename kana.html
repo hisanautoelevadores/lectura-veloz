@@ -122,7 +122,7 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
     </div>
     <div class="field" id="fEsc">
       <label for="escritura">Escritura</label>
-      <select id="escritura"><option value="h">Hiragana (あ)</option><option value="k">Katakana (ア)</option></select>
+      <select id="escritura"><option value="h">Hiragana (あ)</option><option value="k">Katakana (ア)</option><option value="j">Kanji (漢)</option></select>
       <p class="nota-modo" id="notaEsc"></p>
     </div>
     <div class="opts" id="fNiv" role="radiogroup" aria-label="Nivel"></div>
@@ -141,6 +141,14 @@ select{background:#101013;border:1px solid var(--line);border-radius:10px;paddin
     <div class="field" id="fPreg">
       <label for="nPreg">Preguntas por sesión</label>
       <select id="nPreg"><option value="10">10</option><option value="20">20</option><option value="30">30</option></select>
+    </div>
+    <div class="field" id="fGrado" hidden>
+      <label for="grado">Grado escolar</label>
+      <select id="grado">
+        <option value="1">1.º grado (80 kanji)</option>
+        <option value="2" disabled>2.º grado (pendiente)</option>
+        <option value="3" disabled>3.º grado (pendiente)</option>
+      </select>
     </div>
     <p class="hint" id="ayuda"></p>
     <button class="start" id="empezar" type="button">▶ EMPEZAR</button>
@@ -197,7 +205,7 @@ const rnd = a => a[Math.floor(Math.random() * a.length)];
 const mezclar = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- Ajustes del dispositivo ---------- */
-let ajustes = Object.assign({ esc: 'h', nivelL: '1', nivelC: '1', modoC: 'deslizar', nOpc: '5', nPreg: '10', tam: '70' }, LS.get('lv2-kana-aj3', {}));
+let ajustes = Object.assign({ esc: 'h', grado: '1', nivelL: '1', nivelC: '1', modoC: 'deslizar', nOpc: '5', nPreg: '10', tam: '70' }, LS.get('lv2-kana-aj3', {}));
 const guardarAj = () => LS.set('lv2-kana-aj3', ajustes);
 let sec = null;
 
@@ -245,7 +253,11 @@ function caracteresDelNivel(sc, nivel) {
    "amb": la imagen puede confundir, por eso se muestra la palabra en español. Revisar antes de usar. */
 /* Banco de palabras con dibujo: data/kana/vocab.json (se amplía editando ese archivo). */
 let VOCAB = [];
-const VOCAB_LISTO = fetch('data/kana/vocab.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { VOCAB = j.items || []; }).catch(() => {});
+let KANJI = [];
+const VOCAB_LISTO = Promise.all([
+  fetch('data/kana/vocab.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { VOCAB = j.items || []; }),
+  fetch('data/kana/kanji.json', { cache: 'no-cache' }).then(r => r.json()).then(j => { KANJI = j.items || []; })
+]).catch(() => {});
 /* Frases para el nivel 5 de la cinta. "は" se lee "wa" cuando funciona como partícula. */
 const FRASES = [
   { h: 'わたしは おとこ です。', es: 'Yo soy un hombre.' },
@@ -260,7 +272,7 @@ const FRASES = [
   { h: 'わたしは がくせい です。', es: 'Yo soy estudiante.' }
 ];
 // Katakana solo desde los 6 años (banda 2 en adelante). Para 3-5 años siempre hiragana.
-function escActual() { const b = Perfil.actual().banda || 1; return ajustes.esc === 'k' && b >= 2 ? 'k' : 'h'; }
+function escActual() { const b = Perfil.actual().banda || 1; return (ajustes.esc === 'k' || ajustes.esc === 'j') && b >= 2 ? ajustes.esc : 'h'; }
 // Banda del perfil elegido (antes de confirmarlo en el selector de perfil, se lee el guardado).
 function bandaGuardada() {
   try {
@@ -311,11 +323,17 @@ function abrirSeccion(s) {
     niv.hidden = false;
     niv.onchange = pintarModo;
   } else niv.hidden = true;
-  const kOpt = document.querySelector('#escritura option[value="k"]');
   const k36 = bandaGuardada() < 2;
-  kOpt.disabled = k36;
-  $('escritura').value = k36 && ajustes.esc === 'k' ? 'h' : ajustes.esc;
-  $('notaEsc').textContent = k36 ? 'El katakana es para 6 años en adelante.' : '';
+  const sinKanji = s === 'cinta';
+  document.querySelector('#escritura option[value="k"]').disabled = k36;
+  document.querySelector('#escritura option[value="j"]').disabled = k36 || sinKanji;
+  let esc = ajustes.esc;
+  if ((esc === 'k' || esc === 'j') && k36) esc = 'h';
+  if (esc === 'j' && sinKanji) esc = 'h';
+  $('escritura').value = esc;
+  $('notaEsc').textContent = k36 ? 'El katakana y los kanji son para 6 años en adelante.' : (sinKanji ? 'Los kanji todavía no están en Leer en movimiento.' : '');
+  $('grado').value = ajustes.grado || '1';
+  pintarEscritura();
   $('nOpc').value = ajustes.nOpc; $('nPreg').value = ajustes.nPreg;
   $('ayuda').textContent = s === 'cinta'
     ? 'Las frases del nivel 5 están en hiragana por ahora. Con el botón Traducción podés ver el significado, solo para vos.'
@@ -327,6 +345,14 @@ function abrirSeccion(s) {
   window.scrollTo(0, 0);
 }
 function modoElegido() { const b = document.querySelector('#fModo .seg-btn[aria-pressed="true"]'); return b ? b.dataset.modo : 'deslizar'; }
+// Kanji: se muestra el grado en vez de los niveles de kana (en letras y dibujo).
+function pintarEscritura() {
+  const esJ = $('escritura').value === 'j' && (sec === 'letras' || sec === 'dibujo' || sec === 'inversa');
+  $('fGrado').hidden = !esJ;
+  if (sec === 'letras' && esJ) { $('fNiv').hidden = true; }
+  else if (sec === 'letras') { $('fNiv').hidden = false; }
+}
+$('escritura').addEventListener('change', pintarEscritura);
 function pintarModo() {
   const niv = document.querySelector('input[name=nivel]:checked');
   const nivel = niv ? +niv.value : +ajustes.nivelC;
@@ -343,6 +369,7 @@ document.querySelectorAll('#fModo .seg-btn').forEach(b => b.addEventListener('cl
 }));
 function leerPanel() {
   ajustes.esc = $('escritura').value;
+  ajustes.grado = $('grado').value;
   ajustes.nOpc = $('nOpc').value; ajustes.nPreg = $('nPreg').value;
   ajustes.tam = $('tam').value;
   const r = document.querySelector('input[name=nivel]:checked');
@@ -375,12 +402,14 @@ function iniciarPreguntas() {
   const banda = Perfil.actual().banda;
   let items;
   J_ESC = escActual();
-  if (sec === 'letras') items = caracteresDelNivel(J_ESC, +ajustes.nivelL).map(x => ({ k: 'L' + J_ESC + x.ch, ch: x.ch, r: x.r }));
-  else items = bancoVocab(banda, J_ESC).map(v => ({ k: (sec === 'dibujo' ? 'D' : 'I') + v.h, ...v }));
+  const grado = +ajustes.grado || 1;
+  if (sec === 'letras' && J_ESC === 'j') items = KANJI.filter(k => k.g <= grado).map(k => ({ k: 'Lj' + k.k, ch: k.k, r: k.es }));
+  else if (sec === 'letras') items = caracteresDelNivel(J_ESC, +ajustes.nivelL).map(x => ({ k: 'L' + J_ESC + x.ch, ch: x.ch, r: x.r }));
+  else items = bancoVocab(banda, J_ESC).filter(v => J_ESC !== 'j' || v.g <= grado).map(v => ({ k: (sec === 'dibujo' ? 'D' : 'I') + v.h, ...v }));
   if (!items.length) { $('aviso').textContent = 'No hay elementos para practicar.'; return; }
   const est = Perfil.store.get('est-' + sec, {});
   const q = Perfil.store.get('q', 0);
-  J = { esc: J_ESC, items, est, q, total: +ajustes.nPreg, usados: new Set(), repasar: [], hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [], banda };
+  J = { esc: J_ESC, grado, items, est, q, total: +ajustes.nPreg, usados: new Set(), repasar: [], hecha: 0, aciertos: 0, puntos: 0, racha: 0, rachaMax: 0, tiempos: [], fallos: {}, ultimo: null, respondida: false, actual: null, opts: [], banda };
   $('panel').hidden = true; $('juego').hidden = false; $('resumen').hidden = true;
   siguiente();
 }
@@ -408,6 +437,7 @@ function elegirItem() {
 }
 function opcionesDe(x) {
   const n = +ajustes.nOpc;
+  if (sec === 'letras' && J.esc === 'j') return opciones(x.r, mezclar(J.items.map(i => i.r)), n);
   if (sec === 'letras') {
     const todos = todosLosCaracteres(J.esc);
     const grupo = TBL[J.esc].conf.find(g => g.includes(x.ch));
@@ -415,7 +445,7 @@ function opcionesDe(x) {
     // las parecidas no van siempre primero: se mezclan con el resto, así no hay un patrón que memorizar
     return opciones(x.r, mezclar([...confs, ...todos.map(t => t.r)]), n);
   }
-  const banco = bancoVocab(J.banda, J.esc);
+  const banco = bancoVocab(J.banda, J.esc).filter(v => J.esc !== 'j' || v.g <= J.grado);
   if (sec === 'dibujo') return opciones(x.e, mezclar(banco.map(v => v.e)), n);
   return opciones(x.h, mezclar(banco.map(v => v.h)), n);
 }
@@ -429,7 +459,8 @@ function siguiente() {
   if (sec === 'letras') {
     pre.className = 'pregunta jp'; pre.textContent = x.ch;
   } else if (sec === 'dibujo') {
-    pre.className = 'pregunta jp palabra'; pre.textContent = x.h;
+    pre.className = 'pregunta jp palabra';
+    pre.innerHTML = furigana(x);
     $('escuchar').hidden = false;
     hablar(x.h);
   } else {
@@ -448,6 +479,12 @@ function siguiente() {
   $('bar').style.width = (100 * J.hecha / J.total) + '%';
   $('explica').hidden = true; $('sig').hidden = true;
   J.t0 = performance.now();
+}
+// Furigana: se ve al principio y se va retirando a medida que la palabra se aprende (caja 3 en adelante, ya sin ayuda).
+function furigana(x) {
+  if (J.esc !== 'j' || !x.r) return x.h;
+  const caja = (J.est[x.k] && J.est[x.k].b) || 1;
+  return caja >= 3 ? x.h : '<ruby>' + x.h + '<rt>' + x.r + '</rt></ruby>';
 }
 function textoCorrecto(x) {
   if (sec === 'letras') return x.ch + ' = <strong>' + x.r + '</strong>';

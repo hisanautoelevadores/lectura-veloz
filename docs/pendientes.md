@@ -18,10 +18,11 @@
 4. Tiempos y cantidades oficiales del examen N5: verificar con la fuente oficial.
 
 ## Contenido por revisar o ampliar
+- JLPT N5: cantidades y tiempos oficiales sin verificar. El sitio oficial jlpt.jp no se pudo abrir desde la sesión (el dominio no resuelve). Hay que revisar a mano las preguntas de muestra.
 - Lectura en español: 73 palabras y 20 frases. Objetivo: unas 300 de cada una, por banda de edad.
 - Práctica JLPT: ampliar vocabulario, gramática y lectura. Revisar las explicaciones en español.
 - Hiragana y katakana: revisar las palabras nuevas (ambiguas sobre todo; los emojis de algunas palabras pueden verse distinto según el teléfono). Seguir ampliando data/kana/vocab.json (objetivo: unas 300 palabras de hiragana, más katakana).
-- Kanji por grado: lista oficial del Ministerio de Educación de Japón a verificar, y la sección con furigana que se retira según el avance.
+- Kanji: 1.º grado completo (80 kanji con lecturas y significado) y 36 palabras con kanji. Pendiente: 2.º a 6.º grado (la lista oficial del Ministerio de Educación de Japón hay que verificarla antes de cargarla), kanji en Leer en movimiento, y furigana en las opciones de "Ver el dibujo y elegir la palabra".
 
 ## Código por hacer
 - Soroban: más columnas (cuando lo pidas), y ejercicios en los que el alumno forme un número.
