@@ -30,7 +30,9 @@
 - Soroban, hecho: 5) resta en dos etapas (sin pedir decena; pidiendo decena), con la tabla de 90 casos de resta del documento (D, C, T, M inversos). Primero se pide la decena y después se completa en la varilla. Probado contra las 90 celdas.
 - Soroban, hecho: 6) multiplicar una cifra por una cifra con los dos factores a la vista (両置き), con los pasos de la tabla de multiplicar.
 - Soroban, pendiente: multiplicar varias cifras; en niveles altos, pasar a dejar solo el multiplicando en el ábaco (片落とし). El orden de cálculo para varias cifras sigue sin confirmar.
-- Soroban, plan: (a) separar la enseñanza de suma y de resta; (b) ejercicios solo de suma, solo de resta, y mixtos de suma y resta; (c) subir de nivel por etapas.
+- Soroban, hecho: separación en Aprender (explicaciones paso a paso) y Ejercicios (armar, leer, dictado). Los niveles de 6–7 y 8–10 años aparecen con candado en 3–5 o 6–7; el aviso ofrece volver o seguir igual (con confirmación), y la elección queda guardada por perfil en este dispositivo.
+- Soroban, pendiente: ejercicios de práctica de suma, de resta, y mixtos de suma y resta, con niveles que suben por etapas.
+- Diferencia a recordar: en kana los kanji y el katakana están bloqueados sin opción (la escritura lo exige); en soroban el bloqueo tiene opción a seguir (es avance).
 - Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.
 - Soroban: revisar con material japonés el orden de los movimientos (quitar primero o llevar primero); por ahora se usa quitar primero.
 - Lectura: control de pausa entre palabras en destello, regulable aparte.

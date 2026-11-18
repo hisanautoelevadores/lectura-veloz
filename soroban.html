@@ -35,6 +35,11 @@ h1{font-size:1.2rem;margin:0}
 .menu-ej{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .menu-ej button{min-height:48px;border-radius:12px;border:2px solid #C8B99E;background:#FAF6EE;color:#3B2A1A;font:inherit;font-weight:600;cursor:pointer}
 .menu-ej button[aria-pressed="true"]{background:#274A8C;border-color:#274A8C;color:#fff}
+.seg-sec{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg-sec button{min-height:44px;border-radius:12px;border:2px solid #C8B99E;background:#FAF6EE;color:#3B2A1A;font:inherit;font-weight:700;cursor:pointer}
+.seg-sec button[aria-pressed="true"]{background:#B0521A;border-color:#B0521A;color:#fff}
+.menu-ej button[hidden]{display:none}
+.aviso-bloq{font-size:1rem;line-height:1.45}
 .ej-caja{background:#FAF6EE;border:1px solid #C8B99E;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
 .ej-caja h2{margin:0;font-size:1.05rem}
 .ej-caja .txt{font-size:1.05rem;line-height:1.45;min-height:2.9em}
@@ -61,16 +66,20 @@ h1{font-size:1.2rem;margin:0}
     <span></span>
   </div>
 
+  <div class="seg-sec" role="group" aria-label="Sección">
+    <button type="button" data-sec="aprender" aria-pressed="true">Aprender</button>
+    <button type="button" data-sec="ejercicios" aria-pressed="false">Ejercicios</button>
+  </div>
   <div class="menu-ej" role="group" aria-label="Ejercicios">
-    <button type="button" data-ej="libre" aria-pressed="true">Explorar</button>
-    <button type="button" data-ej="ficha" aria-pressed="false">1 · Qué vale cada ficha</button>
-    <button type="button" data-ej="armar" aria-pressed="false">2 · Armar el número</button>
-    <button type="button" data-ej="dictado" aria-pressed="false">Dictado</button>
-    <button type="button" data-ej="leer" aria-pressed="false">3 · Leer el número</button>
-    <button type="button" data-ej="llevada" aria-pressed="false">3 · Suma con llevada</button>
-    <button type="button" data-ej="sumar" aria-pressed="false">4 · Cómo sumar</button>
-    <button type="button" data-ej="restar" aria-pressed="false">5 · Cómo restar</button>
-    <button type="button" data-ej="multi" aria-pressed="false">6 · Multiplicar (una cifra)</button>
+    <button type="button" data-ej="libre" data-sec="ambas" aria-pressed="true">Explorar</button>
+    <button type="button" data-ej="ficha" data-sec="aprender" aria-pressed="false">1 · Qué vale cada ficha</button>
+    <button type="button" data-ej="sumar" data-sec="aprender" aria-pressed="false">Suma sin pasar de 10</button>
+    <button type="button" data-ej="restar" data-sec="aprender" aria-pressed="false">Resta sin pedir decena</button>
+    <button type="button" data-ej="llevada" data-sec="aprender" aria-pressed="false">Suma con llevada</button>
+    <button type="button" data-ej="multi" data-sec="aprender" aria-pressed="false">Multiplicar (una cifra)</button>
+    <button type="button" data-ej="armar" data-sec="ejercicios" aria-pressed="false">Armar el número</button>
+    <button type="button" data-ej="leer" data-sec="ejercicios" aria-pressed="false">Leer el número</button>
+    <button type="button" data-ej="dictado" data-sec="ejercicios" aria-pressed="false">Dictado</button>
   </div>
 
   <div class="fila-sob"><div class="marco"><div class="tablero" id="tab">
@@ -288,7 +297,11 @@ h1{font-size:1.2rem;margin:0}
       const b = document.createElement('button'); b.type = 'button'; b.className = 'btn';
       b.textContent = t; b.setAttribute('aria-pressed', String(NIVEL === n));
       if (NIVEL === n) b.classList.add('primary');
-      b.onclick = () => { NIVEL = n; if (reiniciar) reiniciar(); };
+      b.onclick = () => {
+        const banda = n === 1 ? 1 : (n === 2 ? 2 : 3), clave = 'nivel' + n;
+        if (!puedeEntrar(clave, banda)) { avisoBloqueo(clave, banda, () => { NIVEL = n; if (reiniciar) reiniciar(); }, () => { NIVEL = 1; if (reiniciar) reiniciar(); }); return; }
+        NIVEL = n; if (reiniciar) reiniciar();
+      };
       f.append(b);
     });
     return f;
@@ -434,7 +447,10 @@ h1{font-size:1.2rem;margin:0}
       const bt = document.createElement('button'); bt.type = 'button'; bt.className = 'btn';
       bt.textContent = t; bt.setAttribute('aria-pressed', String(RESTA_PASO === n));
       if (RESTA_PASO === n) bt.classList.add('primary');
-      bt.onclick = () => { RESTA_PASO = n; ejRestar(); };
+      bt.onclick = () => {
+        if (n === 2 && !puedeEntrar('restar2', 2)) { avisoBloqueo('restar2', 2, () => { RESTA_PASO = 2; ejRestar(); }, () => { RESTA_PASO = 1; ejRestar(); }); return; }
+        RESTA_PASO = n; ejRestar();
+      };
       f.append(bt);
     });
     return f;
@@ -522,7 +538,10 @@ h1{font-size:1.2rem;margin:0}
       const bt = document.createElement('button'); bt.type = 'button'; bt.className = 'btn';
       bt.textContent = t; bt.setAttribute('aria-pressed', String(SUMA_PASO === n));
       if (SUMA_PASO === n) bt.classList.add('primary');
-      bt.onclick = () => { SUMA_PASO = n; ejLlevada(); };
+      bt.onclick = () => {
+        if (n === 2 && !puedeEntrar('llevada2', 2)) { avisoBloqueo('llevada2', 2, () => { SUMA_PASO = 2; ejLlevada(); }, () => { SUMA_PASO = 1; ejLlevada(); }); return; }
+        SUMA_PASO = n; ejLlevada();
+      };
       f.append(bt);
     });
     return f;
@@ -576,10 +595,70 @@ h1{font-size:1.2rem;margin:0}
     seqNuevo();
   }
   function shuffleArr(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  // Bloqueo por banda de edad, con opción a seguir igual (se recuerda por perfil en este dispositivo).
+  const BANDAS = { 1: '3 a 5 años', 2: '6 a 7 años', 3: '8 a 10 años' };
+  const BANDA_MODO = { ficha: 1, sumar: 1, restar: 1, llevada: 2, multi: 2, armar: 1, leer: 1, dictado: 1 };
+  function bandaPerfil() {
+    try {
+      const id = localStorage.getItem('lv2-perfil-activo');
+      const p = JSON.parse(localStorage.getItem('lv2-perfiles') || '[]').find(x => x.id === id);
+      return (p && p.banda) || 1;
+    } catch (e) { return 1; }
+  }
+  function claveAbre() { return localStorage.getItem('lv2-perfil-activo') || '_'; }
+  function abiertoPor(clave) {
+    try { const o = JSON.parse(localStorage.getItem('lv2-soroban-abre') || '{}'); return !!(o[claveAbre()] && o[claveAbre()][clave]); } catch (e) { return false; }
+  }
+  function abrirPor(clave) {
+    try {
+      const o = JSON.parse(localStorage.getItem('lv2-soroban-abre') || '{}');
+      o[claveAbre()] = o[claveAbre()] || {}; o[claveAbre()][clave] = true;
+      localStorage.setItem('lv2-soroban-abre', JSON.stringify(o));
+    } catch (e) {}
+  }
+  function puedeEntrar(clave, banda) { return bandaPerfil() >= banda || abiertoPor(clave); }
+  // Aviso: el nivel es para otra banda. Se puede volver o seguir igual con un segundo toque.
+  function avisoBloqueo(clave, banda, reintentar, volver) {
+    caja.hidden = false; caja.innerHTML = '';
+    const h2 = document.createElement('h2'); h2.textContent = 'Este nivel es para ' + BANDAS[banda] + '.';
+    const t = document.createElement('p'); t.className = 'txt aviso-bloq';
+    t.textContent = 'Tu perfil está en ' + BANDAS[bandaPerfil()] + '. Podés empezar por los niveles anteriores. Si querés, podés seguir igual.';
+    const fila = document.createElement('div'); fila.className = 'ej-fila';
+    const atras = document.createElement('button'); atras.type = 'button'; atras.className = 'btn primary';
+    atras.textContent = 'Volver'; atras.onclick = () => (volver || (() => setModo('libre')))();
+    const seguir = document.createElement('button'); seguir.type = 'button'; seguir.className = 'btn';
+    seguir.textContent = 'Seguir igual';
+    seguir.onclick = () => {
+      if (!seguir.dataset.confirmar) { seguir.dataset.confirmar = '1'; seguir.textContent = 'Confirmar: seguir igual'; return; }
+      abrirPor(clave); pintarMenu(); reintentar();
+    };
+    fila.append(atras, seguir);
+    caja.append(h2, t, fila);
+  }
+  // Los niveles bloqueados se muestran con candado en el menú.
+  function pintarMenu() {
+    document.querySelectorAll('.menu-ej button[data-ej]').forEach(b => {
+      if (!b.dataset.label) b.dataset.label = b.textContent;
+      const banda = BANDA_MODO[b.dataset.ej];
+      const bloq = banda && !puedeEntrar(b.dataset.ej, banda);
+      b.textContent = (bloq ? '🔒 ' : '') + b.dataset.label;
+    });
+  }
+  let SECCION = 'aprender';
+  function setSeccion(sec) {
+    SECCION = sec;
+    document.querySelectorAll('.seg-sec button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sec === sec)));
+    document.querySelectorAll('.menu-ej button[data-sec]').forEach(b => { b.hidden = !(b.dataset.sec === 'ambas' || b.dataset.sec === sec); });
+  }
+  document.querySelectorAll('.seg-sec button').forEach(b => b.addEventListener('click', () => setSeccion(b.dataset.sec)));
+
   function setModo(m) {
+    const banda = BANDA_MODO[m];
+    if (banda && !puedeEntrar(m, banda)) { avisoBloqueo(m, banda, () => setModo(m)); return; }
     MODO = m;
     document.querySelectorAll('.menu-ej button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.ej === m)));
     document.getElementById('tab').classList.toggle('tab-etq', m === 'ficha');
+    pintarMenu();
     if (m === 'libre') { caja.hidden = true; render(); return; }
     if (m === 'ficha') { paso = 0; ejFicha(); }
     if (m === 'armar') { ejArmar(); }
@@ -609,6 +688,8 @@ h1{font-size:1.2rem;margin:0}
     render();
   });
 
+  setSeccion('aprender');
+  pintarMenu();
   render();
 })();
 </script>
