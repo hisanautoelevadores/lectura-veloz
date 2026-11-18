@@ -86,6 +86,8 @@ h1{font-size:1.2rem;margin:0}
     <button type="button" data-ej="restar" data-sec="aprender" aria-pressed="false">Resta sin pedir decena</button>
     <button type="button" data-ej="llevada" data-sec="aprender" aria-pressed="false">Suma con llevada</button>
     <button type="button" data-ej="multi" data-sec="aprender" aria-pressed="false">Multiplicar (una cifra)</button>
+    <button type="button" data-ej="dos_suma" data-sec="aprender" aria-pressed="false">Suma de dos cifras</button>
+    <button type="button" data-ej="dos_resta" data-sec="aprender" aria-pressed="false">Resta de dos cifras</button>
     <button type="button" data-ej="armar" data-sec="ejercicios" aria-pressed="false">Armar el número</button>
     <button type="button" data-ej="leer" data-sec="ejercicios" aria-pressed="false">Leer el número</button>
     <button type="button" data-ej="dictado" data-sec="ejercicios" aria-pressed="false">Dictado</button>
@@ -673,6 +675,46 @@ h1{font-size:1.2rem;margin:0}
     caja.append(h2, obj, opEl, selectorPractica(), pistaEl, fila, niv);
     render();
   }
+  // Suma o resta de dos cifras, de derecha a izquierda: primero las unidades y después las decenas,
+  // cada columna con las mismas reglas de una cifra (D, C, T, M).
+  function pasosDosCifras(X, b, op) {
+    let cur = X;
+    const P = [{ t: 'Primero ponemos el ' + X + ' en el ábaco.', f: () => setValor(X) }];
+    const digitos = [b % 10, Math.floor(b / 10)];
+    for (let pos = 0; pos < 2; pos++) {
+      const d = digitos[pos];
+      if (d === 0) continue;
+      const f = Math.pow(10, pos);
+      const digito = Math.floor(cur / f) % 10;
+      const plan = op === '+' ? planSumar(digito, d) : planRestar(digito, d);
+      const quien = pos === 0 ? 'Unidades: ' : 'Decenas: ';
+      let previo = digito;
+      plan.pasos.forEach(st => {
+        const delta = op === '+' ? st.n - previo : st.delta;
+        previo = op === '+' ? st.n : previo;
+        cur += delta * f;
+        const v = cur;
+        P.push({ t: quien + st.t, f: () => setValor(v) });
+      });
+    }
+    const res = op === '+' ? X + b : X - b;
+    const signo = op === '+' ? '+' : '−';
+    P.push({ t: 'Contamos todo: son ' + res + '. Entonces ' + X + ' ' + signo + ' ' + b + ' = ' + res + '.', f: () => setValor(res) });
+    return P;
+  }
+  function ejDosCifras(op) {
+    seqExtra = null; seqNota = '';
+    seqTitulo = op === '+' ? 'Suma de dos cifras' : 'Resta de dos cifras';
+    seqObjetivo = 'hacer la cuenta de derecha a izquierda: primero las unidades y después las decenas. Cada columna se hace como una cifra.';
+    seqNuevo = () => {
+      let X, b;
+      if (op === '+') { X = 10 + Math.floor(Math.random() * 80); const hi = 99 - X; b = hi >= 10 ? 10 + Math.floor(Math.random() * (hi - 9)) : 10; if (X + b > 99) { X = 10; } }
+      else { X = 10 + Math.floor(Math.random() * 90); b = 10 + Math.floor(Math.random() * (X - 9)); }
+      seqOp = X + ' ' + op.replace('-', '−') + ' ' + b + ' = ?';
+      seq = pasosDosCifras(X, b, op); seqPaso = 0; mostrarSeq();
+    };
+    seqNuevo();
+  }
   function ejRestar() {
     seqExtra = selectorRestaPaso;
     seqTitulo = '5 · Cómo restar';
@@ -689,7 +731,7 @@ h1{font-size:1.2rem;margin:0}
   function shuffleArr(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   // Bloqueo por banda de edad, con opción a seguir igual (se recuerda por perfil en este dispositivo).
   const BANDAS = { 1: '3 a 5 años', 2: '6 a 7 años', 3: '8 a 10 años' };
-  const BANDA_MODO = { ficha: 1, sumar: 1, restar: 1, llevada: 2, multi: 2, armar: 1, leer: 1, dictado: 1, practica_suma: 1, practica_resta: 1, practica_mixta: 1 };
+  const BANDA_MODO = { ficha: 1, sumar: 1, restar: 1, llevada: 2, multi: 2, armar: 1, leer: 1, dictado: 1, practica_suma: 1, practica_resta: 1, practica_mixta: 1, dos_suma: 2, dos_resta: 2 };
   function bandaPerfil() {
     try {
       const id = localStorage.getItem('lv2-perfil-activo');
@@ -762,6 +804,8 @@ h1{font-size:1.2rem;margin:0}
     if (m === 'sumar') { ejSumar(); }
     if (m === 'restar') { ejRestar(); }
     if (m === 'multi') { ejMulti(); }
+    if (m === 'dos_suma') { ejDosCifras('+'); }
+    if (m === 'dos_resta') { ejDosCifras('-'); }
     if (m === 'practica_suma') { ejPractica('suma'); }
     if (m === 'practica_resta') { ejPractica('resta'); }
     if (m === 'practica_mixta') { ejPractica('mixta'); }
