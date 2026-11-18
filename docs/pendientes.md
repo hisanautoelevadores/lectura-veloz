@@ -26,8 +26,8 @@
 
 ## Código por hacer
 - Soroban, hecho: armar y leer con números de hasta 99 y 999 (selector de nivel), y ejercicio Dictado (la app dice el número y el alumno lo arma).
-- Soroban, hecho: 3) suma con llevada en dos pasos (sin pasar de 10: 1 + 3, 2 + 5; pasando de 10: 6 + 6, con el 10 completado y el 1 a las decenas).
-- Soroban, pendiente: resta con llevada (préstamo entre columnas); 4) multiplicación sencilla.
+- Soroban, hecho: 3) suma en dos pasos: sin pasar de 10 (1 + 3, 2 + 5) y con 10 menos (método de complemento: para sumar 9, 8 o 7 se suma 10 y se quita 1, 2 o 3; ej. 6 + 6 = 6 + 10 − 4). Pendiente: revisar con el docente de soroban la forma de enseñarlo.
+- Soroban, pendiente: resta con el mismo método (para sacar 8 se resta 10 y se suma 2); 4) multiplicación sencilla.
 - Lectura: control de pausa entre palabras en destello, regulable aparte.
 - Lectura de nivel avanzado: doble palabra.
 

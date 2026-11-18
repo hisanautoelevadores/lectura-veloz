@@ -373,7 +373,7 @@ h1{font-size:1.2rem;margin:0}
       P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
     } else {
       P.push({ t: 'Como ya hay una ficha de arriba (5), sumamos ' + b + ' subiendo fichas de abajo.', f: () => setU(1, a - 5) });
-      for (let k = a - 4; k <= r - 5; k++) P.push({ t: 'Subimos una más con el pulgar: ahora es ' + r + ' en ' + (k) + ' de abajo.', f: () => setU(1, k) });
+      for (let k = a - 4; k <= r - 5; k++) P.push({ t: 'Subimos una más con el pulgar: ahora es ' + (5 + k) + '.', f: () => setU(1, k) });
       P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
     }
     return P;
@@ -415,22 +415,22 @@ h1{font-size:1.2rem;margin:0}
     document.getElementById('tab').classList.add('tab-etq');
     seq[seqPaso].f(); render();
   }
-  // Suma con llevada: paso 1 = sin pasar de 10 (1 + 3); paso 2 = pasando de 10 (6 + 6), con el 10 completado y el 1 a las decenas.
+  // Suma con llevada: paso 1 = sin pasar de 10 (1 + 3); paso 2 = suma de 5 o más, con el método de complemento:
+  // para sumar b se suma 10 y se quita lo que sobra (10 - b). Ejemplo: 6 + 6 = 6 + 10 - 4.
   let SUMA_PASO = 1, seqExtra = null;
   function pasosLlevada(a, b) {
     const r = a + b;
     if (r <= 9) return pasosSumar(a, b);
-    const r2 = b - (10 - a), P = [];
+    const c = 10 - b, P = [];
     P.push({ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => setValor(a) });
-    for (let k = a + 1; k <= 9; k++) P.push({ t: 'Sumamos de a uno con el pulgar: ahora son ' + k + '.', f: () => setValor(k) });
-    P.push({ t: 'Llegamos a 10 y no entra más en las unidades. Lo pasamos a la columna de las decenas: sale 1, y en las unidades queda 0.', f: () => setValor(10) });
-    for (let k = 1; k <= r2; k++) P.push({ t: 'Todavía faltan sumar ' + (r2 - k + 1) + '. Con el pulgar: ahora es ' + (10 + k) + '.', f: () => setValor(10 + k) });
+    P.push({ t: 'Para sumar ' + b + ' hacemos dos movimientos a la vez: sumamos 10 y quitamos ' + c + '. Con el pulgar subimos una ficha de las decenas: ahora hay ' + (a + 10) + '.', f: () => setValor(a + 10) });
+    P.push({ t: 'Ahora quitamos ' + c + ' de las unidades: ' + (a + 10) + ' menos ' + c + ' es ' + r + '.', f: () => setValor(r) });
     P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => setValor(r) });
     return P;
   }
   function selectorPaso() {
     const f = document.createElement('div'); f.className = 'ej-fila';
-    [[1, 'Sin pasar de 10'], [2, 'Pasando de 10']].forEach(([n, t]) => {
+    [[1, 'Sin pasar de 10'], [2, 'Con 10 menos']].forEach(([n, t]) => {
       const bt = document.createElement('button'); bt.type = 'button'; bt.className = 'btn';
       bt.textContent = t; bt.setAttribute('aria-pressed', String(SUMA_PASO === n));
       if (SUMA_PASO === n) bt.classList.add('primary');
@@ -445,7 +445,7 @@ h1{font-size:1.2rem;margin:0}
     seqNuevo = () => {
       let a, b;
       if (SUMA_PASO === 1) { a = 1 + Math.floor(Math.random() * 8); b = 1 + Math.floor(Math.random() * (9 - a)); }
-      else { a = 2 + Math.floor(Math.random() * 8); const lo = 10 - a; b = lo + Math.floor(Math.random() * (9 - lo + 1)); }
+      else { a = 1 + Math.floor(Math.random() * 8); const lo = Math.max(1, 10 - a); b = lo + Math.floor(Math.random() * (9 - lo + 1)); }
       seq = pasosLlevada(a, b); seqPaso = 0; mostrarSeq();
     };
     seqNuevo();
