@@ -40,6 +40,11 @@ h1{font-size:1.2rem;margin:0}
 .seg-sec button[aria-pressed="true"]{background:#B0521A;border-color:#B0521A;color:#fff}
 .menu-ej button[hidden]{display:none}
 .aviso-bloq{font-size:1rem;line-height:1.45}
+.leccion-titulo{font-size:1.35rem;margin:0;color:#3B2A1A}
+.leccion-op{font-size:2.1rem;font-weight:800;color:#B5501F;margin:0;line-height:1.1}
+.leccion-obj{margin:0;color:#4a3b2a;font-size:1rem;line-height:1.4}
+.paso-txt{font-size:1.15rem;line-height:1.5;margin:6px 0 0}
+.paso-num{display:block;font-size:.9rem;color:#7a6a58;font-weight:700;margin-bottom:4px}
 .ej-caja{background:#FAF6EE;border:1px solid #C8B99E;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
 .ej-caja h2{margin:0;font-size:1.05rem}
 .ej-caja .txt{font-size:1.05rem;line-height:1.45;min-height:2.9em}
@@ -48,8 +53,8 @@ h1{font-size:1.2rem;margin:0}
 .opc-num button.ok{background:#2E8B57;border-color:#2E8B57;color:#fff}
 .opc-num button.bad{background:#B03A28;border-color:#B03A28;color:#fff}
 .ej-fila{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.fila-sob{display:flex;align-items:center;justify-content:center;gap:8px}
-.fila-sob .marco{width:auto}
+.fila-sob{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
+.fila-sob .marco{width:auto;flex:none}
 .contador{text-align:center;font-size:.9rem;color:#6B5A44;margin:0}
 .leyenda{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.92rem;line-height:1.35}
 .leyenda div{background:#fff;border:1px solid #C8B99E;border-radius:10px;padding:8px}
@@ -376,19 +381,19 @@ h1{font-size:1.2rem;margin:0}
   // Suma dentro de una columna (resultado de 0 a 9). Si hace falta, se usa la ficha de arriba (5) y se quita lo que sobra.
   function pasosSumar(a, b) {
     const r = a + b, P = [];
-    P.push({ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => soloUnidades(a) });
+    P.push({ t: 'Primero ponemos el ' + a + ' en la columna de las unidades.', f: () => soloUnidades(a) });
     if (a < 5 && r < 5) {
       for (let k = a + 1; k <= r; k++) P.push({ t: 'Con el pulgar subimos una ficha de abajo: ahora son ' + k + '.', f: () => setU(0, k) });
-      P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
+      P.push({ t: 'Contamos las fichas que hay: son ' + r + '. El resultado es ' + r + ', entonces ' + a + ' + ' + b + ' = ' + r + '.', f: () => soloUnidades(r) });
     } else if (a < 5) {
       P.push({ t: 'Para sumar ' + b + ' conviene sumar 5 primero y después quitar lo que sobra. Con el índice bajamos la ficha de arriba: ahora vale ' + (5 + a) + '.', f: () => setU(1, a) });
       const quitar = 5 - b;
       for (let k = a - 1; k >= a - quitar; k--) P.push({ t: 'Ahora quitamos ' + (a - k) + ' de abajo, con el pulgar. Vamos a ' + (5 + k) + '.', f: () => setU(1, k) });
-      P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
+      P.push({ t: 'Contamos las fichas que hay: son ' + r + '. El resultado es ' + r + ', entonces ' + a + ' + ' + b + ' = ' + r + '.', f: () => soloUnidades(r) });
     } else {
       P.push({ t: 'Como ya hay una ficha de arriba (5), sumamos ' + b + ' subiendo fichas de abajo.', f: () => setU(1, a - 5) });
       for (let k = a - 4; k <= r - 5; k++) P.push({ t: 'Subimos una más con el pulgar: ahora es ' + (5 + k) + '.', f: () => setU(1, k) });
-      P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => soloUnidades(r) });
+      P.push({ t: 'Contamos las fichas que hay: son ' + r + '. El resultado es ' + r + ', entonces ' + a + ' + ' + b + ' = ' + r + '.', f: () => soloUnidades(r) });
     }
     return P;
   }
@@ -434,10 +439,10 @@ h1{font-size:1.2rem;margin:0}
 
   // Resta: el ábaco sigue la tabla de resta (D, C, T, M); el paso de pedir decena va primero.
   function pasosRestarTabla(X, d) {
-    const P = [{ t: 'Empezamos con ' + X + '.', f: () => setValor(X) }];
+    const P = [{ t: 'Primero ponemos el ' + X + '.', f: () => setValor(X) }];
     let cur = X;
     planRestar(X % 10, d).pasos.forEach(p => { cur += p.delta; const v = cur; P.push({ t: p.t, f: () => setValor(v) }); });
-    P.push({ t: 'Listo: ' + X + ' menos ' + d + ' es ' + (X - d) + '.', f: () => setValor(X - d) });
+    P.push({ t: 'Contamos todo: son ' + (X - d) + '. Entonces ' + X + ' − ' + d + ' = ' + (X - d) + '.', f: () => setValor(X - d) });
     return P;
   }
   let RESTA_PASO = 1;
@@ -457,12 +462,17 @@ h1{font-size:1.2rem;margin:0}
   }
   // Muestra una secuencia de pasos con Anterior / Siguiente, y un ejemplo nuevo.
   let seq = null, seqPaso = 0, seqTitulo = '', seqNuevo = null;
+  let seqOp = '', seqObjetivo = '';
   function mostrarSeq() {
     caja.hidden = false; caja.innerHTML = '';
-    const h2 = document.createElement('h2'); h2.textContent = seqTitulo;
-    const leyenda = document.createElement('div'); leyenda.className = 'leyenda';
-    leyenda.innerHTML = '<div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube o baja las de abajo: cada una vale 1.</div>';
-    const t = document.createElement('p'); t.className = 'txt'; t.textContent = seq[seqPaso].t;
+    const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = seqTitulo;
+    const op = document.createElement('p'); op.className = 'leccion-op'; op.textContent = seqOp;
+    const obj = document.createElement('p'); obj.className = 'leccion-obj'; obj.textContent = 'Objetivo: ' + seqObjetivo;
+    const leyenda = document.createElement('details'); leyenda.className = 'ayuda-mov';
+    leyenda.innerHTML = '<summary>Cómo se mueven las fichas</summary><div class="leyenda"><div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube o baja las de abajo: cada una vale 1.</div></div>';
+    const t = document.createElement('p'); t.className = 'paso-txt';
+    const num = document.createElement('span'); num.className = 'paso-num'; num.textContent = 'Paso ' + (seqPaso + 1) + ' de ' + seq.length;
+    t.append(num, document.createTextNode(seq[seqPaso].t));
     const fila = document.createElement('div'); fila.className = 'ej-fila';
     const ant = document.createElement('button'); ant.type = 'button'; ant.className = 'btn'; ant.textContent = '← Anterior'; ant.disabled = seqPaso === 0;
     ant.onclick = () => { seqPaso = Math.max(0, seqPaso - 1); seq[seqPaso].f(); render(); mostrarSeq(); };
@@ -471,10 +481,9 @@ h1{font-size:1.2rem;margin:0}
     sig.textContent = ultimo ? 'Otro ejemplo' : 'Siguiente →';
     sig.onclick = () => { if (ultimo) { seqNuevo(); return; } seqPaso++; seq[seqPaso].f(); render(); mostrarSeq(); };
     fila.append(ant, sig);
-    const cont = document.createElement('p'); cont.className = 'contador'; cont.textContent = 'Paso ' + (seqPaso + 1) + ' de ' + seq.length;
-    caja.append(h2);
+    caja.append(h2, op, obj);
     if (seqExtra) caja.append(seqExtra());
-    caja.append(leyenda, t, fila, cont);
+    caja.append(t, fila, leyenda);
     document.getElementById('tab').classList.add('tab-etq');
     seq[seqPaso].f(); render();
   }
@@ -527,9 +536,9 @@ h1{font-size:1.2rem;margin:0}
   function pasosLlevada(a, b) {
     const r = a + b;
     if (r <= 9) return pasosSumar(a, b);
-    const P = [{ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => setValor(a) }];
+    const P = [{ t: 'Primero ponemos el ' + a + ' en la columna de las unidades.', f: () => setValor(a) }];
     planSumar(a, b).pasos.forEach(p => P.push({ t: p.t, f: () => setValor(p.n) }));
-    P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => setValor(r) });
+    P.push({ t: 'Contamos todo: son ' + r + '. Entonces ' + a + ' + ' + b + ' = ' + r + '.', f: () => setValor(r) });
     return P;
   }
   function selectorPaso() {
@@ -548,19 +557,21 @@ h1{font-size:1.2rem;margin:0}
   }
   function ejLlevada() {
     seqTitulo = '3 · Suma con llevada';
+    seqObjetivo = 'sumar cuando el resultado pasa de 10: completar 10 y llevar 1 a las decenas.';
     seqExtra = selectorPaso;
     seqNuevo = () => {
       let a, b;
       if (SUMA_PASO === 1) { a = 1 + Math.floor(Math.random() * 8); b = 1 + Math.floor(Math.random() * (9 - a)); }
       else { a = 1 + Math.floor(Math.random() * 8); const lo = Math.max(1, 10 - a); b = lo + Math.floor(Math.random() * (9 - lo + 1)); }
-      seq = pasosLlevada(a, b); seqPaso = 0; mostrarSeq();
+      seqOp = a + ' + ' + b + ' = ?'; seq = pasosLlevada(a, b); seqPaso = 0; mostrarSeq();
     };
     seqNuevo();
   }
   function ejSumar() {
     seqExtra = null;
     seqTitulo = '4 · Cómo sumar';
-    seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 8); const b = 1 + Math.floor(Math.random() * (9 - a)); seq = pasosSumar(a, b); seqPaso = 0; mostrarSeq(); };
+    seqObjetivo = 'sumar sin pasar de 10: se agregan fichas y se cuentan.';
+    seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 8); const b = 1 + Math.floor(Math.random() * (9 - a)); seqOp = a + ' + ' + b + ' = ?'; seq = pasosSumar(a, b); seqPaso = 0; mostrarSeq(); };
     seqNuevo();
   }
   // Multiplicación con una cifra por una cifra, con los dos factores a la vista (両置き).
@@ -571,26 +582,28 @@ h1{font-size:1.2rem;margin:0}
   }
   function pasosMulti(a, b) {
     const p = a * b, dec = Math.floor(p / 10), uni = p % 10, P = [];
-    P.push({ t: 'Ponemos los dos factores en las primeras columnas: el ' + a + ' y el ' + b + '.', f: () => setDigitos([a, b, 0, 0]) });
-    P.push({ t: a + ' × ' + b + ' = ' + p + '. Miramos la tabla de multiplicar. Ponemos las decenas: ' + dec + (dec === 0 ? ' (no hay decenas).' : '.'), f: () => setDigitos([a, b, dec, 0]) });
-    P.push({ t: 'Ponemos las unidades: ' + uni + '.', f: () => setDigitos([a, b, dec, uni]) });
-    P.push({ t: 'Listo: ' + a + ' × ' + b + ' = ' + p + '.', f: () => setDigitos([a, b, dec, uni]) });
+    P.push({ t: 'Vamos a calcular ' + a + ' × ' + b + '. Los dos números que se multiplican ya están en las dos primeras varillas: son los factores (el ' + a + ' y el ' + b + ').', f: () => setDigitos([a, b, 0, 0]) });
+    P.push({ t: 'Buscamos en la tabla de multiplicar: ' + a + ' × ' + b + ' = ' + p + '. ' + (dec === 0 ? 'Como es menor que 10, no hay decenas: la varilla de las decenas queda en 0.' : 'Hay ' + dec + ' decena' + (dec > 1 ? 's' : '') + ': ponemos ' + dec + ' en la varilla de las decenas.'), f: () => setDigitos([a, b, dec, 0]) });
+    P.push({ t: 'Ponemos ' + uni + ' en la varilla de las unidades.', f: () => setDigitos([a, b, dec, uni]) });
+    P.push({ t: 'El resultado está en las dos últimas varillas: ' + p + '. Entonces ' + a + ' × ' + b + ' = ' + p + '.', f: () => setDigitos([a, b, dec, uni]) });
     return P;
   }
   function ejMulti() {
     seqExtra = null;
     seqTitulo = '6 · Multiplicar (una cifra)';
-    seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 9), b = 1 + Math.floor(Math.random() * 9); seq = pasosMulti(a, b); seqPaso = 0; mostrarSeq(); };
+    seqObjetivo = 'multiplicar: buscar el producto en la tabla y ponerlo en las varillas.';
+    seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 9), b = 1 + Math.floor(Math.random() * 9); seqOp = a + ' × ' + b + ' = ?'; seq = pasosMulti(a, b); seqPaso = 0; mostrarSeq(); };
     seqNuevo();
   }
   function ejRestar() {
     seqExtra = selectorRestaPaso;
     seqTitulo = '5 · Cómo restar';
+    seqObjetivo = 'restar: quitar fichas; si no alcanzan, pedir una decena.';
     seqNuevo = () => {
       let X, d;
       if (RESTA_PASO === 1) { X = 1 + Math.floor(Math.random() * 9); d = 1 + Math.floor(Math.random() * X); }
       else { const a = Math.floor(Math.random() * 9); X = 10 + a; d = a + 1 + Math.floor(Math.random() * (9 - a)); }
-      seq = pasosRestarTabla(X, d); seqPaso = 0; mostrarSeq();
+      seqOp = X + ' − ' + d + ' = ?'; seq = pasosRestarTabla(X, d); seqPaso = 0; mostrarSeq();
     };
     seqNuevo();
   }
@@ -674,6 +687,11 @@ h1{font-size:1.2rem;margin:0}
   const _render = render;
   render = function () {
     _render();
+    if (MODO === 'multi') {
+      const prod = valor(2) * 10 + valor(3);
+      document.getElementById('num').textContent = 'Resultado: ' + prod;
+      document.getElementById('pista').textContent = 'Factores: ' + valor(0) + ' y ' + valor(1) + '. Producto: ' + prod + '.';
+    }
     if ((MODO === 'armar' || MODO === 'dictado') && objetivo !== null && totalDeColumnas() === objetivo) {
       const t = document.getElementById('ejTxt');
       if (t && !t.dataset.ok) {
