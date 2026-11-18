@@ -25,7 +25,8 @@
 - Kanji: 1.º grado completo (80 kanji con lecturas y significado) y 36 palabras con kanji. Pendiente: 2.º a 6.º grado (la lista oficial del Ministerio de Educación de Japón hay que verificarla antes de cargarla), kanji en Leer en movimiento, y furigana en las opciones de "Ver el dibujo y elegir la palabra".
 
 ## Código por hacer
-- Soroban: más columnas (cuando lo pidas), y ejercicios en los que el alumno forme un número.
+- Soroban, hecho: armar y leer con números de hasta 99 y 999 (selector de nivel), y ejercicio Dictado (la app dice el número y el alumno lo arma).
+- Soroban, pendiente: 3) suma y resta con llevada; 4) multiplicación sencilla.
 - Lectura: control de pausa entre palabras en destello, regulable aparte.
 - Lectura de nivel avanzado: doble palabra.
 

@@ -65,6 +65,7 @@ h1{font-size:1.2rem;margin:0}
     <button type="button" data-ej="libre" aria-pressed="true">Explorar</button>
     <button type="button" data-ej="ficha" aria-pressed="false">1 · Qué vale cada ficha</button>
     <button type="button" data-ej="armar" aria-pressed="false">2 · Armar el número</button>
+    <button type="button" data-ej="dictado" aria-pressed="false">Dictado</button>
     <button type="button" data-ej="leer" aria-pressed="false">3 · Leer el número</button>
     <button type="button" data-ej="sumar" aria-pressed="false">4 · Cómo sumar</button>
     <button type="button" data-ej="restar" aria-pressed="false">5 · Cómo restar</button>
@@ -269,10 +270,31 @@ h1{font-size:1.2rem;margin:0}
     document.getElementById('tab').classList.add('tab-etq');
     PASOS_FICHA[paso].f(); render();
   }
+  // Niveles de números: 1 = hasta 9, 2 = hasta 99, 3 = hasta 999 (el soroban tiene 4 columnas).
+  let NIVEL = 1;
+  let reiniciar = null;   // vuelve a empezar el ejercicio actual (al cambiar de nivel)
+  function rango() { return NIVEL === 1 ? [1, 9] : (NIVEL === 2 ? [10, 99] : [100, 999]); }
+  function aleatorio() { const [lo, hi] = rango(); return lo + Math.floor(Math.random() * (hi - lo + 1)); }
+  // pone en las columnas las cifras de v, de la unidad hacia la izquierda
+  function setValor(v) {
+    for (let c = N - 1; c >= 0; c--) { const d = v % 10; est[c].cielo = d >= 5 ? 1 : 0; est[c].tierra = d % 5; v = Math.floor(v / 10); }
+  }
+  function totalDeColumnas() { let t = 0; for (let c = 0; c < N; c++) t = t * 10 + valor(c); return t; }
+  function selectorNivel() {
+    const f = document.createElement('div'); f.className = 'ej-fila';
+    [[1, 'Hasta 9'], [2, 'Hasta 99'], [3, 'Hasta 999']].forEach(([n, t]) => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'btn';
+      b.textContent = t; b.setAttribute('aria-pressed', String(NIVEL === n));
+      if (NIVEL === n) b.classList.add('primary');
+      b.onclick = () => { NIVEL = n; if (reiniciar) reiniciar(); };
+      f.append(b);
+    });
+    return f;
+  }
   function ejArmar() {
-    caja.hidden = false;
-    objetivo = 1 + Math.floor(Math.random() * 9);   // del 1 al 9: el 0 no tiene nada que mover
-    soloUnidades(0); render();
+    reiniciar = ejArmar; caja.hidden = false;
+    objetivo = aleatorio();
+    setValor(0); render();
     caja.innerHTML = '';
     const h2 = document.createElement('h2'); h2.textContent = '2 · Armar el número';
     const t = document.createElement('p'); t.className = 'txt'; t.id = 'ejTxt';
@@ -281,23 +303,51 @@ h1{font-size:1.2rem;margin:0}
     const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
     otro.textContent = 'Otro número'; otro.onclick = ejArmar;
     fila.append(otro);
-    caja.append(h2, t, fila);
+    caja.append(h2, t, selectorNivel(), fila);
+  }
+  function ejDictado() {
+    reiniciar = ejDictado; caja.hidden = false;
+    objetivo = aleatorio();
+    setValor(0); render();
+    caja.innerHTML = '';
+    const h2 = document.createElement('h2'); h2.textContent = 'Dictado';
+    const t = document.createElement('p'); t.className = 'txt'; t.id = 'ejTxt';
+    t.textContent = 'Escuchá el número y armalo con las fichas.';
+    const fila = document.createElement('div'); fila.className = 'ej-fila';
+    const escuchar = document.createElement('button'); escuchar.type = 'button'; escuchar.className = 'btn';
+    escuchar.textContent = '🔊 Escuchar'; escuchar.onclick = () => decirNumero(objetivo);
+    const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
+    otro.textContent = 'Otro número'; otro.onclick = ejDictado;
+    fila.append(escuchar, otro);
+    caja.append(h2, t, selectorNivel(), fila);
+    setTimeout(() => { if (MODO === 'dictado' && objetivo !== null) decirNumero(objetivo); }, 300);
+  }
+  function decirNumero(n) {
+    try {
+      if (!('speechSynthesis' in window)) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(String(n)); u.lang = 'es-AR'; u.rate = .85;
+      speechSynthesis.speak(u);
+    } catch (e) {}
   }
   function ejLeer() {
-    caja.hidden = false;
-    objetivo = Math.floor(Math.random() * 10);
-    soloUnidades(objetivo); render();
+    reiniciar = ejLeer; caja.hidden = false;
+    objetivo = NIVEL === 1 ? Math.floor(Math.random() * 10) : aleatorio();
+    setValor(objetivo); render();
     caja.innerHTML = '';
     const h2 = document.createElement('h2'); h2.textContent = '3 · Leer el número';
     const t = document.createElement('p'); t.className = 'txt'; t.textContent = '¿Qué número muestra el soroban?';
+    // opciones: el correcto y otros cercanos (±1, ±10) o al azar dentro del mismo nivel
+    const [lo, hi] = NIVEL === 1 ? [0, 9] : rango();
     const ops = new Set([objetivo]);
-    while (ops.size < 5) ops.add(Math.floor(Math.random() * 10));
+    const cerca = shuffleArr([objetivo - 1, objetivo + 1, objetivo - 10, objetivo + 10].filter(x => x >= lo && x <= hi));
+    while (ops.size < 5) ops.add(cerca.length ? cerca.shift() : lo + Math.floor(Math.random() * (hi - lo + 1)));
     const grilla = document.createElement('div'); grilla.className = 'opc-num';
     shuffleArr([...ops]).forEach(n => {
       const bt = document.createElement('button'); bt.type = 'button'; bt.textContent = String(n);
       bt.onclick = () => {
         if (n === objetivo) { bt.classList.add('ok'); t.textContent = '¡Muy bien! Es el ' + n + '.'; }
-        else { bt.classList.add('bad'); t.textContent = 'No es ese. Mirá otra vez: las de abajo suman 1 cada una, la de arriba vale 5.'; }
+        else { bt.classList.add('bad'); t.textContent = 'No es ese. Mirá otra vez: cada ficha de abajo vale 1 y la de arriba vale 5, y cada columna de la izquierda vale diez veces más.'; }
       };
       grilla.append(bt);
     });
@@ -305,7 +355,7 @@ h1{font-size:1.2rem;margin:0}
     const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
     otro.textContent = 'Otro número'; otro.onclick = ejLeer;
     fila.append(otro);
-    caja.append(h2, t, grilla, fila);
+    caja.append(h2, t, selectorNivel(), grilla, fila);
   }
   function setU(cielo, tierra) { est.forEach(e => { e.cielo = 0; e.tierra = 0; }); est[N - 1].cielo = cielo; est[N - 1].tierra = tierra; }
   // Suma dentro de una columna (resultado de 0 a 9). Si hace falta, se usa la ficha de arriba (5) y se quita lo que sobra.
@@ -381,6 +431,7 @@ h1{font-size:1.2rem;margin:0}
     if (m === 'ficha') { paso = 0; ejFicha(); }
     if (m === 'armar') { ejArmar(); }
     if (m === 'leer') { ejLeer(); }
+    if (m === 'dictado') { ejDictado(); }
     if (m === 'sumar') { ejSumar(); }
     if (m === 'restar') { ejRestar(); }
   }
@@ -389,9 +440,12 @@ h1{font-size:1.2rem;margin:0}
   const _render = render;
   render = function () {
     _render();
-    if (MODO === 'armar' && objetivo !== null && valor(N - 1) === objetivo) {
+    if ((MODO === 'armar' || MODO === 'dictado') && objetivo !== null && totalDeColumnas() === objetivo) {
       const t = document.getElementById('ejTxt');
-      if (t && !t.dataset.ok) { t.dataset.ok = '1'; t.textContent = '¡Muy bien! Ese es el ' + objetivo + '.'; setTimeout(() => { if (MODO === 'armar') ejArmar(); }, 1200); }
+      if (t && !t.dataset.ok) {
+        t.dataset.ok = '1'; t.textContent = '¡Muy bien! Ese es el ' + objetivo + '.';
+        setTimeout(() => { if (MODO === 'armar') ejArmar(); else if (MODO === 'dictado') ejDictado(); }, 1200);
+      }
     }
   };
 
