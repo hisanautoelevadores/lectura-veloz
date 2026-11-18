@@ -91,6 +91,7 @@ h1{font-size:1.2rem;margin:0}
     <button type="button" data-ej="dictado" data-sec="ejercicios" aria-pressed="false">Dictado</button>
     <button type="button" data-ej="practica_suma" data-sec="ejercicios" aria-pressed="false">Practicar suma</button>
     <button type="button" data-ej="practica_resta" data-sec="ejercicios" aria-pressed="false">Practicar resta</button>
+    <button type="button" data-ej="practica_mixta" data-sec="ejercicios" aria-pressed="false">Suma y resta juntas</button>
   </div>
 
   <div class="fila-sob"><div class="marco"><div class="tablero" id="tab">
@@ -619,7 +620,7 @@ h1{font-size:1.2rem;margin:0}
       bt.textContent = t; bt.setAttribute('aria-pressed', String(PRAC_NIVEL === n));
       if (PRAC_NIVEL === n) bt.classList.add('primary');
       bt.onclick = () => {
-        const clave = 'pr_' + (PRAC_TIPO === 'suma' ? 's' : 'r') + n;
+        const clave = 'pr_' + (PRAC_TIPO === 'suma' ? 's' : (PRAC_TIPO === 'resta' ? 'r' : 'm')) + n;
         const ir = () => { PRAC_NIVEL = n; ejPractica(PRAC_TIPO); };
         if (n === 2 && !puedeEntrar(clave, 2)) { avisoBloqueo(clave, 2, ir, () => { PRAC_NIVEL = 1; ejPractica(PRAC_TIPO); }); return; }
         ir();
@@ -633,7 +634,8 @@ h1{font-size:1.2rem;margin:0}
     reiniciar = () => ejPractica(tipo);
     caja.hidden = false; caja.innerHTML = '';
     let a, r, op;
-    if (tipo === 'suma') {
+    const sub = tipo === 'mixta' ? (Math.random() < .5 ? 'suma' : 'resta') : tipo;
+    if (sub === 'suma') {
       a = 1 + Math.floor(Math.random() * 8);
       const lo = PRAC_NIVEL === 1 ? 1 : Math.max(1, 10 - a), hi = PRAC_NIVEL === 1 ? 9 - a : 9;
       const b = lo + Math.floor(Math.random() * (hi - lo + 1));
@@ -647,18 +649,18 @@ h1{font-size:1.2rem;margin:0}
       r = X - e; objetivo = r; op = X + ' − ' + e + ' = ?'; a = X;
       setValor(X);
     }
-    const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = tipo === 'suma' ? 'Practicar suma' : 'Practicar resta';
+    const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = tipo === 'suma' ? 'Practicar suma' : (tipo === 'resta' ? 'Practicar resta' : 'Suma y resta juntas');
     const opEl = document.createElement('p'); opEl.className = 'leccion-op'; opEl.id = 'ejTxt'; opEl.textContent = op;
     const obj = document.createElement('p'); obj.className = 'leccion-obj';
-    obj.textContent = tipo === 'suma' ? 'Objetivo: el ábaco ya muestra el primer número. Agregá el segundo y completá el resultado.' : 'Objetivo: el ábaco ya muestra el primer número. Quitá lo que corresponde y completá el resultado.';
+    obj.textContent = sub === 'suma' ? 'Objetivo: el ábaco ya muestra el primer número. Agregá el segundo y completá el resultado.' : 'Objetivo: el ábaco ya muestra el primer número. Quitá lo que corresponde y completá el resultado.';
     const fila = document.createElement('div'); fila.className = 'ej-fila';
     const ver = document.createElement('button'); ver.type = 'button'; ver.className = 'btn';
-    ver.textContent = 'Ver la explicación'; ver.onclick = () => { setSeccion('aprender'); setModo(tipo === 'suma' ? (PRAC_NIVEL === 2 ? 'llevada' : 'sumar') : (PRAC_NIVEL === 2 ? 'restar' : 'restar')); };
+    ver.textContent = 'Ver la explicación'; ver.onclick = () => { setSeccion('aprender'); setModo(sub === 'suma' ? (PRAC_NIVEL === 2 ? 'llevada' : 'sumar') : 'restar'); };
     const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
     otro.textContent = 'Otro ejercicio'; otro.onclick = () => ejPractica(tipo);
     fila.append(ver, otro);
     const niv = document.createElement('p'); niv.className = 'paso-num';
-    niv.textContent = 'Nivel ' + PRAC_NIVEL + (PRAC_NIVEL === 1 ? (tipo === 'suma' ? ': sin pasar de 10' : ': sin pedir decena') : (tipo === 'suma' ? ': pasando de 10' : ': pidiendo decena'));
+    niv.textContent = 'Nivel ' + PRAC_NIVEL + (PRAC_NIVEL === 1 ? (sub === 'suma' ? ': sin pasar de 10' : ': sin pedir decena') : (sub === 'suma' ? ': pasando de 10' : ': pidiendo decena'));
     caja.append(h2, obj, opEl, selectorPractica(), fila, niv);
     render();
   }
@@ -677,7 +679,7 @@ h1{font-size:1.2rem;margin:0}
   function shuffleArr(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
   // Bloqueo por banda de edad, con opción a seguir igual (se recuerda por perfil en este dispositivo).
   const BANDAS = { 1: '3 a 5 años', 2: '6 a 7 años', 3: '8 a 10 años' };
-  const BANDA_MODO = { ficha: 1, sumar: 1, restar: 1, llevada: 2, multi: 2, armar: 1, leer: 1, dictado: 1, practica_suma: 1, practica_resta: 1 };
+  const BANDA_MODO = { ficha: 1, sumar: 1, restar: 1, llevada: 2, multi: 2, armar: 1, leer: 1, dictado: 1, practica_suma: 1, practica_resta: 1, practica_mixta: 1 };
   function bandaPerfil() {
     try {
       const id = localStorage.getItem('lv2-perfil-activo');
@@ -752,6 +754,7 @@ h1{font-size:1.2rem;margin:0}
     if (m === 'multi') { ejMulti(); }
     if (m === 'practica_suma') { ejPractica('suma'); }
     if (m === 'practica_resta') { ejPractica('resta'); }
+    if (m === 'practica_mixta') { ejPractica('mixta'); }
   }
   document.querySelectorAll('.menu-ej button').forEach(b => b.addEventListener('click', () => setModo(b.dataset.ej)));
   // en "armar" se revisa cada vez que se mueve una ficha
@@ -763,12 +766,12 @@ h1{font-size:1.2rem;margin:0}
       document.getElementById('num').textContent = 'Resultado: ' + prod;
       document.getElementById('pista').textContent = 'Factores: ' + valor(0) + ' y ' + valor(1) + '. Producto: ' + prod + '.';
     }
-    if ((MODO === 'armar' || MODO === 'dictado' || MODO === 'practica_suma' || MODO === 'practica_resta') && objetivo !== null && totalDeColumnas() === objetivo) {
+    if ((MODO === 'armar' || MODO === 'dictado' || MODO === 'practica_suma' || MODO === 'practica_resta' || MODO === 'practica_mixta') && objetivo !== null && totalDeColumnas() === objetivo) {
       const t = document.getElementById('ejTxt');
       if (t && !t.dataset.ok) {
         t.dataset.ok = '1'; t.textContent = '¡Muy bien! Ese es el ' + objetivo + '.';
         const modoAcierto = MODO;   // el reinicio solo vuelve al mismo ejercicio, aunque el alumno cambie de menú antes
-        setTimeout(() => { if (MODO === modoAcierto) { if (modoAcierto === 'armar') ejArmar(); else if (modoAcierto === 'dictado') ejDictado(); else ejPractica(modoAcierto === 'practica_suma' ? 'suma' : 'resta'); } }, 1200);
+        setTimeout(() => { if (MODO === modoAcierto) { if (modoAcierto === 'armar') ejArmar(); else if (modoAcierto === 'dictado') ejDictado(); else ejPractica(modoAcierto === 'practica_suma' ? 'suma' : (modoAcierto === 'practica_resta' ? 'resta' : 'mixta')); } }, 1200);
       }
     }
   };
