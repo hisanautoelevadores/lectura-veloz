@@ -41,7 +41,7 @@
 - Soroban, hecho: en las prácticas, si el ábaco no muestra el número esperado y el alumno deja de tocar 2 segundos, aparece una pista: "Ahora el ábaco muestra N. Revisá las fichas que moviste."
 - Soroban, hecho: en la resta, primero se bajan las tierras y después se sube el cielo, con el índice (orden de la técnica básica, 9 → 8 → 3).
 - Soroban, hecho: nota aparte "Variante opcional (abriendo los dedos)" en la lección de resta, aclarando que es una variante de docentes y que la técnica base usa el índice para los dos movimientos.
-- Soroban, hecho: lecciones de suma y de resta de dos cifras (Aprender), de derecha a izquierda: primero las unidades y después las decenas, con las mismas reglas de una cifra. Verificadas con las 7.335 operaciones posibles y en el navegador.
+- Soroban, hecho: lecciones de suma y de resta de dos cifras (Aprender), de izquierda a derecha: primero las decenas y después las unidades, con las mismas reglas de una cifra. El orden sigue el documento de sumas y restas de varias cifras; la fuente citada (material del MEXT) no pudo abrirse desde la sesión, así que falta verificarla. Comprobadas las 7.335 operaciones y en el navegador.
 - Soroban, pendiente: práctica de dos cifras en Ejercicios (con niveles y candados), y después dos cifras con números de tres cifras, y multiplicación de varias cifras (orden todavía sin confirmar).
 - Diferencia a recordar: en kana los kanji y el katakana están bloqueados sin opción (la escritura lo exige); en soroban el bloqueo tiene opción a seguir (es avance).
 - Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.

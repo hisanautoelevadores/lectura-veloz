@@ -681,7 +681,8 @@ h1{font-size:1.2rem;margin:0}
     let cur = X;
     const P = [{ t: 'Primero ponemos el ' + X + ' en el ábaco.', f: () => setValor(X) }];
     const digitos = [b % 10, Math.floor(b / 10)];
-    for (let pos = 0; pos < 2; pos++) {
+    // de izquierda a derecha: primero la columna de mayor valor (decenas) y después las unidades
+    for (let pos = 1; pos >= 0; pos--) {
       const d = digitos[pos];
       if (d === 0) continue;
       const f = Math.pow(10, pos);
@@ -705,7 +706,7 @@ h1{font-size:1.2rem;margin:0}
   function ejDosCifras(op) {
     seqExtra = null; seqNota = '';
     seqTitulo = op === '+' ? 'Suma de dos cifras' : 'Resta de dos cifras';
-    seqObjetivo = 'hacer la cuenta de derecha a izquierda: primero las unidades y después las decenas. Cada columna se hace como una cifra.';
+    seqObjetivo = 'hacer la cuenta de izquierda a derecha: primero las decenas y después las unidades. Cada columna se hace como una cifra.';
     seqNuevo = () => {
       let X, b;
       if (op === '+') { X = 10 + Math.floor(Math.random() * 80); const hi = 99 - X; b = hi >= 10 ? 10 + Math.floor(Math.random() * (hi - 9)) : 10; if (X + b > 99) { X = 10; } }
