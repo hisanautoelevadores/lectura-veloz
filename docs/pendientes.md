@@ -35,7 +35,8 @@
 - Soroban, hecho: formato de las lecciones (suma, resta, suma con llevada, multiplicar): título grande con la operación, objetivo, y pasos numerados debajo del ábaco; la ayuda de índice y pulgar queda plegada al final. Ábaco a todo el ancho en teléfono.
 - Soroban, hecho: el mismo formato (título, objetivo, paso o consigna) en "Qué vale cada ficha" y en Armar, Leer y Dictado.
 - Soroban, corregido: al acertar en Armar o Dictado, el reinicio automático ya no cambia de ejercicio si el alumno cambió de menú antes.
-- Soroban, pendiente: ejercicios de práctica de suma, de resta, y mixtos de suma y resta, con niveles que suben por etapas.
+- Soroban, hecho: práctica de suma y de resta en la sección Ejercicios, con nivel 1 (suma sin pasar de 10; resta sin pedir decena) y nivel 2 (suma pasando de 10; resta pidiendo decena). El nivel 2 está bloqueado para 3–5 años con la opción a seguir igual.
+- Soroban, pendiente: práctica mixta (suma y resta juntas) y niveles más altos (varias cifras), que suben por etapas.
 - Diferencia a recordar: en kana los kanji y el katakana están bloqueados sin opción (la escritura lo exige); en soroban el bloqueo tiene opción a seguir (es avance).
 - Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.
 - Soroban: revisar con material japonés el orden de los movimientos (quitar primero o llevar primero); por ahora se usa quitar primero.
