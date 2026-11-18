@@ -418,19 +418,60 @@ h1{font-size:1.2rem;margin:0}
   // Suma con llevada: paso 1 = sin pasar de 10 (1 + 3); paso 2 = suma de 5 o más, con el método de complemento:
   // para sumar b se suma 10 y se quita lo que sobra (10 - b). Ejemplo: 6 + 6 = 6 + 10 - 4.
   let SUMA_PASO = 1, seqExtra = null;
+  // Planifica la suma de un dígito d (1-9) sobre una varilla con valor V (0-9).
+  // Reglas: D directa · C complemento de 5 · T complemento de 10 simple · M mixto (10 y 5).
+  // Orden: primero se quita lo que haga falta en esta varilla, después se lleva 1 a la izquierda.
+  function planSumar(V, d) {
+    const U = V >= 5 ? 5 : 0, L = V - U, r = V + d, S = [];
+    // D · directa: alcanza sin complementos
+    if ((d <= 4 && 4 - L >= d) || (d === 5 && U === 0) || (d >= 6 && U === 0 && 4 - L >= d - 5)) {
+      let n = V;
+      if (d >= 5 && U === 0) { n += 5; S.push({ t: 'Bajamos el cielo, que vale 5: ahora es ' + n + '.', n }); }
+      const restan = d >= 5 ? d - 5 : d;
+      for (let k = 1; k <= restan; k++) { n++; S.push({ t: 'Con el pulgar subimos una de tierra: ahora es ' + n + '.', n }); }
+      return { regla: 'D', pasos: S };
+    }
+    // C · complemento de 5: se activa el cielo y se quitan las de tierra que sobran
+    if (d <= 4 && U === 0 && L + d >= 5) {
+      const n5 = V + 5;
+      S.push({ t: 'Bajamos el cielo, que vale 5: ahora es ' + n5 + '.', n: n5 });
+      for (let k = 1; k <= 5 - d; k++) S.push({ t: 'Quitamos una de tierra: ahora es ' + (n5 - k) + '.', n: n5 - k });
+      return { regla: 'C', pasos: S };
+    }
+    const c = 10 - d;
+    const removible = (c <= 4 && L >= c) || (c === 5 && U === 5) || (c >= 6 && U === 5 && L >= c - 5);
+    // T · complemento de 10 simple: se quita c = 10 - d en esta varilla y se lleva 1
+    if (r >= 10 && removible) {
+      let n = V;
+      if (c === 5) { n = V - 5; S.push({ t: 'Subimos el cielo, que quita 5: ahora es ' + n + '.', n }); }
+      else if (c <= 4) { for (let k = 1; k <= c; k++) { n--; S.push({ t: 'Quitamos una de tierra con el pulgar: ahora es ' + n + '.', n }); } }
+      else { n = V - 5; S.push({ t: 'Subimos el cielo, que quita 5: ahora es ' + n + '.', n }); for (let k = 1; k <= c - 5; k++) { n--; S.push({ t: 'Quitamos una de tierra con el pulgar: ahora es ' + n + '.', n }); } }
+      S.push({ t: 'Llevamos 1 a las decenas: ahora es ' + (n + 10) + '.', n: n + 10 });
+      return { regla: 'T', pasos: S };
+    }
+    // M · mixto: d de 6 a 9, con el cielo activo y pocas de tierra
+    if (r >= 10 && d >= 6 && U === 5 && L < 10 - d) {
+      let n = V - 5;
+      S.push({ t: 'Subimos el cielo, que quita 5: ahora es ' + n + '.', n });
+      for (let k = 1; k <= d - 5; k++) { n++; S.push({ t: 'Con el pulgar bajamos una de tierra: ahora es ' + n + '.', n }); }
+      S.push({ t: 'Llevamos 1 a las decenas: ahora es ' + (n + 10) + '.', n: n + 10 });
+      return { regla: 'M', pasos: S };
+    }
+    throw new Error('sin regla para V=' + V + ' d=' + d);
+  }
+
+  // Suma de un dígito con llevada: se sigue la regla de la tabla (T o M) con los movimientos reales del ábaco.
   function pasosLlevada(a, b) {
     const r = a + b;
     if (r <= 9) return pasosSumar(a, b);
-    const c = 10 - b, P = [];
-    P.push({ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => setValor(a) });
-    P.push({ t: 'Para sumar ' + b + ' hacemos dos movimientos a la vez: sumamos 10 y quitamos ' + c + '. Con el pulgar subimos una ficha de las decenas: ahora hay ' + (a + 10) + '.', f: () => setValor(a + 10) });
-    P.push({ t: 'Ahora quitamos ' + c + ' de las unidades: ' + (a + 10) + ' menos ' + c + ' es ' + r + '.', f: () => setValor(r) });
+    const P = [{ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => setValor(a) }];
+    planSumar(a, b).pasos.forEach(p => P.push({ t: p.t, f: () => setValor(p.n) }));
     P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => setValor(r) });
     return P;
   }
   function selectorPaso() {
     const f = document.createElement('div'); f.className = 'ej-fila';
-    [[1, 'Sin pasar de 10'], [2, 'Con 10 menos']].forEach(([n, t]) => {
+    [[1, 'Sin pasar de 10'], [2, 'Con llevada']].forEach(([n, t]) => {
       const bt = document.createElement('button'); bt.type = 'button'; bt.className = 'btn';
       bt.textContent = t; bt.setAttribute('aria-pressed', String(SUMA_PASO === n));
       if (SUMA_PASO === n) bt.classList.add('primary');

@@ -26,8 +26,10 @@
 
 ## Código por hacer
 - Soroban, hecho: armar y leer con números de hasta 99 y 999 (selector de nivel), y ejercicio Dictado (la app dice el número y el alumno lo arma).
-- Soroban, hecho: 3) suma en dos pasos: sin pasar de 10 (1 + 3, 2 + 5) y con 10 menos (método de complemento: para sumar 9, 8 o 7 se suma 10 y se quita 1, 2 o 3; ej. 6 + 6 = 6 + 10 − 4). Pendiente: revisar con el docente de soroban la forma de enseñarlo.
-- Soroban, pendiente: resta con el mismo método (para sacar 8 se resta 10 y se suma 2); 4) multiplicación sencilla.
+- Soroban, hecho: 3) suma con llevada en dos pasos. Las reglas siguen la tabla de 90 casos de suma del documento de verificación (D, C, T, M), con el orden: primero se quita lo que haga falta en la varilla, después se lleva 1 a las decenas. Probado contra las 90 celdas.
+- Soroban, pendiente: resta con la tabla de 90 casos de resta del mismo documento (D, C, T, M inversos); 4) multiplicación sencilla.
+- Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.
+- Soroban: revisar con material japonés el orden de los movimientos (quitar primero o llevar primero); por ahora se usa quitar primero.
 - Lectura: control de pausa entre palabras en destello, regulable aparte.
 - Lectura de nivel avanzado: doble palabra.
 
