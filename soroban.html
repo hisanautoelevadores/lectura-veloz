@@ -419,9 +419,10 @@ h1{font-size:1.2rem;margin:0}
     const U = V >= 5 ? 5 : 0, L = V - U, S = [];
     // D · directa: se quitan las cuentas que forman el dígito
     if ((d <= 4 && L >= d) || (d === 5 && U === 5) || (d >= 6 && U === 5 && L >= d - 5)) {
-      if (d >= 5 && U === 5) S.push({ delta: -5, t: 'Con el índice subimos el cielo, que vale 5.' });
+      // primero las de tierra (con el índice), después el cielo (con el índice)
       const restan = d >= 5 ? d - 5 : d;
       for (let k = 1; k <= restan; k++) S.push({ delta: -1, t: 'Con el índice bajamos una de tierra (la alejamos de la barra).' });
+      if (d >= 5 && U === 5) S.push({ delta: -5, t: 'Con el índice subimos el cielo, que vale 5.' });
       return { regla: 'D', pasos: S };
     }
     // C · complemento de 5 inverso: se quita el cielo y se agregan las de tierra que faltan
