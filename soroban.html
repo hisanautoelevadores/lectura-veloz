@@ -35,9 +35,12 @@ h1{font-size:1.2rem;margin:0}
 .menu-ej{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .menu-ej button{min-height:48px;border-radius:12px;border:2px solid #C8B99E;background:#FAF6EE;color:#3B2A1A;font:inherit;font-weight:600;cursor:pointer}
 .menu-ej button[aria-pressed="true"]{background:#274A8C;border-color:#274A8C;color:#fff}
-.seg-sec{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.seg-sec button{min-height:44px;border-radius:12px;border:2px solid #C8B99E;background:#FAF6EE;color:#3B2A1A;font:inherit;font-weight:700;cursor:pointer}
-.seg-sec button[aria-pressed="true"]{background:#B0521A;border-color:#B0521A;color:#fff}
+.switch-sec{display:flex;align-items:center;justify-content:center;gap:12px;color:#3B2A1A;font-weight:700;font-size:1rem}
+.sw-lbl{cursor:pointer;opacity:.45;user-select:none}
+.sw-lbl.on{opacity:1}
+.sw-track{position:relative;width:64px;height:32px;border-radius:16px;border:2px solid #3B2A1A;background:#FAF6EE;padding:0;cursor:pointer;flex:none}
+.sw-knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#3B2A1A;transition:left .2s}
+.sw-track[aria-checked="true"] .sw-knob{left:35px}
 .menu-ej button[hidden]{display:none}
 .aviso-bloq{font-size:1rem;line-height:1.45}
 .leccion-titulo{font-size:1.35rem;margin:0;color:#3B2A1A}
@@ -71,9 +74,10 @@ h1{font-size:1.2rem;margin:0}
     <span></span>
   </div>
 
-  <div class="seg-sec" role="group" aria-label="Sección">
-    <button type="button" data-sec="aprender" aria-pressed="true">Aprender</button>
-    <button type="button" data-sec="ejercicios" aria-pressed="false">Ejercicios</button>
+  <div class="switch-sec">
+    <span class="sw-lbl on" data-sec="aprender">Aprender</span>
+    <button type="button" class="sw-track" id="swSec" role="switch" aria-checked="false" aria-label="Elegir entre aprender y ejercicios"><span class="sw-knob"></span></button>
+    <span class="sw-lbl" data-sec="ejercicios">Ejercicios</span>
   </div>
   <div class="menu-ej" role="group" aria-label="Ejercicios">
     <button type="button" data-ej="libre" data-sec="ambas" aria-pressed="true">Explorar</button>
@@ -660,10 +664,12 @@ h1{font-size:1.2rem;margin:0}
   let SECCION = 'aprender';
   function setSeccion(sec) {
     SECCION = sec;
-    document.querySelectorAll('.seg-sec button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.sec === sec)));
+    document.getElementById('swSec').setAttribute('aria-checked', String(sec === 'ejercicios'));
+    document.querySelectorAll('.sw-lbl').forEach(l => l.classList.toggle('on', l.dataset.sec === sec));
     document.querySelectorAll('.menu-ej button[data-sec]').forEach(b => { b.hidden = !(b.dataset.sec === 'ambas' || b.dataset.sec === sec); });
   }
-  document.querySelectorAll('.seg-sec button').forEach(b => b.addEventListener('click', () => setSeccion(b.dataset.sec)));
+  document.getElementById('swSec').addEventListener('click', () => setSeccion(SECCION === 'aprender' ? 'ejercicios' : 'aprender'));
+  document.querySelectorAll('.sw-lbl').forEach(l => l.addEventListener('click', () => setSeccion(l.dataset.sec)));
 
   function setModo(m) {
     const banda = BANDA_MODO[m];
