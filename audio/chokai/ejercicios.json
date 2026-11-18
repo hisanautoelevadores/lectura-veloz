@@ -631,6 +631,156 @@
         "EP05_4.mp3"
       ],
       "audio": "audio/chokai/EP05.mp3"
+    },
+    {
+      "id": "EP06",
+      "tipo": "ポイント理解",
+      "tema": "Clima",
+      "pregunta": "¿Qué tiempo hace mañana?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。あしたの てんきは どうですか。"
+        ],
+        [
+          "Mujer",
+          "あした、あめが ふりますか。"
+        ],
+        [
+          "Hombre",
+          "いいえ、はれます。でも、かぜが つよいです。"
+        ],
+        [
+          "Narrador",
+          "あしたの てんきは どうですか。"
+        ]
+      ],
+      "opciones": [
+        "soleado y con viento",
+        "lluvioso",
+        "nublado",
+        "nevado"
+      ],
+      "respuesta": 0,
+      "explicacion": "Mañana estará soleado, pero con viento fuerte (はれます, かぜが つよい).",
+      "audio": "audio/chokai/EP06.mp3",
+      "titulo": "Clima",
+      "clips": [
+        "EP06_1.mp3",
+        "EP06_2.mp3",
+        "EP06_3.mp3",
+        "EP06_4.mp3"
+      ]
+    },
+    {
+      "id": "EP07",
+      "tipo": "課題理解",
+      "tema": "Una cosa perdida",
+      "pregunta": "¿Qué busca el hombre?",
+      "guion": [
+        [
+          "Narrador",
+          "おとこの ひとが はなして います。おとこの ひとは なにを さがして いますか。"
+        ],
+        [
+          "Mujer",
+          "どうしましたか。"
+        ],
+        [
+          "Hombre",
+          "かぎを なくしました。きいろい かぎです。"
+        ],
+        [
+          "Mujer",
+          "いっしょに さがしましょう。"
+        ],
+        [
+          "Narrador",
+          "おとこの ひとは なにを さがして いますか。"
+        ]
+      ],
+      "opciones": [
+        "una llave",
+        "un libro",
+        "un paraguas",
+        "un teléfono"
+      ],
+      "respuesta": 0,
+      "explicacion": "Busca una llave amarilla que perdió (かぎを なくしました).",
+      "audio": "audio/chokai/EP07.mp3",
+      "titulo": "Una cosa perdida",
+      "clips": [
+        "EP07_1.mp3",
+        "EP07_2.mp3",
+        "EP07_3.mp3",
+        "EP07_4.mp3",
+        "EP07_5.mp3"
+      ]
+    },
+    {
+      "id": "EP08",
+      "tipo": "発話表現",
+      "tema": "Pedir ayuda",
+      "pregunta": "¿Qué debe decir la persona?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが えきで こまって います。なんと いいますか。"
+        ]
+      ],
+      "opciones": [
+        "すみません、みちを おしえて ください。",
+        "さようなら。",
+        "おやすみなさい。",
+        "いただきます。"
+      ],
+      "respuesta": 0,
+      "explicacion": "Para pedir una indicación en la calle se dice すみません、みちを おしえて ください.",
+      "audio": "audio/chokai/EP08.mp3",
+      "titulo": "Pedir ayuda",
+      "clips": [
+        "EP08_1.mp3"
+      ]
+    },
+    {
+      "id": "EP09",
+      "tipo": "ポイント理解",
+      "tema": "Cumpleaños",
+      "pregunta": "¿Cuántos años cumple?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが はなして います。なんさいに なりましたか。"
+        ],
+        [
+          "Mujer",
+          "きょうは たんじょうびですね。おめでとう。"
+        ],
+        [
+          "Hombre",
+          "ありがとう。きょうで はっさいに なりました。"
+        ],
+        [
+          "Narrador",
+          "なんさいに なりましたか。"
+        ]
+      ],
+      "opciones": [
+        "ocho años",
+        "siete años",
+        "nueve años",
+        "diez años"
+      ],
+      "respuesta": 0,
+      "explicacion": "Cumple ocho años (はっさい).",
+      "audio": "audio/chokai/EP09.mp3",
+      "titulo": "Cumpleaños",
+      "clips": [
+        "EP09_1.mp3",
+        "EP09_2.mp3",
+        "EP09_3.mp3",
+        "EP09_4.mp3"
+      ]
     }
   ]
 }
