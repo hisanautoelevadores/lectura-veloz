@@ -67,6 +67,7 @@ h1{font-size:1.2rem;margin:0}
     <button type="button" data-ej="armar" aria-pressed="false">2 · Armar el número</button>
     <button type="button" data-ej="dictado" aria-pressed="false">Dictado</button>
     <button type="button" data-ej="leer" aria-pressed="false">3 · Leer el número</button>
+    <button type="button" data-ej="llevada" aria-pressed="false">3 · Suma con llevada</button>
     <button type="button" data-ej="sumar" aria-pressed="false">4 · Cómo sumar</button>
     <button type="button" data-ej="restar" aria-pressed="false">5 · Cómo restar</button>
   </div>
@@ -408,16 +409,55 @@ h1{font-size:1.2rem;margin:0}
     sig.onclick = () => { if (ultimo) { seqNuevo(); return; } seqPaso++; seq[seqPaso].f(); render(); mostrarSeq(); };
     fila.append(ant, sig);
     const cont = document.createElement('p'); cont.className = 'contador'; cont.textContent = 'Paso ' + (seqPaso + 1) + ' de ' + seq.length;
-    caja.append(h2, leyenda, t, fila, cont);
+    caja.append(h2);
+    if (seqExtra) caja.append(seqExtra());
+    caja.append(leyenda, t, fila, cont);
     document.getElementById('tab').classList.add('tab-etq');
     seq[seqPaso].f(); render();
   }
+  // Suma con llevada: paso 1 = sin pasar de 10 (1 + 3); paso 2 = pasando de 10 (6 + 6), con el 10 completado y el 1 a las decenas.
+  let SUMA_PASO = 1, seqExtra = null;
+  function pasosLlevada(a, b) {
+    const r = a + b;
+    if (r <= 9) return pasosSumar(a, b);
+    const r2 = b - (10 - a), P = [];
+    P.push({ t: 'Empezamos con ' + a + ' en la columna de las unidades.', f: () => setValor(a) });
+    for (let k = a + 1; k <= 9; k++) P.push({ t: 'Sumamos de a uno con el pulgar: ahora son ' + k + '.', f: () => setValor(k) });
+    P.push({ t: 'Llegamos a 10 y no entra más en las unidades. Lo pasamos a la columna de las decenas: sale 1, y en las unidades queda 0.', f: () => setValor(10) });
+    for (let k = 1; k <= r2; k++) P.push({ t: 'Todavía faltan sumar ' + (r2 - k + 1) + '. Con el pulgar: ahora es ' + (10 + k) + '.', f: () => setValor(10 + k) });
+    P.push({ t: 'Listo: ' + a + ' más ' + b + ' es ' + r + '.', f: () => setValor(r) });
+    return P;
+  }
+  function selectorPaso() {
+    const f = document.createElement('div'); f.className = 'ej-fila';
+    [[1, 'Sin pasar de 10'], [2, 'Pasando de 10']].forEach(([n, t]) => {
+      const bt = document.createElement('button'); bt.type = 'button'; bt.className = 'btn';
+      bt.textContent = t; bt.setAttribute('aria-pressed', String(SUMA_PASO === n));
+      if (SUMA_PASO === n) bt.classList.add('primary');
+      bt.onclick = () => { SUMA_PASO = n; ejLlevada(); };
+      f.append(bt);
+    });
+    return f;
+  }
+  function ejLlevada() {
+    seqTitulo = '3 · Suma con llevada';
+    seqExtra = selectorPaso;
+    seqNuevo = () => {
+      let a, b;
+      if (SUMA_PASO === 1) { a = 1 + Math.floor(Math.random() * 8); b = 1 + Math.floor(Math.random() * (9 - a)); }
+      else { a = 2 + Math.floor(Math.random() * 8); const lo = 10 - a; b = lo + Math.floor(Math.random() * (9 - lo + 1)); }
+      seq = pasosLlevada(a, b); seqPaso = 0; mostrarSeq();
+    };
+    seqNuevo();
+  }
   function ejSumar() {
+    seqExtra = null;
     seqTitulo = '4 · Cómo sumar';
     seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 8); const b = 1 + Math.floor(Math.random() * (9 - a)); seq = pasosSumar(a, b); seqPaso = 0; mostrarSeq(); };
     seqNuevo();
   }
   function ejRestar() {
+    seqExtra = null;
     seqTitulo = '5 · Cómo restar';
     seqNuevo = () => { const a = 2 + Math.floor(Math.random() * 8); const b = 1 + Math.floor(Math.random() * a); seq = pasosRestar(a, b); seqPaso = 0; mostrarSeq(); };
     seqNuevo();
@@ -432,6 +472,7 @@ h1{font-size:1.2rem;margin:0}
     if (m === 'armar') { ejArmar(); }
     if (m === 'leer') { ejLeer(); }
     if (m === 'dictado') { ejDictado(); }
+    if (m === 'llevada') { ejLlevada(); }
     if (m === 'sumar') { ejSumar(); }
     if (m === 'restar') { ejRestar(); }
   }
