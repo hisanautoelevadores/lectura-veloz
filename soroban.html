@@ -271,10 +271,14 @@ h1{font-size:1.2rem;margin:0}
   function ejFicha() {
     caja.hidden = false;
     caja.innerHTML = '';
-    const h2 = document.createElement('h2'); h2.textContent = '1 · Qué vale cada ficha';
-    const leyenda = document.createElement('div'); leyenda.className = 'leyenda';
-    leyenda.innerHTML = '<div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube las de abajo: cada una vale 1.</div>';
-    const t = document.createElement('p'); t.className = 'txt'; t.textContent = PASOS_FICHA[paso].t;
+    const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = '1 · Qué vale cada ficha';
+    const op = document.createElement('p'); op.className = 'leccion-op'; op.textContent = 'Columna de las unidades';
+    const obj = document.createElement('p'); obj.className = 'leccion-obj'; obj.textContent = 'Objetivo: saber cuánto vale cada ficha. La de arriba vale 5 y cada una de abajo vale 1.';
+    const leyenda = document.createElement('details'); leyenda.className = 'ayuda-mov';
+    leyenda.innerHTML = '<summary>Cómo se mueven las fichas</summary><div class="leyenda"><div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube o baja las de abajo: cada una vale 1.</div></div>';
+    const t = document.createElement('p'); t.className = 'paso-txt';
+    const numPaso = document.createElement('span'); numPaso.className = 'paso-num'; numPaso.textContent = 'Paso ' + (paso + 1) + ' de ' + PASOS_FICHA.length;
+    t.append(numPaso, document.createTextNode(PASOS_FICHA[paso].t));
     const fila = document.createElement('div'); fila.className = 'ej-fila';
     const ant = document.createElement('button'); ant.type = 'button'; ant.className = 'btn';
     ant.textContent = '← Anterior'; ant.disabled = paso === 0;
@@ -286,7 +290,7 @@ h1{font-size:1.2rem;margin:0}
     fila.append(ant, sig);
     const cont = document.createElement('p'); cont.className = 'contador';
     cont.textContent = 'Paso ' + (paso + 1) + ' de ' + PASOS_FICHA.length;
-    caja.append(h2, leyenda, t, fila, cont);
+    caja.append(h2, op, obj, t, fila, cont, leyenda);
     document.getElementById('tab').classList.add('tab-etq');
     PASOS_FICHA[paso].f(); render();
   }
@@ -320,30 +324,32 @@ h1{font-size:1.2rem;margin:0}
     objetivo = aleatorio();
     setValor(0); render();
     caja.innerHTML = '';
-    const h2 = document.createElement('h2'); h2.textContent = '2 · Armar el número';
-    const t = document.createElement('p'); t.className = 'txt'; t.id = 'ejTxt';
-    t.textContent = 'Mostrame el ' + objetivo + ' con las fichas.';
+    const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = '2 · Armar el número';
+    const obj = document.createElement('p'); obj.className = 'leccion-obj'; obj.textContent = 'Objetivo: armar el número que se pide. Subí y bajá las fichas hasta que el ábaco lo muestre.';
+    const t = document.createElement('p'); t.className = 'leccion-op'; t.id = 'ejTxt';
+    t.textContent = 'Armá el ' + objetivo;
     const fila = document.createElement('div'); fila.className = 'ej-fila';
     const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
     otro.textContent = 'Otro número'; otro.onclick = ejArmar;
     fila.append(otro);
-    caja.append(h2, t, selectorNivel(), fila);
+    caja.append(h2, obj, t, selectorNivel(), fila);
   }
   function ejDictado() {
     reiniciar = ejDictado; caja.hidden = false;
     objetivo = aleatorio();
     setValor(0); render();
     caja.innerHTML = '';
-    const h2 = document.createElement('h2'); h2.textContent = 'Dictado';
-    const t = document.createElement('p'); t.className = 'txt'; t.id = 'ejTxt';
-    t.textContent = 'Escuchá el número y armalo con las fichas.';
+    const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = 'Dictado';
+    const obj = document.createElement('p'); obj.className = 'leccion-obj'; obj.textContent = 'Objetivo: escuchar el número que se dice y armarlo con las fichas. Se puede volver a escuchar con 🔊.';
+    const t = document.createElement('p'); t.className = 'leccion-op'; t.id = 'ejTxt';
+    t.textContent = 'Escuchá y armá';
     const fila = document.createElement('div'); fila.className = 'ej-fila';
     const escuchar = document.createElement('button'); escuchar.type = 'button'; escuchar.className = 'btn';
     escuchar.textContent = '🔊 Escuchar'; escuchar.onclick = () => decirNumero(objetivo);
     const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
     otro.textContent = 'Otro número'; otro.onclick = ejDictado;
     fila.append(escuchar, otro);
-    caja.append(h2, t, selectorNivel(), fila);
+    caja.append(h2, obj, t, selectorNivel(), fila);
     setTimeout(() => { if (MODO === 'dictado' && objetivo !== null) decirNumero(objetivo); }, 300);
   }
   function decirNumero(n) {
@@ -359,8 +365,9 @@ h1{font-size:1.2rem;margin:0}
     objetivo = NIVEL === 1 ? Math.floor(Math.random() * 10) : aleatorio();
     setValor(objetivo); render();
     caja.innerHTML = '';
-    const h2 = document.createElement('h2'); h2.textContent = '3 · Leer el número';
-    const t = document.createElement('p'); t.className = 'txt'; t.textContent = '¿Qué número muestra el soroban?';
+    const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = '3 · Leer el número';
+    const obj = document.createElement('p'); obj.className = 'leccion-obj'; obj.textContent = 'Objetivo: mirar el ábaco y decir qué número muestra. Cada ficha de abajo vale 1, la de arriba vale 5, y cada columna a la izquierda vale diez veces más.';
+    const t = document.createElement('p'); t.className = 'leccion-op'; t.textContent = '¿Qué número es?';
     // opciones: el correcto y otros cercanos (±1, ±10) o al azar dentro del mismo nivel
     const [lo, hi] = NIVEL === 1 ? [0, 9] : rango();
     const ops = new Set([objetivo]);
@@ -379,7 +386,7 @@ h1{font-size:1.2rem;margin:0}
     const otro = document.createElement('button'); otro.type = 'button'; otro.className = 'btn';
     otro.textContent = 'Otro número'; otro.onclick = ejLeer;
     fila.append(otro);
-    caja.append(h2, t, selectorNivel(), grilla, fila);
+    caja.append(h2, obj, t, selectorNivel(), grilla, fila);
   }
   function setU(cielo, tierra) { est.forEach(e => { e.cielo = 0; e.tierra = 0; }); est[N - 1].cielo = cielo; est[N - 1].tierra = tierra; }
   // Suma dentro de una columna (resultado de 0 a 9). Si hace falta, se usa la ficha de arriba (5) y se quita lo que sobra.
@@ -702,7 +709,8 @@ h1{font-size:1.2rem;margin:0}
       const t = document.getElementById('ejTxt');
       if (t && !t.dataset.ok) {
         t.dataset.ok = '1'; t.textContent = '¡Muy bien! Ese es el ' + objetivo + '.';
-        setTimeout(() => { if (MODO === 'armar') ejArmar(); else if (MODO === 'dictado') ejDictado(); }, 1200);
+        const modoAcierto = MODO;   // el reinicio solo vuelve al mismo ejercicio, aunque el alumno cambie de menú antes
+        setTimeout(() => { if (MODO === modoAcierto) { if (modoAcierto === 'armar') ejArmar(); else ejDictado(); } }, 1200);
       }
     }
   };

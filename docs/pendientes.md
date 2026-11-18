@@ -33,7 +33,8 @@
 - Soroban, pendiente: multiplicar varias cifras; en niveles altos, pasar a dejar solo el multiplicando en el ábaco (片落とし). El orden de cálculo para varias cifras sigue sin confirmar.
 - Soroban, hecho: separación en Aprender (explicaciones paso a paso) y Ejercicios (armar, leer, dictado). Los niveles de 6–7 y 8–10 años aparecen con candado en 3–5 o 6–7; el aviso ofrece volver o seguir igual (con confirmación), y la elección queda guardada por perfil en este dispositivo.
 - Soroban, hecho: formato de las lecciones (suma, resta, suma con llevada, multiplicar): título grande con la operación, objetivo, y pasos numerados debajo del ábaco; la ayuda de índice y pulgar queda plegada al final. Ábaco a todo el ancho en teléfono.
-- Soroban, pendiente: aplicar el mismo formato a la lección de "Qué vale cada ficha" (todavía tiene el formato anterior), y a los ejercicios de Armar, Leer y Dictado.
+- Soroban, hecho: el mismo formato (título, objetivo, paso o consigna) en "Qué vale cada ficha" y en Armar, Leer y Dictado.
+- Soroban, corregido: al acertar en Armar o Dictado, el reinicio automático ya no cambia de ejercicio si el alumno cambió de menú antes.
 - Soroban, pendiente: ejercicios de práctica de suma, de resta, y mixtos de suma y resta, con niveles que suben por etapas.
 - Diferencia a recordar: en kana los kanji y el katakana están bloqueados sin opción (la escritura lo exige); en soroban el bloqueo tiene opción a seguir (es avance).
 - Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.
