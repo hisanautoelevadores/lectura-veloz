@@ -402,7 +402,7 @@ h1{font-size:1.2rem;margin:0}
     } else if (a < 5) {
       P.push({ t: 'Para sumar ' + b + ' conviene sumar 5 primero y después quitar lo que sobra. Con el índice bajamos la ficha de arriba: ahora vale ' + (5 + a) + '.', f: () => setU(1, a) });
       const quitar = 5 - b;
-      for (let k = a - 1; k >= a - quitar; k--) P.push({ t: 'Ahora quitamos ' + (a - k) + ' de abajo, con el pulgar. Vamos a ' + (5 + k) + '.', f: () => setU(1, k) });
+      for (let k = a - 1; k >= a - quitar; k--) P.push({ t: 'Ahora bajamos ' + (a - k) + ' de abajo, con el índice. Vamos a ' + (5 + k) + '.', f: () => setU(1, k) });
       P.push({ t: 'Contamos las fichas que hay: son ' + r + '. El resultado es ' + r + ', entonces ' + a + ' + ' + b + ' = ' + r + '.', f: () => soloUnidades(r) });
     } else {
       P.push({ t: 'Como ya hay una ficha de arriba (5), sumamos ' + b + ' subiendo fichas de abajo.', f: () => setU(1, a - 5) });
