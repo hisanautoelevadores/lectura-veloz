@@ -278,7 +278,7 @@ h1{font-size:1.2rem;margin:0}
     const op = document.createElement('p'); op.className = 'leccion-op'; op.textContent = 'Columna de las unidades';
     const obj = document.createElement('p'); obj.className = 'leccion-obj'; obj.textContent = 'Objetivo: saber cuánto vale cada ficha. La de arriba vale 5 y cada una de abajo vale 1.';
     const leyenda = document.createElement('details'); leyenda.className = 'ayuda-mov';
-    leyenda.innerHTML = '<summary>Cómo se mueven las fichas</summary><div class="leyenda"><div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube o baja las de abajo: cada una vale 1.</div></div>';
+    leyenda.innerHTML = '<summary>Cómo se mueven las fichas</summary><div class="leyenda"><div><b>☝️ Índice</b><br>Baja las de abajo (se alejan de la barra) y mueve la ficha de arriba, que vale 5.</div><div><b>👍 Pulgar</b><br>Sube las de abajo hacia la barra: cada una vale 1.</div></div>';
     const t = document.createElement('p'); t.className = 'paso-txt';
     const numPaso = document.createElement('span'); numPaso.className = 'paso-num'; numPaso.textContent = 'Paso ' + (paso + 1) + ' de ' + PASOS_FICHA.length;
     t.append(numPaso, document.createTextNode(PASOS_FICHA[paso].t));
@@ -419,14 +419,14 @@ h1{font-size:1.2rem;margin:0}
     const U = V >= 5 ? 5 : 0, L = V - U, S = [];
     // D · directa: se quitan las cuentas que forman el dígito
     if ((d <= 4 && L >= d) || (d === 5 && U === 5) || (d >= 6 && U === 5 && L >= d - 5)) {
-      if (d >= 5 && U === 5) S.push({ delta: -5, t: 'Quitamos el cielo, que vale 5.' });
+      if (d >= 5 && U === 5) S.push({ delta: -5, t: 'Con el índice subimos el cielo, que vale 5.' });
       const restan = d >= 5 ? d - 5 : d;
-      for (let k = 1; k <= restan; k++) S.push({ delta: -1, t: 'Con el pulgar quitamos una de tierra.' });
+      for (let k = 1; k <= restan; k++) S.push({ delta: -1, t: 'Con el índice bajamos una de tierra (la alejamos de la barra).' });
       return { regla: 'D', pasos: S };
     }
     // C · complemento de 5 inverso: se quita el cielo y se agregan las de tierra que faltan
     if (d <= 4 && U === 5 && L < d) {
-      S.push({ delta: -5, t: 'Quitamos el cielo, que vale 5.' });
+      S.push({ delta: -5, t: 'Con el índice subimos el cielo, que vale 5.' });
       for (let k = 1; k <= 5 - d; k++) S.push({ delta: +1, t: 'Con el pulgar subimos una de tierra.' });
       return { regla: 'C', pasos: S };
     }
@@ -437,15 +437,15 @@ h1{font-size:1.2rem;margin:0}
     S.push({ delta: -10, t: 'Pedimos 1 de las decenas: en esta columna hay que completar 10.' });
     if (sumable) {
       // T · complemento de 10 inverso: se suma c = 10 − d en esta varilla
-      if (c === 5) S.push({ delta: +5, t: 'Bajamos el cielo, que vale 5.' });
+      if (c === 5) S.push({ delta: +5, t: 'Con el índice bajamos el cielo, que vale 5.' });
       else if (c <= 4) for (let k = 1; k <= c; k++) S.push({ delta: +1, t: 'Con el pulgar subimos una de tierra.' });
-      else { S.push({ delta: +5, t: 'Bajamos el cielo, que vale 5.' }); for (let k = 1; k <= c - 5; k++) S.push({ delta: +1, t: 'Con el pulgar subimos una de tierra.' }); }
+      else { S.push({ delta: +5, t: 'Con el índice bajamos el cielo, que vale 5.' }); for (let k = 1; k <= c - 5; k++) S.push({ delta: +1, t: 'Con el pulgar subimos una de tierra.' }); }
       return { regla: 'T', pasos: S };
     }
     // M · mixto inverso: d de 6 a 9, sin cielo y con tierras suficientes
     if (d >= 6 && U === 0 && L >= d - 5) {
-      S.push({ delta: +5, t: 'Bajamos el cielo, que vale 5.' });
-      for (let k = 1; k <= d - 5; k++) S.push({ delta: -1, t: 'Con el pulgar quitamos una de tierra.' });
+      S.push({ delta: +5, t: 'Con el índice bajamos el cielo, que vale 5.' });
+      for (let k = 1; k <= d - 5; k++) S.push({ delta: -1, t: 'Con el índice bajamos una de tierra (la alejamos de la barra).' });
       return { regla: 'M', pasos: S };
     }
     throw new Error('sin regla de préstamo para V=' + V + ' d=' + d);
@@ -483,7 +483,7 @@ h1{font-size:1.2rem;margin:0}
     const op = document.createElement('p'); op.className = 'leccion-op'; op.textContent = seqOp;
     const obj = document.createElement('p'); obj.className = 'leccion-obj'; obj.textContent = 'Objetivo: ' + seqObjetivo;
     const leyenda = document.createElement('details'); leyenda.className = 'ayuda-mov';
-    leyenda.innerHTML = '<summary>Cómo se mueven las fichas</summary><div class="leyenda"><div><b>☝️ Índice</b><br>Mueve la ficha de arriba: vale 5.</div><div><b>👍 Pulgar</b><br>Sube o baja las de abajo: cada una vale 1.</div></div>';
+    leyenda.innerHTML = '<summary>Cómo se mueven las fichas</summary><div class="leyenda"><div><b>☝️ Índice</b><br>Baja las de abajo (se alejan de la barra) y mueve la ficha de arriba, que vale 5.</div><div><b>👍 Pulgar</b><br>Sube las de abajo hacia la barra: cada una vale 1.</div></div>';
     const t = document.createElement('p'); t.className = 'paso-txt';
     const num = document.createElement('span'); num.className = 'paso-num'; num.textContent = 'Paso ' + (seqPaso + 1) + ' de ' + seq.length;
     t.append(num, document.createTextNode(seq[seqPaso].t));
@@ -512,7 +512,7 @@ h1{font-size:1.2rem;margin:0}
     // D · directa: alcanza sin complementos
     if ((d <= 4 && 4 - L >= d) || (d === 5 && U === 0) || (d >= 6 && U === 0 && 4 - L >= d - 5)) {
       let n = V;
-      if (d >= 5 && U === 0) { n += 5; S.push({ t: 'Bajamos el cielo, que vale 5: ahora es ' + n + '.', n }); }
+      if (d >= 5 && U === 0) { n += 5; S.push({ t: 'Con el índice bajamos el cielo, que vale 5: ahora es ' + n + '.', n }); }
       const restan = d >= 5 ? d - 5 : d;
       for (let k = 1; k <= restan; k++) { n++; S.push({ t: 'Con el pulgar subimos una de tierra: ahora es ' + n + '.', n }); }
       return { regla: 'D', pasos: S };
@@ -520,8 +520,8 @@ h1{font-size:1.2rem;margin:0}
     // C · complemento de 5: se activa el cielo y se quitan las de tierra que sobran
     if (d <= 4 && U === 0 && L + d >= 5) {
       const n5 = V + 5;
-      S.push({ t: 'Bajamos el cielo, que vale 5: ahora es ' + n5 + '.', n: n5 });
-      for (let k = 1; k <= 5 - d; k++) S.push({ t: 'Quitamos una de tierra: ahora es ' + (n5 - k) + '.', n: n5 - k });
+      S.push({ t: 'Con el índice bajamos el cielo, que vale 5: ahora es ' + n5 + '.', n: n5 });
+      for (let k = 1; k <= 5 - d; k++) S.push({ t: 'Con el índice bajamos una de tierra: ahora es ' + (n5 - k) + '.', n: n5 - k });
       return { regla: 'C', pasos: S };
     }
     const c = 10 - d;
@@ -529,17 +529,17 @@ h1{font-size:1.2rem;margin:0}
     // T · complemento de 10 simple: se quita c = 10 - d en esta varilla y se lleva 1
     if (r >= 10 && removible) {
       let n = V;
-      if (c === 5) { n = V - 5; S.push({ t: 'Subimos el cielo, que quita 5: ahora es ' + n + '.', n }); }
-      else if (c <= 4) { for (let k = 1; k <= c; k++) { n--; S.push({ t: 'Quitamos una de tierra con el pulgar: ahora es ' + n + '.', n }); } }
-      else { n = V - 5; S.push({ t: 'Subimos el cielo, que quita 5: ahora es ' + n + '.', n }); for (let k = 1; k <= c - 5; k++) { n--; S.push({ t: 'Quitamos una de tierra con el pulgar: ahora es ' + n + '.', n }); } }
+      if (c === 5) { n = V - 5; S.push({ t: 'Con el índice subimos el cielo, que quita 5: ahora es ' + n + '.', n }); }
+      else if (c <= 4) { for (let k = 1; k <= c; k++) { n--; S.push({ t: 'Con el índice bajamos una de tierra: ahora es ' + n + '.', n }); } }
+      else { n = V - 5; S.push({ t: 'Con el índice subimos el cielo, que quita 5: ahora es ' + n + '.', n }); for (let k = 1; k <= c - 5; k++) { n--; S.push({ t: 'Con el índice bajamos una de tierra: ahora es ' + n + '.', n }); } }
       S.push({ t: 'Llevamos 1 a las decenas: ahora es ' + (n + 10) + '.', n: n + 10 });
       return { regla: 'T', pasos: S };
     }
     // M · mixto: d de 6 a 9, con el cielo activo y pocas de tierra
     if (r >= 10 && d >= 6 && U === 5 && L < 10 - d) {
       let n = V - 5;
-      S.push({ t: 'Subimos el cielo, que quita 5: ahora es ' + n + '.', n });
-      for (let k = 1; k <= d - 5; k++) { n++; S.push({ t: 'Con el pulgar bajamos una de tierra: ahora es ' + n + '.', n }); }
+      S.push({ t: 'Con el índice subimos el cielo, que quita 5: ahora es ' + n + '.', n });
+      for (let k = 1; k <= d - 5; k++) { n++; S.push({ t: 'Con el índice bajamos una de tierra: ahora es ' + n + '.', n }); }
       S.push({ t: 'Llevamos 1 a las decenas: ahora es ' + (n + 10) + '.', n: n + 10 });
       return { regla: 'M', pasos: S };
     }
@@ -653,6 +653,7 @@ h1{font-size:1.2rem;margin:0}
     const opEl = document.createElement('p'); opEl.className = 'leccion-op'; opEl.id = 'ejTxt'; opEl.textContent = op;
     const obj = document.createElement('p'); obj.className = 'leccion-obj';
     obj.textContent = sub === 'suma' ? 'Objetivo: el ábaco ya muestra el primer número. Agregá el segundo y completá el resultado.' : 'Objetivo: el ábaco ya muestra el primer número. Quitá lo que corresponde y completá el resultado.';
+    const pistaEl = document.createElement('p'); pistaEl.className = 'paso-num'; pistaEl.id = 'ejPista';
     const fila = document.createElement('div'); fila.className = 'ej-fila';
     const ver = document.createElement('button'); ver.type = 'button'; ver.className = 'btn';
     ver.textContent = 'Ver la explicación'; ver.onclick = () => { setSeccion('aprender'); setModo(sub === 'suma' ? (PRAC_NIVEL === 2 ? 'llevada' : 'sumar') : 'restar'); };
@@ -661,7 +662,7 @@ h1{font-size:1.2rem;margin:0}
     fila.append(ver, otro);
     const niv = document.createElement('p'); niv.className = 'paso-num';
     niv.textContent = 'Nivel ' + PRAC_NIVEL + (PRAC_NIVEL === 1 ? (sub === 'suma' ? ': sin pasar de 10' : ': sin pedir decena') : (sub === 'suma' ? ': pasando de 10' : ': pidiendo decena'));
-    caja.append(h2, obj, opEl, selectorPractica(), fila, niv);
+    caja.append(h2, obj, opEl, selectorPractica(), pistaEl, fila, niv);
     render();
   }
   function ejRestar() {
@@ -758,9 +759,17 @@ h1{font-size:1.2rem;margin:0}
   }
   document.querySelectorAll('.menu-ej button').forEach(b => b.addEventListener('click', () => setModo(b.dataset.ej)));
   // en "armar" se revisa cada vez que se mueve una ficha
+  let PISTA_T = 0;
   const _render = render;
   render = function () {
     _render();
+    if (/^practica_/.test(MODO) && objetivo !== null) {
+      clearTimeout(PISTA_T);
+      const ahora = totalDeColumnas();
+      if (ahora !== objetivo) {
+        PISTA_T = setTimeout(() => { const el = document.getElementById('ejPista'); if (el) el.textContent = 'Ahora el ábaco muestra ' + ahora + '. Revisá las fichas que moviste.'; }, 2000);
+      } else { const el = document.getElementById('ejPista'); if (el) el.textContent = ''; }
+    }
     if (MODO === 'multi') {
       const prod = valor(2) * 10 + valor(3);
       document.getElementById('num').textContent = 'Resultado: ' + prod;

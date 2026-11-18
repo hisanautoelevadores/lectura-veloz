@@ -37,6 +37,8 @@
 - Soroban, corregido: al acertar en Armar o Dictado, el reinicio automático ya no cambia de ejercicio si el alumno cambió de menú antes.
 - Soroban, hecho: práctica de suma y de resta en la sección Ejercicios, con nivel 1 (suma sin pasar de 10; resta sin pedir decena) y nivel 2 (suma pasando de 10; resta pidiendo decena). El nivel 2 está bloqueado para 3–5 años con la opción a seguir igual.
 - Soroban, hecho: práctica mixta ("Suma y resta juntas"), con suma y resta al azar en cada ejercicio; nivel 1 sin complementos, nivel 2 con complementos y pedir decena (bloqueado para 3–5 años, con opción a seguir igual).
+- Soroban: técnica de dedos corregida según la práctica estándar: el pulgar sube las cuentas de tierra hacia la barra; el índice baja las de tierra y mueve la cuenta de cielo (confirmado con una fuente de búsqueda).
+- Soroban, hecho: en las prácticas, si el ábaco no muestra el número esperado y el alumno deja de tocar 2 segundos, aparece una pista: "Ahora el ábaco muestra N. Revisá las fichas que moviste."
 - Soroban, pendiente: niveles más altos (varias cifras), que suben por etapas.
 - Diferencia a recordar: en kana los kanji y el katakana están bloqueados sin opción (la escritura lo exige); en soroban el bloqueo tiene opción a seguir (es avance).
 - Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.
