@@ -583,7 +583,7 @@ h1{font-size:1.2rem;margin:0}
   function pasosMulti(a, b) {
     const p = a * b, dec = Math.floor(p / 10), uni = p % 10, P = [];
     P.push({ t: 'Vamos a calcular ' + a + ' × ' + b + '. Los dos números que se multiplican ya están en las dos primeras varillas: son los factores (el ' + a + ' y el ' + b + ').', f: () => setDigitos([a, b, 0, 0]) });
-    P.push({ t: 'Buscamos en la tabla de multiplicar: ' + a + ' × ' + b + ' = ' + p + '. ' + (dec === 0 ? 'Como es menor que 10, no hay decenas: la varilla de las decenas queda en 0.' : 'Hay ' + dec + ' decena' + (dec > 1 ? 's' : '') + ': ponemos ' + dec + ' en la varilla de las decenas.'), f: () => setDigitos([a, b, dec, 0]) });
+    P.push({ t: 'Lo sabemos de memoria (tabla de multiplicar): ' + a + ' × ' + b + ' = ' + p + '. ' + (dec === 0 ? 'Como es menor que 10, no hay decenas: la varilla de las decenas queda en 0.' : 'Hay ' + dec + ' decena' + (dec > 1 ? 's' : '') + ': ponemos ' + dec + ' en la varilla de las decenas.'), f: () => setDigitos([a, b, dec, 0]) });
     P.push({ t: 'Ponemos ' + uni + ' en la varilla de las unidades.', f: () => setDigitos([a, b, dec, uni]) });
     P.push({ t: 'El resultado está en las dos últimas varillas: ' + p + '. Entonces ' + a + ' × ' + b + ' = ' + p + '.', f: () => setDigitos([a, b, dec, uni]) });
     return P;
@@ -591,7 +591,7 @@ h1{font-size:1.2rem;margin:0}
   function ejMulti() {
     seqExtra = null;
     seqTitulo = '6 · Multiplicar (una cifra)';
-    seqObjetivo = 'multiplicar: buscar el producto en la tabla y ponerlo en las varillas.';
+    seqObjetivo = 'multiplicar una cifra por una cifra. Hay que saber de memoria la tabla de multiplicar, como se enseña en la escuela: el soroban no calcula el producto, solo lo muestra en las varillas.';
     seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 9), b = 1 + Math.floor(Math.random() * 9); seqOp = a + ' × ' + b + ' = ?'; seq = pasosMulti(a, b); seqPaso = 0; mostrarSeq(); };
     seqNuevo();
   }
