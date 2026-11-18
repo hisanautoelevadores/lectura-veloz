@@ -70,6 +70,7 @@ h1{font-size:1.2rem;margin:0}
     <button type="button" data-ej="llevada" aria-pressed="false">3 · Suma con llevada</button>
     <button type="button" data-ej="sumar" aria-pressed="false">4 · Cómo sumar</button>
     <button type="button" data-ej="restar" aria-pressed="false">5 · Cómo restar</button>
+    <button type="button" data-ej="multi" aria-pressed="false">6 · Multiplicar (una cifra)</button>
   </div>
 
   <div class="fila-sob"><div class="marco"><div class="tablero" id="tab">
@@ -543,6 +544,26 @@ h1{font-size:1.2rem;margin:0}
     seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 8); const b = 1 + Math.floor(Math.random() * (9 - a)); seq = pasosSumar(a, b); seqPaso = 0; mostrarSeq(); };
     seqNuevo();
   }
+  // Multiplicación con una cifra por una cifra, con los dos factores a la vista (両置き).
+  // Las dos primeras varillas muestran los factores; las dos de la derecha, el producto (decenas y unidades).
+  function setDigitos(arr) {
+    for (let c = 0; c < N; c++) { const d = arr[c]; est[c].cielo = d >= 5 ? 1 : 0; est[c].tierra = d % 5; }
+    render();
+  }
+  function pasosMulti(a, b) {
+    const p = a * b, dec = Math.floor(p / 10), uni = p % 10, P = [];
+    P.push({ t: 'Ponemos los dos factores en las primeras columnas: el ' + a + ' y el ' + b + '.', f: () => setDigitos([a, b, 0, 0]) });
+    P.push({ t: a + ' × ' + b + ' = ' + p + '. Miramos la tabla de multiplicar. Ponemos las decenas: ' + dec + (dec === 0 ? ' (no hay decenas).' : '.'), f: () => setDigitos([a, b, dec, 0]) });
+    P.push({ t: 'Ponemos las unidades: ' + uni + '.', f: () => setDigitos([a, b, dec, uni]) });
+    P.push({ t: 'Listo: ' + a + ' × ' + b + ' = ' + p + '.', f: () => setDigitos([a, b, dec, uni]) });
+    return P;
+  }
+  function ejMulti() {
+    seqExtra = null;
+    seqTitulo = '6 · Multiplicar (una cifra)';
+    seqNuevo = () => { const a = 1 + Math.floor(Math.random() * 9), b = 1 + Math.floor(Math.random() * 9); seq = pasosMulti(a, b); seqPaso = 0; mostrarSeq(); };
+    seqNuevo();
+  }
   function ejRestar() {
     seqExtra = selectorRestaPaso;
     seqTitulo = '5 · Cómo restar';
@@ -567,6 +588,7 @@ h1{font-size:1.2rem;margin:0}
     if (m === 'llevada') { ejLlevada(); }
     if (m === 'sumar') { ejSumar(); }
     if (m === 'restar') { ejRestar(); }
+    if (m === 'multi') { ejMulti(); }
   }
   document.querySelectorAll('.menu-ej button').forEach(b => b.addEventListener('click', () => setModo(b.dataset.ej)));
   // en "armar" se revisa cada vez que se mueve una ficha

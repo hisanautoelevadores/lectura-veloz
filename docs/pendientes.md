@@ -28,7 +28,8 @@
 - Soroban, hecho: armar y leer con números de hasta 99 y 999 (selector de nivel), y ejercicio Dictado (la app dice el número y el alumno lo arma).
 - Soroban, hecho: 3) suma con llevada en dos pasos. Las reglas siguen la tabla de 90 casos de suma del documento de verificación (D, C, T, M), con el orden: primero se quita lo que haga falta en la varilla, después se lleva 1 a las decenas. Probado contra las 90 celdas.
 - Soroban, hecho: 5) resta en dos etapas (sin pedir decena; pidiendo decena), con la tabla de 90 casos de resta del documento (D, C, T, M inversos). Primero se pide la decena y después se completa en la varilla. Probado contra las 90 celdas.
-- Soroban, pendiente: 4) multiplicación sencilla.
+- Soroban, hecho: 6) multiplicar una cifra por una cifra con los dos factores a la vista (両置き), con los pasos de la tabla de multiplicar.
+- Soroban, pendiente: multiplicar varias cifras; en niveles altos, pasar a dejar solo el multiplicando en el ábaco (片落とし). El orden de cálculo para varias cifras sigue sin confirmar.
 - Soroban, plan: (a) separar la enseñanza de suma y de resta; (b) ejercicios solo de suma, solo de resta, y mixtos de suma y resta; (c) subir de nivel por etapas.
 - Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.
 - Soroban: revisar con material japonés el orden de los movimientos (quitar primero o llevar primero); por ahora se usa quitar primero.
