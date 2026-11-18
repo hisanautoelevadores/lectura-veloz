@@ -40,7 +40,7 @@
 - Soroban: técnica de dedos corregida según la práctica estándar: el pulgar sube las cuentas de tierra hacia la barra; el índice baja las de tierra y mueve la cuenta de cielo (confirmado con una fuente de búsqueda).
 - Soroban, hecho: en las prácticas, si el ábaco no muestra el número esperado y el alumno deja de tocar 2 segundos, aparece una pista: "Ahora el ábaco muestra N. Revisá las fichas que moviste."
 - Soroban, hecho: en la resta, primero se bajan las tierras y después se sube el cielo, con el índice (orden de la técnica básica, 9 → 8 → 3).
-- Soroban, pendiente: mostrar la variante opcional con apertura (el pulgar baja una tierra junto con el cielo, en un solo gesto) como nota aparte, aclarando que es una variante de docentes.
+- Soroban, hecho: nota aparte "Variante opcional (abriendo los dedos)" en la lección de resta, aclarando que es una variante de docentes y que la técnica base usa el índice para los dos movimientos.
 - Soroban, pendiente: niveles más altos (varias cifras), que suben por etapas.
 - Diferencia a recordar: en kana los kanji y el katakana están bloqueados sin opción (la escritura lo exige); en soroban el bloqueo tiene opción a seguir (es avance).
 - Soroban: separar en dos partes, Aprender (explicaciones paso a paso) y Ejercicios (práctica), propuesta del usuario.

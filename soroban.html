@@ -477,7 +477,7 @@ h1{font-size:1.2rem;margin:0}
   }
   // Muestra una secuencia de pasos con Anterior / Siguiente, y un ejemplo nuevo.
   let seq = null, seqPaso = 0, seqTitulo = '', seqNuevo = null;
-  let seqOp = '', seqObjetivo = '';
+  let seqOp = '', seqObjetivo = '', seqNota = '';
   function mostrarSeq() {
     caja.hidden = false; caja.innerHTML = '';
     const h2 = document.createElement('h2'); h2.className = 'leccion-titulo'; h2.textContent = seqTitulo;
@@ -498,7 +498,11 @@ h1{font-size:1.2rem;margin:0}
     fila.append(ant, sig);
     caja.append(h2, op, obj);
     if (seqExtra) caja.append(seqExtra());
-    caja.append(t, fila, leyenda);
+    if (seqNota) {
+      const nota = document.createElement('details'); nota.className = 'ayuda-mov';
+      nota.innerHTML = '<summary>Variante opcional (abriendo los dedos)</summary><div class="leyenda"><p class="paso-txt" style="margin:0">' + seqNota + '</p></div>';
+      caja.append(t, fila, nota, leyenda);
+    } else caja.append(t, fila, leyenda);
     document.getElementById('tab').classList.add('tab-etq');
     seq[seqPaso].f(); render();
   }
@@ -571,6 +575,7 @@ h1{font-size:1.2rem;margin:0}
     return f;
   }
   function ejLlevada() {
+    seqNota = '';
     seqTitulo = '3 · Suma con llevada';
     seqObjetivo = 'sumar cuando el resultado pasa de 10: completar 10 y llevar 1 a las decenas.';
     seqExtra = selectorPaso;
@@ -583,6 +588,7 @@ h1{font-size:1.2rem;margin:0}
     seqNuevo();
   }
   function ejSumar() {
+    seqNota = '';
     seqExtra = null;
     seqTitulo = '4 · Cómo sumar';
     seqObjetivo = 'sumar sin pasar de 10: se agregan fichas y se cuentan.';
@@ -604,6 +610,7 @@ h1{font-size:1.2rem;margin:0}
     return P;
   }
   function ejMulti() {
+    seqNota = '';
     seqExtra = null;
     seqTitulo = '6 · Multiplicar (una cifra)';
     seqObjetivo = 'multiplicar una cifra por una cifra. Hay que saber de memoria la tabla de multiplicar, como se enseña en la escuela: el soroban no calcula el producto, solo lo muestra en las varillas.';
@@ -670,6 +677,7 @@ h1{font-size:1.2rem;margin:0}
     seqExtra = selectorRestaPaso;
     seqTitulo = '5 · Cómo restar';
     seqObjetivo = 'restar: quitar fichas; si no alcanzan, pedir una decena.';
+    seqNota = 'Algunos docentes restan 6, 7, 8 o 9 de 9 en un solo gesto: el índice sube el cielo y el pulgar baja una cuenta de tierra a la vez, abriendo los dedos. Es una variante. La técnica base usa el índice para los dos movimientos.';
     seqNuevo = () => {
       let X, d;
       if (RESTA_PASO === 1) { X = 1 + Math.floor(Math.random() * 9); d = 1 + Math.floor(Math.random() * X); }
