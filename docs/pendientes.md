@@ -22,7 +22,7 @@
 - Lectura en español: 219 palabras y 285 frases (ampliadas en esta vuelta). Objetivo: unas 300 de cada una, por banda de edad. Sílabas calculadas con un contador automático, con 4 errores de cuenta corregidos.
 - Práctica JLPT: ampliar vocabulario, gramática y lectura. Revisar las explicaciones en español.
 - Hiragana y katakana: revisar las palabras nuevas (ambiguas sobre todo; los emojis de algunas palabras pueden verse distinto según el teléfono). Hiragana: 262 palabras; katakana: 78 (solo desde 6 años). Seguir ampliando data/kana/vocab.json hasta unas 300 de hiragana.
-- Kanji: 1.º, 2.º y 3.º grado cargados (80 + 160 + 200 = 440 kanji con lecturas y significado). Los grados 2 y 3 se verificaron por dentro (cantidades, repetidos, formato); la comparación con la lista oficial del MEXT está pendiente porque el sitio no se pudo abrir desde la sesión. Pendiente: palabras con kanji de 2.º y 3.º grado, grados 4 a 6, kanji en Leer en movimiento, y furigana en las opciones de "Ver el dibujo y elegir la palabra".
+- Kanji: 1.º, 2.º y 3.º grado cargados (80 + 160 + 200 = 440 kanji con lecturas y significado). Los grados 2 y 3 se verificaron por dentro (cantidades, repetidos, formato); la comparación con la lista oficial del MEXT está pendiente porque el sitio no se pudo abrir desde la sesión. Palabras con kanji de 2.º y 3.º grado: 58 agregadas, cada una verificada contra la lista de kanji. Pendiente: más palabras con kanji, grados 4 a 6, kanji en Leer en movimiento, y furigana en las opciones de "Ver el dibujo y elegir la palabra".
 
 ## Código por hacer
 - Soroban, hecho: armar y leer con números de hasta 99 y 999 (selector de nivel), y ejercicio Dictado (la app dice el número y el alumno lo arma).
