@@ -23,7 +23,8 @@
 - Práctica JLPT: ampliar vocabulario, gramática y lectura. Revisar las explicaciones en español.
 - Frases en hiragana (Leer en movimiento, nivel 5): 94 frases, cada una con su banda de edad. Pendiente: llegar a unas 100.
 - Hiragana: 299 palabras con dibujo (69 para 3–5, 117 para 6–7, 113 para 8–10). Katakana: 78 (solo desde 6 años). Revisar las palabras ambiguas y los emojis según el teléfono.
-- Kanji: 1.º, 2.º y 3.º grado cargados (80 + 160 + 200 = 440 kanji con lecturas y significado). Los grados 2 y 3 se verificaron por dentro (cantidades, repetidos, formato); la comparación con la lista oficial del MEXT está pendiente porque el sitio no se pudo abrir desde la sesión. Palabras con kanji de 2.º y 3.º grado: 58 agregadas, cada una verificada contra la lista de kanji. Pendiente: más palabras con kanji, grados 4 a 6, kanji en Leer en movimiento, y furigana en las opciones de "Ver el dibujo y elegir la palabra".
+- Kanji: los seis grados de primaria cargados (1026 kanji con lecturas y significado). Los grados 2 a 6 se verificaron por dentro (cantidades, repetidos, formato y sin solapamiento); la comparación con la lista oficial del MEXT está pendiente porque el sitio no se pudo abrir desde la sesión.
+- Kanji: 586 palabras de ejemplo de 4.º a 6.º grado en data/kana/kanji-palabras.json, sin dibujo todavía (hay que agregar un emoji a cada una para usarlas en los ejercicios de dibujo). Pendiente: el kanji en Leer en movimiento y el furigana en las opciones.
 
 ## Código por hacer
 - Soroban, hecho: armar y leer con números de hasta 99 y 999 (selector de nivel), y ejercicio Dictado (la app dice el número y el alumno lo arma).

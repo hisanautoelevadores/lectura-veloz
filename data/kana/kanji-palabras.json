@@ -1,0 +1,4107 @@
+{
+ "nota": "Palabras con kanji de 4.º a 6.º grado (sin dibujo todavía). k = kanji de referencia, palabra, lectura, es, g = grado.",
+ "items": [
+  {
+   "k": "愛",
+   "g": 4,
+   "palabra": "愛犬",
+   "lectura": "あいけん",
+   "es": "perro querido de la familia"
+  },
+  {
+   "k": "茨",
+   "g": 4,
+   "palabra": "茨城県",
+   "lectura": "いばらきけん",
+   "es": "prefectura de Ibaraki"
+  },
+  {
+   "k": "案",
+   "g": 4,
+   "palabra": "案内",
+   "lectura": "あんない",
+   "es": "guía u orientación"
+  },
+  {
+   "k": "印",
+   "g": 4,
+   "palabra": "目印",
+   "lectura": "めじるし",
+   "es": "señal que ayuda a reconocer un lugar"
+  },
+  {
+   "k": "以",
+   "g": 4,
+   "palabra": "以上",
+   "lectura": "いじょう",
+   "es": "esa cantidad o más"
+  },
+  {
+   "k": "衣",
+   "g": 4,
+   "palabra": "衣服",
+   "lectura": "いふく",
+   "es": "ropa"
+  },
+  {
+   "k": "位",
+   "g": 4,
+   "palabra": "一位",
+   "lectura": "いちい",
+   "es": "primer puesto"
+  },
+  {
+   "k": "栄",
+   "g": 4,
+   "palabra": "栄養",
+   "lectura": "えいよう",
+   "es": "nutrición"
+  },
+  {
+   "k": "媛",
+   "g": 4,
+   "palabra": "愛媛県",
+   "lectura": "えひめけん",
+   "es": "prefectura de Ehime"
+  },
+  {
+   "k": "英",
+   "g": 4,
+   "palabra": "英語",
+   "lectura": "えいご",
+   "es": "idioma inglés"
+  },
+  {
+   "k": "塩",
+   "g": 4,
+   "palabra": "食塩",
+   "lectura": "しょくえん",
+   "es": "sal de mesa"
+  },
+  {
+   "k": "岡",
+   "g": 4,
+   "palabra": "岡山県",
+   "lectura": "おかやまけん",
+   "es": "prefectura de Okayama"
+  },
+  {
+   "k": "億",
+   "g": 4,
+   "palabra": "一億",
+   "lectura": "いちおく",
+   "es": "cien millones"
+  },
+  {
+   "k": "加",
+   "g": 4,
+   "palabra": "加える",
+   "lectura": "くわえる",
+   "es": "agregar"
+  },
+  {
+   "k": "芽",
+   "g": 4,
+   "palabra": "芽",
+   "lectura": "め",
+   "es": "brote de una planta"
+  },
+  {
+   "k": "果",
+   "g": 4,
+   "palabra": "果物",
+   "lectura": "くだもの",
+   "es": "fruta"
+  },
+  {
+   "k": "賀",
+   "g": 4,
+   "palabra": "年賀",
+   "lectura": "ねんが",
+   "es": "felicitación por el Año Nuevo"
+  },
+  {
+   "k": "課",
+   "g": 4,
+   "palabra": "日課",
+   "lectura": "にっか",
+   "es": "tarea que se hace cada día"
+  },
+  {
+   "k": "改",
+   "g": 4,
+   "palabra": "改める",
+   "lectura": "あらためる",
+   "es": "cambiar para mejorar"
+  },
+  {
+   "k": "貨",
+   "g": 4,
+   "palabra": "貨物船",
+   "lectura": "かもつせん",
+   "es": "barco de carga"
+  },
+  {
+   "k": "械",
+   "g": 4,
+   "palabra": "機械",
+   "lectura": "きかい",
+   "es": "máquina"
+  },
+  {
+   "k": "覚",
+   "g": 4,
+   "palabra": "覚える",
+   "lectura": "おぼえる",
+   "es": "aprender de memoria"
+  },
+  {
+   "k": "害",
+   "g": 4,
+   "palabra": "害虫",
+   "lectura": "がいちゅう",
+   "es": "insecto que causa daño"
+  },
+  {
+   "k": "街",
+   "g": 4,
+   "palabra": "商店街",
+   "lectura": "しょうてんがい",
+   "es": "calle de comercios"
+  },
+  {
+   "k": "各",
+   "g": 4,
+   "palabra": "各地",
+   "lectura": "かくち",
+   "es": "distintos lugares"
+  },
+  {
+   "k": "潟",
+   "g": 4,
+   "palabra": "新潟県",
+   "lectura": "にいがたけん",
+   "es": "prefectura de Niigata"
+  },
+  {
+   "k": "完",
+   "g": 4,
+   "palabra": "完成",
+   "lectura": "かんせい",
+   "es": "terminación de una obra"
+  },
+  {
+   "k": "官",
+   "g": 4,
+   "palabra": "長官",
+   "lectura": "ちょうかん",
+   "es": "persona que dirige un organismo público"
+  },
+  {
+   "k": "希",
+   "g": 4,
+   "palabra": "希望",
+   "lectura": "きぼう",
+   "es": "esperanza"
+  },
+  {
+   "k": "管",
+   "g": 4,
+   "palabra": "水道管",
+   "lectura": "すいどうかん",
+   "es": "caño de agua"
+  },
+  {
+   "k": "関",
+   "g": 4,
+   "palabra": "関係",
+   "lectura": "かんけい",
+   "es": "relación entre cosas o personas"
+  },
+  {
+   "k": "季",
+   "g": 4,
+   "palabra": "季節",
+   "lectura": "きせつ",
+   "es": "estación del año"
+  },
+  {
+   "k": "願",
+   "g": 4,
+   "palabra": "願い",
+   "lectura": "ねがい",
+   "es": "deseo"
+  },
+  {
+   "k": "観",
+   "g": 4,
+   "palabra": "観察",
+   "lectura": "かんさつ",
+   "es": "observación atenta"
+  },
+  {
+   "k": "岐",
+   "g": 4,
+   "palabra": "岐阜県",
+   "lectura": "ぎふけん",
+   "es": "prefectura de Gifu"
+  },
+  {
+   "k": "議",
+   "g": 4,
+   "palabra": "会議",
+   "lectura": "かいぎ",
+   "es": "reunión para conversar y decidir"
+  },
+  {
+   "k": "旗",
+   "g": 4,
+   "palabra": "国旗",
+   "lectura": "こっき",
+   "es": "bandera de un país"
+  },
+  {
+   "k": "器",
+   "g": 4,
+   "palabra": "食器",
+   "lectura": "しょっき",
+   "es": "vajilla"
+  },
+  {
+   "k": "機",
+   "g": 4,
+   "palabra": "飛行機",
+   "lectura": "ひこうき",
+   "es": "avión"
+  },
+  {
+   "k": "求",
+   "g": 4,
+   "palabra": "求める",
+   "lectura": "もとめる",
+   "es": "buscar algo que se necesita"
+  },
+  {
+   "k": "泣",
+   "g": 4,
+   "palabra": "泣く",
+   "lectura": "なく",
+   "es": "llorar"
+  },
+  {
+   "k": "挙",
+   "g": 4,
+   "palabra": "挙手",
+   "lectura": "きょしゅ",
+   "es": "acción de levantar la mano"
+  },
+  {
+   "k": "協",
+   "g": 4,
+   "palabra": "協力",
+   "lectura": "きょうりょく",
+   "es": "colaboración"
+  },
+  {
+   "k": "給",
+   "g": 4,
+   "palabra": "給食",
+   "lectura": "きゅうしょく",
+   "es": "comida que sirve la escuela"
+  },
+  {
+   "k": "漁",
+   "g": 4,
+   "palabra": "漁船",
+   "lectura": "ぎょせん",
+   "es": "barco de pesca"
+  },
+  {
+   "k": "共",
+   "g": 4,
+   "palabra": "共通",
+   "lectura": "きょうつう",
+   "es": "algo que se tiene en común"
+  },
+  {
+   "k": "極",
+   "g": 4,
+   "palabra": "北極",
+   "lectura": "ほっきょく",
+   "es": "Polo Norte"
+  },
+  {
+   "k": "鏡",
+   "g": 4,
+   "palabra": "手鏡",
+   "lectura": "てかがみ",
+   "es": "espejo de mano"
+  },
+  {
+   "k": "競",
+   "g": 4,
+   "palabra": "競走",
+   "lectura": "きょうそう",
+   "es": "carrera"
+  },
+  {
+   "k": "軍",
+   "g": 4,
+   "palabra": "海軍",
+   "lectura": "かいぐん",
+   "es": "marina de guerra"
+  },
+  {
+   "k": "郡",
+   "g": 4,
+   "palabra": "郡",
+   "lectura": "ぐん",
+   "es": "distrito que agrupa pueblos"
+  },
+  {
+   "k": "群",
+   "g": 4,
+   "palabra": "群れ",
+   "lectura": "むれ",
+   "es": "manada o bandada"
+  },
+  {
+   "k": "景",
+   "g": 4,
+   "palabra": "風景",
+   "lectura": "ふうけい",
+   "es": "paisaje"
+  },
+  {
+   "k": "径",
+   "g": 4,
+   "palabra": "直径",
+   "lectura": "ちょっけい",
+   "es": "diámetro de un círculo"
+  },
+  {
+   "k": "熊",
+   "g": 4,
+   "palabra": "白熊",
+   "lectura": "しろくま",
+   "es": "oso polar"
+  },
+  {
+   "k": "訓",
+   "g": 4,
+   "palabra": "教訓",
+   "lectura": "きょうくん",
+   "es": "enseñanza que deja una experiencia"
+  },
+  {
+   "k": "健",
+   "g": 4,
+   "palabra": "健康",
+   "lectura": "けんこう",
+   "es": "buena salud"
+  },
+  {
+   "k": "芸",
+   "g": 4,
+   "palabra": "園芸",
+   "lectura": "えんげい",
+   "es": "jardinería"
+  },
+  {
+   "k": "欠",
+   "g": 4,
+   "palabra": "欠席",
+   "lectura": "けっせき",
+   "es": "ausencia de clase o de una reunión"
+  },
+  {
+   "k": "建",
+   "g": 4,
+   "palabra": "建物",
+   "lectura": "たてもの",
+   "es": "edificio"
+  },
+  {
+   "k": "結",
+   "g": 4,
+   "palabra": "結ぶ",
+   "lectura": "むすぶ",
+   "es": "atar o unir"
+  },
+  {
+   "k": "験",
+   "g": 4,
+   "palabra": "実験",
+   "lectura": "じっけん",
+   "es": "experimento"
+  },
+  {
+   "k": "固",
+   "g": 4,
+   "palabra": "固い",
+   "lectura": "かたい",
+   "es": "duro"
+  },
+  {
+   "k": "好",
+   "g": 4,
+   "palabra": "大好き",
+   "lectura": "だいすき",
+   "es": "que gusta mucho"
+  },
+  {
+   "k": "功",
+   "g": 4,
+   "palabra": "成功",
+   "lectura": "せいこう",
+   "es": "éxito"
+  },
+  {
+   "k": "香",
+   "g": 4,
+   "palabra": "香り",
+   "lectura": "かおり",
+   "es": "aroma"
+  },
+  {
+   "k": "候",
+   "g": 4,
+   "palabra": "天候",
+   "lectura": "てんこう",
+   "es": "estado del tiempo"
+  },
+  {
+   "k": "康",
+   "g": 4,
+   "palabra": "健康体",
+   "lectura": "けんこうたい",
+   "es": "cuerpo sano"
+  },
+  {
+   "k": "佐",
+   "g": 4,
+   "palabra": "佐賀県",
+   "lectura": "さがけん",
+   "es": "prefectura de Saga"
+  },
+  {
+   "k": "差",
+   "g": 4,
+   "palabra": "温度差",
+   "lectura": "おんどさ",
+   "es": "diferencia de temperatura"
+  },
+  {
+   "k": "菜",
+   "g": 4,
+   "palabra": "野菜",
+   "lectura": "やさい",
+   "es": "verduras"
+  },
+  {
+   "k": "最",
+   "g": 4,
+   "palabra": "最高",
+   "lectura": "さいこう",
+   "es": "lo más alto o lo mejor"
+  },
+  {
+   "k": "昨",
+   "g": 4,
+   "palabra": "昨年",
+   "lectura": "さくねん",
+   "es": "el año pasado"
+  },
+  {
+   "k": "参",
+   "g": 4,
+   "palabra": "参加",
+   "lectura": "さんか",
+   "es": "participación"
+  },
+  {
+   "k": "札",
+   "g": 4,
+   "palabra": "名札",
+   "lectura": "なふだ",
+   "es": "tarjeta con el nombre"
+  },
+  {
+   "k": "刷",
+   "g": 4,
+   "palabra": "印刷",
+   "lectura": "いんさつ",
+   "es": "impresión en papel"
+  },
+  {
+   "k": "埼",
+   "g": 4,
+   "palabra": "埼玉県",
+   "lectura": "さいたまけん",
+   "es": "prefectura de Saitama"
+  },
+  {
+   "k": "産",
+   "g": 4,
+   "palabra": "産地",
+   "lectura": "さんち",
+   "es": "lugar donde se produce algo"
+  },
+  {
+   "k": "材",
+   "g": 4,
+   "palabra": "木材",
+   "lectura": "もくざい",
+   "es": "madera para construir"
+  },
+  {
+   "k": "散",
+   "g": 4,
+   "palabra": "散る",
+   "lectura": "ちる",
+   "es": "caer y dispersarse, como los pétalos"
+  },
+  {
+   "k": "察",
+   "g": 4,
+   "palabra": "考察",
+   "lectura": "こうさつ",
+   "es": "examen atento de una idea"
+  },
+  {
+   "k": "崎",
+   "g": 4,
+   "palabra": "長崎県",
+   "lectura": "ながさきけん",
+   "es": "prefectura de Nagasaki"
+  },
+  {
+   "k": "残",
+   "g": 4,
+   "palabra": "残り",
+   "lectura": "のこり",
+   "es": "lo que queda"
+  },
+  {
+   "k": "氏",
+   "g": 4,
+   "palabra": "氏名",
+   "lectura": "しめい",
+   "es": "apellido y nombre"
+  },
+  {
+   "k": "司",
+   "g": 4,
+   "palabra": "司会",
+   "lectura": "しかい",
+   "es": "conducción de un acto"
+  },
+  {
+   "k": "試",
+   "g": 4,
+   "palabra": "試合",
+   "lectura": "しあい",
+   "es": "partido o encuentro deportivo"
+  },
+  {
+   "k": "児",
+   "g": 4,
+   "palabra": "児童",
+   "lectura": "じどう",
+   "es": "niño o niña en edad escolar"
+  },
+  {
+   "k": "治",
+   "g": 4,
+   "palabra": "治る",
+   "lectura": "なおる",
+   "es": "curarse"
+  },
+  {
+   "k": "失",
+   "g": 4,
+   "palabra": "失う",
+   "lectura": "うしなう",
+   "es": "perder algo"
+  },
+  {
+   "k": "滋",
+   "g": 4,
+   "palabra": "滋賀県",
+   "lectura": "しがけん",
+   "es": "prefectura de Shiga"
+  },
+  {
+   "k": "辞",
+   "g": 4,
+   "palabra": "辞書",
+   "lectura": "じしょ",
+   "es": "diccionario"
+  },
+  {
+   "k": "鹿",
+   "g": 4,
+   "palabra": "鹿",
+   "lectura": "しか",
+   "es": "ciervo"
+  },
+  {
+   "k": "種",
+   "g": 4,
+   "palabra": "種",
+   "lectura": "たね",
+   "es": "semilla"
+  },
+  {
+   "k": "借",
+   "g": 4,
+   "palabra": "借りる",
+   "lectura": "かりる",
+   "es": "tomar prestado"
+  },
+  {
+   "k": "周",
+   "g": 4,
+   "palabra": "一周",
+   "lectura": "いっしゅう",
+   "es": "una vuelta completa"
+  },
+  {
+   "k": "祝",
+   "g": 4,
+   "palabra": "お祝い",
+   "lectura": "おいわい",
+   "es": "festejo o regalo de felicitación"
+  },
+  {
+   "k": "順",
+   "g": 4,
+   "palabra": "順番",
+   "lectura": "じゅんばん",
+   "es": "orden de los turnos"
+  },
+  {
+   "k": "初",
+   "g": 4,
+   "palabra": "初雪",
+   "lectura": "はつゆき",
+   "es": "primera nieve de la temporada"
+  },
+  {
+   "k": "笑",
+   "g": 4,
+   "palabra": "笑顔",
+   "lectura": "えがお",
+   "es": "cara sonriente"
+  },
+  {
+   "k": "唱",
+   "g": 4,
+   "palabra": "合唱",
+   "lectura": "がっしょう",
+   "es": "canto en coro"
+  },
+  {
+   "k": "照",
+   "g": 4,
+   "palabra": "照らす",
+   "lectura": "てらす",
+   "es": "iluminar"
+  },
+  {
+   "k": "松",
+   "g": 4,
+   "palabra": "松の木",
+   "lectura": "まつのき",
+   "es": "árbol de pino"
+  },
+  {
+   "k": "焼",
+   "g": 4,
+   "palabra": "目玉焼き",
+   "lectura": "めだまやき",
+   "es": "huevo frito"
+  },
+  {
+   "k": "縄",
+   "g": 4,
+   "palabra": "縄",
+   "lectura": "なわ",
+   "es": "soga"
+  },
+  {
+   "k": "城",
+   "g": 4,
+   "palabra": "城",
+   "lectura": "しろ",
+   "es": "castillo"
+  },
+  {
+   "k": "臣",
+   "g": 4,
+   "palabra": "大臣",
+   "lectura": "だいじん",
+   "es": "ministro de un gobierno"
+  },
+  {
+   "k": "信",
+   "g": 4,
+   "palabra": "信号",
+   "lectura": "しんごう",
+   "es": "señal, como la de un semáforo"
+  },
+  {
+   "k": "省",
+   "g": 4,
+   "palabra": "省く",
+   "lectura": "はぶく",
+   "es": "omitir algo innecesario"
+  },
+  {
+   "k": "成",
+   "g": 4,
+   "palabra": "成長",
+   "lectura": "せいちょう",
+   "es": "crecimiento"
+  },
+  {
+   "k": "井",
+   "g": 4,
+   "palabra": "井戸",
+   "lectura": "いど",
+   "es": "pozo de agua"
+  },
+  {
+   "k": "清",
+   "g": 4,
+   "palabra": "清流",
+   "lectura": "せいりゅう",
+   "es": "corriente de agua limpia"
+  },
+  {
+   "k": "積",
+   "g": 4,
+   "palabra": "積み木",
+   "lectura": "つみき",
+   "es": "bloques de madera para apilar"
+  },
+  {
+   "k": "折",
+   "g": 4,
+   "palabra": "折り紙",
+   "lectura": "おりがみ",
+   "es": "arte de plegar papel"
+  },
+  {
+   "k": "静",
+   "g": 4,
+   "palabra": "静か",
+   "lectura": "しずか",
+   "es": "tranquilo o silencioso"
+  },
+  {
+   "k": "席",
+   "g": 4,
+   "palabra": "客席",
+   "lectura": "きゃくせき",
+   "es": "asientos para el público"
+  },
+  {
+   "k": "節",
+   "g": 4,
+   "palabra": "関節",
+   "lectura": "かんせつ",
+   "es": "articulación del cuerpo"
+  },
+  {
+   "k": "選",
+   "g": 4,
+   "palabra": "選手",
+   "lectura": "せんしゅ",
+   "es": "deportista que compite"
+  },
+  {
+   "k": "説",
+   "g": 4,
+   "palabra": "説明",
+   "lectura": "せつめい",
+   "es": "explicación"
+  },
+  {
+   "k": "戦",
+   "g": 4,
+   "palabra": "作戦",
+   "lectura": "さくせん",
+   "es": "plan para alcanzar un objetivo"
+  },
+  {
+   "k": "然",
+   "g": 4,
+   "palabra": "自然",
+   "lectura": "しぜん",
+   "es": "naturaleza"
+  },
+  {
+   "k": "浅",
+   "g": 4,
+   "palabra": "浅い",
+   "lectura": "あさい",
+   "es": "de poca profundidad"
+  },
+  {
+   "k": "倉",
+   "g": 4,
+   "palabra": "倉庫",
+   "lectura": "そうこ",
+   "es": "depósito o almacén"
+  },
+  {
+   "k": "巣",
+   "g": 4,
+   "palabra": "鳥の巣",
+   "lectura": "とりのす",
+   "es": "nido de pájaro"
+  },
+  {
+   "k": "争",
+   "g": 4,
+   "palabra": "争う",
+   "lectura": "あらそう",
+   "es": "disputar o competir"
+  },
+  {
+   "k": "側",
+   "g": 4,
+   "palabra": "両側",
+   "lectura": "りょうがわ",
+   "es": "ambos lados"
+  },
+  {
+   "k": "続",
+   "g": 4,
+   "palabra": "続ける",
+   "lectura": "つづける",
+   "es": "continuar"
+  },
+  {
+   "k": "束",
+   "g": 4,
+   "palabra": "花束",
+   "lectura": "はなたば",
+   "es": "ramo de flores"
+  },
+  {
+   "k": "卒",
+   "g": 4,
+   "palabra": "卒業",
+   "lectura": "そつぎょう",
+   "es": "graduación"
+  },
+  {
+   "k": "孫",
+   "g": 4,
+   "palabra": "孫",
+   "lectura": "まご",
+   "es": "nieto o nieta"
+  },
+  {
+   "k": "帯",
+   "g": 4,
+   "palabra": "帯",
+   "lectura": "おび",
+   "es": "faja de un kimono"
+  },
+  {
+   "k": "単",
+   "g": 4,
+   "palabra": "単語",
+   "lectura": "たんご",
+   "es": "palabra"
+  },
+  {
+   "k": "隊",
+   "g": 4,
+   "palabra": "音楽隊",
+   "lectura": "おんがくたい",
+   "es": "banda de música"
+  },
+  {
+   "k": "達",
+   "g": 4,
+   "palabra": "友達",
+   "lectura": "ともだち",
+   "es": "amigo o amiga"
+  },
+  {
+   "k": "仲",
+   "g": 4,
+   "palabra": "仲間",
+   "lectura": "なかま",
+   "es": "compañero de un grupo"
+  },
+  {
+   "k": "沖",
+   "g": 4,
+   "palabra": "沖縄県",
+   "lectura": "おきなわけん",
+   "es": "prefectura de Okinawa"
+  },
+  {
+   "k": "置",
+   "g": 4,
+   "palabra": "置き場",
+   "lectura": "おきば",
+   "es": "lugar donde se deja algo"
+  },
+  {
+   "k": "兆",
+   "g": 4,
+   "palabra": "一兆",
+   "lectura": "いっちょう",
+   "es": "un billón, es decir, un millón de millones"
+  },
+  {
+   "k": "低",
+   "g": 4,
+   "palabra": "低い",
+   "lectura": "ひくい",
+   "es": "bajo o de poca altura"
+  },
+  {
+   "k": "典",
+   "g": 4,
+   "palabra": "国語辞典",
+   "lectura": "こくごじてん",
+   "es": "diccionario de japonés"
+  },
+  {
+   "k": "的",
+   "g": 4,
+   "palabra": "的",
+   "lectura": "まと",
+   "es": "blanco al que se apunta"
+  },
+  {
+   "k": "底",
+   "g": 4,
+   "palabra": "海底",
+   "lectura": "かいてい",
+   "es": "fondo del mar"
+  },
+  {
+   "k": "伝",
+   "g": 4,
+   "palabra": "伝言",
+   "lectura": "でんごん",
+   "es": "mensaje que se deja para alguien"
+  },
+  {
+   "k": "灯",
+   "g": 4,
+   "palabra": "灯台",
+   "lectura": "とうだい",
+   "es": "faro para guiar barcos"
+  },
+  {
+   "k": "徒",
+   "g": 4,
+   "palabra": "生徒",
+   "lectura": "せいと",
+   "es": "estudiante"
+  },
+  {
+   "k": "努",
+   "g": 4,
+   "palabra": "努力",
+   "lectura": "どりょく",
+   "es": "esfuerzo"
+  },
+  {
+   "k": "徳",
+   "g": 4,
+   "palabra": "徳島県",
+   "lectura": "とくしまけん",
+   "es": "prefectura de Tokushima"
+  },
+  {
+   "k": "栃",
+   "g": 4,
+   "palabra": "栃木県",
+   "lectura": "とちぎけん",
+   "es": "prefectura de Tochigi"
+  },
+  {
+   "k": "働",
+   "g": 4,
+   "palabra": "働く",
+   "lectura": "はたらく",
+   "es": "trabajar"
+  },
+  {
+   "k": "特",
+   "g": 4,
+   "palabra": "特急",
+   "lectura": "とっきゅう",
+   "es": "tren expreso"
+  },
+  {
+   "k": "奈",
+   "g": 4,
+   "palabra": "奈良県",
+   "lectura": "ならけん",
+   "es": "prefectura de Nara"
+  },
+  {
+   "k": "梨",
+   "g": 4,
+   "palabra": "梨",
+   "lectura": "なし",
+   "es": "pera japonesa"
+  },
+  {
+   "k": "熱",
+   "g": 4,
+   "palabra": "熱湯",
+   "lectura": "ねっとう",
+   "es": "agua muy caliente"
+  },
+  {
+   "k": "念",
+   "g": 4,
+   "palabra": "記念",
+   "lectura": "きねん",
+   "es": "conmemoración"
+  },
+  {
+   "k": "敗",
+   "g": 4,
+   "palabra": "勝敗",
+   "lectura": "しょうはい",
+   "es": "victoria o derrota"
+  },
+  {
+   "k": "博",
+   "g": 4,
+   "palabra": "博物館",
+   "lectura": "はくぶつかん",
+   "es": "museo"
+  },
+  {
+   "k": "梅",
+   "g": 4,
+   "palabra": "梅雨",
+   "lectura": "つゆ",
+   "es": "temporada de lluvias"
+  },
+  {
+   "k": "飛",
+   "g": 4,
+   "palabra": "飛ぶ",
+   "lectura": "とぶ",
+   "es": "volar"
+  },
+  {
+   "k": "阪",
+   "g": 4,
+   "palabra": "大阪府",
+   "lectura": "おおさかふ",
+   "es": "prefectura de Osaka"
+  },
+  {
+   "k": "飯",
+   "g": 4,
+   "palabra": "ご飯",
+   "lectura": "ごはん",
+   "es": "arroz cocido o comida"
+  },
+  {
+   "k": "票",
+   "g": 4,
+   "palabra": "投票",
+   "lectura": "とうひょう",
+   "es": "votación"
+  },
+  {
+   "k": "夫",
+   "g": 4,
+   "palabra": "夫",
+   "lectura": "おっと",
+   "es": "esposo"
+  },
+  {
+   "k": "標",
+   "g": 4,
+   "palabra": "目標",
+   "lectura": "もくひょう",
+   "es": "objetivo o meta"
+  },
+  {
+   "k": "付",
+   "g": 4,
+   "palabra": "付ける",
+   "lectura": "つける",
+   "es": "pegar o colocar algo"
+  },
+  {
+   "k": "府",
+   "g": 4,
+   "palabra": "京都府",
+   "lectura": "きょうとふ",
+   "es": "prefectura de Kioto"
+  },
+  {
+   "k": "必",
+   "g": 4,
+   "palabra": "必ず",
+   "lectura": "かならず",
+   "es": "sin falta"
+  },
+  {
+   "k": "阜",
+   "g": 4,
+   "palabra": "岐阜",
+   "lectura": "ぎふ",
+   "es": "Gifu, nombre de una ciudad y una prefectura"
+  },
+  {
+   "k": "不",
+   "g": 4,
+   "palabra": "不安",
+   "lectura": "ふあん",
+   "es": "inquietud"
+  },
+  {
+   "k": "富",
+   "g": 4,
+   "palabra": "富山県",
+   "lectura": "とやまけん",
+   "es": "prefectura de Toyama"
+  },
+  {
+   "k": "副",
+   "g": 4,
+   "palabra": "副会長",
+   "lectura": "ふくかいちょう",
+   "es": "vicepresidente de un grupo"
+  },
+  {
+   "k": "兵",
+   "g": 4,
+   "palabra": "兵隊",
+   "lectura": "へいたい",
+   "es": "soldado o tropa"
+  },
+  {
+   "k": "別",
+   "g": 4,
+   "palabra": "別々",
+   "lectura": "べつべつ",
+   "es": "por separado"
+  },
+  {
+   "k": "辺",
+   "g": 4,
+   "palabra": "辺り",
+   "lectura": "あたり",
+   "es": "alrededores"
+  },
+  {
+   "k": "変",
+   "g": 4,
+   "palabra": "変化",
+   "lectura": "へんか",
+   "es": "cambio"
+  },
+  {
+   "k": "便",
+   "g": 4,
+   "palabra": "便利",
+   "lectura": "べんり",
+   "es": "práctico o cómodo"
+  },
+  {
+   "k": "包",
+   "g": 4,
+   "palabra": "包み",
+   "lectura": "つつみ",
+   "es": "paquete o envoltorio"
+  },
+  {
+   "k": "望",
+   "g": 4,
+   "palabra": "望遠鏡",
+   "lectura": "ぼうえんきょう",
+   "es": "telescopio"
+  },
+  {
+   "k": "法",
+   "g": 4,
+   "palabra": "方法",
+   "lectura": "ほうほう",
+   "es": "manera de hacer algo"
+  },
+  {
+   "k": "牧",
+   "g": 4,
+   "palabra": "牧場",
+   "lectura": "ぼくじょう",
+   "es": "campo donde se cría ganado"
+  },
+  {
+   "k": "民",
+   "g": 4,
+   "palabra": "国民",
+   "lectura": "こくみん",
+   "es": "gente de un país"
+  },
+  {
+   "k": "末",
+   "g": 4,
+   "palabra": "週末",
+   "lectura": "しゅうまつ",
+   "es": "fin de semana"
+  },
+  {
+   "k": "無",
+   "g": 4,
+   "palabra": "無人島",
+   "lectura": "むじんとう",
+   "es": "isla deshabitada"
+  },
+  {
+   "k": "満",
+   "g": 4,
+   "palabra": "満月",
+   "lectura": "まんげつ",
+   "es": "luna llena"
+  },
+  {
+   "k": "未",
+   "g": 4,
+   "palabra": "未来",
+   "lectura": "みらい",
+   "es": "futuro"
+  },
+  {
+   "k": "約",
+   "g": 4,
+   "palabra": "約束",
+   "lectura": "やくそく",
+   "es": "promesa"
+  },
+  {
+   "k": "勇",
+   "g": 4,
+   "palabra": "勇気",
+   "lectura": "ゆうき",
+   "es": "valor para hacer algo difícil"
+  },
+  {
+   "k": "要",
+   "g": 4,
+   "palabra": "必要",
+   "lectura": "ひつよう",
+   "es": "necesario"
+  },
+  {
+   "k": "養",
+   "g": 4,
+   "palabra": "養う",
+   "lectura": "やしなう",
+   "es": "alimentar o mantener"
+  },
+  {
+   "k": "陸",
+   "g": 4,
+   "palabra": "大陸",
+   "lectura": "たいりく",
+   "es": "continente"
+  },
+  {
+   "k": "浴",
+   "g": 4,
+   "palabra": "海水浴",
+   "lectura": "かいすいよく",
+   "es": "baño en el mar"
+  },
+  {
+   "k": "利",
+   "g": 4,
+   "palabra": "利用",
+   "lectura": "りよう",
+   "es": "uso o aprovechamiento"
+  },
+  {
+   "k": "輪",
+   "g": 4,
+   "palabra": "車輪",
+   "lectura": "しゃりん",
+   "es": "rueda de un vehículo"
+  },
+  {
+   "k": "良",
+   "g": 4,
+   "palabra": "良い",
+   "lectura": "よい",
+   "es": "bueno"
+  },
+  {
+   "k": "例",
+   "g": 4,
+   "palabra": "例文",
+   "lectura": "れいぶん",
+   "es": "oración de ejemplo"
+  },
+  {
+   "k": "料",
+   "g": 4,
+   "palabra": "材料",
+   "lectura": "ざいりょう",
+   "es": "materiales o ingredientes"
+  },
+  {
+   "k": "量",
+   "g": 4,
+   "palabra": "水量",
+   "lectura": "すいりょう",
+   "es": "cantidad de agua"
+  },
+  {
+   "k": "類",
+   "g": 4,
+   "palabra": "種類",
+   "lectura": "しゅるい",
+   "es": "tipo o clase"
+  },
+  {
+   "k": "令",
+   "g": 4,
+   "palabra": "命令",
+   "lectura": "めいれい",
+   "es": "orden que se da a alguien"
+  },
+  {
+   "k": "冷",
+   "g": 4,
+   "palabra": "冷水",
+   "lectura": "れいすい",
+   "es": "agua fría"
+  },
+  {
+   "k": "連",
+   "g": 4,
+   "palabra": "連休",
+   "lectura": "れんきゅう",
+   "es": "varios días de descanso seguidos"
+  },
+  {
+   "k": "録",
+   "g": 4,
+   "palabra": "記録",
+   "lectura": "きろく",
+   "es": "registro escrito o grabado"
+  },
+  {
+   "k": "老",
+   "g": 4,
+   "palabra": "老人",
+   "lectura": "ろうじん",
+   "es": "persona anciana"
+  },
+  {
+   "k": "労",
+   "g": 4,
+   "palabra": "苦労",
+   "lectura": "くろう",
+   "es": "esfuerzo ante una dificultad"
+  },
+  {
+   "k": "圧",
+   "g": 5,
+   "palabra": "気圧",
+   "lectura": "きあつ",
+   "es": "presión del aire"
+  },
+  {
+   "k": "移",
+   "g": 5,
+   "palabra": "移動",
+   "lectura": "いどう",
+   "es": "desplazamiento"
+  },
+  {
+   "k": "因",
+   "g": 5,
+   "palabra": "原因",
+   "lectura": "げんいん",
+   "es": "causa de algo"
+  },
+  {
+   "k": "囲",
+   "g": 5,
+   "palabra": "囲む",
+   "lectura": "かこむ",
+   "es": "rodear"
+  },
+  {
+   "k": "営",
+   "g": 5,
+   "palabra": "営業",
+   "lectura": "えいぎょう",
+   "es": "actividad de un negocio"
+  },
+  {
+   "k": "衛",
+   "g": 5,
+   "palabra": "衛星",
+   "lectura": "えいせい",
+   "es": "satélite"
+  },
+  {
+   "k": "易",
+   "g": 5,
+   "palabra": "容易",
+   "lectura": "ようい",
+   "es": "fácil de hacer"
+  },
+  {
+   "k": "益",
+   "g": 5,
+   "palabra": "利益",
+   "lectura": "りえき",
+   "es": "ganancia o beneficio"
+  },
+  {
+   "k": "液",
+   "g": 5,
+   "palabra": "液体",
+   "lectura": "えきたい",
+   "es": "líquido"
+  },
+  {
+   "k": "永",
+   "g": 5,
+   "palabra": "永久",
+   "lectura": "えいきゅう",
+   "es": "para siempre"
+  },
+  {
+   "k": "演",
+   "g": 5,
+   "palabra": "演技",
+   "lectura": "えんぎ",
+   "es": "actuación"
+  },
+  {
+   "k": "応",
+   "g": 5,
+   "palabra": "応答",
+   "lectura": "おうとう",
+   "es": "respuesta"
+  },
+  {
+   "k": "往",
+   "g": 5,
+   "palabra": "往復",
+   "lectura": "おうふく",
+   "es": "ida y vuelta"
+  },
+  {
+   "k": "可",
+   "g": 5,
+   "palabra": "可能",
+   "lectura": "かのう",
+   "es": "posible"
+  },
+  {
+   "k": "仮",
+   "g": 5,
+   "palabra": "仮名",
+   "lectura": "かな",
+   "es": "signos japoneses como el hiragana y el katakana"
+  },
+  {
+   "k": "桜",
+   "g": 5,
+   "palabra": "桜",
+   "lectura": "さくら",
+   "es": "cerezo japonés"
+  },
+  {
+   "k": "価",
+   "g": 5,
+   "palabra": "価格",
+   "lectura": "かかく",
+   "es": "precio"
+  },
+  {
+   "k": "河",
+   "g": 5,
+   "palabra": "河口",
+   "lectura": "かこう",
+   "es": "desembocadura de un río"
+  },
+  {
+   "k": "快",
+   "g": 5,
+   "palabra": "快晴",
+   "lectura": "かいせい",
+   "es": "cielo completamente despejado"
+  },
+  {
+   "k": "過",
+   "g": 5,
+   "palabra": "過去",
+   "lectura": "かこ",
+   "es": "pasado"
+  },
+  {
+   "k": "格",
+   "g": 5,
+   "palabra": "合格",
+   "lectura": "ごうかく",
+   "es": "aprobación de un examen"
+  },
+  {
+   "k": "解",
+   "g": 5,
+   "palabra": "解く",
+   "lectura": "とく",
+   "es": "resolver un problema"
+  },
+  {
+   "k": "確",
+   "g": 5,
+   "palabra": "確かめる",
+   "lectura": "たしかめる",
+   "es": "comprobar"
+  },
+  {
+   "k": "額",
+   "g": 5,
+   "palabra": "金額",
+   "lectura": "きんがく",
+   "es": "cantidad de dinero"
+  },
+  {
+   "k": "刊",
+   "g": 5,
+   "palabra": "月刊",
+   "lectura": "げっかん",
+   "es": "publicación mensual"
+  },
+  {
+   "k": "幹",
+   "g": 5,
+   "palabra": "幹",
+   "lectura": "みき",
+   "es": "tronco de un árbol"
+  },
+  {
+   "k": "慣",
+   "g": 5,
+   "palabra": "習慣",
+   "lectura": "しゅうかん",
+   "es": "costumbre"
+  },
+  {
+   "k": "紀",
+   "g": 5,
+   "palabra": "世紀",
+   "lectura": "せいき",
+   "es": "siglo"
+  },
+  {
+   "k": "眼",
+   "g": 5,
+   "palabra": "肉眼",
+   "lectura": "にくがん",
+   "es": "vista sin instrumentos"
+  },
+  {
+   "k": "基",
+   "g": 5,
+   "palabra": "基本",
+   "lectura": "きほん",
+   "es": "base o fundamento"
+  },
+  {
+   "k": "寄",
+   "g": 5,
+   "palabra": "近寄る",
+   "lectura": "ちかよる",
+   "es": "acercarse"
+  },
+  {
+   "k": "技",
+   "g": 5,
+   "palabra": "特技",
+   "lectura": "とくぎ",
+   "es": "habilidad especial"
+  },
+  {
+   "k": "逆",
+   "g": 5,
+   "palabra": "逆さま",
+   "lectura": "さかさま",
+   "es": "al revés"
+  },
+  {
+   "k": "規",
+   "g": 5,
+   "palabra": "規則",
+   "lectura": "きそく",
+   "es": "regla o norma"
+  },
+  {
+   "k": "喜",
+   "g": 5,
+   "palabra": "喜ぶ",
+   "lectura": "よろこぶ",
+   "es": "alegrarse"
+  },
+  {
+   "k": "義",
+   "g": 5,
+   "palabra": "正義",
+   "lectura": "せいぎ",
+   "es": "justicia"
+  },
+  {
+   "k": "久",
+   "g": 5,
+   "palabra": "久しぶり",
+   "lectura": "ひさしぶり",
+   "es": "después de mucho tiempo"
+  },
+  {
+   "k": "旧",
+   "g": 5,
+   "palabra": "旧友",
+   "lectura": "きゅうゆう",
+   "es": "amigo de hace mucho tiempo"
+  },
+  {
+   "k": "居",
+   "g": 5,
+   "palabra": "居間",
+   "lectura": "いま",
+   "es": "sala de estar"
+  },
+  {
+   "k": "許",
+   "g": 5,
+   "palabra": "許可",
+   "lectura": "きょか",
+   "es": "permiso"
+  },
+  {
+   "k": "救",
+   "g": 5,
+   "palabra": "救急車",
+   "lectura": "きゅうきゅうしゃ",
+   "es": "ambulancia"
+  },
+  {
+   "k": "境",
+   "g": 5,
+   "palabra": "国境",
+   "lectura": "こっきょう",
+   "es": "frontera entre países"
+  },
+  {
+   "k": "禁",
+   "g": 5,
+   "palabra": "禁止",
+   "lectura": "きんし",
+   "es": "prohibición"
+  },
+  {
+   "k": "句",
+   "g": 5,
+   "palabra": "字句",
+   "lectura": "じく",
+   "es": "palabras y expresiones de un texto"
+  },
+  {
+   "k": "均",
+   "g": 5,
+   "palabra": "平均",
+   "lectura": "へいきん",
+   "es": "promedio"
+  },
+  {
+   "k": "経",
+   "g": 5,
+   "palabra": "経由",
+   "lectura": "けいゆ",
+   "es": "paso por un punto durante un recorrido"
+  },
+  {
+   "k": "型",
+   "g": 5,
+   "palabra": "紙型",
+   "lectura": "かみがた",
+   "es": "molde de papel"
+  },
+  {
+   "k": "潔",
+   "g": 5,
+   "palabra": "清潔",
+   "lectura": "せいけつ",
+   "es": "limpieza"
+  },
+  {
+   "k": "険",
+   "g": 5,
+   "palabra": "険しい",
+   "lectura": "けわしい",
+   "es": "empinado o escarpado"
+  },
+  {
+   "k": "件",
+   "g": 5,
+   "palabra": "事件",
+   "lectura": "じけん",
+   "es": "suceso o incidente"
+  },
+  {
+   "k": "検",
+   "g": 5,
+   "palabra": "点検",
+   "lectura": "てんけん",
+   "es": "revisión de algo para ver si funciona"
+  },
+  {
+   "k": "減",
+   "g": 5,
+   "palabra": "減る",
+   "lectura": "へる",
+   "es": "disminuir"
+  },
+  {
+   "k": "個",
+   "g": 5,
+   "palabra": "個人",
+   "lectura": "こじん",
+   "es": "persona individual"
+  },
+  {
+   "k": "限",
+   "g": 5,
+   "palabra": "期限",
+   "lectura": "きげん",
+   "es": "plazo"
+  },
+  {
+   "k": "現",
+   "g": 5,
+   "palabra": "現れる",
+   "lectura": "あらわれる",
+   "es": "aparecer"
+  },
+  {
+   "k": "故",
+   "g": 5,
+   "palabra": "事故",
+   "lectura": "じこ",
+   "es": "accidente"
+  },
+  {
+   "k": "護",
+   "g": 5,
+   "palabra": "保護",
+   "lectura": "ほご",
+   "es": "protección"
+  },
+  {
+   "k": "効",
+   "g": 5,
+   "palabra": "効果",
+   "lectura": "こうか",
+   "es": "efecto o resultado"
+  },
+  {
+   "k": "厚",
+   "g": 5,
+   "palabra": "厚紙",
+   "lectura": "あつがみ",
+   "es": "papel grueso o cartulina"
+  },
+  {
+   "k": "興",
+   "g": 5,
+   "palabra": "興味",
+   "lectura": "きょうみ",
+   "es": "interés por algo"
+  },
+  {
+   "k": "講",
+   "g": 5,
+   "palabra": "講演",
+   "lectura": "こうえん",
+   "es": "charla ante un público"
+  },
+  {
+   "k": "耕",
+   "g": 5,
+   "palabra": "耕す",
+   "lectura": "たがやす",
+   "es": "labrar la tierra"
+  },
+  {
+   "k": "航",
+   "g": 5,
+   "palabra": "航空便",
+   "lectura": "こうくうびん",
+   "es": "correo aéreo"
+  },
+  {
+   "k": "鉱",
+   "g": 5,
+   "palabra": "鉱石",
+   "lectura": "こうせき",
+   "es": "roca que contiene minerales aprovechables"
+  },
+  {
+   "k": "告",
+   "g": 5,
+   "palabra": "報告",
+   "lectura": "ほうこく",
+   "es": "informe"
+  },
+  {
+   "k": "構",
+   "g": 5,
+   "palabra": "構造",
+   "lectura": "こうぞう",
+   "es": "estructura"
+  },
+  {
+   "k": "妻",
+   "g": 5,
+   "palabra": "妻",
+   "lectura": "つま",
+   "es": "esposa"
+  },
+  {
+   "k": "査",
+   "g": 5,
+   "palabra": "調査",
+   "lectura": "ちょうさ",
+   "es": "investigación"
+  },
+  {
+   "k": "採",
+   "g": 5,
+   "palabra": "採点",
+   "lectura": "さいてん",
+   "es": "corrección y puntuación de una prueba"
+  },
+  {
+   "k": "混",
+   "g": 5,
+   "palabra": "混ぜる",
+   "lectura": "まぜる",
+   "es": "mezclar"
+  },
+  {
+   "k": "再",
+   "g": 5,
+   "palabra": "再会",
+   "lectura": "さいかい",
+   "es": "reencuentro"
+  },
+  {
+   "k": "災",
+   "g": 5,
+   "palabra": "火災",
+   "lectura": "かさい",
+   "es": "incendio"
+  },
+  {
+   "k": "雑",
+   "g": 5,
+   "palabra": "雑草",
+   "lectura": "ざっそう",
+   "es": "hierba que crece donde no se la plantó"
+  },
+  {
+   "k": "際",
+   "g": 5,
+   "palabra": "水際",
+   "lectura": "みずぎわ",
+   "es": "orilla del agua"
+  },
+  {
+   "k": "在",
+   "g": 5,
+   "palabra": "現在",
+   "lectura": "げんざい",
+   "es": "el momento presente"
+  },
+  {
+   "k": "殺",
+   "g": 5,
+   "palabra": "殺虫",
+   "lectura": "さっちゅう",
+   "es": "eliminación de insectos"
+  },
+  {
+   "k": "財",
+   "g": 5,
+   "palabra": "財布",
+   "lectura": "さいふ",
+   "es": "billetera"
+  },
+  {
+   "k": "罪",
+   "g": 5,
+   "palabra": "無罪",
+   "lectura": "むざい",
+   "es": "inocencia ante la ley"
+  },
+  {
+   "k": "酸",
+   "g": 5,
+   "palabra": "酸素",
+   "lectura": "さんそ",
+   "es": "oxígeno"
+  },
+  {
+   "k": "賛",
+   "g": 5,
+   "palabra": "賛成",
+   "lectura": "さんせい",
+   "es": "acuerdo con una propuesta"
+  },
+  {
+   "k": "士",
+   "g": 5,
+   "palabra": "消防士",
+   "lectura": "しょうぼうし",
+   "es": "bombero"
+  },
+  {
+   "k": "支",
+   "g": 5,
+   "palabra": "支える",
+   "lectura": "ささえる",
+   "es": "sostener"
+  },
+  {
+   "k": "志",
+   "g": 5,
+   "palabra": "志す",
+   "lectura": "こころざす",
+   "es": "proponerse una meta"
+  },
+  {
+   "k": "師",
+   "g": 5,
+   "palabra": "教師",
+   "lectura": "きょうし",
+   "es": "docente"
+  },
+  {
+   "k": "史",
+   "g": 5,
+   "palabra": "歴史",
+   "lectura": "れきし",
+   "es": "historia"
+  },
+  {
+   "k": "枝",
+   "g": 5,
+   "palabra": "小枝",
+   "lectura": "こえだ",
+   "es": "ramita"
+  },
+  {
+   "k": "資",
+   "g": 5,
+   "palabra": "資料",
+   "lectura": "しりょう",
+   "es": "material de consulta"
+  },
+  {
+   "k": "識",
+   "g": 5,
+   "palabra": "知識",
+   "lectura": "ちしき",
+   "es": "conocimiento"
+  },
+  {
+   "k": "飼",
+   "g": 5,
+   "palabra": "飼い主",
+   "lectura": "かいぬし",
+   "es": "dueño de una mascota"
+  },
+  {
+   "k": "示",
+   "g": 5,
+   "palabra": "示す",
+   "lectura": "しめす",
+   "es": "mostrar o señalar"
+  },
+  {
+   "k": "質",
+   "g": 5,
+   "palabra": "性質",
+   "lectura": "せいしつ",
+   "es": "propiedad de una cosa"
+  },
+  {
+   "k": "似",
+   "g": 5,
+   "palabra": "似顔絵",
+   "lectura": "にがおえ",
+   "es": "retrato que capta el parecido"
+  },
+  {
+   "k": "舎",
+   "g": 5,
+   "palabra": "校舎",
+   "lectura": "こうしゃ",
+   "es": "edificio de una escuela"
+  },
+  {
+   "k": "謝",
+   "g": 5,
+   "palabra": "感謝",
+   "lectura": "かんしゃ",
+   "es": "agradecimiento"
+  },
+  {
+   "k": "授",
+   "g": 5,
+   "palabra": "授業",
+   "lectura": "じゅぎょう",
+   "es": "clase"
+  },
+  {
+   "k": "修",
+   "g": 5,
+   "palabra": "修理",
+   "lectura": "しゅうり",
+   "es": "reparación"
+  },
+  {
+   "k": "術",
+   "g": 5,
+   "palabra": "手術",
+   "lectura": "しゅじゅつ",
+   "es": "operación médica"
+  },
+  {
+   "k": "準",
+   "g": 5,
+   "palabra": "準備",
+   "lectura": "じゅんび",
+   "es": "preparación"
+  },
+  {
+   "k": "序",
+   "g": 5,
+   "palabra": "順序",
+   "lectura": "じゅんじょ",
+   "es": "orden de los pasos"
+  },
+  {
+   "k": "述",
+   "g": 5,
+   "palabra": "述べる",
+   "lectura": "のべる",
+   "es": "expresar una idea"
+  },
+  {
+   "k": "証",
+   "g": 5,
+   "palabra": "証明",
+   "lectura": "しょうめい",
+   "es": "demostración o prueba"
+  },
+  {
+   "k": "象",
+   "g": 5,
+   "palabra": "象",
+   "lectura": "ぞう",
+   "es": "elefante"
+  },
+  {
+   "k": "招",
+   "g": 5,
+   "palabra": "招待",
+   "lectura": "しょうたい",
+   "es": "invitación"
+  },
+  {
+   "k": "賞",
+   "g": 5,
+   "palabra": "賞品",
+   "lectura": "しょうひん",
+   "es": "objeto que se entrega como premio"
+  },
+  {
+   "k": "織",
+   "g": 5,
+   "palabra": "織物",
+   "lectura": "おりもの",
+   "es": "tela tejida"
+  },
+  {
+   "k": "職",
+   "g": 5,
+   "palabra": "職業",
+   "lectura": "しょくぎょう",
+   "es": "profesión"
+  },
+  {
+   "k": "条",
+   "g": 5,
+   "palabra": "条件",
+   "lectura": "じょうけん",
+   "es": "condición o requisito"
+  },
+  {
+   "k": "状",
+   "g": 5,
+   "palabra": "招待状",
+   "lectura": "しょうたいじょう",
+   "es": "carta de invitación"
+  },
+  {
+   "k": "常",
+   "g": 5,
+   "palabra": "日常",
+   "lectura": "にちじょう",
+   "es": "vida cotidiana"
+  },
+  {
+   "k": "情",
+   "g": 5,
+   "palabra": "友情",
+   "lectura": "ゆうじょう",
+   "es": "amistad"
+  },
+  {
+   "k": "制",
+   "g": 5,
+   "palabra": "制度",
+   "lectura": "せいど",
+   "es": "sistema de reglas"
+  },
+  {
+   "k": "性",
+   "g": 5,
+   "palabra": "個性",
+   "lectura": "こせい",
+   "es": "rasgos propios de una persona"
+  },
+  {
+   "k": "政",
+   "g": 5,
+   "palabra": "政治",
+   "lectura": "せいじ",
+   "es": "actividad de gobernar"
+  },
+  {
+   "k": "責",
+   "g": 5,
+   "palabra": "責任",
+   "lectura": "せきにん",
+   "es": "responsabilidad"
+  },
+  {
+   "k": "税",
+   "g": 5,
+   "palabra": "税金",
+   "lectura": "ぜいきん",
+   "es": "dinero que se paga en impuestos"
+  },
+  {
+   "k": "績",
+   "g": 5,
+   "palabra": "成績",
+   "lectura": "せいせき",
+   "es": "resultados de un alumno"
+  },
+  {
+   "k": "勢",
+   "g": 5,
+   "palabra": "勢い",
+   "lectura": "いきおい",
+   "es": "impulso"
+  },
+  {
+   "k": "精",
+   "g": 5,
+   "palabra": "精米",
+   "lectura": "せいまい",
+   "es": "arroz al que se le quita la capa exterior"
+  },
+  {
+   "k": "製",
+   "g": 5,
+   "palabra": "木製",
+   "lectura": "もくせい",
+   "es": "hecho de madera"
+  },
+  {
+   "k": "接",
+   "g": 5,
+   "palabra": "接点",
+   "lectura": "せってん",
+   "es": "punto de contacto"
+  },
+  {
+   "k": "設",
+   "g": 5,
+   "palabra": "設計",
+   "lectura": "せっけい",
+   "es": "diseño o plano de algo que se va a construir"
+  },
+  {
+   "k": "絶",
+   "g": 5,
+   "palabra": "絶える",
+   "lectura": "たえる",
+   "es": "dejar de existir o de continuar"
+  },
+  {
+   "k": "祖",
+   "g": 5,
+   "palabra": "祖父",
+   "lectura": "そふ",
+   "es": "abuelo"
+  },
+  {
+   "k": "素",
+   "g": 5,
+   "palabra": "水素",
+   "lectura": "すいそ",
+   "es": "hidrógeno"
+  },
+  {
+   "k": "総",
+   "g": 5,
+   "palabra": "総数",
+   "lectura": "そうすう",
+   "es": "cantidad total"
+  },
+  {
+   "k": "造",
+   "g": 5,
+   "palabra": "木造",
+   "lectura": "もくぞう",
+   "es": "construcción de madera"
+  },
+  {
+   "k": "像",
+   "g": 5,
+   "palabra": "銅像",
+   "lectura": "どうぞう",
+   "es": "estatua de bronce"
+  },
+  {
+   "k": "増",
+   "g": 5,
+   "palabra": "増える",
+   "lectura": "ふえる",
+   "es": "aumentar en cantidad"
+  },
+  {
+   "k": "損",
+   "g": 5,
+   "palabra": "損失",
+   "lectura": "そんしつ",
+   "es": "pérdida"
+  },
+  {
+   "k": "測",
+   "g": 5,
+   "palabra": "測定",
+   "lectura": "そくてい",
+   "es": "medición"
+  },
+  {
+   "k": "属",
+   "g": 5,
+   "palabra": "金属",
+   "lectura": "きんぞく",
+   "es": "metal"
+  },
+  {
+   "k": "率",
+   "g": 5,
+   "palabra": "勝率",
+   "lectura": "しょうりつ",
+   "es": "proporción de victorias"
+  },
+  {
+   "k": "則",
+   "g": 5,
+   "palabra": "原則",
+   "lectura": "げんそく",
+   "es": "regla básica"
+  },
+  {
+   "k": "貸",
+   "g": 5,
+   "palabra": "貸し出し",
+   "lectura": "かしだし",
+   "es": "préstamo, como el de un libro"
+  },
+  {
+   "k": "態",
+   "g": 5,
+   "palabra": "態度",
+   "lectura": "たいど",
+   "es": "actitud"
+  },
+  {
+   "k": "団",
+   "g": 5,
+   "palabra": "楽団",
+   "lectura": "がくだん",
+   "es": "conjunto de músicos"
+  },
+  {
+   "k": "断",
+   "g": 5,
+   "palabra": "判断",
+   "lectura": "はんだん",
+   "es": "decisión que se toma tras pensar"
+  },
+  {
+   "k": "築",
+   "g": 5,
+   "palabra": "建築",
+   "lectura": "けんちく",
+   "es": "construcción de edificios"
+  },
+  {
+   "k": "貯",
+   "g": 5,
+   "palabra": "貯金箱",
+   "lectura": "ちょきんばこ",
+   "es": "alcancía"
+  },
+  {
+   "k": "張",
+   "g": 5,
+   "palabra": "引っ張る",
+   "lectura": "ひっぱる",
+   "es": "tirar de algo"
+  },
+  {
+   "k": "適",
+   "g": 5,
+   "palabra": "適切",
+   "lectura": "てきせつ",
+   "es": "adecuado para la situación"
+  },
+  {
+   "k": "停",
+   "g": 5,
+   "palabra": "停車",
+   "lectura": "ていしゃ",
+   "es": "detención de un vehículo"
+  },
+  {
+   "k": "提",
+   "g": 5,
+   "palabra": "提案",
+   "lectura": "ていあん",
+   "es": "propuesta"
+  },
+  {
+   "k": "程",
+   "g": 5,
+   "palabra": "日程",
+   "lectura": "にってい",
+   "es": "calendario de actividades"
+  },
+  {
+   "k": "毒",
+   "g": 5,
+   "palabra": "毒草",
+   "lectura": "どくそう",
+   "es": "planta venenosa"
+  },
+  {
+   "k": "独",
+   "g": 5,
+   "palabra": "独学",
+   "lectura": "どくがく",
+   "es": "aprendizaje por cuenta propia"
+  },
+  {
+   "k": "堂",
+   "g": 5,
+   "palabra": "食堂",
+   "lectura": "しょくどう",
+   "es": "comedor"
+  },
+  {
+   "k": "統",
+   "g": 5,
+   "palabra": "統一",
+   "lectura": "とういつ",
+   "es": "unificación"
+  },
+  {
+   "k": "銅",
+   "g": 5,
+   "palabra": "銅線",
+   "lectura": "どうせん",
+   "es": "alambre de cobre"
+  },
+  {
+   "k": "導",
+   "g": 5,
+   "palabra": "導く",
+   "lectura": "みちびく",
+   "es": "guiar"
+  },
+  {
+   "k": "得",
+   "g": 5,
+   "palabra": "得点",
+   "lectura": "とくてん",
+   "es": "puntos obtenidos en un juego"
+  },
+  {
+   "k": "任",
+   "g": 5,
+   "palabra": "任せる",
+   "lectura": "まかせる",
+   "es": "dejar algo a cargo de alguien"
+  },
+  {
+   "k": "能",
+   "g": 5,
+   "palabra": "能力",
+   "lectura": "のうりょく",
+   "es": "capacidad para hacer algo"
+  },
+  {
+   "k": "破",
+   "g": 5,
+   "palabra": "破る",
+   "lectura": "やぶる",
+   "es": "romper o rasgar"
+  },
+  {
+   "k": "燃",
+   "g": 5,
+   "palabra": "燃料",
+   "lectura": "ねんりょう",
+   "es": "combustible"
+  },
+  {
+   "k": "非",
+   "g": 5,
+   "palabra": "非常口",
+   "lectura": "ひじょうぐち",
+   "es": "salida de emergencia"
+  },
+  {
+   "k": "犯",
+   "g": 5,
+   "palabra": "犯人",
+   "lectura": "はんにん",
+   "es": "persona que cometió un delito"
+  },
+  {
+   "k": "比",
+   "g": 5,
+   "palabra": "比べる",
+   "lectura": "くらべる",
+   "es": "comparar"
+  },
+  {
+   "k": "判",
+   "g": 5,
+   "palabra": "判定",
+   "lectura": "はんてい",
+   "es": "decisión de un juez o árbitro"
+  },
+  {
+   "k": "費",
+   "g": 5,
+   "palabra": "学費",
+   "lectura": "がくひ",
+   "es": "costo de los estudios"
+  },
+  {
+   "k": "版",
+   "g": 5,
+   "palabra": "版画",
+   "lectura": "はんが",
+   "es": "grabado impreso"
+  },
+  {
+   "k": "肥",
+   "g": 5,
+   "palabra": "肥料",
+   "lectura": "ひりょう",
+   "es": "abono para las plantas"
+  },
+  {
+   "k": "評",
+   "g": 5,
+   "palabra": "評判",
+   "lectura": "ひょうばん",
+   "es": "reputación"
+  },
+  {
+   "k": "備",
+   "g": 5,
+   "palabra": "備える",
+   "lectura": "そなえる",
+   "es": "prepararse o equiparse"
+  },
+  {
+   "k": "布",
+   "g": 5,
+   "palabra": "布",
+   "lectura": "ぬの",
+   "es": "tela"
+  },
+  {
+   "k": "貧",
+   "g": 5,
+   "palabra": "貧しい",
+   "lectura": "まずしい",
+   "es": "que tiene pocos recursos"
+  },
+  {
+   "k": "婦",
+   "g": 5,
+   "palabra": "夫婦",
+   "lectura": "ふうふ",
+   "es": "matrimonio o pareja casada"
+  },
+  {
+   "k": "復",
+   "g": 5,
+   "palabra": "回復",
+   "lectura": "かいふく",
+   "es": "recuperación"
+  },
+  {
+   "k": "複",
+   "g": 5,
+   "palabra": "複数",
+   "lectura": "ふくすう",
+   "es": "más de uno"
+  },
+  {
+   "k": "武",
+   "g": 5,
+   "palabra": "武道",
+   "lectura": "ぶどう",
+   "es": "artes marciales japonesas"
+  },
+  {
+   "k": "仏",
+   "g": 5,
+   "palabra": "仏像",
+   "lectura": "ぶつぞう",
+   "es": "estatua budista"
+  },
+  {
+   "k": "粉",
+   "g": 5,
+   "palabra": "小麦粉",
+   "lectura": "こむぎこ",
+   "es": "harina de trigo"
+  },
+  {
+   "k": "保",
+   "g": 5,
+   "palabra": "保温",
+   "lectura": "ほおん",
+   "es": "conservación del calor"
+  },
+  {
+   "k": "墓",
+   "g": 5,
+   "palabra": "墓地",
+   "lectura": "ぼち",
+   "es": "cementerio"
+  },
+  {
+   "k": "編",
+   "g": 5,
+   "palabra": "編み物",
+   "lectura": "あみもの",
+   "es": "tejido hecho a mano"
+  },
+  {
+   "k": "弁",
+   "g": 5,
+   "palabra": "弁当",
+   "lectura": "べんとう",
+   "es": "comida para llevar en una caja"
+  },
+  {
+   "k": "防",
+   "g": 5,
+   "palabra": "防水",
+   "lectura": "ぼうすい",
+   "es": "protección contra el agua"
+  },
+  {
+   "k": "報",
+   "g": 5,
+   "palabra": "天気予報",
+   "lectura": "てんきよほう",
+   "es": "pronóstico del tiempo"
+  },
+  {
+   "k": "豊",
+   "g": 5,
+   "palabra": "豊作",
+   "lectura": "ほうさく",
+   "es": "cosecha abundante"
+  },
+  {
+   "k": "貿",
+   "g": 5,
+   "palabra": "貿易",
+   "lectura": "ぼうえき",
+   "es": "comercio entre países"
+  },
+  {
+   "k": "暴",
+   "g": 5,
+   "palabra": "暴風",
+   "lectura": "ぼうふう",
+   "es": "viento muy fuerte"
+  },
+  {
+   "k": "脈",
+   "g": 5,
+   "palabra": "山脈",
+   "lectura": "さんみゃく",
+   "es": "cordillera"
+  },
+  {
+   "k": "務",
+   "g": 5,
+   "palabra": "事務室",
+   "lectura": "じむしつ",
+   "es": "oficina administrativa"
+  },
+  {
+   "k": "夢",
+   "g": 5,
+   "palabra": "夢",
+   "lectura": "ゆめ",
+   "es": "sueño"
+  },
+  {
+   "k": "綿",
+   "g": 5,
+   "palabra": "綿",
+   "lectura": "わた",
+   "es": "algodón"
+  },
+  {
+   "k": "迷",
+   "g": 5,
+   "palabra": "迷路",
+   "lectura": "めいろ",
+   "es": "laberinto"
+  },
+  {
+   "k": "容",
+   "g": 5,
+   "palabra": "容器",
+   "lectura": "ようき",
+   "es": "recipiente"
+  },
+  {
+   "k": "輸",
+   "g": 5,
+   "palabra": "輸入",
+   "lectura": "ゆにゅう",
+   "es": "importación de productos"
+  },
+  {
+   "k": "余",
+   "g": 5,
+   "palabra": "余り",
+   "lectura": "あまり",
+   "es": "resto de una división o de una cantidad"
+  },
+  {
+   "k": "略",
+   "g": 5,
+   "palabra": "略図",
+   "lectura": "りゃくず",
+   "es": "dibujo simplificado de un lugar"
+  },
+  {
+   "k": "留",
+   "g": 5,
+   "palabra": "留守",
+   "lectura": "るす",
+   "es": "ausencia de casa"
+  },
+  {
+   "k": "領",
+   "g": 5,
+   "palabra": "領土",
+   "lectura": "りょうど",
+   "es": "territorio de un país"
+  },
+  {
+   "k": "歴",
+   "g": 5,
+   "palabra": "学歴",
+   "lectura": "がくれき",
+   "es": "estudios que hizo una persona"
+  },
+  {
+   "k": "域",
+   "g": 6,
+   "palabra": "地域",
+   "lectura": "ちいき",
+   "es": "región o zona"
+  },
+  {
+   "k": "胃",
+   "g": 6,
+   "palabra": "胃",
+   "lectura": "い",
+   "es": "estómago"
+  },
+  {
+   "k": "異",
+   "g": 6,
+   "palabra": "異なる",
+   "lectura": "ことなる",
+   "es": "ser diferente"
+  },
+  {
+   "k": "遺",
+   "g": 6,
+   "palabra": "遺産",
+   "lectura": "いさん",
+   "es": "herencia o patrimonio"
+  },
+  {
+   "k": "映",
+   "g": 6,
+   "palabra": "映画",
+   "lectura": "えいが",
+   "es": "película"
+  },
+  {
+   "k": "延",
+   "g": 6,
+   "palabra": "延期",
+   "lectura": "えんき",
+   "es": "cambio de fecha para más adelante"
+  },
+  {
+   "k": "沿",
+   "g": 6,
+   "palabra": "川沿い",
+   "lectura": "かわぞい",
+   "es": "zona junto a un río"
+  },
+  {
+   "k": "宇",
+   "g": 6,
+   "palabra": "宇宙",
+   "lectura": "うちゅう",
+   "es": "universo"
+  },
+  {
+   "k": "恩",
+   "g": 6,
+   "palabra": "恩人",
+   "lectura": "おんじん",
+   "es": "persona a la que le debemos un gran favor"
+  },
+  {
+   "k": "灰",
+   "g": 6,
+   "palabra": "火山灰",
+   "lectura": "かざんばい",
+   "es": "ceniza volcánica"
+  },
+  {
+   "k": "我",
+   "g": 6,
+   "palabra": "我が家",
+   "lectura": "わがや",
+   "es": "mi hogar o nuestro hogar"
+  },
+  {
+   "k": "拡",
+   "g": 6,
+   "palabra": "拡大",
+   "lectura": "かくだい",
+   "es": "ampliación"
+  },
+  {
+   "k": "革",
+   "g": 6,
+   "palabra": "革",
+   "lectura": "かわ",
+   "es": "cuero"
+  },
+  {
+   "k": "閣",
+   "g": 6,
+   "palabra": "内閣",
+   "lectura": "ないかく",
+   "es": "equipo de ministros de un gobierno"
+  },
+  {
+   "k": "株",
+   "g": 6,
+   "palabra": "切り株",
+   "lectura": "きりかぶ",
+   "es": "tocón que queda al cortar un árbol"
+  },
+  {
+   "k": "干",
+   "g": 6,
+   "palabra": "干す",
+   "lectura": "ほす",
+   "es": "poner a secar"
+  },
+  {
+   "k": "割",
+   "g": 6,
+   "palabra": "割り算",
+   "lectura": "わりざん",
+   "es": "división matemática"
+  },
+  {
+   "k": "巻",
+   "g": 6,
+   "palabra": "のり巻き",
+   "lectura": "のりまき",
+   "es": "rollito de arroz envuelto en alga"
+  },
+  {
+   "k": "看",
+   "g": 6,
+   "palabra": "看板",
+   "lectura": "かんばん",
+   "es": "cartel de un comercio"
+  },
+  {
+   "k": "危",
+   "g": 6,
+   "palabra": "危険",
+   "lectura": "きけん",
+   "es": "peligro"
+  },
+  {
+   "k": "簡",
+   "g": 6,
+   "palabra": "簡単",
+   "lectura": "かんたん",
+   "es": "fácil o sencillo"
+  },
+  {
+   "k": "机",
+   "g": 6,
+   "palabra": "机",
+   "lectura": "つくえ",
+   "es": "escritorio"
+  },
+  {
+   "k": "揮",
+   "g": 6,
+   "palabra": "指揮者",
+   "lectura": "しきしゃ",
+   "es": "persona que dirige una orquesta"
+  },
+  {
+   "k": "疑",
+   "g": 6,
+   "palabra": "疑問",
+   "lectura": "ぎもん",
+   "es": "duda o pregunta"
+  },
+  {
+   "k": "貴",
+   "g": 6,
+   "palabra": "貴重",
+   "lectura": "きちょう",
+   "es": "muy valioso"
+  },
+  {
+   "k": "吸",
+   "g": 6,
+   "palabra": "吸う",
+   "lectura": "すう",
+   "es": "aspirar o inhalar"
+  },
+  {
+   "k": "供",
+   "g": 6,
+   "palabra": "子供",
+   "lectura": "こども",
+   "es": "niño o niña"
+  },
+  {
+   "k": "胸",
+   "g": 6,
+   "palabra": "胸",
+   "lectura": "むね",
+   "es": "pecho"
+  },
+  {
+   "k": "勤",
+   "g": 6,
+   "palabra": "通勤",
+   "lectura": "つうきん",
+   "es": "viaje habitual al trabajo"
+  },
+  {
+   "k": "筋",
+   "g": 6,
+   "palabra": "筋肉",
+   "lectura": "きんにく",
+   "es": "músculo"
+  },
+  {
+   "k": "郷",
+   "g": 6,
+   "palabra": "故郷",
+   "lectura": "ふるさと",
+   "es": "lugar donde uno nació o se crio"
+  },
+  {
+   "k": "敬",
+   "g": 6,
+   "palabra": "敬語",
+   "lectura": "けいご",
+   "es": "forma respetuosa de hablar"
+  },
+  {
+   "k": "系",
+   "g": 6,
+   "palabra": "太陽系",
+   "lectura": "たいようけい",
+   "es": "sistema solar"
+  },
+  {
+   "k": "警",
+   "g": 6,
+   "palabra": "警報",
+   "lectura": "けいほう",
+   "es": "señal de alarma"
+  },
+  {
+   "k": "劇",
+   "g": 6,
+   "palabra": "劇場",
+   "lectura": "げきじょう",
+   "es": "teatro"
+  },
+  {
+   "k": "激",
+   "g": 6,
+   "palabra": "激しい",
+   "lectura": "はげしい",
+   "es": "intenso o fuerte"
+  },
+  {
+   "k": "券",
+   "g": 6,
+   "palabra": "乗車券",
+   "lectura": "じょうしゃけん",
+   "es": "boleto para viajar"
+  },
+  {
+   "k": "絹",
+   "g": 6,
+   "palabra": "絹糸",
+   "lectura": "きぬいと",
+   "es": "hilo de seda"
+  },
+  {
+   "k": "穴",
+   "g": 6,
+   "palabra": "落とし穴",
+   "lectura": "おとしあな",
+   "es": "hoyo que sirve de trampa"
+  },
+  {
+   "k": "権",
+   "g": 6,
+   "palabra": "権利",
+   "lectura": "けんり",
+   "es": "derecho que tiene una persona"
+  },
+  {
+   "k": "憲",
+   "g": 6,
+   "palabra": "憲法",
+   "lectura": "けんぽう",
+   "es": "constitución de un país"
+  },
+  {
+   "k": "源",
+   "g": 6,
+   "palabra": "水源",
+   "lectura": "すいげん",
+   "es": "nacimiento de un río o fuente de agua"
+  },
+  {
+   "k": "厳",
+   "g": 6,
+   "palabra": "厳しい",
+   "lectura": "きびしい",
+   "es": "estricto o exigente"
+  },
+  {
+   "k": "己",
+   "g": 6,
+   "palabra": "自己",
+   "lectura": "じこ",
+   "es": "uno mismo"
+  },
+  {
+   "k": "呼",
+   "g": 6,
+   "palabra": "呼ぶ",
+   "lectura": "よぶ",
+   "es": "llamar"
+  },
+  {
+   "k": "孝",
+   "g": 6,
+   "palabra": "親孝行",
+   "lectura": "おやこうこう",
+   "es": "cuidado y respeto hacia los padres"
+  },
+  {
+   "k": "誤",
+   "g": 6,
+   "palabra": "誤り",
+   "lectura": "あやまり",
+   "es": "error"
+  },
+  {
+   "k": "后",
+   "g": 6,
+   "palabra": "皇后",
+   "lectura": "こうごう",
+   "es": "emperatriz, esposa del emperador"
+  },
+  {
+   "k": "皇",
+   "g": 6,
+   "palabra": "天皇",
+   "lectura": "てんのう",
+   "es": "emperador de Japón"
+  },
+  {
+   "k": "紅",
+   "g": 6,
+   "palabra": "紅葉",
+   "lectura": "こうよう",
+   "es": "hojas que cambian de color en otoño"
+  },
+  {
+   "k": "鋼",
+   "g": 6,
+   "palabra": "鋼",
+   "lectura": "はがね",
+   "es": "acero"
+  },
+  {
+   "k": "降",
+   "g": 6,
+   "palabra": "降る",
+   "lectura": "ふる",
+   "es": "caer la lluvia o la nieve"
+  },
+  {
+   "k": "刻",
+   "g": 6,
+   "palabra": "時刻表",
+   "lectura": "じこくひょう",
+   "es": "tabla de horarios"
+  },
+  {
+   "k": "穀",
+   "g": 6,
+   "palabra": "穀物",
+   "lectura": "こくもつ",
+   "es": "cereales, como el arroz o el trigo"
+  },
+  {
+   "k": "骨",
+   "g": 6,
+   "palabra": "骨",
+   "lectura": "ほね",
+   "es": "hueso"
+  },
+  {
+   "k": "砂",
+   "g": 6,
+   "palabra": "砂場",
+   "lectura": "すなば",
+   "es": "arenero"
+  },
+  {
+   "k": "済",
+   "g": 6,
+   "palabra": "済む",
+   "lectura": "すむ",
+   "es": "quedar terminado"
+  },
+  {
+   "k": "困",
+   "g": 6,
+   "palabra": "困る",
+   "lectura": "こまる",
+   "es": "encontrarse con una dificultad"
+  },
+  {
+   "k": "座",
+   "g": 6,
+   "palabra": "星座",
+   "lectura": "せいざ",
+   "es": "constelación"
+  },
+  {
+   "k": "裁",
+   "g": 6,
+   "palabra": "裁判",
+   "lectura": "さいばん",
+   "es": "juicio en un tribunal"
+  },
+  {
+   "k": "策",
+   "g": 6,
+   "palabra": "対策",
+   "lectura": "たいさく",
+   "es": "medida para afrontar un problema"
+  },
+  {
+   "k": "冊",
+   "g": 6,
+   "palabra": "一冊",
+   "lectura": "いっさつ",
+   "es": "un ejemplar de un libro o cuaderno"
+  },
+  {
+   "k": "蚕",
+   "g": 6,
+   "palabra": "蚕",
+   "lectura": "かいこ",
+   "es": "gusano de seda"
+  },
+  {
+   "k": "姿",
+   "g": 6,
+   "palabra": "後ろ姿",
+   "lectura": "うしろすがた",
+   "es": "figura de alguien visto de espaldas"
+  },
+  {
+   "k": "至",
+   "g": 6,
+   "palabra": "夏至",
+   "lectura": "げし",
+   "es": "solsticio de verano"
+  },
+  {
+   "k": "私",
+   "g": 6,
+   "palabra": "私立",
+   "lectura": "しりつ",
+   "es": "de gestión privada, como una escuela"
+  },
+  {
+   "k": "視",
+   "g": 6,
+   "palabra": "視力",
+   "lectura": "しりょく",
+   "es": "capacidad de ver"
+  },
+  {
+   "k": "詞",
+   "g": 6,
+   "palabra": "歌詞",
+   "lectura": "かし",
+   "es": "letra de una canción"
+  },
+  {
+   "k": "誌",
+   "g": 6,
+   "palabra": "雑誌",
+   "lectura": "ざっし",
+   "es": "revista"
+  },
+  {
+   "k": "磁",
+   "g": 6,
+   "palabra": "磁石",
+   "lectura": "じしゃく",
+   "es": "imán"
+  },
+  {
+   "k": "若",
+   "g": 6,
+   "palabra": "若葉",
+   "lectura": "わかば",
+   "es": "hojas tiernas"
+  },
+  {
+   "k": "射",
+   "g": 6,
+   "palabra": "発射",
+   "lectura": "はっしゃ",
+   "es": "lanzamiento, por ejemplo de un cohete"
+  },
+  {
+   "k": "捨",
+   "g": 6,
+   "palabra": "捨てる",
+   "lectura": "すてる",
+   "es": "tirar algo que ya no se quiere"
+  },
+  {
+   "k": "尺",
+   "g": 6,
+   "palabra": "縮尺",
+   "lectura": "しゅくしゃく",
+   "es": "escala de un mapa o un plano"
+  },
+  {
+   "k": "樹",
+   "g": 6,
+   "palabra": "樹木",
+   "lectura": "じゅもく",
+   "es": "árboles"
+  },
+  {
+   "k": "収",
+   "g": 6,
+   "palabra": "収入",
+   "lectura": "しゅうにゅう",
+   "es": "dinero que se recibe"
+  },
+  {
+   "k": "就",
+   "g": 6,
+   "palabra": "就職",
+   "lectura": "しゅうしょく",
+   "es": "incorporación a un empleo"
+  },
+  {
+   "k": "衆",
+   "g": 6,
+   "palabra": "観衆",
+   "lectura": "かんしゅう",
+   "es": "público que observa un espectáculo"
+  },
+  {
+   "k": "宗",
+   "g": 6,
+   "palabra": "宗教",
+   "lectura": "しゅうきょう",
+   "es": "religión"
+  },
+  {
+   "k": "従",
+   "g": 6,
+   "palabra": "従う",
+   "lectura": "したがう",
+   "es": "seguir una indicación"
+  },
+  {
+   "k": "縦",
+   "g": 6,
+   "palabra": "縦書き",
+   "lectura": "たてがき",
+   "es": "escritura vertical"
+  },
+  {
+   "k": "署",
+   "g": 6,
+   "palabra": "消防署",
+   "lectura": "しょうぼうしょ",
+   "es": "cuartel de bomberos"
+  },
+  {
+   "k": "諸",
+   "g": 6,
+   "palabra": "諸国",
+   "lectura": "しょこく",
+   "es": "varios países"
+  },
+  {
+   "k": "純",
+   "g": 6,
+   "palabra": "純白",
+   "lectura": "じゅんぱく",
+   "es": "blanco puro"
+  },
+  {
+   "k": "縮",
+   "g": 6,
+   "palabra": "縮む",
+   "lectura": "ちぢむ",
+   "es": "encogerse"
+  },
+  {
+   "k": "熟",
+   "g": 6,
+   "palabra": "熟す",
+   "lectura": "じゅくす",
+   "es": "madurar, como una fruta"
+  },
+  {
+   "k": "処",
+   "g": 6,
+   "palabra": "処理",
+   "lectura": "しょり",
+   "es": "acción de resolver o tramitar algo"
+  },
+  {
+   "k": "除",
+   "g": 6,
+   "palabra": "除雪",
+   "lectura": "じょせつ",
+   "es": "retiro de la nieve acumulada"
+  },
+  {
+   "k": "将",
+   "g": 6,
+   "palabra": "将来",
+   "lectura": "しょうらい",
+   "es": "futuro"
+  },
+  {
+   "k": "傷",
+   "g": 6,
+   "palabra": "傷口",
+   "lectura": "きずぐち",
+   "es": "abertura de una herida"
+  },
+  {
+   "k": "承",
+   "g": 6,
+   "palabra": "承知",
+   "lectura": "しょうち",
+   "es": "comprensión o aceptación"
+  },
+  {
+   "k": "障",
+   "g": 6,
+   "palabra": "故障",
+   "lectura": "こしょう",
+   "es": "avería de una máquina"
+  },
+  {
+   "k": "蒸",
+   "g": 6,
+   "palabra": "蒸しパン",
+   "lectura": "むしぱん",
+   "es": "pan cocido al vapor"
+  },
+  {
+   "k": "仁",
+   "g": 6,
+   "palabra": "仁愛",
+   "lectura": "じんあい",
+   "es": "bondad y cariño por los demás"
+  },
+  {
+   "k": "針",
+   "g": 6,
+   "palabra": "秒針",
+   "lectura": "びょうしん",
+   "es": "aguja del reloj que marca los segundos"
+  },
+  {
+   "k": "垂",
+   "g": 6,
+   "palabra": "垂直",
+   "lectura": "すいちょく",
+   "es": "vertical"
+  },
+  {
+   "k": "推",
+   "g": 6,
+   "palabra": "推理",
+   "lectura": "すいり",
+   "es": "deducción a partir de pistas"
+  },
+  {
+   "k": "寸",
+   "g": 6,
+   "palabra": "寸法",
+   "lectura": "すんぽう",
+   "es": "medidas de un objeto"
+  },
+  {
+   "k": "盛",
+   "g": 6,
+   "palabra": "大盛り",
+   "lectura": "おおもり",
+   "es": "porción grande de comida"
+  },
+  {
+   "k": "聖",
+   "g": 6,
+   "palabra": "聖火",
+   "lectura": "せいか",
+   "es": "llama ceremonial, como la olímpica"
+  },
+  {
+   "k": "誠",
+   "g": 6,
+   "palabra": "誠実",
+   "lectura": "せいじつ",
+   "es": "sincero y digno de confianza"
+  },
+  {
+   "k": "染",
+   "g": 6,
+   "palabra": "染める",
+   "lectura": "そめる",
+   "es": "teñir"
+  },
+  {
+   "k": "舌",
+   "g": 6,
+   "palabra": "舌",
+   "lectura": "した",
+   "es": "lengua, la parte de la boca"
+  },
+  {
+   "k": "善",
+   "g": 6,
+   "palabra": "善意",
+   "lectura": "ぜんい",
+   "es": "buena intención"
+  },
+  {
+   "k": "宣",
+   "g": 6,
+   "palabra": "宣言",
+   "lectura": "せんげん",
+   "es": "declaración pública"
+  },
+  {
+   "k": "専",
+   "g": 6,
+   "palabra": "専門",
+   "lectura": "せんもん",
+   "es": "especialidad"
+  },
+  {
+   "k": "泉",
+   "g": 6,
+   "palabra": "温泉",
+   "lectura": "おんせん",
+   "es": "aguas termales"
+  },
+  {
+   "k": "銭",
+   "g": 6,
+   "palabra": "小銭",
+   "lectura": "こぜに",
+   "es": "monedas de poco valor"
+  },
+  {
+   "k": "洗",
+   "g": 6,
+   "palabra": "洗面所",
+   "lectura": "せんめんじょ",
+   "es": "lugar donde uno se lava la cara y las manos"
+  },
+  {
+   "k": "装",
+   "g": 6,
+   "palabra": "服装",
+   "lectura": "ふくそう",
+   "es": "manera de vestir"
+  },
+  {
+   "k": "層",
+   "g": 6,
+   "palabra": "地層",
+   "lectura": "ちそう",
+   "es": "capa de tierra o roca"
+  },
+  {
+   "k": "操",
+   "g": 6,
+   "palabra": "体操",
+   "lectura": "たいそう",
+   "es": "gimnasia"
+  },
+  {
+   "k": "窓",
+   "g": 6,
+   "palabra": "窓",
+   "lectura": "まど",
+   "es": "ventana"
+  },
+  {
+   "k": "創",
+   "g": 6,
+   "palabra": "創作",
+   "lectura": "そうさく",
+   "es": "creación de una obra"
+  },
+  {
+   "k": "奏",
+   "g": 6,
+   "palabra": "演奏",
+   "lectura": "えんそう",
+   "es": "interpretación musical"
+  },
+  {
+   "k": "蔵",
+   "g": 6,
+   "palabra": "冷蔵庫",
+   "lectura": "れいぞうこ",
+   "es": "heladera"
+  },
+  {
+   "k": "臓",
+   "g": 6,
+   "palabra": "心臓",
+   "lectura": "しんぞう",
+   "es": "corazón"
+  },
+  {
+   "k": "存",
+   "g": 6,
+   "palabra": "保存",
+   "lectura": "ほぞん",
+   "es": "conservación"
+  },
+  {
+   "k": "尊",
+   "g": 6,
+   "palabra": "尊敬",
+   "lectura": "そんけい",
+   "es": "respeto o admiración"
+  },
+  {
+   "k": "退",
+   "g": 6,
+   "palabra": "後退",
+   "lectura": "こうたい",
+   "es": "retroceso"
+  },
+  {
+   "k": "担",
+   "g": 6,
+   "palabra": "担当",
+   "lectura": "たんとう",
+   "es": "estar a cargo de una tarea"
+  },
+  {
+   "k": "宅",
+   "g": 6,
+   "palabra": "自宅",
+   "lectura": "じたく",
+   "es": "la casa de uno"
+  },
+  {
+   "k": "探",
+   "g": 6,
+   "palabra": "探検",
+   "lectura": "たんけん",
+   "es": "exploración"
+  },
+  {
+   "k": "誕",
+   "g": 6,
+   "palabra": "誕生日",
+   "lectura": "たんじょうび",
+   "es": "cumpleaños"
+  },
+  {
+   "k": "段",
+   "g": 6,
+   "palabra": "階段",
+   "lectura": "かいだん",
+   "es": "escalera"
+  },
+  {
+   "k": "暖",
+   "g": 6,
+   "palabra": "暖かい",
+   "lectura": "あたたかい",
+   "es": "cálido"
+  },
+  {
+   "k": "宙",
+   "g": 6,
+   "palabra": "宙返り",
+   "lectura": "ちゅうがえり",
+   "es": "voltereta en el aire"
+  },
+  {
+   "k": "忠",
+   "g": 6,
+   "palabra": "忠告",
+   "lectura": "ちゅうこく",
+   "es": "consejo para evitar un problema"
+  },
+  {
+   "k": "値",
+   "g": 6,
+   "palabra": "値段",
+   "lectura": "ねだん",
+   "es": "precio"
+  },
+  {
+   "k": "著",
+   "g": 6,
+   "palabra": "著者",
+   "lectura": "ちょしゃ",
+   "es": "autor o autora"
+  },
+  {
+   "k": "庁",
+   "g": 6,
+   "palabra": "県庁",
+   "lectura": "けんちょう",
+   "es": "sede del gobierno de una prefectura"
+  },
+  {
+   "k": "腸",
+   "g": 6,
+   "palabra": "小腸",
+   "lectura": "しょうちょう",
+   "es": "intestino delgado"
+  },
+  {
+   "k": "賃",
+   "g": 6,
+   "palabra": "運賃",
+   "lectura": "うんちん",
+   "es": "precio del viaje en un transporte"
+  },
+  {
+   "k": "潮",
+   "g": 6,
+   "palabra": "満潮",
+   "lectura": "まんちょう",
+   "es": "marea alta"
+  },
+  {
+   "k": "頂",
+   "g": 6,
+   "palabra": "山頂",
+   "lectura": "さんちょう",
+   "es": "cima de una montaña"
+  },
+  {
+   "k": "痛",
+   "g": 6,
+   "palabra": "頭痛",
+   "lectura": "ずつう",
+   "es": "dolor de cabeza"
+  },
+  {
+   "k": "敵",
+   "g": 6,
+   "palabra": "強敵",
+   "lectura": "きょうてき",
+   "es": "rival difícil de vencer"
+  },
+  {
+   "k": "展",
+   "g": 6,
+   "palabra": "展覧会",
+   "lectura": "てんらんかい",
+   "es": "exposición de obras"
+  },
+  {
+   "k": "討",
+   "g": 6,
+   "palabra": "討論",
+   "lectura": "とうろん",
+   "es": "debate"
+  },
+  {
+   "k": "党",
+   "g": 6,
+   "palabra": "政党",
+   "lectura": "せいとう",
+   "es": "partido político"
+  },
+  {
+   "k": "届",
+   "g": 6,
+   "palabra": "届ける",
+   "lectura": "とどける",
+   "es": "entregar algo a su destinatario"
+  },
+  {
+   "k": "糖",
+   "g": 6,
+   "palabra": "砂糖",
+   "lectura": "さとう",
+   "es": "azúcar"
+  },
+  {
+   "k": "納",
+   "g": 6,
+   "palabra": "納豆",
+   "lectura": "なっとう",
+   "es": "porotos de soja fermentados"
+  },
+  {
+   "k": "乳",
+   "g": 6,
+   "palabra": "牛乳",
+   "lectura": "ぎゅうにゅう",
+   "es": "leche de vaca"
+  },
+  {
+   "k": "脳",
+   "g": 6,
+   "palabra": "脳",
+   "lectura": "のう",
+   "es": "cerebro"
+  },
+  {
+   "k": "難",
+   "g": 6,
+   "palabra": "難問",
+   "lectura": "なんもん",
+   "es": "pregunta difícil"
+  },
+  {
+   "k": "認",
+   "g": 6,
+   "palabra": "確認",
+   "lectura": "かくにん",
+   "es": "comprobación"
+  },
+  {
+   "k": "派",
+   "g": 6,
+   "palabra": "流派",
+   "lectura": "りゅうは",
+   "es": "escuela o estilo de un arte"
+  },
+  {
+   "k": "拝",
+   "g": 6,
+   "palabra": "参拝",
+   "lectura": "さんぱい",
+   "es": "visita a un santuario o templo para rezar"
+  },
+  {
+   "k": "背",
+   "g": 6,
+   "palabra": "背中",
+   "lectura": "せなか",
+   "es": "espalda"
+  },
+  {
+   "k": "肺",
+   "g": 6,
+   "palabra": "肺",
+   "lectura": "はい",
+   "es": "pulmón"
+  },
+  {
+   "k": "俳",
+   "g": 6,
+   "palabra": "俳優",
+   "lectura": "はいゆう",
+   "es": "actor o actriz"
+  },
+  {
+   "k": "晩",
+   "g": 6,
+   "palabra": "今晩",
+   "lectura": "こんばん",
+   "es": "esta noche"
+  },
+  {
+   "k": "秘",
+   "g": 6,
+   "palabra": "秘密",
+   "lectura": "ひみつ",
+   "es": "secreto"
+  },
+  {
+   "k": "否",
+   "g": 6,
+   "palabra": "否定",
+   "lectura": "ひてい",
+   "es": "negación"
+  },
+  {
+   "k": "批",
+   "g": 6,
+   "palabra": "批評",
+   "lectura": "ひひょう",
+   "es": "comentario que valora una obra"
+  },
+  {
+   "k": "班",
+   "g": 6,
+   "palabra": "班長",
+   "lectura": "はんちょう",
+   "es": "encargado de un equipo"
+  },
+  {
+   "k": "俵",
+   "g": 6,
+   "palabra": "米俵",
+   "lectura": "こめだわら",
+   "es": "fardo de paja para guardar arroz"
+  },
+  {
+   "k": "腹",
+   "g": 6,
+   "palabra": "お腹",
+   "lectura": "おなか",
+   "es": "panza"
+  },
+  {
+   "k": "奮",
+   "g": 6,
+   "palabra": "奮発",
+   "lectura": "ふんぱつ",
+   "es": "hacer un esfuerzo especial, por ejemplo al gastar"
+  },
+  {
+   "k": "並",
+   "g": 6,
+   "palabra": "並ぶ",
+   "lectura": "ならぶ",
+   "es": "ponerse en fila"
+  },
+  {
+   "k": "片",
+   "g": 6,
+   "palabra": "片手",
+   "lectura": "かたて",
+   "es": "una sola mano"
+  },
+  {
+   "k": "補",
+   "g": 6,
+   "palabra": "補助",
+   "lectura": "ほじょ",
+   "es": "ayuda o apoyo"
+  },
+  {
+   "k": "陛",
+   "g": 6,
+   "palabra": "陛下",
+   "lectura": "へいか",
+   "es": "Su Majestad"
+  },
+  {
+   "k": "閉",
+   "g": 6,
+   "palabra": "閉店",
+   "lectura": "へいてん",
+   "es": "cierre de un comercio"
+  },
+  {
+   "k": "暮",
+   "g": 6,
+   "palabra": "夕暮れ",
+   "lectura": "ゆうぐれ",
+   "es": "atardecer"
+  },
+  {
+   "k": "訪",
+   "g": 6,
+   "palabra": "訪問",
+   "lectura": "ほうもん",
+   "es": "visita"
+  },
+  {
+   "k": "宝",
+   "g": 6,
+   "palabra": "宝物",
+   "lectura": "たからもの",
+   "es": "tesoro"
+  },
+  {
+   "k": "亡",
+   "g": 6,
+   "palabra": "亡くなる",
+   "lectura": "なくなる",
+   "es": "fallecer"
+  },
+  {
+   "k": "棒",
+   "g": 6,
+   "palabra": "鉄棒",
+   "lectura": "てつぼう",
+   "es": "barra de hierro para gimnasia"
+  },
+  {
+   "k": "忘",
+   "g": 6,
+   "palabra": "忘れ物",
+   "lectura": "わすれもの",
+   "es": "objeto olvidado"
+  },
+  {
+   "k": "密",
+   "g": 6,
+   "palabra": "密集",
+   "lectura": "みっしゅう",
+   "es": "concentración de muchas cosas en poco espacio"
+  },
+  {
+   "k": "枚",
+   "g": 6,
+   "palabra": "一枚",
+   "lectura": "いちまい",
+   "es": "una hoja, foto u otra cosa plana"
+  },
+  {
+   "k": "幕",
+   "g": 6,
+   "palabra": "開幕",
+   "lectura": "かいまく",
+   "es": "apertura de un espectáculo o torneo"
+  },
+  {
+   "k": "模",
+   "g": 6,
+   "palabra": "模型",
+   "lectura": "もけい",
+   "es": "maqueta"
+  },
+  {
+   "k": "訳",
+   "g": 6,
+   "palabra": "通訳",
+   "lectura": "つうやく",
+   "es": "interpretación entre idiomas al hablar"
+  },
+  {
+   "k": "盟",
+   "g": 6,
+   "palabra": "同盟",
+   "lectura": "どうめい",
+   "es": "alianza"
+  },
+  {
+   "k": "優",
+   "g": 6,
+   "palabra": "優勝",
+   "lectura": "ゆうしょう",
+   "es": "victoria en un campeonato"
+  },
+  {
+   "k": "預",
+   "g": 6,
+   "palabra": "預ける",
+   "lectura": "あずける",
+   "es": "dejar algo al cuidado de alguien"
+  },
+  {
+   "k": "郵",
+   "g": 6,
+   "palabra": "郵便局",
+   "lectura": "ゆうびんきょく",
+   "es": "oficina de correos"
+  },
+  {
+   "k": "幼",
+   "g": 6,
+   "palabra": "幼児",
+   "lectura": "ようじ",
+   "es": "niño pequeño"
+  },
+  {
+   "k": "乱",
+   "g": 6,
+   "palabra": "混乱",
+   "lectura": "こんらん",
+   "es": "confusión o desorden"
+  },
+  {
+   "k": "律",
+   "g": 6,
+   "palabra": "法律",
+   "lectura": "ほうりつ",
+   "es": "ley"
+  },
+  {
+   "k": "欲",
+   "g": 6,
+   "palabra": "食欲",
+   "lectura": "しょくよく",
+   "es": "ganas de comer"
+  },
+  {
+   "k": "卵",
+   "g": 6,
+   "palabra": "卵焼き",
+   "lectura": "たまごやき",
+   "es": "tortilla japonesa de huevo"
+  },
+  {
+   "k": "翌",
+   "g": 6,
+   "palabra": "翌日",
+   "lectura": "よくじつ",
+   "es": "día siguiente"
+  },
+  {
+   "k": "覧",
+   "g": 6,
+   "palabra": "一覧表",
+   "lectura": "いちらんひょう",
+   "es": "lista que permite verlo todo de un vistazo"
+  },
+  {
+   "k": "裏",
+   "g": 6,
+   "palabra": "裏口",
+   "lectura": "うらぐち",
+   "es": "puerta trasera"
+  },
+  {
+   "k": "臨",
+   "g": 6,
+   "palabra": "臨時",
+   "lectura": "りんじ",
+   "es": "temporal o especial para una ocasión"
+  },
+  {
+   "k": "論",
+   "g": 6,
+   "palabra": "結論",
+   "lectura": "けつろん",
+   "es": "conclusión"
+  },
+  {
+   "k": "朗",
+   "g": 6,
+   "palabra": "朗読",
+   "lectura": "ろうどく",
+   "es": "lectura en voz alta y expresiva"
+  }
+ ]
+}
