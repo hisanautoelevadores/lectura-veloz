@@ -269,7 +269,35 @@ const FRASES = [
   { h: 'いぬ が います。', es: 'Hay un perro.' },
   { h: 'おはよう ございます。', es: 'Buenos días.' },
   { h: 'ありがとう ございます。', es: 'Muchas gracias.' },
-  { h: 'わたしは がくせい です。', es: 'Yo soy estudiante.' }
+  { h: 'わたしは がくせい です。', es: 'Yo soy estudiante.' },
+  { h: 'ねこ が ねて います。', es: 'El gato está durmiendo.', b: 1 },
+  { h: 'いぬ が はしります。', es: 'El perro corre.', b: 1 },
+  { h: 'ほん を よみます。', es: 'Leo un libro.', b: 1 },
+  { h: 'みず を のみます。', es: 'Tomo agua.', b: 1 },
+  { h: 'りんご が あります。', es: 'Hay una manzana.', b: 1 },
+  { h: 'ともだち が きました。', es: 'Llegó un amigo.', b: 1 },
+  { h: 'そら が あかい です。', es: 'El cielo está rojo.', b: 1 },
+  { h: 'はな が きれい です。', es: 'La flor es bonita.', b: 1 },
+  { h: 'わたし は がくせい です。', es: 'Yo soy estudiante.', b: 2 },
+  { h: 'わたし は まいにち がっこう に いきます。', es: 'Voy a la escuela todos los días.', b: 2 },
+  { h: 'きょう は あめ が ふって います。', es: 'Hoy está lloviendo.', b: 2 },
+  { h: 'おとうさん は くるま で かいしゃ に いきます。', es: 'Papá va a la empresa en auto.', b: 2 },
+  { h: 'ともだち と こうえん で あそびました。', es: 'Jugué en el parque con un amigo.', b: 2 },
+  { h: 'ごはん を たべて、 ねました。', es: 'Comí y me acosté.', b: 2 },
+  { h: 'さかな が たくさん います。', es: 'Hay muchos peces.', b: 2 },
+  { h: 'まど を あけて ください。', es: 'Por favor, abra la ventana.', b: 2 },
+  { h: 'あさ は はやく おきます。', es: 'Por la mañana me levanto temprano.', b: 2 },
+  { h: 'やさい を たくさん たべましょう。', es: 'Comamos muchas verduras.', b: 2 },
+  { h: 'わたし は まいあさ じてんしゃ で がっこう に いきます。', es: 'Todas las mañanas voy a la escuela en bicicleta.', b: 3 },
+  { h: 'ちち は きのう ほん を かいました。', es: 'Papá compró un libro ayer.', b: 3 },
+  { h: 'きょう は てんき が よくて、 うみ に いきました。', es: 'Hoy hizo buen tiempo y fuimos al mar.', b: 3 },
+  { h: 'ともだち が おしえて くれた りょうり は とても おいしい です。', es: 'La comida que me enseñó mi amigo es muy rica.', b: 3 },
+  { h: 'ふゆ に なる と、 きが はっぱ を おとします。', es: 'Cuando llega el invierno, los árboles pierden las hojas.', b: 3 },
+  { h: 'あした は しけん が ある ので、 きょう は はやく ねます。', es: 'Mañana hay examen, así que hoy me acuesto temprano.', b: 3 },
+  { h: 'ざっし を よんで いる とき、 でんわ が なりました。', es: 'Mientras leía la revista, sonó el teléfono.', b: 3 },
+  { h: 'ことし の なつ は とても あつかった です。', es: 'Este verano hizo mucho calor.', b: 3 },
+  { h: 'ぶどう は あまくて おいしい です。', es: 'La uva es dulce y rica.', b: 3 },
+  { h: 'もし あめ が ふったら、 かさ を もって いきます。', es: 'Si llueve, llevo el paraguas.', b: 3 }
 ];
 // Katakana solo desde los 6 años (banda 2 en adelante). Para 3-5 años siempre hiragana.
 function escActual() { const b = Perfil.actual().banda || 1; return (ajustes.esc === 'k' || ajustes.esc === 'j') && b >= 2 ? ajustes.esc : 'h'; }
@@ -577,7 +605,7 @@ function genCinta() {
   if (C.nivel === 2) return { txt: construir(s2, 2) };
   if (C.nivel === 3) return { txt: construir(s3, Math.random() < .5 ? 3 : 4) };
   if (C.nivel === 4) { const v = rnd(bancoVocab(C.banda, C.sc)); return { txt: v.h, es: v.es }; }
-  const f = rnd(FRASES); return { txt: f.h, es: f.es };
+  const f = rnd(FRASES.filter(x => (x.b || 1) <= C.banda)); return { txt: f.h, es: f.es };
 }
 function ponerTok(it) { it.el.style.transform = `translate3d(${it.x}px,-50%,0)`; }
 function spawnCinta() {
