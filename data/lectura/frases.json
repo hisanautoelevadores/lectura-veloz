@@ -784,6 +784,362 @@
   {
    "t": "Cuando terminó la función, los actores saludaron al público desde el escenario.",
    "b": 3
+  },
+  {
+   "t": "Mi tío tiene un auto azul y grande.",
+   "b": 2
+  },
+  {
+   "t": "En la plaza hay muchos árboles y bancos.",
+   "b": 2
+  },
+  {
+   "t": "El nene se cayó y se raspó la rodilla.",
+   "b": 2
+  },
+  {
+   "t": "Hoy hizo mucho frío, así que usé gorro.",
+   "b": 2
+  },
+  {
+   "t": "La señora compró pan y leche en el almacén.",
+   "b": 2
+  },
+  {
+   "t": "Los chicos dibujaron un barco en el papel.",
+   "b": 2
+  },
+  {
+   "t": "Mi abuela tejió una bufanda para mí.",
+   "b": 2
+  },
+  {
+   "t": "Nos subimos al tobogán y nos reímos mucho.",
+   "b": 2
+  },
+  {
+   "t": "El sol salió temprano y calentó el campo.",
+   "b": 2
+  },
+  {
+   "t": "Mi hermana cumple años en el mes de mayo.",
+   "b": 2
+  },
+  {
+   "t": "Al lado de casa hay un perro muy simpático.",
+   "b": 2
+  },
+  {
+   "t": "Regamos las plantas con agua de la canilla.",
+   "b": 2
+  },
+  {
+   "t": "Los pájaros cantan por la mañana en el árbol.",
+   "b": 2
+  },
+  {
+   "t": "El cartero llegó con una carta para nosotros.",
+   "b": 2
+  },
+  {
+   "t": "Compramos naranjas y manzanas en la verdulería.",
+   "b": 2
+  },
+  {
+   "t": "Puse mis zapatillas junto a la puerta.",
+   "b": 2
+  },
+  {
+   "t": "La maestra nos mostró un mapa del país.",
+   "b": 2
+  },
+  {
+   "t": "Comí una sopa con fideos y queso rallado.",
+   "b": 2
+  },
+  {
+   "t": "En la granja vimos muchos pollitos chiquitos.",
+   "b": 2
+  },
+  {
+   "t": "El tren salió de la estación a las nueve.",
+   "b": 2
+  },
+  {
+   "t": "Me encanta leer cuentos antes de dormir.",
+   "b": 2
+  },
+  {
+   "t": "La lluvia mojó las hojas del jardín.",
+   "b": 2
+  },
+  {
+   "t": "Mi perro ladra cuando escucha un ruido raro.",
+   "b": 2
+  },
+  {
+   "t": "Jugamos a la pelota hasta que se hizo de noche.",
+   "b": 2
+  },
+  {
+   "t": "El reloj de la cocina marca las siete y media.",
+   "b": 2
+  },
+  {
+   "t": "Pedro se olvidó la mochila en la escuela.",
+   "b": 2
+  },
+  {
+   "t": "Hay un nido de pájaros en el techo.",
+   "b": 2
+  },
+  {
+   "t": "El gato subió al árbol para atrapar un pájaro.",
+   "b": 2
+  },
+  {
+   "t": "Abrí la ventana para que entrara un poco de aire.",
+   "b": 2
+  },
+  {
+   "t": "El agua de la pileta estaba fresca y clara.",
+   "b": 2
+  },
+  {
+   "t": "Mi abuelo cocina pastelitos los domingos.",
+   "b": 2
+  },
+  {
+   "t": "Las hormigas llevan migas de pan a su hormiguero.",
+   "b": 2
+  },
+  {
+   "t": "El barco navegó por el mar tranquilo.",
+   "b": 2
+  },
+  {
+   "t": "Escuché un ruido fuerte y me asusté un poco.",
+   "b": 2
+  },
+  {
+   "t": "Juli pintó una casa con techo rojo.",
+   "b": 2
+  },
+  {
+   "t": "Hicimos una torta para el cumpleaños de mamá.",
+   "b": 2
+  },
+  {
+   "t": "El conejo come zanahorias y hojas verdes.",
+   "b": 2
+  },
+  {
+   "t": "Mi bicicleta tiene una campanita brillante.",
+   "b": 2
+  },
+  {
+   "t": "Los niños juegan en el recreo con la pelota.",
+   "b": 2
+  },
+  {
+   "t": "La señora regó las flores del balcón.",
+   "b": 2
+  },
+  {
+   "t": "Durante el viaje en tren, leí un libro sobre la historia de nuestro país.",
+   "b": 3
+  },
+  {
+   "t": "Aunque estaba cansado, el corredor terminó la carrera con una sonrisa.",
+   "b": 3
+  },
+  {
+   "t": "Los bomberos llegaron rápido y apagaron el incendio antes de que se extendiera.",
+   "b": 3
+  },
+  {
+   "t": "Si mañana no llueve, iremos a la montaña a ver el amanecer.",
+   "b": 3
+  },
+  {
+   "t": "El científico observó una nueva especie de insecto debajo de una piedra.",
+   "b": 3
+  },
+  {
+   "t": "Cuando la tormenta pasó, apareció un hermoso arcoíris sobre la ciudad.",
+   "b": 3
+  },
+  {
+   "t": "La familia preparó una cena especial para celebrar el cumpleaños del abuelo.",
+   "b": 3
+  },
+  {
+   "t": "Mientras los niños construían un castillo de arena, el mar subía lentamente.",
+   "b": 3
+  },
+  {
+   "t": "El museo exhibe fósiles de animales que vivieron hace millones de años.",
+   "b": 3
+  },
+  {
+   "t": "Para aprender a nadar, es importante respetar las indicaciones del profesor.",
+   "b": 3
+  },
+  {
+   "t": "Los cocodrilos pueden permanecer quietos durante horas esperando a su presa.",
+   "b": 3
+  },
+  {
+   "t": "El avión aterrizó en el aeropuerto con varias horas de retraso.",
+   "b": 3
+  },
+  {
+   "t": "Aunque el camino era empinado, los excursionistas siguieron avanzando sin detenerse.",
+   "b": 3
+  },
+  {
+   "t": "La biblioteca del barrio organiza talleres de lectura para niños y adultos.",
+   "b": 3
+  },
+  {
+   "t": "Cuando el reloj marcó medianoche, toda la ciudad se llenó de fuegos artificiales.",
+   "b": 3
+  },
+  {
+   "t": "El agricultor cosechó el trigo antes de que comenzara la temporada de lluvias.",
+   "b": 3
+  },
+  {
+   "t": "Mi hermana quiere ser astronauta y estudia todos los días sobre el espacio.",
+   "b": 3
+  },
+  {
+   "t": "Los cangrejos caminan de costado por la orilla del mar.",
+   "b": 3
+  },
+  {
+   "t": "Después de la tormenta, encontramos un árbol caído en el camino de la granja.",
+   "b": 3
+  },
+  {
+   "t": "Los músicos tocaron durante toda la noche para la fiesta del pueblo.",
+   "b": 3
+  },
+  {
+   "t": "El perro rescató al gatito que había quedado atrapado en el canal.",
+   "b": 3
+  },
+  {
+   "t": "En la feria del barrio se venden frutas, verduras y artesanías de la región.",
+   "b": 3
+  },
+  {
+   "t": "Con mucho cuidado, la enfermera le puso una venda en el brazo al niño.",
+   "b": 3
+  },
+  {
+   "t": "Antes de cruzar la calle, los peatones deben mirar a los dos lados.",
+   "b": 3
+  },
+  {
+   "t": "El equipo de fútbol entrenó bajo la lluvia para prepararse para la final.",
+   "b": 3
+  },
+  {
+   "t": "El volcán hizo erupción y el humo se vio desde muy lejos.",
+   "b": 3
+  },
+  {
+   "t": "Mi tía trabaja en un hospital y ayuda a cuidar a muchas personas.",
+   "b": 3
+  },
+  {
+   "t": "Los pescadores salen al mar antes del amanecer para buscar mejores peces.",
+   "b": 3
+  },
+  {
+   "t": "El ascensor del edificio se detuvo entre el segundo y el tercer piso.",
+   "b": 3
+  },
+  {
+   "t": "Sin darse cuenta, la niña dejó caer la llave dentro del pozo del jardín.",
+   "b": 3
+  },
+  {
+   "t": "Las abejas fabrican miel en colmenas que cuidan con mucho orden.",
+   "b": 3
+  },
+  {
+   "t": "Cuando se apagó la luz, encendimos una linterna para buscar las velas.",
+   "b": 3
+  },
+  {
+   "t": "Los estudiantes presentaron un proyecto sobre el ciclo del agua.",
+   "b": 3
+  },
+  {
+   "t": "El ciclista subió la montaña pedaleando con fuerza durante casi dos horas.",
+   "b": 3
+  },
+  {
+   "t": "Mi primo aprendió a tocar la guitarra con paciencia y mucha práctica.",
+   "b": 3
+  },
+  {
+   "t": "En la cocina de la escuela preparan sopa para todos los chicos.",
+   "b": 3
+  },
+  {
+   "t": "El fotógrafo esperó horas para capturar el vuelo de los pájaros.",
+   "b": 3
+  },
+  {
+   "t": "La ciudad construyó un parque nuevo junto al río para que la gente pasee.",
+   "b": 3
+  },
+  {
+   "t": "Si ahorramos durante el año, podremos viajar a la costa en verano.",
+   "b": 3
+  },
+  {
+   "t": "El conductor del colectivo esperó a los pasajeros que corrían para subir.",
+   "b": 3
+  },
+  {
+   "t": "Los astronautas entrenan mucho antes de viajar a la estación espacial.",
+   "b": 3
+  },
+  {
+   "t": "Un terremoto sacudió la región, pero los edificios resistieron.",
+   "b": 3
+  },
+  {
+   "t": "Cuando la maestra explicó la división, Julián entendió el problema enseguida.",
+   "b": 3
+  },
+  {
+   "t": "Los ingenieros construyeron un puente que une las dos orillas del río.",
+   "b": 3
+  },
+  {
+   "t": "El mercado de la plaza abre todos los sábados desde temprano.",
+   "b": 3
+  },
+  {
+   "t": "Durante el recreo, los chicos armaron un equipo para jugar al rugby.",
+   "b": 3
+  },
+  {
+   "t": "La farmacia atiende hasta tarde, así que pasamos a comprar el jarabe.",
+   "b": 3
+  },
+  {
+   "t": "Las tortugas marinas pueden vivir más de cien años si el mar está limpio.",
+   "b": 3
+  },
+  {
+   "t": "El cuaderno de ciencias tiene dibujos de plantas, insectos y rocas.",
+   "b": 3
   }
  ]
 }
