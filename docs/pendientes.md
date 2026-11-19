@@ -19,9 +19,9 @@
 
 ## Contenido por revisar o ampliar
 - JLPT N5: cantidades y tiempos oficiales sin verificar. El sitio oficial jlpt.jp no se pudo abrir desde la sesión (el dominio no resuelve). Hay que revisar a mano las preguntas de muestra.
-- Lectura en español: 219 palabras y 285 frases (ampliadas en esta vuelta). Objetivo: unas 300 de cada una, por banda de edad. Sílabas calculadas con un contador automático, con 4 errores de cuenta corregidos.
+- Lectura en español: 305 palabras y 300 frases. Objetivo cumplido; revisar con un lector.
 - Práctica JLPT: ampliar vocabulario, gramática y lectura. Revisar las explicaciones en español.
-- Frases en hiragana (Leer en movimiento, nivel 5): 38 frases, cada una con su banda de edad. Pendiente: más frases.
+- Frases en hiragana (Leer en movimiento, nivel 5): 94 frases, cada una con su banda de edad. Pendiente: llegar a unas 100.
 - Hiragana: 299 palabras con dibujo (69 para 3–5, 117 para 6–7, 113 para 8–10). Katakana: 78 (solo desde 6 años). Revisar las palabras ambiguas y los emojis según el teléfono.
 - Kanji: 1.º, 2.º y 3.º grado cargados (80 + 160 + 200 = 440 kanji con lecturas y significado). Los grados 2 y 3 se verificaron por dentro (cantidades, repetidos, formato); la comparación con la lista oficial del MEXT está pendiente porque el sitio no se pudo abrir desde la sesión. Palabras con kanji de 2.º y 3.º grado: 58 agregadas, cada una verificada contra la lista de kanji. Pendiente: más palabras con kanji, grados 4 a 6, kanji en Leer en movimiento, y furigana en las opciones de "Ver el dibujo y elegir la palabra".
 
