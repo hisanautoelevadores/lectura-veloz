@@ -781,6 +781,171 @@
         "EP09_3.mp3",
         "EP09_4.mp3"
       ]
+    },
+    {
+      "id": "EP10",
+      "tipo": "即時応答",
+      "tema": "Ir a la escuela",
+      "pregunta": "¿Qué responde el alumno?",
+      "guion": [
+        [
+          "Narrador",
+          "おんなの ひとが いいます。「あしたは やすみですよ。」"
+        ],
+        [
+          "Narrador",
+          "せんせいに なんと いいますか。"
+        ]
+      ],
+      "opciones": [
+        "わかりました。ありがとう ございます。",
+        "いただきます。",
+        "ただいま。",
+        "いってきます。"
+      ],
+      "respuesta": 0,
+      "explicacion": "Ante un aviso del maestro, se responde わかりました。ありがとう ございます。",
+      "audio": "audio/chokai/EP10.mp3",
+      "titulo": "Ir a la escuela",
+      "clips": [
+        "EP10_1.mp3",
+        "EP10_2.mp3"
+      ]
+    },
+    {
+      "id": "EP11",
+      "tipo": "ポイント理解",
+      "tema": "Compra en la tienda",
+      "titulo": "Compra en la tienda",
+      "pregunta": "¿Qué compró la mujer?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが みせで はなして います。おんなの ひとは なにを かいましたか。"
+        ],
+        [
+          "Mujer",
+          "りんごを みっつ ください。"
+        ],
+        [
+          "Hombre",
+          "はい。ほかに なにか いりますか。"
+        ],
+        [
+          "Mujer",
+          "いいえ、それで いいです。"
+        ],
+        [
+          "Narrador",
+          "おんなの ひとは なにを かいましたか。"
+        ]
+      ],
+      "opciones": [
+        "tres manzanas",
+        "tres bananas",
+        "dos manzanas",
+        "un melón"
+      ],
+      "respuesta": 0,
+      "explicacion": "Compró tres manzanas (りんごを みっつ).",
+      "audio": "audio/chokai/EP11.mp3",
+      "clips": [
+        "EP11_1.mp3",
+        "EP11_2.mp3",
+        "EP11_3.mp3",
+        "EP11_4.mp3",
+        "EP11_5.mp3"
+      ]
+    },
+    {
+      "id": "EP12",
+      "tipo": "課題理解",
+      "tema": "Plan para mañana",
+      "titulo": "Plan para mañana",
+      "pregunta": "¿Adónde van el hombre y la mujer mañana?",
+      "guion": [
+        [
+          "Narrador",
+          "おとこの ひとが はなして います。あした、なにを しますか。"
+        ],
+        [
+          "Mujer",
+          "あした、いっしょに こうえんに いきませんか。"
+        ],
+        [
+          "Hombre",
+          "いいですね。でも、あしたは あめが ふるかも しれません。"
+        ],
+        [
+          "Mujer",
+          "じゃあ、としょかんに いきましょう。"
+        ],
+        [
+          "Narrador",
+          "あした、ふたりは どこに いきますか。"
+        ]
+      ],
+      "opciones": [
+        "a la biblioteca",
+        "al parque",
+        "a la escuela",
+        "a casa"
+      ],
+      "respuesta": 0,
+      "explicacion": "Como puede llover, deciden ir a la biblioteca (としょかんに いきましょう).",
+      "audio": "audio/chokai/EP12.mp3",
+      "clips": [
+        "EP12_1.mp3",
+        "EP12_2.mp3",
+        "EP12_3.mp3",
+        "EP12_4.mp3",
+        "EP12_5.mp3"
+      ]
+    },
+    {
+      "id": "EP13",
+      "tipo": "ポイント理解",
+      "tema": "Hora de llegada",
+      "titulo": "Hora de llegada",
+      "pregunta": "¿A qué hora llega?",
+      "guion": [
+        [
+          "Narrador",
+          "ひとが でんわで はなして います。なんじに つきますか。"
+        ],
+        [
+          "Mujer",
+          "えきに なんじに つきますか。"
+        ],
+        [
+          "Hombre",
+          "ごご にじに つきます。"
+        ],
+        [
+          "Mujer",
+          "わかりました。ありがとう。"
+        ],
+        [
+          "Narrador",
+          "なんじに つきますか。"
+        ]
+      ],
+      "opciones": [
+        "a las 2 de la tarde",
+        "a las 10 de la mañana",
+        "a las 3 de la tarde",
+        "a las 8 de la mañana"
+      ],
+      "respuesta": 0,
+      "explicacion": "Llega a las 2 de la tarde (ごご にじ).",
+      "audio": "audio/chokai/EP13.mp3",
+      "clips": [
+        "EP13_1.mp3",
+        "EP13_2.mp3",
+        "EP13_3.mp3",
+        "EP13_4.mp3",
+        "EP13_5.mp3"
+      ]
     }
   ]
 }

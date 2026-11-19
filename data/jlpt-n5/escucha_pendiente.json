@@ -1,30 +1,4 @@
 {
-  "estado": "pendiente: texto listo, sin audio. Generar audio requiere aprobación (cuota HeyGen). EP01 a EP09 ya tienen audio; falta EP10 (una línea de 2 quedó sin generar por límite de velocidad de HeyGen; el clip EP10_1 sí está).",
-  "ejercicios": [
-    {
-      "id": "EP10",
-      "tipo": "即時応答",
-      "tema": "Ir a la escuela",
-      "pregunta": "¿Qué responde el alumno?",
-      "guion": [
-        [
-          "Narrador",
-          "おんなの ひとが いいます。「あしたは やすみですよ。」"
-        ],
-        [
-          "Narrador",
-          "せんせいに なんと いいますか。"
-        ]
-      ],
-      "opciones": [
-        "わかりました。ありがとう ございます。",
-        "いただきます。",
-        "ただいま。",
-        "いってきます。"
-      ],
-      "respuesta": 0,
-      "explicacion": "Ante un aviso del maestro, se responde わかりました。ありがとう ございます。",
-      "audio": null
-    }
-  ]
+  "estado": "Todos los ejercicios de comprensión auditiva del índice tienen audio. Pendiente: nuevos ejercicios sin audio, cuando se aprueben.",
+  "ejercicios": []
 }
